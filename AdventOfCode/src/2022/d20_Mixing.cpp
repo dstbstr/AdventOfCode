@@ -1,4 +1,4 @@
-#include "2022/d20_Mixing.h"
+#include "Common.h"
 
 SOLUTION(2022, 20) {
     constexpr void Shift(std::vector<s64>&numbers, size_t index, std::vector<size_t>&indexes) {
@@ -63,11 +63,11 @@ SOLUTION(2022, 20) {
         return numbers[x] + numbers[y] + numbers[z];
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, 1, 1));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, 811589153, 10));
     }
 
@@ -81,7 +81,7 @@ SOLUTION(2022, 20) {
         return start == end;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(TestShift(0, { 1, 2, -3, 3, -2, 0, 4 }, { 2, 1, -3, 3, -2, 0, 4 }));
         static_assert(TestShift(0, { 2, 1, -3, 3, -2, 0, 4 }, { 1, -3, 2, 3, -2, 0, 4 }));
         static_assert(TestShift(1, { 1, -3, 2, 3, -2, 0, 4 }, { 1, 2, 3, -2, -3, 0, 4 }));

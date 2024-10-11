@@ -1,4 +1,4 @@
-#include "2018/d8_MemoryTree.h"
+#include "Common.h"
 
 SOLUTION(2018, 8) {
     constexpr u32 SumMetadata(Constexpr::Queue<u32>& numbers) {
@@ -65,17 +65,17 @@ SOLUTION(2018, 8) {
         return numbers;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto numbers = GetNumbers(lines);
         return Constexpr::ToString(SumMetadata(numbers));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto numbers = GetNumbers(lines);
         return Constexpr::ToString(GetNodeValue(numbers));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2"
         };

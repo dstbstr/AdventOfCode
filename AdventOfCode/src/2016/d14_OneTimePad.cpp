@@ -1,4 +1,4 @@
-#include "2016/d14_OneTimePad.h"
+#include "Common.h"
 #include "Core/Algorithms/md5Constexpr.h"
 
 SOLUTION(2016, 14) {
@@ -98,7 +98,7 @@ SOLUTION(2016, 14) {
         8477,11425,11494,11607,11812,12012,19730,19860,19903,20188,20307,20351,23670,23695,23769
     };
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(FindKey64(lines[0], false, PartOneHints));
     }
 
@@ -108,11 +108,11 @@ SOLUTION(2016, 14) {
         15828,15936,15939,16025,16105,16771,16851,16980,17323,20072,20141,20331,20357,20410,20498,20606
     };
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(FindKey64(lines[0], true, PartTwoHints));
     }
 
-    TESTS() {
+    TEST(1) {
         //if (FindKey64("abc", true) != 22551) return false;
 
         return true;

@@ -1,6 +1,5 @@
-#pragma once
+#include "Common.h"
 
-#include "2015/d4_AdventCoins.h"
 #include "Core/Algorithms/md5Constexpr.h"
 
 SOLUTION(2015, 4) {
@@ -16,15 +15,15 @@ SOLUTION(2015, 4) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines[0], "00000", 100'000));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines[0], "000000", 3'900'000));
     }
 
-    TESTS() {
+    TEST(1) {
         if (Solve("abcdef", "00000", 600000) != 609043) return false;
         if (Solve("pqrstuv", "00000", 1000000) != 1048970) return false;
 

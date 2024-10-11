@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d13_KnightsOfDinner.h"
+#include "Common.h"
 
 SOLUTION(2015, 13) {
     using PreferenceMap = Constexpr::SmallMap<std::string, Constexpr::SmallMap<std::string, s32>>;
@@ -68,14 +66,14 @@ SOLUTION(2015, 13) {
         return result;
     }
 
-   PART_ONE() {
+   PART(1) {
         return Constexpr::ToString(FindBestSeating(lines, false));
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(FindBestSeating(lines, true));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "Alice would gain 54 happiness units by sitting next to Bob.",
             "Alice would lose 79 happiness units by sitting next to Carol.",

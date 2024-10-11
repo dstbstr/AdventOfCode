@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d24_SledBalance.h"
+#include "Common.h"
 
 SOLUTION(2015, 24) {
     //All weights equal
@@ -75,16 +73,16 @@ SOLUTION(2015, 24) {
         return FindEntanglement(best);
     }
 
-    PART_ONE() {
+    PART(1) {
         auto weights = ParseLinesAsNumbers<u32>(lines);
         return Constexpr::ToString(FindMinimalEntanglement(weights, 3));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto weights = ParseLinesAsNumbers<u32>(lines);
         return Constexpr::ToString(FindMinimalEntanglement(weights, 4));
     }
-    TESTS() {
+    TEST(1) {
         static_assert(FindBalanceWeight({ 1, 2, 3, 4, 5, 7, 8, 9, 10, 11 }, 3) == 20);
         static_assert(FindBalanceWeight({ 1, 2, 3, 4, 5, 7, 8, 9, 10, 11 }, 4) == 15);
 

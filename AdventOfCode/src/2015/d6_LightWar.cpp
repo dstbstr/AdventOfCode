@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d6_LightWar.h"
+#include "Common.h"
 
 SOLUTION(2015, 6) {
     enum struct CommandType { On, Off, Toggle };
@@ -57,7 +55,7 @@ SOLUTION(2015, 6) {
 
         return count;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -84,7 +82,7 @@ SOLUTION(2015, 6) {
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
@@ -107,7 +105,7 @@ SOLUTION(2015, 6) {
         return true;
     }
 
-    TESTS() {
+    TEST(1) {
         if (!TestParseCommand()) return false;
 
         std::vector<std::string> lines = {

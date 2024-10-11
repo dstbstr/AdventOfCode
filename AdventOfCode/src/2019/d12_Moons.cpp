@@ -1,4 +1,4 @@
-#include "2019/d12_Moons.h"
+#include "Common.h"
 
 SOLUTION(2019, 12) {
     struct Moon {
@@ -80,7 +80,7 @@ SOLUTION(2019, 12) {
         return moon;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto moons = ParseLines(lines, ParseMoon);
         for (u32 i = 0; i < 1000; i++) {
             Tick(moons);
@@ -89,7 +89,7 @@ SOLUTION(2019, 12) {
         return Constexpr::ToString(std::accumulate(moons.begin(), moons.end(), 0, [](u32 previous, const auto& moon) { return previous + GetEnergy(moon); }));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto moons = ParseLines(lines, ParseMoon);
         u64 step = 0;
 
@@ -114,7 +114,7 @@ SOLUTION(2019, 12) {
         return Constexpr::ToString(lcm * 2);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

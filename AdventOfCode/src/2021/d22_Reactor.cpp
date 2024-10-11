@@ -1,4 +1,4 @@
-#include "2021/d22_Reactor.h"
+#include "Common.h"
 
 SOLUTION(2021, 22) {
     class Cube {
@@ -97,11 +97,11 @@ SOLUTION(2021, 22) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, IsInRange));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, AcceptAll));
     }
 
@@ -116,7 +116,7 @@ SOLUTION(2021, 22) {
         return true;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(TestCubeSubtract());
 
         static_assert(ParseLine("on x=-40..11,y=-14..32,z=-31..22").On);

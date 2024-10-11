@@ -1,4 +1,4 @@
-#include "2016/d20_Firewall.h"
+#include "Common.h"
 
 SOLUTION(2016, 20) {
     constexpr u32 MaxIp = 4294967295;
@@ -54,14 +54,14 @@ SOLUTION(2016, 20) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(FindLowest(lines));
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(CountAvailable(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "5-8",
             "0-2",

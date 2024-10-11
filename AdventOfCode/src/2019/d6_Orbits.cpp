@@ -1,4 +1,4 @@
-#include "2019/d6_Orbits.h"
+#include "Common.h"
 
 SOLUTION(2019, 6) {
     using Map = Constexpr::SmallMap<std::string, std::string>;
@@ -57,7 +57,7 @@ SOLUTION(2019, 6) {
         return a;
     }
 
-    PART_ONE() {
+    PART(1) {
         Map map;
         Cache cache;
         BuildData(lines, map, cache);
@@ -66,7 +66,7 @@ SOLUTION(2019, 6) {
         return Constexpr::ToString(std::accumulate(vals.begin(), vals.end(), 0));
     }
 
-    PART_TWO() {
+    PART(2) {
         Map map;
         Cache cache;
         BuildData(lines, map, cache);
@@ -75,7 +75,7 @@ SOLUTION(2019, 6) {
         return Constexpr::ToString(cache.at("YOU") + cache.at("SAN") - (cache.at(shared) * 2) - 2);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "COM)B",
             "B)C",

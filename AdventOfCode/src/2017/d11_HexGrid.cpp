@@ -1,8 +1,8 @@
-#include "2017/d11_HexGrid.h"
+#include "Common.h"
 #include "HexGrid.h"
 
 SOLUTION(2017, 11) {
-    PART_ONE() {
+    PART(1) {
         auto split = Constexpr::Split(lines[0], ",");
         FlatHex::Pos pos{ 0, 0, 0 };
         for (auto sv : split) {
@@ -12,7 +12,7 @@ SOLUTION(2017, 11) {
         return Constexpr::ToString(FlatHex::MDistance(pos, { 0, 0, 0 }));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto split = Constexpr::Split(lines[0], ",");
         u32 max = 0;
         FlatHex::Pos pos{ 0, 0, 0 };
@@ -25,7 +25,7 @@ SOLUTION(2017, 11) {
         return Constexpr::ToString(max);
     }
 
-    TESTS() {
+    TEST(1) {
         //static_assert(PartOne({"ne,ne,ne"}) == "3");
         //static_assert(PartOne({"ne,ne,sw,sw"}) == "0");
         //static_assert(PartOne({"ne,ne,s,s"}) == "2");

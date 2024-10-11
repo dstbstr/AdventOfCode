@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d12_JsAbacus.h"
+#include "Common.h"
 
 SOLUTION(2015, 12) {
     struct Json {
@@ -87,20 +85,20 @@ SOLUTION(2015, 12) {
         return 0;
     }
 
-    PART_ONE() {
+    PART(1) {
         size_t index = 0;
         auto root = ParseJson(lines[0], index);
 
         return Constexpr::ToString(CountAll(root, ""));
     }
 
-    PART_TWO() {
+    PART(2) {
         size_t index = 0;
         auto root = ParseJson(lines[0], index);
 
         return Constexpr::ToString(CountAll(root, "red"));
     }
-    TESTS() {
+    TEST(1) {
         size_t index = 0;
         auto root = ParseJson("[1,2,3]", index);
         if (root.Elements.size() != 3) return false;

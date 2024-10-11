@@ -1,4 +1,4 @@
-#include "2017/d3_SpiralMemory.h"
+#include "Common.h"
 
 SOLUTION(2017, 3) {
 
@@ -79,13 +79,13 @@ SOLUTION(2017, 3) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         u32 target;
         Constexpr::ParseNumber(lines[0], target);
         return Constexpr::ToString(FindTarget(target));
     }
 
-    PART_TWO() {
+    PART(2) {
         u32 target;
         Constexpr::ParseNumber(lines[0], target);
 
@@ -102,7 +102,7 @@ SOLUTION(2017, 3) {
         return "Not Found";
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(FindTarget(12) == 3);
         static_assert(FindTarget(23) == 2);
         static_assert(FindTarget(1024) == 31);

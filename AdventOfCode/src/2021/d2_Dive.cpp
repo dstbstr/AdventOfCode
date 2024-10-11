@@ -1,4 +1,4 @@
-#include "2021/d2_Dive.h"
+#include "Common.h"
 
 SOLUTION(2021, 2) {
     constexpr void Apply(Coord & pos, std::string_view line) {
@@ -41,15 +41,15 @@ SOLUTION(2021, 2) {
         return pos.X * pos.Y;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, Coord{ 0, 0 }));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, Vec3<s64>{0, 0, 0}));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "forward 5",
             "down 5",

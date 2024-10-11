@@ -1,4 +1,4 @@
-#include "2018/d14_HotChocolate.h"
+#include "Common.h"
 
 SOLUTION(2018, 14) {
     constexpr void Tick(std::string & current, size_t & r1, size_t & r2) {
@@ -17,7 +17,7 @@ SOLUTION(2018, 14) {
         r2 = (rhs + r2 + 1) % current.size();
     }
 
-    PART_ONE() {
+    PART(1) {
         size_t count;
         Constexpr::ParseNumber(lines[0], count);
         std::string current = "37";
@@ -31,7 +31,7 @@ SOLUTION(2018, 14) {
         return current.substr(count, 10);
     }
 
-    PART_TWO() {
+    PART(2) {
         const auto& target = std::string(lines[0]);
         std::string current = "37";
         current.reserve(10'000'000);
@@ -46,7 +46,7 @@ SOLUTION(2018, 14) {
         return Constexpr::ToString(current.find(target));
     }
 
-    TESTS() {
+    TEST(1) {
         //if (PartOne({ "5" }) != "0124515891") return false;
         //if (PartOne({"9"}) != "5158916779") return false;
         //if (PartOne({"18"}) != "9251071085") return false;

@@ -1,4 +1,4 @@
-#include "2016/d19_WhiteElephant.h"
+#include "Common.h"
 
 SOLUTION(2016, 19) {
     constexpr double ln3 = 1.09861228866810969;
@@ -20,18 +20,18 @@ SOLUTION(2016, 19) {
         return 2 * playerCount - 3 * b;
     }
 
-    PART_ONE() {
+    PART(1) {
         u32 playerCount;
         Constexpr::ParseNumber(lines[0], playerCount);
         return Constexpr::ToString(FindLeftWinner(playerCount));
     }
-    PART_TWO() {
+    PART(2) {
         u32 playerCount;
         Constexpr::ParseNumber(lines[0], playerCount);
         return Constexpr::ToString(FindAcrossWinner(playerCount));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(FindLeftWinner(5) == 3);
         /*
         if (FindLeftWinner(5) != 3) return false;

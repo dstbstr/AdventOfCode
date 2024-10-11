@@ -1,4 +1,4 @@
-#include "2019/d16_Fft.h"
+#include "Common.h"
 
 SOLUTION(2019, 16) {
     constexpr std::vector<s32> GetMultipliers(size_t inputSize, size_t row) {
@@ -53,7 +53,7 @@ SOLUTION(2019, 16) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         std::string running = std::string(lines[0]);
         for (auto i = 0; i < 100; i++) {
             running = RunPhase(running);
@@ -62,7 +62,7 @@ SOLUTION(2019, 16) {
         return running.substr(0, 8);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto line = std::string(lines[0]);
         std::string running = "";
         running.reserve(line.size() * 10'000);
@@ -87,7 +87,7 @@ SOLUTION(2019, 16) {
         return running.substr(0, 8);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(GetMultipliers(8, 1) == std::vector<s32>{1, 0, -1, 0, 1, 0, -1, 0});
         static_assert(GetMultipliers(8, 2) == std::vector<s32>{0, 1, 1, 0, 0, -1, -1, 0});
         static_assert(GetMultipliers(8, 3) == std::vector<s32>{0, 0, 1, 1, 1, 0, 0, 0});

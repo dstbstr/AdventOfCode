@@ -1,4 +1,4 @@
-#include "2021/d24_Monad.h"
+#include "Common.h"
 
 SOLUTION(2021, 24) {
     struct Entry {
@@ -64,17 +64,17 @@ SOLUTION(2021, 24) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         (void)lines;
         return Constexpr::ToString(Solve(true));
     }
 
-    PART_TWO() {
+    PART(2) {
         (void)lines;
         return Constexpr::ToString(Solve(false));
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

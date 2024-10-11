@@ -1,4 +1,4 @@
-#include "2022/d18_LavaBlock.h"
+#include "Common.h"
 
 SOLUTION(2022, 18) {
 
@@ -107,15 +107,15 @@ SOLUTION(2022, 18) {
         return Calc(grid);
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, CalcSurface));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, CalcExterior));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "2,2,2",
             "1,2,2",

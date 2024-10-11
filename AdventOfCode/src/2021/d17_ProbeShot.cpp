@@ -1,4 +1,4 @@
-#include "2021/d17_ProbeShot.h"
+#include "Common.h"
 
 SOLUTION(2021, 17) {
     struct Probe {
@@ -98,7 +98,7 @@ SOLUTION(2021, 17) {
         return (biggest * (biggest + 1)) / 2;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines[0]));
     }
 
@@ -127,7 +127,7 @@ SOLUTION(2021, 17) {
 
         return result;
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines[0]));
     }
 
@@ -138,7 +138,7 @@ SOLUTION(2021, 17) {
         return true;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(TestTargetConstructor());
         static_assert(SolvePartOne( "target area: x=20..30, y=-10..-5" ) == 45);
         if (SolvePartTwo("target area: x=20..30, y=-10..-5") != 112) return false;

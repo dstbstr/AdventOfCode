@@ -1,4 +1,4 @@
-#include "2019/d3_Wires.h"
+#include "Common.h"
 #include "Facing.h"
 
 SOLUTION(2019, 3) {
@@ -65,7 +65,7 @@ SOLUTION(2019, 3) {
         }
 
     }
-    PART_ONE() {
+    PART(1) {
         size_t best = 9999;
         Solve(lines, [&](const Segment& s1, const Segment& s2) {
             auto intersection = FindIntersection(s1, s2);
@@ -77,7 +77,7 @@ SOLUTION(2019, 3) {
     }
 
 
-    PART_TWO() {
+    PART(2) {
         s64 best = 999999;
         Solve(lines, [&](const Segment& s1, const Segment& s2) {
             auto intersection = FindIntersection2(s1, s2);
@@ -88,7 +88,7 @@ SOLUTION(2019, 3) {
         return Constexpr::ToString(best);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

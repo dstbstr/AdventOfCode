@@ -1,4 +1,4 @@
-#include "2020/d10_Jolts.h"
+#include "Common.h"
 
 SOLUTION(2020, 10) {
     constexpr auto KnownPaths = []() {
@@ -32,7 +32,7 @@ SOLUTION(2020, 10) {
         return ones * threes;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -55,11 +55,11 @@ SOLUTION(2020, 10) {
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "16",
             "10",

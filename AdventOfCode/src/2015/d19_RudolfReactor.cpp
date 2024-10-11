@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d19_RudolfReactor.h"
+#include "Common.h"
 
 SOLUTION(2015, 19) {
     using Transforms = Constexpr::SmallMap<std::string, std::vector<std::string>>;
@@ -42,7 +40,7 @@ SOLUTION(2015, 19) {
         return false;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto groups = SplitInputIntoGroups(lines);
         Transforms transforms;
         RTransforms reverseTransforms;
@@ -56,7 +54,7 @@ SOLUTION(2015, 19) {
 
         return Constexpr::ToString(molecules.size());
     }
-    PART_TWO() {
+    PART(2) {
         auto groups = SplitInputIntoGroups(lines);
         Transforms transforms;
         RTransforms reverseTransforms;
@@ -72,7 +70,7 @@ SOLUTION(2015, 19) {
         }
         return Constexpr::ToString(steps);
     }
-    TESTS() {
+    TEST(1) {
         /*
         std::vector<std::string> lines = {
             "H => HO",

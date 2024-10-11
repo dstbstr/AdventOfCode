@@ -1,4 +1,4 @@
-#include "2020/d19_SeaMonster.h"
+#include "Common.h"
 #include "Core/Constexpr/ConstexprRegex.h"
 
 SOLUTION(2020, 19) {
@@ -118,15 +118,15 @@ SOLUTION(2020, 19) {
             });
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, false));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, true));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
            "0: 4 1 5",
            "1: 2 3 | 3 2",

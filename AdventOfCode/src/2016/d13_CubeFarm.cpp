@@ -1,4 +1,4 @@
-#include "2016/d13_CubeFarm.h"
+#include "Common.h"
 #include <bit>
 
 SOLUTION(2016, 13) {
@@ -92,18 +92,18 @@ SOLUTION(2016, 13) {
 
     }
 
-    PART_ONE() {
+    PART(1) {
         u32 key;
         Constexpr::ParseNumber(lines[0], key);
         return Constexpr::ToString(Bfs(key, { 31, 39 }));
     }
-    PART_TWO() {
+    PART(2) {
         u32 key;
         Constexpr::ParseNumber(lines[0], key);
         return Constexpr::ToString(FindUniquePositions(key, 50));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(IsOpen({ 0, 0 }, 10));
         static_assert(!IsOpen({ 1, 0 }, 10));
         static_assert(IsOpen({ 2, 0 }, 10));

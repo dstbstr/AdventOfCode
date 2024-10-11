@@ -1,4 +1,4 @@
-#include "2021/d12_CavePath.h"
+#include "Common.h"
 
 SOLUTION(2021, 12) {
     //rooms are unique by first letter
@@ -63,17 +63,17 @@ SOLUTION(2021, 12) {
         return result;
     }
     
-    PART_ONE() {
+    PART(1) {
         auto n = Parse(lines);
         return Constexpr::ToString(CountPaths<false>(n));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto n = Parse(lines);
         return Constexpr::ToString(CountPaths<true>(n));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "start-A",
             "start-b",

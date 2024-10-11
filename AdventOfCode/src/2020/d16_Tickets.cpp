@@ -1,4 +1,4 @@
-#include "2020/d16_Tickets.h"
+#include "Common.h"
 
 SOLUTION(2020, 16) {
     using Ticket = std::vector<size_t>;
@@ -162,7 +162,7 @@ SOLUTION(2020, 16) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -184,11 +184,11 @@ SOLUTION(2020, 16) {
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
            "class: 1-3 or 5-7",
            "row: 6-11 or 33-44",

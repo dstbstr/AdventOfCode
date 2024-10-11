@@ -1,4 +1,4 @@
-#include "2020/d3_TreePath.h"
+#include "Common.h"
 
 SOLUTION(2020, 3) {
     using Grid = std::vector<std::vector<bool>>;
@@ -32,13 +32,13 @@ SOLUTION(2020, 3) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto grid = ParseGrid(lines);
         RowCol slope = { 1, 3 };
         return Constexpr::ToString(CountTreesOnPath(grid, slope));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto grid = ParseGrid(lines);
         std::vector<RowCol> slopes = {
             {1, 1},
@@ -52,7 +52,7 @@ SOLUTION(2020, 3) {
             }));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "..##.......",
             "#...#...#..",

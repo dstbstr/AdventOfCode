@@ -1,5 +1,5 @@
-#include "2021/d16_Bits.h"
-    SOLUTION(2021, 16) {
+#include "Common.h"
+SOLUTION(2021, 16) {
 
     /*
     Packet:
@@ -162,11 +162,11 @@
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines[0]));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto packet = GetPacket(lines[0]);
         return Constexpr::ToString(packet.Evaluate());
     }
@@ -189,7 +189,7 @@
         return true;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(HexToBits("3") == "0011");
         static_assert(HexToBits("A") == "1010");
         static_assert(HexToBits("D2FE28") == "110100101111111000101000");

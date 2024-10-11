@@ -1,12 +1,13 @@
-#include "2018/d1_Calibrate.h"
+#include "Common.h"
+
 SOLUTION(2018, 1) {
 
-    PART_ONE() {
+    PART(1) {
         auto deltas = ParseLinesAsNumbers<s32>(lines);
         return Constexpr::ToString(std::accumulate(deltas.begin(), deltas.end(), 0));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto deltas = ParseLinesAsNumbers<s32>(lines);
         std::vector<s32> frequencies {0};
         for (auto i = 0; i < deltas.size(); i++) {
@@ -38,7 +39,7 @@ SOLUTION(2018, 1) {
         return Constexpr::ToString(bestKey);
     }
 
-    TESTS() {
+    TEST(1) {
         //static_assert(PartTwo({ "+10000000", "-9999999" }) == "10000000");
 
         return true;

@@ -1,5 +1,5 @@
-#include "2019/d9_Comp4.h"
-#include "2019/Comp.h"
+#include "Common.h"
+#include "Comp.h"
 
 SOLUTION(2019, 9) {
     constexpr s64 Solve(std::string_view line, s64 input) {
@@ -12,15 +12,15 @@ SOLUTION(2019, 9) {
         return args.Output;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines[0], 1));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines[0], 2));
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

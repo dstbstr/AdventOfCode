@@ -1,4 +1,4 @@
-#include "2017/d7_Circus.h"
+#include "Common.h"
 
 SOLUTION(2017, 7) {
     struct Node {
@@ -86,7 +86,7 @@ SOLUTION(2017, 7) {
         throw std::logic_error("Not found");
     }
 
-    PART_ONE() {
+    PART(1) {
         auto map = ParseMap(lines);
         return FindRoot(map);
     }
@@ -119,7 +119,7 @@ SOLUTION(2017, 7) {
         throw std::logic_error("Not Found");
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
@@ -130,7 +130,7 @@ SOLUTION(2017, 7) {
         return actualOddIndex == expectedOddIndex;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(ParseNode("ab (42)").Name == "ab");
         static_assert(ParseNode("ab (42)").Weight == 42);
         static_assert(ParseNode("ab (42) -> bc, cd").Carrying.size() == 2);

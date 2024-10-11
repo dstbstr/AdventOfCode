@@ -5,14 +5,14 @@ DECLARE_SOLUTION(2015, 1, R"RawInput_(InputGoesHere)RawInput_");
 
 //Cpp File
 SOLUTION(2015, 1) {
-    PART_ONE() {
+    PART(1) {
         return "";
     }
-    PART_TWO() {
+    PART(2) {
         return "";
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

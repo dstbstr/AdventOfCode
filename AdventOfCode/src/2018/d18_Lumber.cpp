@@ -1,4 +1,4 @@
-#include "2018/d18_Lumber.h"
+#include "Common.h"
 
 SOLUTION(2018, 18) {
 
@@ -83,7 +83,7 @@ SOLUTION(2018, 18) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto src = Flatten(lines);
         auto dest = src;
         for (auto i = 0; i < 10; i++) {
@@ -94,7 +94,7 @@ SOLUTION(2018, 18) {
         return Constexpr::ToString(GetScore(src));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto src = Flatten(lines);
         auto dest = src;
         Constexpr::SmallSet<std::string> seen;
@@ -123,7 +123,7 @@ SOLUTION(2018, 18) {
         return Constexpr::ToString(GetScore(src));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             ".#.#...|#.",
             ".....#|##|",
@@ -188,7 +188,7 @@ constexpr size_t GetScore(const std::vector<std::string>&current) {
     return trees * yards;
 }
 
-PART_ONE() {
+PART(1) {
     auto running = lines;
     RowCol limits = { lines.size() - 1, lines[0].size() - 1 };
     for (auto i = 0; i < 10; i++) {
@@ -197,7 +197,7 @@ PART_ONE() {
     return Constexpr::ToString(GetScore(running));
 }
 
-PART_TWO() {
+PART(2) {
     RowCol limits = { lines.size() - 1, lines[0].size() - 1 };
     u32 cycleLength, cycleStart;
     auto running = FloydCycle::FindCycle(lines, Next, cycleLength, cycleStart, limits);
@@ -211,7 +211,7 @@ PART_TWO() {
     return Constexpr::ToString(GetScore(running));
 }
 
-TESTS() {
+TEST(1) {
     std::vector<std::string> lines = {
         ".#.#...|#.",
         ".....#|##|",

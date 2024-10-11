@@ -1,4 +1,4 @@
-#include "2022/d3_Rucksack.h"
+#include "Common.h"
 
 SOLUTION(2022, 3) {
     constexpr u32 GetLetterValue(char letter) {
@@ -45,13 +45,13 @@ SOLUTION(2022, 3) {
         return '_';
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(std::accumulate(lines.begin(), lines.end(), 0u, [](u32 prev, std::string_view line) {
             return prev + GetLetterValue(FindDuplicate(line));
             }));
     }
 
-    PART_TWO() {
+    PART(2) {
         u32 result = 0;
         for (auto i = 0; i < lines.size(); i += 3) {
             result += GetLetterValue(FindBadge(lines[i], lines[i + 1], lines[i + 2]));
@@ -60,7 +60,7 @@ SOLUTION(2022, 3) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(GetLetterValue('a') == 1);
         static_assert(GetLetterValue('A') == 27);
         static_assert(GetLetterValue('z') == 26);

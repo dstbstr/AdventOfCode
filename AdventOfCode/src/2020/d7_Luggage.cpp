@@ -1,4 +1,4 @@
-#include "2020/d7_Luggage.h"
+#include "Common.h"
 
 SOLUTION(2020, 7) {
     //muted blue bags contain 1 vibrant lavender bag, 4 dotted silver bags, 2 dim indigo bags.
@@ -69,7 +69,7 @@ SOLUTION(2020, 7) {
         return seen.size();
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -79,11 +79,11 @@ SOLUTION(2020, 7) {
         return Recurse(map, cache, "shiny gold") - 1;
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "light red bags contain 1 bright white bag, 2 muted yellow bags.",
             "dark orange bags contain 3 bright white bags, 4 muted yellow bags.",

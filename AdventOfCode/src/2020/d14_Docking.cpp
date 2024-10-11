@@ -1,4 +1,4 @@
-#include "2020/d14_Docking.h"
+#include "Common.h"
 
 SOLUTION(2020, 14) {
     using Memory = Constexpr::SmallMap<size_t, size_t>;
@@ -77,11 +77,11 @@ SOLUTION(2020, 14) {
     }
 
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, Write));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, Write2));
     }
 
@@ -102,7 +102,7 @@ SOLUTION(2020, 14) {
     }
 
 
-    TESTS() {
+    TEST(1) {
         static_assert(TestUpdateMasks());
         if (!TestUpdateMasks()) return false;
         std::vector<std::string> lines = {

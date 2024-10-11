@@ -1,4 +1,4 @@
-#include "2020/d4_Passport.h"
+#include "Common.h"
 
 SOLUTION(2020, 4) {
     struct Passport {
@@ -119,7 +119,7 @@ SOLUTION(2020, 4) {
         return true;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto groups = SplitInputIntoGroups(lines);
         return Constexpr::ToString(std::count_if(groups.begin(), groups.end(), [](const auto& pLines) {
             return ValidatePassport(ParsePassport(pLines));
@@ -133,7 +133,7 @@ SOLUTION(2020, 4) {
             return ValidatePassport(p) && VerifyPassport(p);
             });
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
@@ -166,7 +166,7 @@ SOLUTION(2020, 4) {
         return ValidatePassport(ParsePassport(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(TestParsePassport());
         static_assert(TestValidatePassport());
 

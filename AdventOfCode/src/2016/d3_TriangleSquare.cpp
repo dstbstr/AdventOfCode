@@ -1,4 +1,4 @@
-#include "2016/d3_TriangleSquare.h"
+#include "Common.h"
 
 SOLUTION(2016, 3) {
     constexpr bool IsValid(u32 a, u32 b, u32 c) {
@@ -13,7 +13,7 @@ SOLUTION(2016, 3) {
         }
     }
 
-    PART_ONE() {
+    PART(1) {
         u32 result = 0;
         u32 a = 0;
         u32 b = 0;
@@ -30,7 +30,7 @@ SOLUTION(2016, 3) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         u32 result = 0;
         std::array<std::array<u32, 3>, 3> tris;
         for (auto i = 0; i < lines.size(); i += 3) {
@@ -64,7 +64,7 @@ SOLUTION(2016, 3) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(IsValid(5, 10, 25) == false);
         /*
         std::vector<std::string> lines = {

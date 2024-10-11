@@ -1,7 +1,4 @@
-﻿# CMakeList.txt : Top-level CMake project file, do global configuration
-# and include sub-projects here.
-#
-cmake_minimum_required (VERSION 3.16)
+﻿cmake_minimum_required (VERSION 3.16)
 project(AdventOfCode)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" OR
@@ -37,14 +34,7 @@ include(FetchContent)
 # dstbstr/CppCore
 #################################
 FetchContent_Declare(CppCore GIT_REPOSITORY https://github.com/dstbstr/CppCore GIT_TAG main)
-#FetchContent_Declare(
-#  CppCore
-  #GIT_REPOSITORY https://github.com/dstbstr/CppCore.git
-  #GIT_TAG v1.0.0
-#)
 
 FetchContent_MakeAvailable(CppCore)
-message("CppCore: ${CppCore_SOURCE_DIR}")
-#add_subdirectory(${CppCore_SOURCE_DIR})
 # Include sub-projects.
 add_subdirectory ("AdventOfCode")

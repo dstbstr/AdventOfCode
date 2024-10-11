@@ -1,4 +1,4 @@
-#include "2017/d15_Generators.h"
+#include "Common.h"
 
 SOLUTION(2017, 15) {
     static constexpr u64 SeedA = 16807;
@@ -38,20 +38,20 @@ SOLUTION(2017, 15) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         u64 a, b;
         ParseLines(lines, a, b);
         return Constexpr::ToString(solve(a, 0, b, 0, 40'000'000ull));
     }
 
-    PART_TWO() {
+    PART(2) {
         u64 a, b;
         ParseLines(lines, a, b);
         return Constexpr::ToString(solve(a, 3, b, 7, 5'000'000ull));
     }
     
     /*
-    PART_ONE() {
+    PART(1) {
         u64 a, b;
         ParseLines(lines, a, b);
 
@@ -64,7 +64,7 @@ SOLUTION(2017, 15) {
         return Constexpr::ToString(count);
     }
 
-    PART_TWO() {
+    PART(2) {
         u64 a, b;
         ParseLines(lines, a, b);
 
@@ -86,7 +86,7 @@ SOLUTION(2017, 15) {
         return Constexpr::ToString(count);
     }
     */
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

@@ -1,4 +1,4 @@
-#include "2017/d1_Captcha.h"
+#include "Common.h"
 
 SOLUTION(2017, 1) {
     constexpr u32 SumDigits(std::string_view line, size_t offset) {
@@ -11,15 +11,15 @@ SOLUTION(2017, 1) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SumDigits(lines[0], 1));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SumDigits(lines[0], lines[0].size() / 2));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(SumDigits("1122", 1) == 3);
         static_assert(SumDigits("1111", 1) == 4);
         static_assert(SumDigits("1234", 1) == 0);

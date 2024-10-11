@@ -1,4 +1,4 @@
-#include "2022/d22_MonkeyMap.h"
+#include "Common.h"
 
 SOLUTION(2022, 22) {
 
@@ -532,11 +532,11 @@ SOLUTION(2022, 22) {
 
         return GetResult(currentPos, facing);
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
-    PART_TWO() {
+    PART(2) {
         const auto facingValues = 4;
         auto cube = MakeCube(lines);
         //auto cube = MakeTestCube(lines);
@@ -565,7 +565,7 @@ SOLUTION(2022, 22) {
         return Constexpr::ToString(GetResult(resultPos, facing));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(SplitPath("10R5L5R10L4R5L5") == std::vector<std::string>{"10", "R", "5", "L", "5", "R", "10", "L", "4", "R", "5", "L", "5"});
         
         std::vector<std::string> lines = {

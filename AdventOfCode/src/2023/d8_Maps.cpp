@@ -1,4 +1,4 @@
-#include "2023/d8_Maps.h"
+#include "Common.h"
 #include "Core/Algorithms/FloydCycle.h"
 
 SOLUTION(2023, 8) {
@@ -19,7 +19,7 @@ SOLUTION(2023, 8) {
 
         return map;
     }
-    PART_ONE() {
+    PART(1) {
         auto groups = SplitInputIntoGroups(lines);
 
         auto dirs = groups[0][0];
@@ -86,7 +86,7 @@ SOLUTION(2023, 8) {
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         auto groups = SplitInputIntoGroups(lines);
 
         auto dirs = groups[0][0];
@@ -114,7 +114,7 @@ SOLUTION(2023, 8) {
         return Constexpr::ToString(Constexpr::FindLcm(cycleLengths));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
             "RL",
             "",
@@ -127,7 +127,7 @@ SOLUTION(2023, 8) {
             "ZZZ = (ZZZ, ZZZ)"
         };
 
-        if (PartOne(example) != "2") return false;
+        if (Part1(example) != "2") return false;
 
         std::vector<std::string> e2 = {
             "LR",
@@ -142,7 +142,7 @@ SOLUTION(2023, 8) {
             "XXX = (XXX, XXX)"
         };
 
-        if (PartTwo(e2) != "6") return false;
+        if (Part2(e2) != "6") return false;
         return true;
     }
 }

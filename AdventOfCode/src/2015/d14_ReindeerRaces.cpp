@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d14_ReindeerRaces.h"
+#include "Common.h"
 
 SOLUTION(2015, 14) {
     //Rudolph can fly 22 km/s for 8 seconds, but then must rest for 165 seconds.
@@ -56,7 +54,7 @@ SOLUTION(2015, 14) {
         return points;
     }
 
-    PART_ONE() {
+    PART(1) {
         //One liner, just for fun. :)
         return Constexpr::ToString(RunAllReturnMax(ParseLines(lines, ParseRacer), FindDistance, 2503));
         /*
@@ -69,14 +67,14 @@ SOLUTION(2015, 14) {
         return Constexpr::ToString(best);
         */
     }
-    PART_TWO() {
+    PART(2) {
         auto racers = ParseLines(lines, ParseRacer);
         auto points = GetPoints(racers, 2503);
         
         return Constexpr::ToString(*std::max_element(points.cbegin(), points.cend()));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(FindDistance({ 14,10,127 }, 10) == 140);
         static_assert(FindDistance({ 14,10,127 }, 11) == 140);
         static_assert(FindDistance({ 14,10,127 }, 1000) == 1120);

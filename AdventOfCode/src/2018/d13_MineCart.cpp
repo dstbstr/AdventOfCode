@@ -1,5 +1,4 @@
-#include "2018/d13_MineCart.h"
-
+#include "Common.h"
 #include "Facing.h"
 
 SOLUTION(2018, 13) {
@@ -150,7 +149,7 @@ SOLUTION(2018, 13) {
         }
     }
 
-    PART_ONE() {
+    PART(1) {
         auto grid = ParseGrid(lines);
         auto carts = GetCarts(lines);
 
@@ -162,7 +161,7 @@ SOLUTION(2018, 13) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto grid = ParseGrid(lines);
         auto carts = GetCarts(lines);
 
@@ -179,7 +178,7 @@ SOLUTION(2018, 13) {
         return "Not Found";
     }
 
-    TESTS() {
+    TEST(1) {
         //std::vector<std::string> lines = {
         //        R"(/->-\        )",
         //        R"(|   |  /----\)",

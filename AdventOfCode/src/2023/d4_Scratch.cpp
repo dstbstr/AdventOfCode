@@ -1,4 +1,4 @@
-#include "2023/d4_Scratch.h"
+#include "Common.h"
 
 SOLUTION(2023, 4) {
     struct Card {
@@ -45,7 +45,7 @@ SOLUTION(2023, 4) {
 
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         auto cards = ParseLines(lines, ParseCard);
         auto result = std::accumulate(cards.begin(), cards.end(), 0u, [](u32 running, const Card& card) {
             return running + card.Score();
@@ -54,7 +54,7 @@ SOLUTION(2023, 4) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto cards = ParseLines(lines, ParseCard);
         std::vector<u32> multipliers(cards.size() + 1, 1);
         for (const auto& card : cards) {
@@ -67,7 +67,7 @@ SOLUTION(2023, 4) {
         return Constexpr::ToString(std::accumulate(multipliers.begin(), multipliers.end(), -1));
     }
 
-    TESTS() {
+    TEST(1) {
         auto card = ParseCard("Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 5");
         if (card.Id != 1) return false;
         if (card.Winners.size() != 5) return false;
@@ -84,7 +84,7 @@ SOLUTION(2023, 4) {
             "Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"
         };
 
-        if (PartTwo(example) != "30") return false;
+        if (Part2(example) != "30") return false;
         return true;
     }
 }

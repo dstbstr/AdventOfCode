@@ -1,5 +1,5 @@
-#include "2019/d21_Comp9.h"
-#include "2019/Comp.h"
+#include "Common.h"
+#include "Comp.h"
 
 SOLUTION(2019, 21) {
     enum Register { A = 'A', B = 'B', C = 'C', D = 'D', E = 'E', F = 'F', G = 'G', H = 'H', I = 'I', T = 'T', J = 'J' };
@@ -55,7 +55,7 @@ SOLUTION(2019, 21) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto instructions = ParseInstructions(lines[0]);
         Args args;
 
@@ -77,7 +77,7 @@ SOLUTION(2019, 21) {
         return Start(instructions, args);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto instructions = ParseInstructions(lines[0]);
         Args args;
 
@@ -105,7 +105,7 @@ SOLUTION(2019, 21) {
         return Start(instructions, args);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

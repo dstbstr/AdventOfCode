@@ -1,4 +1,4 @@
-#include "2018/d21_Comp3.h"
+#include "Common.h"
 
 SOLUTION(2018, 21) {
     using Regs = std::array<u64, 6>;
@@ -84,7 +84,7 @@ SOLUTION(2018, 21) {
         Constexpr::ParseNumber(s3[2], outMultiplier);
     }
 
-    PART_ONE() {
+    PART(1) {
         u64 previousMask, initialValue, multiplier;
         GatherValues(lines, previousMask, initialValue, multiplier);
 
@@ -108,7 +108,7 @@ SOLUTION(2018, 21) {
     }
 
 
-    PART_TWO() {
+    PART(2) {
         u64 previousMask, initialValue, multiplier;
         GatherValues(lines, previousMask, initialValue, multiplier);
 
@@ -153,7 +153,7 @@ SOLUTION(2018, 21) {
         */
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

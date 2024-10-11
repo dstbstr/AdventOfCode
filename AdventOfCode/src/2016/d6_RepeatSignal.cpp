@@ -1,4 +1,4 @@
-#include "2016/d6_RepeatSignal.h"
+#include "Common.h"
 
 SOLUTION(2016, 6) {
     template<size_t MsgLength>
@@ -56,14 +56,14 @@ SOLUTION(2016, 6) {
         return Decoder(counts);
     }
 
-    PART_ONE() {
+    PART(1) {
         return Solve(lines, Decode<8>);
     }
-    PART_TWO() {
+    PART(2) {
         return Solve(lines, DecodeMin<8>);
     }
 
-    TESTS() {
+    TEST(1) {
         CountType<6> counts{};
 
         UpdateLetterCounts("eedadn", counts);

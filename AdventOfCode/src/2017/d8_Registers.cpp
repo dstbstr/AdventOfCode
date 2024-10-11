@@ -1,4 +1,4 @@
-#include "2017/d8_Registers.h"
+#include "Common.h"
 
 SOLUTION(2017, 8) {
     using Regs = Constexpr::SmallMap<std::string, s32>;
@@ -58,18 +58,18 @@ SOLUTION(2017, 8) {
         return std::make_pair(GetMaxElement(regs), max);
     }
 
-    PART_ONE() {
+    PART(1) {
         auto [last, max] = Solve(lines);
         return Constexpr::ToString(last);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto [last, max] = Solve(lines);
         return Constexpr::ToString(max);
     }
     
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = { "b inc 5 if a > 1", "a inc 1 if b < 5", "c dec -10 if a >= 1", "c inc -20 if c == 10" };
         auto [last, max] = Solve(lines);
         if (last != 1) return false;

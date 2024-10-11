@@ -1,4 +1,5 @@
-#include "2022/d19_GatherOre.h"
+#include "Common.h"
+
 SOLUTION(2022, 19) {
 
     using Entry = std::array<u32, 4>;
@@ -81,11 +82,11 @@ SOLUTION(2022, 19) {
         }
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto bps = ParseLines(lines, ParseBlueprint);
         size_t result = 1;
         for (size_t i = 0; i < 3; i++) {
@@ -95,7 +96,7 @@ SOLUTION(2022, 19) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "Blueprint 1: Each ore robot costs 4 ore. Each clay robot costs 2 ore. Each obsidian robot costs 3 ore and 14 clay. Each geode robot costs 2 ore and 7 obsidian.",
             "Blueprint 2: Each ore robot costs 2 ore. Each clay robot costs 3 ore. Each obsidian robot costs 3 ore and 8 clay. Each geode robot costs 3 ore and 12 obsidian."

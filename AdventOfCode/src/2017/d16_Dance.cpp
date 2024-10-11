@@ -1,4 +1,4 @@
-#include "2017/d16_Dance.h"
+#include "Common.h"
 #include "Core/Algorithms/FloydCycle.h"
 
 SOLUTION(2017, 16) {
@@ -83,7 +83,7 @@ SOLUTION(2017, 16) {
         }
         return dancers;
     }
-    PART_ONE() {
+    PART(1) {
         auto moves = GetMoves(lines[0]);
 
         std::string dancers = InitialDancers;
@@ -94,7 +94,7 @@ SOLUTION(2017, 16) {
         return dancers;
     }
 
-    PART_TWO() {
+    PART(2) {
         auto moves = GetMoves(lines[0]);
         std::string dancers = InitialDancers;
         u32 cycleLength, cycleStart;
@@ -107,7 +107,7 @@ SOLUTION(2017, 16) {
         return dancers;
     }
 
-    TESTS() {
+    TEST(1) {
         std::string dancers = "abcde";
         std::string line = "s1,x3/4,pe/b";
         Spin(dancers, "1");

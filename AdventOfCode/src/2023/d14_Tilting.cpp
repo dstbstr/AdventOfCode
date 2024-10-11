@@ -1,4 +1,4 @@
-#include "2023/d14_Tilting.h"
+#include "Common.h"
 #include "Facing.h"
 #include "Core/Algorithms/FloydCycle.h"
 
@@ -86,7 +86,7 @@ SOLUTION(2023, 14) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto map = lines;
         RowCol max = { map.size() - 1, map[0].size() - 1 };
 
@@ -108,7 +108,7 @@ SOLUTION(2023, 14) {
     }
 
 
-    PART_TWO() {
+    PART(2) {
         auto map = lines;
         RowCol max = { map.size() - 1, map[0].size() - 1 };
         u32 cycleLength;
@@ -125,7 +125,7 @@ SOLUTION(2023, 14) {
         return Constexpr::ToString(CalculateLoad(map));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
             "O....#....",
             "O.OO#....#",
@@ -139,7 +139,7 @@ SOLUTION(2023, 14) {
             "#OO..#...."
         };
 
-        if (PartOne(example) != "136") return false;
+        if (Part1(example) != "136") return false;
         return true;
     }
 }

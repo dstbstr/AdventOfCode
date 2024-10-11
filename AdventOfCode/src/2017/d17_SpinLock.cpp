@@ -1,7 +1,7 @@
-#include "2017/d17_SpinLock.h"
+#include "Common.h"
 
 SOLUTION(2017, 17) {
-    PART_ONE() {
+    PART(1) {
         size_t input;
         Constexpr::ParseNumber(lines[0], input);
         size_t pos = 0;
@@ -15,7 +15,7 @@ SOLUTION(2017, 17) {
         return Constexpr::ToString(*(where + 1));
     }
 
-    PART_TWO() {
+    PART(2) {
         size_t input;
         Constexpr::ParseNumber(lines[0], input);
         size_t pos = 0;
@@ -29,7 +29,7 @@ SOLUTION(2017, 17) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

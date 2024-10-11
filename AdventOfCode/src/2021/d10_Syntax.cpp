@@ -1,5 +1,4 @@
-#include "2021/d10_Syntax.h"
-#include <stack>
+#include "Common.h"
 
 SOLUTION(2021, 10) {
 
@@ -62,7 +61,7 @@ SOLUTION(2021, 10) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto scores = ParseLines(lines, GetScore);
         return Constexpr::ToString(std::accumulate(scores.begin(), scores.end(), 0ull, [](size_t prev, const auto& pair) {
             return prev + pair.first;
@@ -79,11 +78,11 @@ SOLUTION(2021, 10) {
         std::sort(toKeep.begin(), toKeep.end());
         return toKeep[toKeep.size() / 2];
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(GetScore("{([(<{}[<>[]}>{[]{[(<()>").first == 1197);
         static_assert(GetScore("[[<[([]))<([[{}[[()]]]").first == 3);
         static_assert(GetScore("(((({<>}<{<{<>}{[]{[]{}").second == 1480781);

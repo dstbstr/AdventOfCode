@@ -1,4 +1,4 @@
-#include "2018/d19_Comp2.h"
+#include "Common.h"
 
 SOLUTION(2018, 19) {
     using Regs = std::array<s32, 6>;
@@ -66,7 +66,7 @@ SOLUTION(2018, 19) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto ipReg = GetIpReg(lines[0]);
         auto copy = std::vector<std::string>(lines.begin() + 1, lines.end());
         auto inst = ParseLines(copy, GenInst);
@@ -80,7 +80,7 @@ SOLUTION(2018, 19) {
         return Constexpr::ToString(regs[0]);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto ipReg = GetIpReg(lines[0]);
         auto copy = std::vector<std::string>(lines.begin() + 1, lines.end());
         auto inst = ParseLines(copy, GenInst);
@@ -97,7 +97,7 @@ SOLUTION(2018, 19) {
         return Constexpr::ToString(std::accumulate(divisors.begin(), divisors.end(), 0));
     }
 
-    TESTS() {
+    TEST(1) {
         //std::vector<std::string> lines = {
         //    "#ip 0",
         //    "seti 5 0 1",

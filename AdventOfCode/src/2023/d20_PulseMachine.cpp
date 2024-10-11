@@ -1,4 +1,4 @@
-#include "2023/d20_PulseMachine.h"
+#include "Common.h"
 
 SOLUTION(2023, 20) {
     //% = Flip-Flop => High ignored, Low On = !On, Send On(High or Low)
@@ -163,7 +163,7 @@ SOLUTION(2023, 20) {
 
     }
 
-    PART_ONE() {
+    PART(1) {
         Constexpr::SmallMap<std::string, u16> nameIndexMap;
         std::vector<Module> modules;
         Setup(lines, nameIndexMap, modules);
@@ -181,7 +181,7 @@ SOLUTION(2023, 20) {
         return Constexpr::ToString(lows * highs);
     }
 
-    PART_TWO() {
+    PART(2) {
         Constexpr::SmallMap<std::string, u16> nameIndexMap;
         std::vector<Module> modules;
         Setup(lines, nameIndexMap, modules);
@@ -211,7 +211,7 @@ SOLUTION(2023, 20) {
             }));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
             "broadcaster -> a, b, c",
             "%a -> b",
@@ -220,7 +220,7 @@ SOLUTION(2023, 20) {
             "&inv -> a"
         };
 
-        if (PartOne(example) != "32000000") return false;
+        if (Part1(example) != "32000000") return false;
 
         example = {
             "broadcaster -> a",
@@ -230,7 +230,7 @@ SOLUTION(2023, 20) {
             "&con -> output",
         };
 
-        if (PartOne(example) != "11687500") return false;
+        if (Part1(example) != "11687500") return false;
         return true;
     }
 }

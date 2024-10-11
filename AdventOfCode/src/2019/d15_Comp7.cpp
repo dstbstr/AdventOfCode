@@ -1,5 +1,5 @@
-#include "2019/d15_Comp7.h"
-#include "2019/Comp.h"
+#include "Common.h"
+#include "Comp.h"
 #include "Core/Algorithms/AStar.h"
 #include "Core/Algorithms/FloodFill.h"
 
@@ -116,7 +116,7 @@ SOLUTION(2019, 15) {
         return result - 1;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto instructions = ParseInstructions(lines[0]);
         auto map = Explore(instructions);
         auto target = GetTarget(map);
@@ -124,7 +124,7 @@ SOLUTION(2019, 15) {
         return Constexpr::ToString(GetShortestPath(map, target));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto instructions = ParseInstructions(lines[0]);
         auto map = Explore(instructions);
         auto target = GetTarget(map);
@@ -132,7 +132,7 @@ SOLUTION(2019, 15) {
         return Constexpr::ToString(FloodFill(map, target));
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

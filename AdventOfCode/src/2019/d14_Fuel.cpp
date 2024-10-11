@@ -1,4 +1,4 @@
-#include "2019/d14_Fuel.h"
+#include "Common.h"
 
 SOLUTION(2019, 14) {
     struct Ingrediant {
@@ -98,7 +98,7 @@ SOLUTION(2019, 14) {
         ParseLines(lines, produces, ingrediants);
         return ProduceFuel(produces, ingrediants, extras, 1);
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -127,11 +127,11 @@ SOLUTION(2019, 14) {
         return totalFuelProduced;
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "10 ORE => 10 A",
             "1 ORE => 1 B",

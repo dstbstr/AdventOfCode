@@ -1,4 +1,4 @@
-#include "2020/d18_NewMath.h"
+#include "Common.h"
 #include "Core/Algorithms/ShuntingYard.h"
 #include "Core/BigInt.h"
 
@@ -13,7 +13,7 @@ SOLUTION(2020, 18) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto operators = ShuntingYard::Detail::DefaultOperatorData<BigInt>;
         for (auto& [key, value] : operators) {
             value.Precedence = 1;
@@ -22,7 +22,7 @@ SOLUTION(2020, 18) {
         return Constexpr::ToString(Solve(lines, operators));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto operators = ShuntingYard::Detail::DefaultOperatorData<BigInt>;
         for (auto& [key, value] : operators) {
             value.Precedence = 3 - value.Precedence;
@@ -31,7 +31,7 @@ SOLUTION(2020, 18) {
         return Constexpr::ToString(Solve(lines, operators));
     }
 
-    TESTS() {
+    TEST(1) {
         auto operators = ShuntingYard::Detail::DefaultOperatorData<size_t>;
         for (auto& [key, value] : operators) {
             value.Precedence = 1;

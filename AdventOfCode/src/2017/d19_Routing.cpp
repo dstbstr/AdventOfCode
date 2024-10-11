@@ -1,4 +1,4 @@
-#include "2017/d19_Routing.h"
+#include "Common.h"
 #include "Facing.h"
 
 SOLUTION(2017, 19) {
@@ -92,7 +92,7 @@ SOLUTION(2017, 19) {
         return true;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto pos = FindStartPos(lines[0]);
         Facing facing = Down;
         std::string result;
@@ -108,7 +108,7 @@ SOLUTION(2017, 19) {
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         auto pos = FindStartPos(lines[0]);
         Facing facing = Down;
         u32 steps = 1;
@@ -119,7 +119,7 @@ SOLUTION(2017, 19) {
         return Constexpr::ToString(steps);
     }
 
-    TESTS() {
+    TEST(1) {
         //std::vector<std::string> lines = {
         //    "     |          ",
         //    "     |  +--+    ",

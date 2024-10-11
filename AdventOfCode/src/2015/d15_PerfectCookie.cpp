@@ -1,6 +1,5 @@
-#pragma once
+#include "Common.h"
 
-#include "2015/d15_PerfectCookie.h"
 SOLUTION(2015, 15) {
     //Sugar: capacity 3, durability 0, flavor 0, texture -3, calories 2
     struct Ing {
@@ -71,15 +70,15 @@ SOLUTION(2015, 15) {
         return best;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto ings = ParseLines(lines, ParseIng);
         return Constexpr::ToString(Recurse(ings, {}, 0, false));
     }
-    PART_TWO() {
+    PART(2) {
         auto ings = ParseLines(lines, ParseIng);
         return Constexpr::ToString(Recurse(ings, {}, 0, true));
     }
-    TESTS() {
+    TEST(1) {
         auto ing = ParseIng("Sugar: capacity 3, durability 0, flavor 0, texture -3, calories 2");
         if (ing.Capacity != 3) return false;
         if (ing.Durability != 0) return false;

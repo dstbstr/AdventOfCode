@@ -1,4 +1,4 @@
-#include "2019/d22_SpaceCards.h"
+#include "Common.h"
 #include "Core/BigInt.h"
 
 SOLUTION(2019, 22) {
@@ -94,7 +94,7 @@ SOLUTION(2019, 22) {
         return executeTimes(shuffle.k, shuffle.m, shuffleCount, deckSize).apply(in) % deckSize;
     };
 
-    PART_ONE() {
+    PART(1) {
         size_t deckSize = 10'007;
         std::vector<u64> deck(deckSize);
         for (auto i = 0; i < deckSize; i++) {
@@ -113,7 +113,7 @@ SOLUTION(2019, 22) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         BigInt pos = 2020;
         BigInt deckSize = 119'315'717'514'047;
         BigInt repCount = 101'741'582'076'661;
@@ -128,7 +128,7 @@ SOLUTION(2019, 22) {
         return running == expected;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(RunTest({ 1, 2, 3 }, { 3, 2, 1 }, NewStack));
         static_assert(RunTest({ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 3, 4, 5, 6, 7, 8, 9, 0, 1, 2 }, Cut, 3));
         static_assert(RunTest({ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 6, 7, 8, 9, 0, 1, 2, 3, 4, 5 }, Cut, -4));

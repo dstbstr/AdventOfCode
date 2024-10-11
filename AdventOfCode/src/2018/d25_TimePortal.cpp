@@ -1,4 +1,4 @@
-#include "2018/d25_TimePortal.h"
+#include "Common.h"
 
 SOLUTION(2018, 25) {
     using Star = Vec4<s32>;
@@ -33,7 +33,7 @@ SOLUTION(2018, 25) {
         }
     };
 
-    PART_ONE() {
+    PART(1) {
         std::vector<Constellation> constellations;
         for (const auto& line : lines) {
             auto star = ParseStar(line);
@@ -73,12 +73,12 @@ SOLUTION(2018, 25) {
         return Constexpr::ToString(constellations.size());
     }
 
-    PART_TWO() {
+    PART(2) {
         (void)lines;
         return "Merry Christmas";
     }
 
-    TESTS() {
+    TEST(1) {
         //std::vector<std::string> lines = {
         //    "1,-1,-1,-2",
         //    "-2,-2,0,1",

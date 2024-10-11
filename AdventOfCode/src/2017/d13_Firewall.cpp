@@ -1,4 +1,4 @@
-#include "2017/d13_Firewall.h"
+#include "Common.h"
 
 SOLUTION(2017, 13) {
     using Scanner = std::pair<u32, u32>;
@@ -16,7 +16,7 @@ SOLUTION(2017, 13) {
         return (delay + layer) % ((depth - 1) * 2) == 0;
     }
 
-    PART_ONE() {
+    PART(1) {
         u32 total = 0;
         auto scanners = ParseLines(lines, ParseScanner);
         for (const auto& scanner : scanners) {
@@ -25,7 +25,7 @@ SOLUTION(2017, 13) {
         return Constexpr::ToString(total);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto scanners = ParseLines(lines, ParseScanner);
         u32 delay = 0;
         while (std::any_of(scanners.begin(), scanners.end(), [delay](auto const& scanner) {
@@ -37,7 +37,7 @@ SOLUTION(2017, 13) {
         return Constexpr::ToString(delay);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

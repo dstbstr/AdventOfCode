@@ -1,4 +1,4 @@
-#include "2021/d4_Bingo.h"
+#include "Common.h"
 
 SOLUTION(2021, 4) {
     struct BingoCard {
@@ -81,7 +81,7 @@ SOLUTION(2021, 4) {
 
         throw "Not Found";
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -110,11 +110,11 @@ SOLUTION(2021, 4) {
 
         return lastCard.CalculateScore(numbers[numIndex - 1]);
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1",
             "",

@@ -1,4 +1,4 @@
-#include "2021/d25_Landing.h"
+#include "Common.h"
 
 SOLUTION(2021, 25) {
     constexpr std::vector<std::string> Next(const std::vector<std::string>&current) {
@@ -35,7 +35,7 @@ SOLUTION(2021, 25) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto current = lines;
         size_t steps = 0;
         while (true) {
@@ -48,12 +48,12 @@ SOLUTION(2021, 25) {
         return Constexpr::ToString(steps);
     }
 
-    PART_TWO() {
+    PART(2) {
         (void)lines;
         return "Merry Christmas!";
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Next({ "...>>>>>..." })[0] == "...>>>>.>..");
         static_assert(Next({ "...>>>>.>.." })[0] == "...>>>.>.>.");
         static_assert(Next({

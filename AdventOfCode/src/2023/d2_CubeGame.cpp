@@ -1,4 +1,4 @@
-#include "2023/d2_CubeGame.h"
+#include "Common.h"
 
 SOLUTION(2023, 2) {
     struct Pull {
@@ -65,7 +65,7 @@ SOLUTION(2023, 2) {
 
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         Pull target = { 12, 13, 14 };
         auto games = ParseLines(lines, ParseGame);
 
@@ -76,7 +76,7 @@ SOLUTION(2023, 2) {
         return Constexpr::ToString(result);
     }
     //2168 is too low
-    PART_TWO() {
+    PART(2) {
         auto games = ParseLines(lines, ParseGame);
 
         auto result = std::accumulate(games.begin(), games.end(), 0u, [](u32 running, const Game& game) {
@@ -85,7 +85,7 @@ SOLUTION(2023, 2) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

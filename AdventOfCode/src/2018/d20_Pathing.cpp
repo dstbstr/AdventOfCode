@@ -1,4 +1,4 @@
-#include "2018/d20_Pathing.h"
+#include "Common.h"
 
 SOLUTION(2018, 20) {
     using Grid = Constexpr::SmallMap<Coord, std::vector<Coord>>;
@@ -50,21 +50,21 @@ SOLUTION(2018, 20) {
 
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         auto result = Solve(lines[0], [](size_t length, size_t& r) {
             r = std::max(length, r);
             });
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto result = Solve(lines[0], [](size_t length, size_t& r) {
             r += length >= 1000;
             });
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         auto KeepMax = [](size_t length, size_t& r) {
             r = std::max(length, r);
             };

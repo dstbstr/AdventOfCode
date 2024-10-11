@@ -1,4 +1,4 @@
-#include "2023/d13_Mirrors.h"
+#include "Common.h"
 
 SOLUTION(2023, 13) {
     constexpr size_t CountChanges(const std::string & lhs, const std::string & rhs) {
@@ -74,15 +74,15 @@ SOLUTION(2023, 13) {
 
         return (result.first * 100) + result.second;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, 0));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, 1));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
             "#.##..##.",
             "..#.##.#.",
@@ -101,7 +101,7 @@ SOLUTION(2023, 13) {
             "#....#..#"
         };
 
-        if (PartOne(example) != "405") return false;
+        if (Part1(example) != "405") return false;
         return true;
     }
 }

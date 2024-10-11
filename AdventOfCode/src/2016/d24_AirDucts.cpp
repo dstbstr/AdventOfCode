@@ -1,4 +1,4 @@
-#include "2016/d24_AirDucts.h"
+#include "Common.h"
 #include "Core/Algorithms/AStar.h"
 
 SOLUTION(2016, 24) {
@@ -93,14 +93,14 @@ SOLUTION(2016, 24) {
         return result;
 
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, false));
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, true));
     }
 
-    TESTS() {
+    TEST(1) {
         
         std::vector<std::string> lines = {
            "###########",

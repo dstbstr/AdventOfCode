@@ -1,4 +1,4 @@
-#include "2018/d9_Marbles.h"
+#include "Common.h"
 
 SOLUTION(2018, 9) {
 
@@ -57,7 +57,7 @@ SOLUTION(2018, 9) {
         Constexpr::ParseNumber(s[6], maxValue);
     }
 
-    PART_ONE() {
+    PART(1) {
         //this version is slower, but doesn't hard code the input
         size_t players, maxValue;
         ParseInput(lines[0], players, maxValue);
@@ -68,7 +68,7 @@ SOLUTION(2018, 9) {
         */
     }
 
-    PART_TWO() {
+    PART(2) {
         size_t players, maxValue;
         ParseInput(lines[0], players, maxValue);
         return Constexpr::ToString(Play2(players, maxValue * 100));
@@ -78,7 +78,7 @@ SOLUTION(2018, 9) {
         */
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert (Play<9, 25>() == 32);
         static_assert (Play<10, 1618>() == 8317);
         static_assert (Play<13, 7999>() == 146373);

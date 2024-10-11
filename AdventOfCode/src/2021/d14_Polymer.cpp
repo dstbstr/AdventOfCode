@@ -1,4 +1,4 @@
-#include "2021/d14_Polymer.h"
+#include "Common.h"
 
 SOLUTION(2021, 14) {
     using Map = std::array<char, Constexpr::FromBase26("ZZ")>;
@@ -77,11 +77,11 @@ SOLUTION(2021, 14) {
         return Constexpr::FindMax(letterCounts) - min;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, 10));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, 40));
     }
 
@@ -110,7 +110,7 @@ SOLUTION(2021, 14) {
         return Solve(lines, 40) == 2188189693529;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(GetInitialCounts("NNCB")[Constexpr::FromBase26("NN")] == 1);
         static_assert(GetInitialCounts("NNCB")[Constexpr::FromBase26("NC")] == 1);
         static_assert(GetInitialCounts("NNCB")[Constexpr::FromBase26("CB")] == 1);

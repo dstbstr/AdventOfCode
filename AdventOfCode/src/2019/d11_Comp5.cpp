@@ -1,5 +1,5 @@
-#include "2019/d11_Comp5.h"
-#include "2019/Comp.h"
+#include "Common.h"
+#include "Comp.h"
 #include "Facing.h"
 
 SOLUTION(2019, 11) {
@@ -40,14 +40,14 @@ SOLUTION(2019, 11) {
         return painted;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto instructions = ParseInstructions(lines[0]);
         auto painted = GetPainting(instructions, true);
 
         return Constexpr::ToString(painted.size());
     }
 
-    PART_TWO() {
+    PART(2) {
         auto instructions = ParseInstructions(lines[0]);
         auto painted = GetPainting(instructions, false);
 
@@ -71,7 +71,7 @@ SOLUTION(2019, 11) {
         return result;
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

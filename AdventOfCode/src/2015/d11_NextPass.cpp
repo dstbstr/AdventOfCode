@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d11_NextPass.h"
+#include "Common.h"
 SOLUTION(2015, 11) {
     constexpr std::string Increment(const std::string & input) {
         std::string result = input;
@@ -92,14 +90,14 @@ SOLUTION(2015, 11) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return NextPass(lines[0]);
     }
-    PART_TWO() {
+    PART(2) {
         return NextPass(NextPass(lines[0]));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Increment("a") == "b");
         static_assert(Increment("z") == "a");
         static_assert(Increment("azzz") == "baaa");

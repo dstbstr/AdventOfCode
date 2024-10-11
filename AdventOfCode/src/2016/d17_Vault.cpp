@@ -1,6 +1,6 @@
-#include "2016/d17_Vault.h"
-#include "Core/Algorithms/md5Constexpr.h"
+#include "Common.h"
 #include "Facing.h"
+#include "Core/Algorithms/md5Constexpr.h"
 
 SOLUTION(2016, 17) {
     constexpr bool IsOpen(char value) {
@@ -124,14 +124,14 @@ SOLUTION(2016, 17) {
         }
     }
 
-    PART_ONE() {
+    PART(1) {
         return FindShortestPath(lines[0]);
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(FindLongestPath(lines[0]));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(IsOpen('b'));
         static_assert(IsOpen('f'));
         static_assert(!IsOpen('0'));

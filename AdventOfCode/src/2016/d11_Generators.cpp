@@ -1,4 +1,4 @@
-#include "2016/d11_Generators.h"
+#include "Common.h"
 
 SOLUTION(2016, 11) {
 //4 floors
@@ -254,10 +254,10 @@ SOLUTION(2016, 11) {
         return 0; //fail case
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines));
     }
-    PART_TWO() {
+    PART(2) {
         auto copy = lines;
         copy[0] += " elerium generator, elerium microchip, dilithium generator, dilithium microchip";
         return Constexpr::ToString(Solve(copy));
@@ -300,7 +300,7 @@ SOLUTION(2016, 11) {
         return true;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(TestHash());
 
         std::vector<std::string> lines = {

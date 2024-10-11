@@ -1,4 +1,4 @@
-#include "2017/d23_Coprocessor.h"
+#include "Common.h"
 
 SOLUTION(2017, 23) {
     using Registers = std::array<s64, 8>;
@@ -41,7 +41,7 @@ SOLUTION(2017, 23) {
         };
     }
 
-    PART_ONE() {
+    PART(1) {
         Registers regs{};
 
         s64 ip = 0;
@@ -56,7 +56,7 @@ SOLUTION(2017, 23) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         Registers regs{};
         regs[0] = 1;
 
@@ -82,7 +82,7 @@ SOLUTION(2017, 23) {
         return Constexpr::ToString(count);       
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

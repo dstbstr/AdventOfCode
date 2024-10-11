@@ -1,4 +1,4 @@
-#include "2021/d7_Whales.h"
+#include "Common.h"
 
 SOLUTION(2021, 7) {
     constexpr u32 FindTarget(const std::vector<u32>&nums) {
@@ -19,7 +19,7 @@ SOLUTION(2021, 7) {
             });
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines[0]));
     }
 
@@ -40,11 +40,11 @@ SOLUTION(2021, 7) {
 
         return std::min(result1, result2);
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines[0]));
     }
 
-    TESTS() {
+    TEST(1) {
         std::string line = "16,1,2,0,4,2,7,1,2,14";
         if (SolvePartOne(line) != 37) return false;
         if (SolvePartTwo(line) != 168) return false;

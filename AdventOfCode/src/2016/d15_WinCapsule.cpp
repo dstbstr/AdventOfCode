@@ -1,4 +1,4 @@
-#include "2016/d15_WinCapsule.h"
+#include "Common.h"
 
 SOLUTION(2016, 15) {
     struct Disc {
@@ -35,13 +35,13 @@ SOLUTION(2016, 15) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto discs = ParseLines(lines, ParseDisc);
 
         return Constexpr::ToString(BestSpin(discs));
         
     }
-    PART_TWO() {
+    PART(2) {
         auto copy = lines;
         //auto copy = CopyToVector(lines);
         copy.push_back("Disc #7 has 11 positions; at time=0, it is at position 0.");
@@ -51,7 +51,7 @@ SOLUTION(2016, 15) {
         return Constexpr::ToString(BestSpin(discs));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Win({ {5, 4}, {2, 1} }, 0) == false);
         static_assert(Win({ {5, 4}, {2, 1} }, 5));
 

@@ -1,5 +1,5 @@
-#include "2019/d17_Ascii.h"
-#include "2019/Comp.h"
+#include "Common.h"
+#include "Comp.h"
 
 SOLUTION(2019, 17) {
     using Map = Constexpr::SmallMap<Coord, bool>;
@@ -51,7 +51,7 @@ SOLUTION(2019, 17) {
         return args;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto instructions = ParseInstructions(lines[0]);
         auto map = ParseMap(ReadOutput(instructions));
         s64 result = 0;
@@ -81,7 +81,7 @@ SOLUTION(2019, 17) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto instructions = ParseInstructions(lines[0]);
         instructions[0] = 2;
         std::string mainProgram = "C,A,C,B,C,A,B,A,B,A";
@@ -102,7 +102,7 @@ SOLUTION(2019, 17) {
         return Constexpr::ToString(output);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

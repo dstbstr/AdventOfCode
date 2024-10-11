@@ -1,4 +1,4 @@
-#include "2020/d8_Halting.h"
+#include "Common.h"
 
 SOLUTION(2020, 8) {
     struct State {
@@ -66,7 +66,7 @@ SOLUTION(2020, 8) {
         return state.Accumulator;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -91,11 +91,11 @@ SOLUTION(2020, 8) {
         throw "Not Found";
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
            "nop +0",
            "acc +1",

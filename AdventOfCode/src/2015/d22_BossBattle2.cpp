@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d22_BossBattle2.h"
+#include "Common.h"
 
 SOLUTION(2015, 22) {
     struct Player { s32 Hp{ 0 }; s32 Mana{ 0 }; s32 Armor{ 0 }; };
@@ -207,19 +205,19 @@ SOLUTION(2015, 22) {
 
         return bestMana;
     }
-    PART_ONE() {
+    PART(1) {
         auto boss = ParseBoss(lines);
         Player player = { 50, 500, 0 };
         State initialState{ player, boss, {} };
         return Constexpr::ToString(FindBestMana(initialState, false));
     }
-    PART_TWO() {
+    PART(2) {
         auto boss = ParseBoss(lines);
         Player player = { 50, 500, 0 };
         State initialState{ player, boss, {} };
         return Constexpr::ToString(FindBestMana(initialState, true));
     }
-    TESTS() {
+    TEST(1) {
         if (!TestCanCast()) return false;
         if(!TestTickSpells()) return false;
 

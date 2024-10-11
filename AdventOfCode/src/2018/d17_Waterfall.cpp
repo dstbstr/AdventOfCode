@@ -1,4 +1,4 @@
-#include "2018/d17_Waterfall.h"
+#include "Common.h"
 
 SOLUTION(2018, 17) {
     static constexpr size_t MaxX = 700;
@@ -171,19 +171,19 @@ SOLUTION(2018, 17) {
     }
 
 
-    PART_ONE() {
+    PART(1) {
         auto [lhs, rhs] = Solve(lines);
 
         return Constexpr::ToString(lhs + rhs);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto [lhs, rhs] = Solve(lines);
 
         return Constexpr::ToString(lhs);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "x=495, y=2..7",
             "y=7, x=495..501",

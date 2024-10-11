@@ -1,4 +1,4 @@
-#include "2022/d24_Blizzard.h"
+#include "Common.h"
 #include "Core/Algorithms/AStar.h"
 
 SOLUTION(2022, 24) {
@@ -239,7 +239,7 @@ SOLUTION(2022, 24) {
 
         return Travel(blizzard, start, exit, limits, 0);
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -254,10 +254,10 @@ SOLUTION(2022, 24) {
         result = Travel(blizzard, start, exit, limits, result);
         return result;
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "#.######",
             "#>>.<^<#",

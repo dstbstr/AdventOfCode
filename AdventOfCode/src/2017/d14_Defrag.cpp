@@ -1,5 +1,5 @@
-#include "2017/d14_Defrag.h"
-#include "2017/KnotHash.h"
+#include "Common.h"
+#include "KnotHash.h"
 #include "Core/Algorithms/FloodFill.h"
 
 #include <bit>
@@ -58,7 +58,7 @@ SOLUTION(2017, 14) {
         }
     }
     
-    PART_ONE() {
+    PART(1) {
         const auto& key = std::string(lines[0]);
         u32 used = 0;
         for (auto i = 0; i < 128; i++) {
@@ -72,7 +72,7 @@ SOLUTION(2017, 14) {
         return Constexpr::ToString(used);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto grid = CreateGrid(lines[0]);
         auto pos = RowCol{ 0, 0 };
         /*
@@ -99,7 +99,7 @@ SOLUTION(2017, 14) {
         return Constexpr::ToString(groups);
     }
 
-    TESTS() {
+    TEST(1) {
         //std::vector<std::string> lines = { "flqrgnkx" };
         //if(PartOne(lines) != "8108") return false;
         //if(PartTwo(lines) != "1242") return false;

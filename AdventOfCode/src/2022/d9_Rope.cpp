@@ -1,4 +1,4 @@
-#include "2022/d9_Rope.h"
+#include "Common.h"
 #include "Facing.h"
 
 SOLUTION(2022, 9) {
@@ -55,11 +55,11 @@ SOLUTION(2022, 9) {
         return seen.size();
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(CountUniqueTailPositions(lines, 2));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(CountUniqueTailPositions(lines, 10));
     }
 
@@ -68,7 +68,7 @@ SOLUTION(2022, 9) {
         return initialTail == expectedTail;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(TestMoveTail({ 0, 0 }, { 0, 0 }, { 0, 0 }));
 
         static_assert(TestMoveTail({ 1, 0 }, { 0, 0 }, { 0, 0 }));

@@ -1,4 +1,4 @@
-#include "2016/d18_Traps.h"
+#include "Common.h"
 
 SOLUTION(2016, 18) {
     constexpr size_t CountSafeTiles(std::string_view initial, u32 rowCount) {
@@ -19,14 +19,14 @@ SOLUTION(2016, 18) {
         return safe;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(CountSafeTiles(lines[0], 40));
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(CountSafeTiles(lines[0], 400'000));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(CountSafeTiles(".^^.^.^^^^", 10) == 38);
 
         return true;

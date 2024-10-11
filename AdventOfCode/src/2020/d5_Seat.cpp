@@ -1,4 +1,4 @@
-#include "2020/d5_Seat.h"
+#include "Common.h"
 
 SOLUTION(2020, 5) {
     constexpr RowCol FindSeat(std::string_view pass) {
@@ -32,12 +32,12 @@ SOLUTION(2020, 5) {
         std::transform(lines.begin(), lines.end(), std::back_inserter(result), [](std::string_view line) { return GetId(FindSeat(line)); });
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         auto seatIds = GetSeatIds(lines);
         return Constexpr::ToString(*std::max_element(seatIds.begin(), seatIds.end()));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto seatIds = GetSeatIds(lines);
         std::sort(seatIds.begin(), seatIds.end());
         for (size_t i = 0; i < seatIds.size() - 1; i++) {
@@ -49,7 +49,7 @@ SOLUTION(2020, 5) {
         return "Not Found";
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(FindSeat("FBFBBFFRLR") == RowCol{ 44, 5 });
         static_assert(FindSeat("FFFBBBFRRR") == RowCol{ 14, 7 });
         static_assert(FindSeat("BFFFBBFRRR") == RowCol{ 70, 7 });

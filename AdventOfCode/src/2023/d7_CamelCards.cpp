@@ -1,4 +1,4 @@
-#include "2023/d7_CamelCards.h"
+#include "Common.h"
 
 SOLUTION(2023, 7) {
 	enum struct Card : u32 { Ace, King, Queen, Jack, Ten, Nine, Eight, Seven, Six, Five, Four, Three, Two };
@@ -136,15 +136,15 @@ SOLUTION(2023, 7) {
 		return result;
 	}
 
-	PART_ONE() {
+	PART(1) {
 		return Constexpr::ToString(Solve(lines, FindHand, NormalScore));
 	}
 
-	PART_TWO() {
+	PART(2) {
 		return Constexpr::ToString(Solve(lines, FindHandJokers, JokerScore));
 	}
 
-	TESTS() {
+	TEST(1) {
 		std::vector<std::string> example = {
 			"32T3K 765",
 			"T55J5 684",
@@ -153,8 +153,8 @@ SOLUTION(2023, 7) {
 			"QQQJA 483"
 		};
 
-		if (PartOne(example) != "6440") return false;
-		if (PartTwo(example) != "5905") return false;
+		if (Part1(example) != "6440") return false;
+		if (Part2(example) != "5905") return false;
 
 		return true;
 	}

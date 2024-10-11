@@ -1,4 +1,4 @@
-#include "2021/d21_Dice.h"
+#include "Common.h"
 
 SOLUTION(2021, 21) {
     constexpr bool Roll(size_t & dieRolls, size_t & dieValue, size_t & pos, size_t & score) {
@@ -88,7 +88,7 @@ SOLUTION(2021, 21) {
 
         return std::min(p1Score, p2Score) * dieRolls;
     }
-    PART_ONE() {
+    PART(1) {
         size_t p1Pos, p2Pos;
 
         Constexpr::ParseNumber(Constexpr::Split(lines[0], " ").back(), p1Pos);
@@ -109,7 +109,7 @@ SOLUTION(2021, 21) {
         delete p2Cache;
         return std::max(result.first, result.second);
     }
-    PART_TWO() {
+    PART(2) {
         size_t p1Pos, p2Pos;
 
         Constexpr::ParseNumber(Constexpr::Split(lines[0], " ").back(), p1Pos);
@@ -117,7 +117,7 @@ SOLUTION(2021, 21) {
         return Constexpr::ToString(SolveP2(p1Pos, p2Pos));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(SolveP1(4, 8) == 739785);
         static_assert(SolveP1(6, 10) == 853776);
 

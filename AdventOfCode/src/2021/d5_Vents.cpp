@@ -1,4 +1,4 @@
-#include "2021/d5_Vents.h"
+#include "Common.h"
 
 SOLUTION(2021, 5) {
     constexpr void ParseLine(std::string_view line, Coord& outStart, Coord& outEnd) {
@@ -32,15 +32,15 @@ SOLUTION(2021, 5) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, true));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, false));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "0,9 -> 5,9",
             "8,0 -> 0,8",

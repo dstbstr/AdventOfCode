@@ -1,5 +1,4 @@
-#include "2016/d2_BathroomSecurity.h"
-
+#include "Common.h"
 #include "Facing.h"
 
 SOLUTION(2016, 2) {
@@ -99,14 +98,14 @@ SOLUTION(2016, 2) {
         return Constexpr::JoinVec("", keys);
     }
 
-    PART_ONE() {
+    PART(1) {
         return GetSimpleCode(lines);
     }
-    PART_TWO() {
+    PART(2) {
         return GetRealCode(lines);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string_view> lines = {
             "ULL",
             "RRDDD",

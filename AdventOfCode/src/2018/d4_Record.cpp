@@ -1,4 +1,5 @@
-#include "2018/d4_Record.h"
+#include "Common.h"
+
 SOLUTION(2018, 4) {
 
     struct DateTime {
@@ -83,7 +84,7 @@ SOLUTION(2018, 4) {
         }
     }
 
-    PART_ONE() {
+    PART(1) {
         Constexpr::SmallMap<u32, u32> guardSleepAmounts{};
         Constexpr::SmallMap<u32, std::array<u8, 60>> guardSleepTimes{};
         auto events = ParseLines(lines, ParseEvent);
@@ -112,7 +113,7 @@ SOLUTION(2018, 4) {
         return Constexpr::ToString(resultMinute * sleepiestGuard);
     }
 
-    PART_TWO() {
+    PART(2) {
         Constexpr::SmallMap<u32, u32> guardSleepAmounts{};
         Constexpr::SmallMap<u32, std::array<u8, 60>> guardSleepTimes{};
         auto events = ParseLines(lines, ParseEvent);
@@ -136,7 +137,7 @@ SOLUTION(2018, 4) {
         return Constexpr::ToString(resultMinute * resultGuardId);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(ParseDateTime("1518-10-05 00:56").Month == 10);
         static_assert(ParseDateTime("1518-10-05 00:56").Day == 5);
         static_assert(ParseDateTime("1518-10-05 00:56").Hour == 0);

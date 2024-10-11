@@ -1,4 +1,4 @@
-#include "2023/d6_BoatRace.h"
+#include "Common.h"
 
 SOLUTION(2023, 6) {
     constexpr std::vector<std::pair<u64, u64>> ParseInput(const std::vector<std::string>&lines) {
@@ -37,7 +37,7 @@ SOLUTION(2023, 6) {
         return (time - t) - t + 1;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto pairs = ParseInput(lines);
         u64 result = 1;
         for (auto [time, dist] : pairs) {
@@ -46,19 +46,19 @@ SOLUTION(2023, 6) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto [time, dist] = ParseAsSingle(lines);
 
         return Constexpr::ToString(CountWins(time, dist));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector < std::string> lines = {
             "Time:      7  15   30",
             "Distance:  9  40  200"
         };
 
-        if (PartOne(lines) != "288") return false;
+        if (Part1(lines) != "288") return false;
         return true;
     }
 }

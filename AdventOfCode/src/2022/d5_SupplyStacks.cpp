@@ -1,4 +1,4 @@
-#include "2022/d5_SupplyStacks.h"
+#include "Common.h"
 
 SOLUTION(2022, 5) {
     using Stacks = std::vector<Constexpr::Stack<char>>;
@@ -53,7 +53,7 @@ SOLUTION(2022, 5) {
             });
     }
 
-    PART_ONE() {
+    PART(1) {
         return SolvePartOne(lines);
     }
 
@@ -68,11 +68,11 @@ SOLUTION(2022, 5) {
             }
         });
     }
-    PART_TWO() {
+    PART(2) {
         return SolvePartTwo(lines);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines{
             "    [D]     ",
             "[N] [C]     ",

@@ -1,4 +1,4 @@
-#include "2022/d16_Pressure.h"
+#include "Common.h"
 #include "Core/Algorithms/FloydWarshall.h"
 
 SOLUTION(2022, 16) {
@@ -185,15 +185,15 @@ SOLUTION(2022, 16) {
         return best;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(FindBestSolo<51, u8>(lines));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(FindBestPair<51, u8>(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "Valve AA has flow rate=0; tunnels lead to valves DD, II, BB",
             "Valve BB has flow rate=13; tunnels lead to valves CC, AA",

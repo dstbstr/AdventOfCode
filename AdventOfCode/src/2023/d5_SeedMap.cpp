@@ -1,4 +1,4 @@
-#include "2023/d5_SeedMap.h"
+#include "Common.h"
 
 SOLUTION(2023, 5) {
     //destination, source, length
@@ -102,7 +102,7 @@ SOLUTION(2023, 5) {
 
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         auto groups = SplitInputIntoGroups(lines);
         auto seeds = ParseLineAsNumbers<s64>(groups[0][0].substr(7), " ");
 
@@ -124,7 +124,7 @@ SOLUTION(2023, 5) {
 
     //362940 too low
     //10114991 too high
-    PART_TWO() {
+    PART(2) {
         auto groups = SplitInputIntoGroups(lines);
         auto seedRanges = ParseLineAsNumbers<s64>(groups[0][0].substr(7), " ");
         std::vector<Seeds> seeds = {};
@@ -148,7 +148,7 @@ SOLUTION(2023, 5) {
         return Constexpr::ToString(best);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
             "seeds: 79 14 55 13",
             "",
@@ -185,8 +185,8 @@ SOLUTION(2023, 5) {
             "56 93 4"
         };
 
-        if (PartOne(example) != "35") return false;
-        if (PartTwo(example) != "46") return false;
+        if (Part1(example) != "35") return false;
+        if (Part2(example) != "46") return false;
 
         return true;
     }

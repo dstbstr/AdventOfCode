@@ -1,4 +1,4 @@
-#include "2021/d23_Hanoi.h"
+#include "Common.h"
 
 SOLUTION(2021, 23) {
 
@@ -325,17 +325,17 @@ SOLUTION(2021, 23) {
         return 0ull;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto dens = GetInitialDens(lines, false);
         return Constexpr::ToString(Solve(dens));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto dens = GetInitialDens(lines, true);
         return Constexpr::ToString(Solve(dens));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "#############",
             "#...........#",

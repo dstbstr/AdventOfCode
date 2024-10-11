@@ -1,4 +1,4 @@
-#include "2019/d8_ImageFormat.h"
+#include "Common.h"
 
 SOLUTION(2019, 8) {
     template<size_t Rows, size_t Cols>
@@ -29,7 +29,7 @@ SOLUTION(2019, 8) {
         return std::accumulate(layer.begin(), layer.end(), 0ull, [digit](size_t previous, const auto& row) { return previous + std::count(row.begin(), row.end(), digit); });
     }
 
-    PART_ONE() {
+    PART(1) {
         auto layers = BuildLayers<6, 25>(lines[0]);
 
         size_t best = 999;
@@ -45,7 +45,7 @@ SOLUTION(2019, 8) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto layers = BuildLayers<6, 25>(lines[0]);
 
         Layer<6, 25> image{};
@@ -71,7 +71,7 @@ SOLUTION(2019, 8) {
         return result;
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

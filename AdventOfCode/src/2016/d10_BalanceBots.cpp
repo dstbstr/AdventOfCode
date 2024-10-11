@@ -1,4 +1,4 @@
-#include "2016/d10_BalanceBots.h"
+#include "Common.h"
 
 SOLUTION(2016, 10) {
     struct Bot {
@@ -95,7 +95,7 @@ SOLUTION(2016, 10) {
         }
     }
 
-    PART_ONE() {
+    PART(1) {
         std::vector<Bot> bots;
         std::vector<size_t> bins;
         Impl(lines, bots, bins);
@@ -108,7 +108,7 @@ SOLUTION(2016, 10) {
         return "Not Found";
     }
 
-    PART_TWO() {
+    PART(2) {
         std::vector<Bot> bots;
         std::vector<size_t> bins;
         Impl(lines, bots, bins);
@@ -116,7 +116,7 @@ SOLUTION(2016, 10) {
         return Constexpr::ToString(bins[0] * bins[1] * bins[2]);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "value 5 goes to bot 2",
             "bot 2 gives low to bot 1 and high to bot 0",

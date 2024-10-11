@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d3_AtLeastOnePresent.h"
+#include "Common.h"
 
 SOLUTION(2015, 3) {
     static constexpr size_t GridSize = 1000;
@@ -71,15 +69,15 @@ SOLUTION(2015, 3) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(CountDeliveries(lines[0]));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(CountDeliveriesWithRobot(lines[0]));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(CountDeliveries(">") == 2);
         static_assert(CountDeliveries("^>v<") == 4);
 

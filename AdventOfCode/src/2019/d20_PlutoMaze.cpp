@@ -1,4 +1,4 @@
-#include "2019/d20_PlutoMaze.h"
+#include "Common.h"
 #include "Core/Algorithms/AStar.h"
 
 #include <map>
@@ -233,15 +233,15 @@ SOLUTION(2019, 20) {
 
         return PathFinder(dMap, portalMap, entrance, exit, limit);
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, FindShortestPath));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, FindShortestRecursivePath));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
            "         A         ",
            "         A         ",

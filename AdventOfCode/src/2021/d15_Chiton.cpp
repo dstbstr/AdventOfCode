@@ -1,4 +1,4 @@
-#include "2021/d15_Chiton.h"
+#include "Common.h"
 #include "Core/Algorithms/AStar.h"
 
 SOLUTION(2021, 15) {
@@ -60,18 +60,18 @@ SOLUTION(2021, 15) {
         return FindAstar(map, limits);
     }
 
-    PART_ONE() {
+    PART(1) {
         auto map = ParseInput(lines);
         return Constexpr::ToString(Solve(map));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto map = ParseInput(lines);
         auto bigMap = ExpandMap(map);
         return Constexpr::ToString(Solve(bigMap));
     }
 
-    TESTS() {
+    TEST(1) {
         /*
         std::vector<std::string> lines = {
             "1163751742",

@@ -1,4 +1,4 @@
-#include "2020/d6_Customs.h"
+#include "Common.h"
 
 SOLUTION(2020, 6) {
     constexpr size_t CountAnyInGroup(const std::vector<std::string>&lines) {
@@ -31,15 +31,15 @@ SOLUTION(2020, 6) {
             });
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Run(lines, CountAnyInGroup));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Run(lines, CountAllInGroup));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(CountAnyInGroup(std::vector<std::string>{ "a" }) == 1);
         static_assert(CountAnyInGroup(std::vector<std::string>{"a", "b", "c"}) == 3);
         static_assert(CountAnyInGroup(std::vector<std::string>{"a", "a", "a"}) == 1);

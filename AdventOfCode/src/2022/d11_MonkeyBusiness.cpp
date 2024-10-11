@@ -1,4 +1,4 @@
-#include "2022/d11_MonkeyBusiness.h"
+#include "Common.h"
 
 SOLUTION(2022, 11) {
     struct Monkey {
@@ -95,15 +95,15 @@ SOLUTION(2022, 11) {
         return monkeys[0].ItemsHandled * monkeys[1].ItemsHandled;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, 20, 3));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, 10'000, 1));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "Monkey 0:",
             "  Starting items: 79, 98",

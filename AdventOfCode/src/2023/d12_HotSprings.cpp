@@ -1,4 +1,4 @@
-#include "2023/d12_HotSprings.h"
+#include "Common.h"
 
 SOLUTION(2023, 12) {
     using Cache = Constexpr::SmallMap<std::tuple<size_t, size_t, size_t>, size_t>;
@@ -47,7 +47,7 @@ SOLUTION(2023, 12) {
         return Recurse(pattern, counts, cache, 0, 0, 0);
     }
     
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(std::accumulate(lines.begin(), lines.end(), 0ull, [](size_t running, const std::string& line) {
             return running + CountValid(line);
             }));
@@ -61,13 +61,13 @@ SOLUTION(2023, 12) {
         return Constexpr::JoinVec("?", pattern) + " " + Constexpr::JoinVec(',', counts);
     }
 
-    PART_TWO() {
+    PART(2) {
         std::vector<std::string> unfolded;
         std::transform(lines.begin(), lines.end(), std::back_inserter(unfolded), Unfold);
-        return PartOne(unfolded);
+        return Part1(unfolded);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "???.### 1,1,3",
             ".??..??...?##. 1,1,3",
@@ -84,8 +84,8 @@ SOLUTION(2023, 12) {
         if (CountValid("????.######..#####. 1,6,5") != 4) return false;
         if (CountValid("?###???????? 3,2,1") != 10) return false;
 
-        if (PartOne(lines) != "21") return false;
-        if (PartTwo(lines) != "525152") return false;
+        if (Part1(lines) != "21") return false;
+        if (Part2(lines) != "525152") return false;
 
         return true;
     }

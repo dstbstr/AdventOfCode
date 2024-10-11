@@ -1,4 +1,4 @@
-#include "2018/d11_PowerCell.h"
+#include "Common.h"
 
 SOLUTION(2018, 11) {
     constexpr s16 CalculatePower(UCoord pos, u32 serialNumber) {
@@ -60,7 +60,7 @@ SOLUTION(2018, 11) {
         return FillGrid(serialNumber);
     }
 
-    PART_ONE() {
+    PART(1) {
         auto grid = GetGrid(lines[0]);
         s32 best;
         UCoord bestCoord;
@@ -69,7 +69,7 @@ SOLUTION(2018, 11) {
         return Constexpr::ToString(bestCoord);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto grid = GetGrid(lines[0]);
 
         s32 overallBest = 0;
@@ -93,7 +93,7 @@ SOLUTION(2018, 11) {
         return Constexpr::ToString(Vec3<size_t>{overallBestCoord.X, overallBestCoord.Y, bestSize});
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(CalculatePower({ 3, 5 }, 8) == 4);
         static_assert(CalculatePower({ 122, 79 }, 57) == -5);
         static_assert(CalculatePower({ 217,196 }, 39) == 0);

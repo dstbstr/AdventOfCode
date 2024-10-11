@@ -1,4 +1,5 @@
-#include "2018/d2_BoxId.h"
+#include "Common.h"
+
 SOLUTION(2018, 2) {
     constexpr void HasTwosAndThrees(std::string_view line, bool& outHasTwos, bool& outHasThrees) {
         std::array<u8, 26> counts{};
@@ -22,7 +23,7 @@ SOLUTION(2018, 2) {
         return deltas == 1;
     }
 
-    PART_ONE() {
+    PART(1) {
         u32 twos = 0;
         u32 threes = 0;
         for (const auto& line : lines) {
@@ -35,7 +36,7 @@ SOLUTION(2018, 2) {
         return Constexpr::ToString(twos * threes);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto copy = lines;
         std::sort(copy.begin(), copy.end());
         for (auto i = 0; i < copy.size() - 1; i++) {
@@ -55,7 +56,7 @@ SOLUTION(2018, 2) {
         return hasTwos == expectedTwos && hasThrees == expectedThrees;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(TestHasTwosAndThrees("abcdef", false, false));
         static_assert(TestHasTwosAndThrees("abcd", false, false));
         static_assert(TestHasTwosAndThrees("aacd", true, false));

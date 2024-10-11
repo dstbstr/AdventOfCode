@@ -1,4 +1,4 @@
-#include "2021/d11_OctoFlash.h"
+#include "Common.h"
 
 SOLUTION(2021, 11) {
     struct Octo {
@@ -71,7 +71,7 @@ SOLUTION(2021, 11) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -83,11 +83,11 @@ SOLUTION(2021, 11) {
             });
         return step;
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "5483143223",
             "2745854711",

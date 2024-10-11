@@ -1,4 +1,4 @@
-#include "2020/d13_BusStop.h"
+#include "Common.h"
 
 SOLUTION(2020, 13) {
     constexpr size_t SolvePartOne(const auto & lines) {
@@ -26,7 +26,7 @@ SOLUTION(2020, 13) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -56,11 +56,11 @@ SOLUTION(2020, 13) {
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
            "939",
            "7,13,x,x,59,x,31,19"

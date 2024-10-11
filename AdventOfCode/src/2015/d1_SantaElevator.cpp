@@ -1,4 +1,4 @@
-#include "2015/d1_SantaElevator.h"
+#include "Common.h"
 
 SOLUTION(2015, 1) {
     constexpr size_t FindFloor(const std::string_view val) {
@@ -14,16 +14,15 @@ SOLUTION(2015, 1) {
         return 0;
     }
 
-    PART_ONE() {
-        //return Constexpr::ToString(FindFloor(Line));
+    PART(1) {
         return Constexpr::ToString(FindFloor(lines[0]));
     }
-    PART_TWO() {
-        //return Constexpr::ToString(FindBasementStep(Line));
-        return Constexpr::ToString(FindBasementStep(lines[0]));
-    }
 
-    TESTS() {
+	PART(2) {
+		return Constexpr::ToString(FindBasementStep(lines[0]));
+	}
+
+    TEST(1) {
         static_assert(FindFloor("") == 0);
         static_assert(FindFloor("(())") == 0);
         static_assert(FindFloor("()()") == 0);
@@ -34,6 +33,10 @@ SOLUTION(2015, 1) {
         static_assert(FindFloor(")))") == -3);
         static_assert(FindFloor(")())())") == -3);
 
+        return true;
+    }
+
+    TEST(2) {
         static_assert(FindBasementStep(")") == 1);
         static_assert(FindBasementStep("()())") == 5);
 

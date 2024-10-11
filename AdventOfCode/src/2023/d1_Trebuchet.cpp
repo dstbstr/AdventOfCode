@@ -1,4 +1,4 @@
-#include "2023/d1_Trebuchet.h"
+#include "Common.h"
 
 SOLUTION(2023, 1) {
 
@@ -20,7 +20,7 @@ SOLUTION(2023, 1) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
          return Constexpr::ToString(SumDigits(lines));
     }
 
@@ -61,12 +61,12 @@ SOLUTION(2023, 1) {
 
         return transformed;
     }
-    PART_TWO() {
+    PART(2) {
         auto transformed = ReplaceWords(lines);
         return Constexpr::ToString(SumDigits(transformed));
     }
 
-    TESTS() {
+    TEST(1) {
         if (FindFirstNumber("1abc2") != 1) return false;
         if (FindLastNumber("1abc2") != 2) return false;
 

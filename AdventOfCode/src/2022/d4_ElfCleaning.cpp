@@ -1,4 +1,4 @@
-#include "2022/d4_ElfCleaning.h"
+#include "Common.h"
 
 SOLUTION(2022, 4) {
     struct Section {
@@ -49,15 +49,15 @@ SOLUTION(2022, 4) {
             });
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(RunImpl(lines, FullyContains));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(RunImpl(lines, Overlap));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(FullyContains({ 6, 6 }, { 4, 6 }));
         static_assert(FullyContains({ 4, 6 }, { 6, 6 }));
         static_assert(FullyContains({ 2, 8 }, { 3, 7 }));

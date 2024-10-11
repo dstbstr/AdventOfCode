@@ -1,4 +1,4 @@
-#include "2020/d9_Xmas.h"
+#include "Common.h"
 
 SOLUTION(2020, 9) {
     /* (4 * 5) / 2 == 10
@@ -64,12 +64,12 @@ SOLUTION(2020, 9) {
         }
     }
 
-    PART_ONE() {
+    PART(1) {
         const auto nums = ParseLinesAsNumbers<size_t>(lines);
         return Constexpr::ToString(FindKey(nums, 25));
     }
 
-    PART_TWO() {
+    PART(2) {
         const auto nums = ParseLinesAsNumbers<size_t>(lines);
         const auto key = FindKey(nums, 25);
         size_t min, max;
@@ -78,7 +78,7 @@ SOLUTION(2020, 9) {
         return Constexpr::ToString(min + max);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::size_t> nums = { 35, 20, 15, 25, 47, 40, 62, 55, 65, 95, 102, 117, 150, 182, 127, 219, 299, 277, 309, 576 };
         if (FindKey(nums, 5) != 127) return false;
         size_t min, max;

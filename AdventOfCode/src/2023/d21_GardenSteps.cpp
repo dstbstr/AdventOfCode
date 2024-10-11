@@ -1,4 +1,4 @@
-#include "2023/d21_GardenSteps.h"
+#include "Common.h"
 #include "Core/Algorithms/AStar.h"
 
 SOLUTION(2023, 21) {
@@ -76,7 +76,7 @@ SOLUTION(2023, 21) {
         return fullSquares + addDiag - minusDiag;        
     }
 
-    PART_ONE() {
+    PART(1) {
         auto distances = GetDistances(lines);
         auto result = std::count_if(distances.begin(), distances.end(), [](size_t d) {
             return d < 65 && d % 2 == 0;
@@ -84,11 +84,11 @@ SOLUTION(2023, 21) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, 26501365));
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

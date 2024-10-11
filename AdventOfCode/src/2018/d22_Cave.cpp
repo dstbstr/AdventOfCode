@@ -1,4 +1,4 @@
-#include "2018/d22_Cave.h"
+#include "Common.h"
 
 SOLUTION(2018, 22) {
     static constexpr u64 limit = 20183;
@@ -130,7 +130,7 @@ SOLUTION(2018, 22) {
         Constexpr::ParseNumber(xy[1], outTarget.Row);
     }
 
-    PART_ONE() {
+    PART(1) {
         RowCol target;
         u32 depth;
         GetTargetAndDepth(lines, target, depth);
@@ -139,7 +139,7 @@ SOLUTION(2018, 22) {
         return Constexpr::ToString(GetRisk(map));
     }
 
-    PART_TWO() {
+    PART(2) {
         RowCol target;
         u32 depth;
         GetTargetAndDepth(lines, target, depth);
@@ -148,7 +148,7 @@ SOLUTION(2018, 22) {
         return Constexpr::ToString(Bfs(map, target)); //< 1 s
     }
 
-    TESTS() {
+    TEST(1) {
         RowCol target = { 10, 10 };
         auto map = BuildMap(target, target, 510);
         if (GetRisk(map) != 114) return false;

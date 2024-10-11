@@ -1,4 +1,4 @@
-#include "2017/d4_Passphrase.h"
+#include "Common.h"
 
 SOLUTION(2017, 4) {
     constexpr bool Validate(std::vector<std::string>& words) {
@@ -29,15 +29,15 @@ SOLUTION(2017, 4) {
         return Validate(words);
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsValid));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsSecure));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(IsValid("aa bb cc"));
         static_assert(!IsValid("aa bb aa"));
         static_assert(IsValid("aa aaa"));

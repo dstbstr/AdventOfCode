@@ -1,4 +1,5 @@
-#include "2018/d3_Fabric.h"
+#include "Common.h"
+
 SOLUTION(2018, 3) {
 
     struct Rect {
@@ -33,7 +34,7 @@ SOLUTION(2018, 3) {
             lhs.TopLeft.X <= rhs.BottomRight.X;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto rects = ParseLines(lines, ParseRect);
 
         auto fabric = new std::array<std::array<u32, 1001>, 1001>();
@@ -54,7 +55,7 @@ SOLUTION(2018, 3) {
 
     }
 
-    PART_TWO() {
+    PART(2) {
         auto rects = ParseLines(lines, ParseRect);
 
         for (auto i = 0; i < rects.size(); i++) {
@@ -73,7 +74,7 @@ SOLUTION(2018, 3) {
         return "Not Found";
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Intersects(ParseRect("#1 @ 1,3: 4x4"), ParseRect("#2 @ 3,1: 4x4")));
         std::vector<std::string> lines = {
             "#1 @ 1,3: 4x4",

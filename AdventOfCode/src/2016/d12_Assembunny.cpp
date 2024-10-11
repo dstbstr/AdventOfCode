@@ -1,4 +1,4 @@
-#include "2016/d12_Assembunny.h"
+#include "Common.h"
 
 SOLUTION(2016, 12) {
     constexpr s32 GetValue(std::string_view sv, const std::vector<s32>&registers) {
@@ -50,20 +50,20 @@ SOLUTION(2016, 12) {
             instructions[ip](ip, regs);
         }
     }
-    PART_ONE() {
+    PART(1) {
         std::vector<s32> registers{ 0, 0, 0, 0 };
         Execute(lines, registers);
 
         return Constexpr::ToString(registers[0]);
     }
-    PART_TWO() {
+    PART(2) {
         std::vector<s32> registers{ 0, 0, 1, 0 };
         Execute(lines, registers);
 
         return Constexpr::ToString(registers[0]);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(GetValue("a", { 12, 24 }) == 12);
         static_assert(GetValue("b", { 12, 24 }) == 24);
         static_assert(GetValue("4", { 12, 24 }) == 4);

@@ -1,4 +1,4 @@
-#include "2023/d19_GearSort.h"
+#include "Common.h"
 
 SOLUTION(2023, 19) {
     struct Gear {
@@ -116,7 +116,7 @@ SOLUTION(2023, 19) {
             };
     }
 
-    PART_ONE() {
+    PART(1) {
         auto groups = SplitInputIntoGroups(lines);
         Constexpr::BigMap<std::string, std::function<std::string(const Gear&)>> funcs{};
         for (const auto& line : groups[0]) {
@@ -151,7 +151,7 @@ SOLUTION(2023, 19) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto groups = SplitInputIntoGroups(lines);
         Constexpr::BigMap<std::string, std::function<std::vector<std::pair<std::string, GearRange>>(const GearRange&)>> funcs{};
         for (const auto& line : groups[0]) {
@@ -184,7 +184,7 @@ SOLUTION(2023, 19) {
         return Constexpr::ToString(accepted);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
         "px{a<2006:qkq,m>2090:A,rfg}",
         "pv{a>1716:R,A}",
@@ -205,8 +205,8 @@ SOLUTION(2023, 19) {
         "{x=2127,m=1623,a=2188,s=1013}"
         };
 
-        if (PartOne(example) != "19114") return false;
-        if (PartTwo(example) != "167409079868000") return false;
+        if (Part1(example) != "19114") return false;
+        if (Part2(example) != "167409079868000") return false;
 
         return true;
     }

@@ -1,4 +1,4 @@
-#include "2020/d11_WaitingSeats.h"
+#include "Common.h"
 
 SOLUTION(2020, 11) {
     enum struct State { Floor, Empty, Occupied };
@@ -122,15 +122,15 @@ SOLUTION(2020, 11) {
         return CountOccupied(grid);
 
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, Next));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, Next2));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
            "L.LL.LL.LL",
            "LLLLLLL.LL",

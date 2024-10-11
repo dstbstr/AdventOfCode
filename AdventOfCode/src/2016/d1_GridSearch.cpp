@@ -1,4 +1,4 @@
-#include "2016/d1_GridSearch.h"
+#include "Common.h"
 #include "Facing.h"
 
 SOLUTION(2016, 1) {
@@ -36,14 +36,14 @@ SOLUTION(2016, 1) {
         return 0;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(FindTarget(lines[0]));
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(FindTarget2(lines[0]));
     }
 
-    TESTS() {
+    TEST(1) {
         if (FindTarget("R2, L3") != 5) return false;
         if (FindTarget("R2, R2, R2") != 2) return false;
         if (FindTarget("R5, L5, R5, R3") != 12) return false;

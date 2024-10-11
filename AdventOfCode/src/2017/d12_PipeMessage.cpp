@@ -1,4 +1,4 @@
-#include "2017/d12_PipeMessage.h"
+#include "Common.h"
 #include "Core/Algorithms/FloodFill.h"
 
 SOLUTION(2017, 12) {
@@ -7,12 +7,12 @@ SOLUTION(2017, 12) {
         return ParseLineAsNumbers<u32>(rhs, ", ");
     }
 
-    PART_ONE() {
+    PART(1) {
         auto connections = ParseLines(lines, ParseLine);
         return Constexpr::ToString(FloodFill(0, [&connections](u32 pipe) { return connections[pipe]; }).size());
     }
 
-    PART_TWO() {
+    PART(2) {
         auto connections = ParseLines(lines, ParseLine);
         std::vector<u32> remainingGroups;
         for (auto i = 0; i < connections.size(); i++) {
@@ -31,7 +31,7 @@ SOLUTION(2017, 12) {
         return Constexpr::ToString(groupCount);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(ParseLine("0 <-> 2").size() == 1);
         static_assert(ParseLine("0 <-> 2")[0] == 2u);
         static_assert(ParseLine("2 <-> 0, 3, 4").size() == 3);

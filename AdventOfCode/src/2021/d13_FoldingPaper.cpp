@@ -1,4 +1,4 @@
-#include "2021/d13_FoldingPaper.h"
+#include "Common.h"
 
 SOLUTION(2021, 13) {
     constexpr std::vector<UCoord> ParseInput(const auto& lines) {
@@ -69,11 +69,11 @@ SOLUTION(2021, 13) {
 
         return paper.size();
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto groups = SplitInputIntoGroups(lines);
         auto paper = ParseInput(groups[0]);
         auto folds = ParseLines(groups[1], ParseFold);
@@ -111,7 +111,7 @@ SOLUTION(2021, 13) {
         return SolvePartOne(lines) == 17;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(ParseInput(std::array<std::string, 2>{ "6,10", "0,14" }).size() == 2);
         static_assert(ParseInput(std::array<std::string, 2>{ "6,10", "0,14" })[0].X == 6);
         

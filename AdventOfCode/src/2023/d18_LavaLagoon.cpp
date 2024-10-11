@@ -1,4 +1,4 @@
-#include "2023/d18_LavaLagoon.h"
+#include "Common.h"
 #include "Core/Algorithms/Shoelace.h"
 #include "Facing.h"
 
@@ -55,15 +55,15 @@ SOLUTION(2023, 18) {
         return FindArea(points);
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, Dig));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, Dig2));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
             "R 6 (#70c710)",
             "D 5 (#0dc571)",

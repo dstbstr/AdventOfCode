@@ -1,4 +1,4 @@
-#include "2019/d1_Fuel.h"
+#include "Common.h"
 
 SOLUTION(2019, 1) {
     constexpr u64 Calculate(u64 mass) {
@@ -18,17 +18,17 @@ SOLUTION(2019, 1) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto masses = ParseLinesAsNumbers<size_t>(lines);
         return Constexpr::ToString(std::accumulate(masses.begin(), masses.end(), 0ull, [](size_t previous, size_t mass) { return previous + Calculate(mass); }));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto masses = ParseLinesAsNumbers<size_t>(lines);
         return Constexpr::ToString(std::accumulate(masses.begin(), masses.end(), 0ull, [](size_t previous, size_t mass) { return previous + CalculateWithFuel(mass); }));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Calculate(12) == 2);
         static_assert(Calculate(14) == 2);
         static_assert(Calculate(1969) == 654);

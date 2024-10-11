@@ -1,4 +1,4 @@
-#include "2017/d20_ParticleSwarm.h"
+#include "Common.h"
 
 SOLUTION(2017, 20) {
     struct Particle {
@@ -49,7 +49,7 @@ SOLUTION(2017, 20) {
         }
     }
 
-    PART_ONE() {
+    PART(1) {
         auto particles = ParseLinesWithIndex(lines, ParseParticle);
         //Over 10k iterations, the Acceleration will be the most important factor
         std::sort(particles.begin(), particles.end(), [](const Particle& lhs, const Particle& rhs) {
@@ -58,7 +58,7 @@ SOLUTION(2017, 20) {
         return Constexpr::ToString(particles[0].Index);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto particles = ParseLinesWithIndex(lines, ParseParticle);
 
         for (auto i = 0; i < 100; i++) {
@@ -71,7 +71,7 @@ SOLUTION(2017, 20) {
         return Constexpr::ToString(particles.size());
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Position == Vec3<s64>{-317, 1413, 1507});
         static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Velocity == Vec3<s64>{19, -102, -108});
         static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Accel == Vec3<s64>{1, -3, -3});

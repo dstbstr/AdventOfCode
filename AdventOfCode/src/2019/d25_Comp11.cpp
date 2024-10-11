@@ -1,5 +1,5 @@
-#include "2019/d25_Comp11.h"
-#include "2019/Comp.h"
+#include "Common.h"
+#include "Comp.h"
 #include "Core/Algorithms/AStar.h"
 #include "Facing.h"
 
@@ -211,7 +211,7 @@ SOLUTION(2019, 25) {
         }
     }
 
-    PART_ONE() {
+    PART(1) {
         auto droid = Droid(lines[0]);
 
         auto coordMap = GetCoordMap();
@@ -239,12 +239,12 @@ SOLUTION(2019, 25) {
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         (void)lines;
         return "Merry Christmas";
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

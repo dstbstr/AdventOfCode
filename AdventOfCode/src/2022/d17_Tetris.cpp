@@ -1,4 +1,4 @@
-#include "2022/d17_Tetris.h"
+#include "Common.h"
 
 SOLUTION(2022, 17) {
 
@@ -214,15 +214,15 @@ SOLUTION(2022, 17) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(FindTowerHeight(lines[0], 2022));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(FindTowerHeight(lines[0], 1'000'000'000'000));
     }
 
-    TESTS() {
+    TEST(1) {
         std::string line = ">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>";
 
         if (FindTowerHeight(line, 2022) != 3068) return false;

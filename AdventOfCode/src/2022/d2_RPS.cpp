@@ -1,4 +1,4 @@
-#include "2022/d2_RPS.h"
+#include "Common.h"
 
 SOLUTION(2022, 2) {
 
@@ -95,15 +95,15 @@ SOLUTION(2022, 2) {
 
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, ParseInput));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, ParseUpdatedInput));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(GetPoints(Play::Paper, Play::Rock) == 8);
         static_assert(GetPoints(Play::Rock, Play::Paper) == 1);
         static_assert(GetPoints(Play::Scissors, Play::Scissors) == 6);

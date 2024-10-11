@@ -1,6 +1,5 @@
-#pragma once
+#include "Common.h"
 
-#include "2015/d20_ElfDelivery.h"
 SOLUTION(2015, 20) {
     constexpr u32 CountPresents(u32 houseNumber) {
         auto divisors = Constexpr::GetDivisors(houseNumber);
@@ -28,14 +27,14 @@ SOLUTION(2015, 20) {
         return current;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines[0], CountPresents, 700'000));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines[0], CountLazyPresents, 800'000));
     }
-    TESTS() {
+    TEST(1) {
         static_assert(CountPresents(1) == 10);
         static_assert(CountPresents(2) == 30);
         static_assert(CountPresents(786240) >= 34'000'000);

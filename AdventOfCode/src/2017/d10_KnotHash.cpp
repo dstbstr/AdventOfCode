@@ -1,8 +1,8 @@
-#include "2017/d10_KnotHash.h"
-#include "2017/KnotHash.h"
+#include "Common.h"
+#include "KnotHash.h"
 
 SOLUTION(2017, 10) {
-    PART_ONE() {
+    PART(1) {
         auto numbers = KnotHash::GetInitialNumbers();
 
         u32 skip = 0;
@@ -17,11 +17,11 @@ SOLUTION(2017, 10) {
         return Constexpr::ToString(numbers[0] * numbers[1]);
     }
 
-    PART_TWO() {
+    PART(2) {
         return KnotHash::HashToHex(KnotHash::Hash(lines[0]));
     }
 
-    TESTS() {
+    TEST(1) {
         //static_assert(PartTwo({ "1,2,3" }) == "3efbe78a8d82f29979031a4aa0b16a9d");
 
         return true;

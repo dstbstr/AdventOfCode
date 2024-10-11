@@ -1,5 +1,5 @@
-#include "2019/d23_Comp10.h"
-#include "2019/Comp.h"
+#include "Common.h"
+#include "Comp.h"
 
 SOLUTION(2019, 23) {
     struct Packet {
@@ -13,7 +13,6 @@ SOLUTION(2019, 23) {
         Args Args;
         s64 Id = 0;
 
-        //std::queue<Packet> WorkQueue;
         Constexpr::Queue<Packet> WorkQueue;
     };
 
@@ -97,7 +96,7 @@ SOLUTION(2019, 23) {
         return 0;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto computers = InitializeComputers(lines[0]);
         Packet packet;
         while (true) {
@@ -121,7 +120,7 @@ SOLUTION(2019, 23) {
         return "Not Found";
     }
 
-    PART_TWO() {
+    PART(2) {
         auto computers = InitializeComputers(lines[0]);
         u32 emptyFrames = 0;
         Packet packet;
@@ -160,7 +159,7 @@ SOLUTION(2019, 23) {
         return "Not Found";
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

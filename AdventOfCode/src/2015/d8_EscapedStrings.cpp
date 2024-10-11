@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d8_EscapedStrings.h"
+#include "Common.h"
 
 SOLUTION(2015, 8) {
     constexpr u32 CountCodeCharacters(std::string_view input) {
@@ -50,19 +48,19 @@ SOLUTION(2015, 8) {
         return CountReencodedCharacters(input) - CountCodeCharacters(input);
     }
 
-    PART_ONE() {
+    PART(1) {
         std::vector<u32> deltas;
         std::transform(lines.cbegin(), lines.cend(), std::back_inserter(deltas), CalculateDelta);
         return Constexpr::ToString(std::accumulate(deltas.cbegin(), deltas.cend(), 0 ));
     }
 
-    PART_TWO() {
+    PART(2) {
         std::vector<u32> growths;
         std::transform(lines.cbegin(), lines.cend(), std::back_inserter(growths), CalculateGrowth);
         return Constexpr::ToString(std::accumulate(growths.cbegin(), growths.cend(), 0));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(CountCodeCharacters(R"("")") == 2);
         static_assert(CountCodeCharacters(R"("abc")") == 5);
         static_assert(CountCodeCharacters(R"("aaa\"aaa")") == 10);

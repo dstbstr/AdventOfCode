@@ -1,4 +1,4 @@
-#include "2023/d10_PipeMaze.h"
+#include "Common.h"
 
 SOLUTION(2023, 10) {
     using Map = Constexpr::BigMap<RowCol, std::pair<RowCol, RowCol>>;
@@ -78,7 +78,7 @@ SOLUTION(2023, 10) {
             });
         return candidates.back();
     }
-    PART_ONE() {
+    PART(1) {
         auto map = CreateMap(lines);
         auto path = GetPath(map);
         return Constexpr::ToString((path.size() / 2));
@@ -194,7 +194,7 @@ SOLUTION(2023, 10) {
         }
         return result;
     }
-    PART_TWO() {
+    PART(2) {
         auto transformed = Transform(lines);
         auto result = std::accumulate(transformed.begin(), transformed.end(), 0ull, [](size_t running, const std::string& line) {
             return running + std::count(line.begin(), line.end(), 'I');
@@ -203,7 +203,7 @@ SOLUTION(2023, 10) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
 
         std::vector<std::string> e1 = {
             ".....",
@@ -213,8 +213,8 @@ SOLUTION(2023, 10) {
             "....."
         };
 
-        if (PartOne(e1) != "4") return false;
-        if (PartTwo(e1) != "1") return false;
+        if (Part1(e1) != "4") return false;
+        if (Part2(e1) != "1") return false;
 
         e1 = {
             "..........",
@@ -228,7 +228,7 @@ SOLUTION(2023, 10) {
             ".........."
         };
 
-        if (PartTwo(e1) != "4") return false;
+        if (Part2(e1) != "4") return false;
 
         e1 = {
             "FF7FSF7F7F7F7F7F---7",
@@ -243,7 +243,7 @@ SOLUTION(2023, 10) {
             "L7JLJL-JLJLJL--JLJ.L"
         };
 
-        if (PartTwo(e1) != "10") return false;
+        if (Part2(e1) != "10") return false;
         return true;
     }
 }

@@ -1,4 +1,4 @@
-#include "2022/d8_TreeTop.h"
+#include "Common.h"
 
 SOLUTION(2022, 8) {
     template<size_t Rows, size_t Cols>
@@ -107,15 +107,15 @@ SOLUTION(2022, 8) {
         return Func(forest);
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, VisibleInForest<99, 99>));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, FindBestScenicScore<99, 99>));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(VisibleInForest<5, 5>({ {
            {3, 0, 3, 7, 3},
            {2, 5, 5, 1, 2},

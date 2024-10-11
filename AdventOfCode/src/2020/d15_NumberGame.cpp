@@ -1,4 +1,4 @@
-#include "2020/d15_NumberGame.h"
+#include "Common.h"
 
 SOLUTION(2020, 15) {
     template<size_t Rounds>
@@ -29,15 +29,15 @@ SOLUTION(2020, 15) {
         return std::find(a.begin(), a.end(), Rounds - 1) - a.begin();
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve<2020>(lines[0]));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve<30'000'000>(lines[0]));
     }
 
-    TESTS() {
+    TEST(1) {
         if (Solve<2020>("0,3,6") != 436) return false;
         if (Solve<2020>("0,3,6") != 436) return false;
         if (Solve<30'000'000>("0,3,6") != 175594) return false;

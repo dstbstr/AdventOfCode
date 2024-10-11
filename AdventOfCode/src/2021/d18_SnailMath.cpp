@@ -1,4 +1,4 @@
-#include "2021/d18_SnailMath.h"
+#include "Common.h"
 
 SOLUTION(2021, 18) {
     constexpr std::string Add(const std::string & lhs, const std::string & rhs) {
@@ -141,7 +141,7 @@ SOLUTION(2021, 18) {
         return CalculateMagnitude(current);
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -158,11 +158,11 @@ SOLUTION(2021, 18) {
 
         return best;
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Add("[1,2]", "[[3,4],5]") == "[[1,2],[[3,4],5]]");
         
         static_assert(Explode("[1,2]") == "[1,2]");

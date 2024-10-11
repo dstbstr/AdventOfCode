@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d21_BossBattle.h"
+#include "Common.h"
 
 SOLUTION(2015, 21) {
     struct Equipment { s32 Cost; s32 Attack; s32 Defense; };
@@ -46,7 +44,7 @@ SOLUTION(2015, 21) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto boss = ParseBoss(lines);
         auto builds = GetBuilds();
         std::sort(builds.begin(), builds.end(), [](const Player& lhs, const Player& rhs) {
@@ -60,7 +58,7 @@ SOLUTION(2015, 21) {
         return "Not Found";
     }
 
-    PART_TWO() {
+    PART(2) {
         auto boss = ParseBoss(lines);
         auto builds = GetBuilds();
         std::sort(builds.begin(), builds.end(), [](const Player& lhs, const Player& rhs) {
@@ -74,7 +72,7 @@ SOLUTION(2015, 21) {
         return "Not Found";
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(CountRounds({ 8, 5, 5 }, { 12, 7, 2 }) == 4);
         static_assert(CountRounds({ 12, 7, 2 }, { 8, 5, 5 }) == 4);
         return true;

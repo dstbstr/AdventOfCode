@@ -1,4 +1,4 @@
-#include "2021/d1_Sonar.h"
+#include "Common.h"
 
 SOLUTION(2021, 1) {
     constexpr size_t CountIncreasing(const std::vector<u32>&nums) {
@@ -21,15 +21,15 @@ SOLUTION(2021, 1) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(CountIncreasing(ParseLinesAsNumbers<u32>(lines)));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(CountIncreasingWindow(ParseLinesAsNumbers<u32>(lines)));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(CountIncreasing({ 199, 200, 208, 210, 200, 207, 240, 269, 260, 263 }) == 7);
         static_assert(CountIncreasingWindow({ 199, 200, 208, 210, 200, 207, 240, 269, 260, 263 }) == 5);
         return true;

@@ -1,4 +1,4 @@
-#include "2023/d16_LightPath.h"
+#include "Common.h"
 #include "Facing.h"
 
 SOLUTION(2023, 16) {
@@ -65,11 +65,11 @@ SOLUTION(2023, 16) {
 		return energized.size();
 	}
 
-	PART_ONE() {
+	PART(1) {
 		return Constexpr::ToString(CountEnergy(lines, { 0, 0 }, Right));
 	}
 
-	PART_TWO() {
+	PART(2) {
 		size_t result = 0;
 		for (size_t row = 0; row < lines.size(); row++) {
 			result = std::max(result, CountEnergy(lines, { row, 0 }, Right));
@@ -83,7 +83,7 @@ SOLUTION(2023, 16) {
 		return Constexpr::ToString(result);
 	}
 
-	TESTS() {
+	TEST(1) {
 		std::vector<std::string> example = {
 			".|...\\....",
 			"|.-.\\.....",
@@ -97,7 +97,7 @@ SOLUTION(2023, 16) {
 			"..//.|...."
 		};
 
-		if (PartOne(example) != "46") return false;
+		if (Part1(example) != "46") return false;
 
 		return true;
 	}

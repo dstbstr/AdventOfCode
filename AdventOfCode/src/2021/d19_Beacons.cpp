@@ -1,4 +1,4 @@
-#include "2021/d19_Beacons.h"
+#include "Common.h"
 
 #include <ranges>
 
@@ -178,7 +178,7 @@ SOLUTION(2021, 19) {
         return beacons.size();
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -195,11 +195,11 @@ SOLUTION(2021, 19) {
         return best;
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "--- scanner 0 ---",
             "404,-588,-901",

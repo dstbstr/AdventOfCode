@@ -1,5 +1,5 @@
-#include "2019/d13_Comp6.h"
-#include "2019/Comp.h"
+#include "Common.h"
+#include "Comp.h"
 #include <optional>
 
 SOLUTION(2019, 13) {
@@ -74,7 +74,7 @@ SOLUTION(2019, 13) {
     }
 
 
-    PART_ONE() {
+    PART(1) {
         auto instructions = ParseInstructions(lines[0]);
         Args args;
         Game game;
@@ -88,7 +88,7 @@ SOLUTION(2019, 13) {
         return Constexpr::ToString(blackTiles);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto instructions = ParseInstructions(lines[0]);
         instructions[0] = 2;
         Args args;
@@ -104,7 +104,7 @@ SOLUTION(2019, 13) {
         return Constexpr::ToString(game.Score);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

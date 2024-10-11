@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d9_SingleNight.h"
+#include "Common.h"
 
 SOLUTION(2015, 9) {
     using DistanceMap = Constexpr::SmallMap<std::string, Constexpr::SmallMap<std::string, size_t>>;
@@ -56,15 +54,15 @@ SOLUTION(2015, 9) {
 
         return best;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, true));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, false));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "London to Dublin = 464",
             "London to Belfast = 518",

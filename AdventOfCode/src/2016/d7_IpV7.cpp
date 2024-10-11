@@ -1,4 +1,4 @@
-#include "2016/d7_IpV7.h"
+#include "Common.h"
 
 SOLUTION(2016, 7) {
     constexpr bool ContainsAbba(std::string_view str) {
@@ -102,14 +102,14 @@ SOLUTION(2016, 7) {
         return false;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(std::count_if(lines.begin(), lines.end(), IsValid));
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(std::count_if(lines.begin(), lines.end(), SupportsSsl));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(ContainsAbba("abba"));
         static_assert(ContainsAbba("xyyx"));
         static_assert(!ContainsAbba("mnop"));

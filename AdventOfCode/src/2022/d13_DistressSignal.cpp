@@ -1,4 +1,4 @@
-#include "2022/d13_DistressSignal.h"
+#include "Common.h"
 
 SOLUTION(2022, 13) {
     constexpr bool Compare(const std::string& first, const std::string& second) {
@@ -43,7 +43,7 @@ SOLUTION(2022, 13) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -71,11 +71,11 @@ SOLUTION(2022, 13) {
         }
         return result;
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Compare("[1,1,3,1,1]", "[1,1,5,1,1]"));
         static_assert(Compare("[[1],[2,3,4]]", "[[1],4]"));
         static_assert(!Compare("[9]", "[[8,7,6]]"));

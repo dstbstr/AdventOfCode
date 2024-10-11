@@ -1,4 +1,4 @@
-#include "2019/d4_VenusPass.h"
+#include "Common.h"
 
 SOLUTION(2019, 4) {
     constexpr bool Matches(u32 val) {
@@ -47,17 +47,17 @@ SOLUTION(2019, 4) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto [start, end] = ParseInput(lines[0]);
         return Constexpr::ToString(Solve(start, end, Matches));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto [start, end] = ParseInput(lines[0]);
         return Constexpr::ToString(Solve(start, end, ExtendedMatch));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Matches(111111));
         static_assert(!Matches(223450));
         static_assert(!Matches(123456));

@@ -1,4 +1,4 @@
-#include "2016/d23_SafeCrack.h"
+#include "Common.h"
 
 SOLUTION(2016, 23) {
     constexpr s32 Unset = 919;
@@ -107,16 +107,16 @@ SOLUTION(2016, 23) {
         return lhs * rhs;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(CalculateConstant(lines) + Constexpr::Factorial(7));
         //return Constexpr::ToString(Execute(lines, 7));
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(CalculateConstant(lines) + Constexpr::Factorial(12ull));
         //return Constexpr::ToString(Execute(lines, 12));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "cpy 2 a",
             "tgl a",

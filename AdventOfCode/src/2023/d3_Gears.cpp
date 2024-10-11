@@ -1,4 +1,4 @@
-#include "2023/d3_Gears.h"
+#include "Common.h"
 
 SOLUTION(2023, 3) {
 
@@ -47,7 +47,7 @@ SOLUTION(2023, 3) {
 		}
 	}
 
-	PART_ONE() {
+	PART(1) {
 		std::vector<Number> numbers;
 		Constexpr::SmallMap<RowCol, char> symbols{};
 		Parse(lines, numbers, symbols);
@@ -65,7 +65,7 @@ SOLUTION(2023, 3) {
 		return Constexpr::ToString(result);
 	}
 
-	PART_TWO() {
+	PART(2) {
 		std::vector<Number> numbers;
 		Constexpr::SmallMap<RowCol, char> symbols{};
 		Parse(lines, numbers, symbols);
@@ -93,7 +93,7 @@ SOLUTION(2023, 3) {
 		return Constexpr::ToString(result);
 	}
 
-	TESTS() {
+	TEST(1) {
 		std::vector<std::string> input = {
 			"467..114..",
 			"...*......",
@@ -148,7 +148,7 @@ SOLUTION(2023, 3) {
 		if (testNum2.IsNear({ 4, 9 })) return false;
 		if (testNum2.IsNear({ 1, 5 })) return false;
 		
-		if (PartOne(input) != "4361") return false;
+		if (Part1(input) != "4361") return false;
 		return true;
 	}
 }

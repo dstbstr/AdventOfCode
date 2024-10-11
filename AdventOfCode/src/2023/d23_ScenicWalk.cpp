@@ -1,4 +1,4 @@
-#include "2023/d23_ScenicWalk.h"
+#include "Common.h"
 
 SOLUTION(2023, 23) {
     constexpr std::vector<RowCol> GetNeighbors(RowCol pos, const std::vector<std::string>&lines) {
@@ -72,7 +72,7 @@ SOLUTION(2023, 23) {
 
         return best;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(FindMaxPath(lines, GetNeighbors));
     }
 
@@ -158,7 +158,7 @@ SOLUTION(2023, 23) {
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         auto nodes = FindNodes(lines);
         auto map = BuildEdges(lines, nodes);
 
@@ -196,7 +196,7 @@ SOLUTION(2023, 23) {
         return Constexpr::ToString(best);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
             "#.#####################",
             "#.......#########...###",
@@ -224,7 +224,7 @@ SOLUTION(2023, 23) {
         };
 
         if (FindMaxPath(example, GetNeighbors) != 94) return false;
-        if (PartTwo(example) != "154") return false;
+        if (Part2(example) != "154") return false;
 
         return true;
     }

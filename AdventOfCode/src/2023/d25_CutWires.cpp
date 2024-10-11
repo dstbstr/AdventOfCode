@@ -1,4 +1,4 @@
-#include "2023/d25_CutWires.h"
+#include "Common.h"
 
 SOLUTION(2023, 25) {    
     using Graph = std::vector<std::vector<int>>;
@@ -126,16 +126,16 @@ SOLUTION(2023, 25) {
         return 0;
     }
     
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines));
     }
 
-    PART_TWO() {
+    PART(2) {
         (void)lines;
         return "Merry Christmas";
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

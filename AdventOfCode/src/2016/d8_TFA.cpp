@@ -1,4 +1,4 @@
-#include "2016/d8_TFA.h"
+#include "Common.h"
 
 SOLUTION(2016, 8) {
     //50 wide, 6 tall
@@ -115,14 +115,14 @@ SOLUTION(2016, 8) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         Bits<6, 50> bits{};
         for (const auto& line : lines) {
             ParseLine<6, 50>(line)(bits);
         }
         return Constexpr::ToString(CountLit(bits));
     }
-    PART_TWO() {
+    PART(2) {
         Bits<6, 50> bits{};
         for (const auto& line : lines) {
             ParseLine<6, 50>(line)(bits);
@@ -130,7 +130,7 @@ SOLUTION(2016, 8) {
         return PrintWords(bits);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "rect 3x2",
             "rotate column x=1 by 1",

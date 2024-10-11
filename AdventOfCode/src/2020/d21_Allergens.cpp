@@ -1,4 +1,4 @@
-#include "2020/d21_Allergens.h"
+#include "Common.h"
 
 SOLUTION(2020, 21) {
     struct Food {
@@ -82,7 +82,7 @@ SOLUTION(2020, 21) {
 
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -111,11 +111,11 @@ SOLUTION(2020, 21) {
         std::string result = Constexpr::JoinVec(',', dangerous);
         return result;
     }
-    PART_TWO() {
+    PART(2) {
         return SolvePartTwo(lines);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "mxmxvkd kfcds sqjhc nhms(contains dairy, fish)",
             "trh fvjkl sbzzf mxmxvkd(contains dairy)",

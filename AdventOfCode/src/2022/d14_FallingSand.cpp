@@ -1,4 +1,4 @@
-#include "2022/d14_FallingSand.h"
+#include "Common.h"
 
 SOLUTION(2022, 14) {
 
@@ -103,19 +103,19 @@ SOLUTION(2022, 14) {
         return grains;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(CountSand(lines, 180, [](UCoord sandPos) {
             return sandPos.Y == 178;
             }) - 1);
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(CountSand(lines, 180, [](UCoord sandPos) {
             return sandPos == Entrance;
             }));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "498,4 -> 498,6 -> 496,6",
             "503,4 -> 502,4 -> 502,9 -> 494,9"

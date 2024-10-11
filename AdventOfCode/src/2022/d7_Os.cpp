@@ -1,4 +1,4 @@
-#include "2022/d7_Os.h"
+#include "Common.h"
 
 SOLUTION(2022, 7) {
     struct Fs {
@@ -82,17 +82,17 @@ SOLUTION(2022, 7) {
         }
     };
 
-    PART_ONE() {
+    PART(1) {
         auto fs = Fs(lines);
         return Constexpr::ToString(fs.SumDirectoriesLessThan(100'000));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto fs = Fs(lines);
         return Constexpr::ToString(fs.FindDirToDelete());
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines{
             "$ cd /",
             "$ ls",

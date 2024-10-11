@@ -1,4 +1,4 @@
-#include "2018/d23_Teleport.h"
+#include "Common.h"
 
 SOLUTION(2018, 23) {
     struct Bot {
@@ -23,7 +23,7 @@ SOLUTION(2018, 23) {
         return bot;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto bots = ParseLines(lines, ParseBot);
         std::sort(bots.begin(), bots.end());
         auto biggest = bots.back();
@@ -31,7 +31,7 @@ SOLUTION(2018, 23) {
     }
 
     //Totally stole this solution.  Don't even know how it works
-    PART_TWO() {
+    PART(2) {
         auto bots = ParseLines(lines, ParseBot);
         struct Data {
             s32 Distance;
@@ -65,7 +65,7 @@ SOLUTION(2018, 23) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(ParseBot("pos=<11,22,33>, r=44").Pos == Vec3<s32>{11, 22, 33});
         static_assert(ParseBot("pos=<11,22,33>, r=44").Radius == 44);
 

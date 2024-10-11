@@ -1,4 +1,4 @@
-#include "2019/d10_Asteroid.h"
+#include "Common.h"
 
 SOLUTION(2019, 10) {
     /*
@@ -82,13 +82,13 @@ SOLUTION(2019, 10) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto map = ParseMap(lines);
         auto targets = FindMostTargets(map);
         return Constexpr::ToString(targets.size());
     }
 
-    PART_TWO() {
+    PART(2) {
         auto map = ParseMap(lines);
         auto targets = FindMostTargets(map);
         std::sort(targets.begin(), targets.end());
@@ -97,7 +97,7 @@ SOLUTION(2019, 10) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         auto TestPartOne = [](const auto& lines, size_t expected) {
             auto map = ParseMap(lines);
             auto targets = FindMostTargets(map);

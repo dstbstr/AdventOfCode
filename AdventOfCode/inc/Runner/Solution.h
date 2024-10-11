@@ -5,9 +5,8 @@
 #include <string>
 
 using SolutionFunc = std::function<std::string(const std::vector<std::string>&)>;
-//using SolutionFunc = std::function<std::string()>;
 std::unordered_map<size_t, std::unordered_map<size_t, std::unordered_map<size_t, SolutionFunc>>>& GetSolutions();
-std::unordered_map<size_t, std::unordered_map<size_t, std::function<bool()>>>& GetTests();
+std::unordered_map<size_t, std::unordered_map<size_t, std::unordered_map<size_t, std::function<bool()>>>>& GetTests();
 
 struct SolutionRegistrar {
 	SolutionRegistrar(size_t year, size_t day, size_t part, SolutionFunc solution) {
@@ -16,39 +15,21 @@ struct SolutionRegistrar {
 };
 
 struct TestRegistrar {
-	TestRegistrar(size_t year, size_t day, std::function<bool()> testFunc) {
-		GetTests()[year][day] = testFunc;
+	TestRegistrar(size_t year, size_t day, size_t testNum, std::function<bool()> testFunc) {
+		GetTests()[year][day][testNum] = testFunc;
 	}
 };
 
+#define SOLUTION(_year, _day) namespace Year##_year##Day##_day { \
+	constexpr size_t _CurrentYear = _year; \
+	constexpr size_t _CurrentDay = _day; \
+}; \
+namespace Year##_year##Day##_day
 
-#define SOLUTION(_year, _day) namespace Year##_year##Day##_day
-#define PART_ONE() constexpr std::string PartOne(const std::vector<std::string>& lines)
-#define PART_TWO() constexpr std::string PartTwo(const std::vector<std::string>& lines)
-//#define PART_ONE() constexpr std::string PartOne()
-//#define PART_TWO() constexpr std::string PartTwo()
-#define TESTS() constexpr bool Tests()
+#define PART(_PartNum) constexpr std::string Part##_PartNum(const std::vector<std::string>& lines); \
+	SolutionRegistrar reg_Part##_PartNum{_CurrentYear, _CurrentDay, _PartNum, Part##_PartNum}; \
+    constexpr std::string Part##_PartNum(const std::vector<std::string>& lines)
 
-#define DECLARE_SOLUTION(_year, _day) \
-    SOLUTION(_year, _day) { \
-    PART_ONE(); \
-    PART_TWO(); \
-    TESTS(); \
-    inline SolutionRegistrar reg_PartOne{_year, _day, 1, PartOne}; \
-    inline SolutionRegistrar reg_PartTwo{_year, _day, 2, PartTwo}; \
-    inline TestRegistrar reg_Tests{_year, _day, Tests}; \
-}
-
-/*
-#define DECLARE_SOLUTION(_year, _day, _input) \
-	SOLUTION(_year, _day) { \
-	constexpr std::string_view Line = _input; \
-	constexpr auto lines = SplitInputIntoLines<std::count(Line.begin(), Line.end(), '\n') + 1>(Line); \
-	PART_ONE(); \
-	PART_TWO(); \
-	TESTS(); \
-	inline SolutionRegistrar reg_PartOne{_year, _day, 1, PartOne}; \
-	inline SolutionRegistrar reg_PartTwo{_year, _day, 2, PartTwo}; \
-	inline TestRegistrar reg_Tests{_year, _day, Tests}; \
-	}
-*/
+#define TEST(_TestNum) constexpr bool Test##_TestNum(); \
+	TestRegistrar reg_Test##_TestNum{_CurrentYear, _CurrentDay, _TestNum, Test##_TestNum}; \
+	constexpr bool Test##_TestNum()

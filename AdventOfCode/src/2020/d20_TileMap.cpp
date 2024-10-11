@@ -1,4 +1,4 @@
-#include "2020/d20_TileMap.h"
+#include "Common.h"
 #include "Facing.h"
 
 SOLUTION(2020, 20) {
@@ -357,7 +357,7 @@ SOLUTION(2020, 20) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -387,11 +387,11 @@ SOLUTION(2020, 20) {
 
         return CalculateRoughness(compressedImage, mask);
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "Tile 2311:",
             "..##.#..#.",

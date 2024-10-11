@@ -1,4 +1,4 @@
-#include "2021/d6_Fish.h"
+#include "Common.h"
 
 SOLUTION(2021, 6) {
     using Fish = std::array<size_t, 9>;
@@ -31,11 +31,11 @@ SOLUTION(2021, 6) {
         return std::accumulate(fish.begin(), fish.end(), 0ull);
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines[0], 80));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines[0], 256));
     }
 
@@ -54,7 +54,7 @@ SOLUTION(2021, 6) {
         return true;
     }
    
-    TESTS() {
+    TEST(1) {
         static_assert(TestNextDay());
         if (!TestNextDay()) return false;
         std::string line = "3,4,3,1,2";

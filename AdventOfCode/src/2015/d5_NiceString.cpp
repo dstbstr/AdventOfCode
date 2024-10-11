@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d5_NiceString.h"
+#include "Common.h"
 
 SOLUTION(2015, 5) {
     static constexpr auto naughtyPairs = { "ab", "cd", "pq", "xy" };
@@ -49,16 +47,16 @@ SOLUTION(2015, 5) {
         return Constexpr::FindMax(seen) > 1;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsNice));
     }
 
-    PART_TWO() {
+    PART(2) {
         //return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsReallyNice));
         return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsReallyNice) + 1); //why is this one wrong?
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(IsNice("ugknbfddgicrmopn"));
         static_assert(IsNice("aaa"));
 

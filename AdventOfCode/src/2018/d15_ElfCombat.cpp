@@ -1,4 +1,4 @@
-#include "2018/d15_ElfCombat.h"
+#include "Common.h"
 #include "Core/Algorithms/AStar.h"
 
 SOLUTION(2018, 15) {
@@ -178,7 +178,7 @@ SOLUTION(2018, 15) {
         return hp;
     }
 
-    PART_ONE() {
+    PART(1) {
         //Grid grid = CopyToVector(lines);
         Grid grid = lines;
         auto hp = GetHp(grid);
@@ -189,7 +189,7 @@ SOLUTION(2018, 15) {
         return Constexpr::ToString(rounds * remainingHp);
     }
 
-    PART_TWO() {
+    PART(2) {
         //auto initialGrid = CopyToVector(lines);
 		auto initialGrid = lines;
         auto initialHp = GetHp(initialGrid);
@@ -253,7 +253,7 @@ SOLUTION(2018, 15) {
         return true;
     }
 
-    TESTS() {
+    TEST(1) {
         if (!TestMove({ "###", "#G#", "#.#", "#E#", "###" }, { "###", "#.#", "#G#", "#E#", "###" })) return false;
         if (!TestMove({ "######", "#.E..#", "#.##.#", "#.##G#", "#G####", "######" }, { "######", "#..E.#", "#.##G#", "#G##.#", "#.####", "######" })) return false;
 

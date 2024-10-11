@@ -1,4 +1,4 @@
-#include "2016/d4_DecoyRoom.h"
+#include "Common.h"
 
 SOLUTION(2016, 4) {
     struct Room {
@@ -64,13 +64,13 @@ SOLUTION(2016, 4) {
         return room.Checksum == expectedChecksum;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto rooms = ParseLines(lines, ParseRoom);
         return Constexpr::ToString(std::accumulate(rooms.begin(), rooms.end(), 0, [](u32 prev, const Room& room) {
             return prev + room.Id * IsReal(room);
             }));
     }
-    PART_TWO() {
+    PART(2) {
         auto rooms = ParseLines(lines, ParseRoom);
         auto result = std::find_if(rooms.begin(), rooms.end(), [](const Room& room) {
             return IsReal(room) && DecryptRoom(room) == "northpole object storage";
@@ -78,7 +78,7 @@ SOLUTION(2016, 4) {
         return Constexpr::ToString(result->Id);
     }
 
-    TESTS() {
+    TEST(1) {
         auto room = ParseRoom("qzmt-zixmtkozy-ivhz-343[abcde]");
         if (DecryptRoom(room) != "very encrypted name") return false;
         

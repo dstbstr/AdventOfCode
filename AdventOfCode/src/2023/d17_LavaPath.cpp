@@ -1,4 +1,4 @@
-#include "2023/d17_LavaPath.h"
+#include "Common.h"
 #include "Facing.h"
 #include "Core/Algorithms/AStar.h"
 
@@ -97,15 +97,15 @@ SOLUTION(2023, 17) {
 		return 0;
 	}
 	
-	PART_ONE() {
+	PART(1) {
 		return Constexpr::ToString(Solve(lines, 1, 3));
 	}
 
-	PART_TWO() {
+	PART(2) {
 		return Constexpr::ToString(Solve(lines, 4, 10) - 1); //why is this off by one?
 	}
 
-	TESTS() {
+	TEST(1) {
 		std::vector<std::string> example = {
 			"2413432311323",
 			"3215453535623",

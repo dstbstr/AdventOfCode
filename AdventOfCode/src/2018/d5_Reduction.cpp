@@ -1,4 +1,4 @@
-#include "2018/d5_Reduction.h"
+#include "Common.h"
 
 SOLUTION(2018, 5) {
     constexpr auto pairs = { "aA", "bB", "cC", "dD", "eE", "fF", "gG", "hH", "iI", "jJ", "kK", "lL", "mM", "nN", "oO", "pP", "qQ", "rR",
@@ -20,11 +20,11 @@ SOLUTION(2018, 5) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Reduce(lines[0]).size());
     }
 
-    PART_TWO() {
+    PART(2) {
         size_t best = 9999;
         
         for (const auto& pair : pairs) {
@@ -35,7 +35,7 @@ SOLUTION(2018, 5) {
         return Constexpr::ToString(best);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Reduce("aA") == "");
         static_assert(Reduce("aa") == "aa");
         static_assert(Reduce("dabAcCaCBAcCcaDA") == "dabCBAcaDA");

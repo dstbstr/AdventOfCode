@@ -1,4 +1,4 @@
-#include "2018/d12_Plants.h"
+#include "Common.h"
 
 SOLUTION(2018, 12) {
     using Rules = Constexpr::SmallMap<std::string, char>;
@@ -40,7 +40,7 @@ SOLUTION(2018, 12) {
         return std::string(s[2]);
     }
 
-    PART_ONE() {
+    PART(1) {
         auto groups = SplitInputIntoGroups(lines);
 
         auto pots = Prefix + GetInitialState(groups[0]) + "...";
@@ -53,7 +53,7 @@ SOLUTION(2018, 12) {
         return Constexpr::ToString(CountPots(pots));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto groups = SplitInputIntoGroups(lines);
 
         auto pots = Prefix + GetInitialState(groups[0]) + "...";
@@ -81,7 +81,7 @@ SOLUTION(2018, 12) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         //std::vector<std::string> lines = {
         //    "initial state: #..#.#..##......###...###",
         //    "",

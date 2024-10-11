@@ -1,4 +1,4 @@
-#include "2017/d22_Infecting.h"
+#include "Common.h"
 
 SOLUTION(2017, 22) {
     constexpr size_t Solve(const auto& lines, size_t iterations, auto MoveFunc) {
@@ -35,7 +35,7 @@ SOLUTION(2017, 22) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto result = Solve(lines, 10'000, [](char& currentPos, size_t& dir) {
             switch (currentPos) {
             case '.': dir = (dir + 3) % 4; currentPos = '#'; return 1;
@@ -47,7 +47,7 @@ SOLUTION(2017, 22) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto result = Solve(lines, 10'000'000, [](char& currentPos, size_t& dir) {
             switch (currentPos) {
             case '.': dir = (dir + 3) % 4; currentPos = 'W'; return 0;
@@ -62,7 +62,7 @@ SOLUTION(2017, 22) {
 
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

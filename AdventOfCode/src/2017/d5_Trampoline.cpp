@@ -1,4 +1,4 @@
-#include "2017/d5_Trampoline.h"
+#include "Common.h"
 
 SOLUTION(2017, 5) {
     constexpr void Jump(u32 & instruction, s32 & distance) {
@@ -29,15 +29,15 @@ SOLUTION(2017, 5) {
         return steps;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(StepsToExit(lines, Jump));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(StepsToExit(lines, ShortJump));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(StepsToExit(std::vector<std::string>{ "0", "3", "0", "1", "-3" }, Jump) == 5);
         static_assert(StepsToExit(std::vector<std::string>{ "0", "3", "0", "1", "-3" }, ShortJump) == 10);
 

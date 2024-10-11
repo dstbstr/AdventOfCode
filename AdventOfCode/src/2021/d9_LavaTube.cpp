@@ -1,4 +1,4 @@
-#include "2021/d9_LavaTube.h"
+#include "Common.h"
 #include "Core/Algorithms/FloodFill.h"
 
 SOLUTION(2021, 9) {
@@ -30,7 +30,7 @@ SOLUTION(2021, 9) {
 
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -70,11 +70,11 @@ SOLUTION(2021, 9) {
         return result;
     }
     
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "2199943210",
             "3987894921",

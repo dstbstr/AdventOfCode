@@ -1,4 +1,4 @@
-#include "2020/d22_CrabCombat.h"
+#include "Common.h"
 
 SOLUTION(2020, 22) {
     constexpr std::vector<u32> ParseDeck(const auto& lines) {
@@ -97,15 +97,15 @@ SOLUTION(2020, 22) {
         return d1.empty() ? CalculateScore(d2) : CalculateScore(d1);
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, PlayRound));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, PlaySubGame));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(CalculateScore({ 3, 2, 10, 6, 8, 5, 9, 4, 7, 1 }) == 306);
         
         std::vector<std::string> lines = {

@@ -1,4 +1,4 @@
-#include "2022/d12_HillClimb.h"
+#include "Common.h"
 
 SOLUTION(2022, 12) {
     template<size_t Rows, size_t Cols>
@@ -112,13 +112,13 @@ SOLUTION(2022, 12) {
         return 999; //fail case
     }
 
-    PART_ONE() {
+    PART(1) {
         size_t startIndex, endIndex;
         auto map = BuildMap<41, 66>(lines, startIndex, endIndex);
         return Constexpr::ToString(Bfs<41, 66>(map, startIndex, endIndex));
     }
 
-    PART_TWO() {
+    PART(2) {
         size_t startIndex, endIndex;
         auto map = BuildMap<41, 66>(lines, startIndex, endIndex);
         auto allStarts = FindAllStarts(map);
@@ -132,7 +132,7 @@ SOLUTION(2022, 12) {
         return Constexpr::ToString(best);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(FindNext<3, 3>(0).size() == 2);
         static_assert(FindNext<3, 3>(4).size() == 4);
 

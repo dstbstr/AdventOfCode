@@ -1,4 +1,4 @@
-#include "2022/d25_Snafu.h"
+#include "Common.h"
 
 SOLUTION(2022, 25) {
     template<size_t Count>
@@ -91,16 +91,16 @@ SOLUTION(2022, 25) {
         }
         return ToSnafu(result);
     }
-    PART_ONE() {
+    PART(1) {
         return SolvePartOne(lines);
     }
 
-    PART_TWO() {
+    PART(2) {
         (void)lines;
         return "Merry Christmas!";
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(FromSnafu("1=-0-2") == 1747);
         static_assert(FromSnafu("1121-1110-1=0") == 314159265);
 

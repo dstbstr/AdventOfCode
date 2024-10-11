@@ -1,4 +1,4 @@
-#include "2018/d7_Sleigh.h"
+#include "Common.h"
 
 SOLUTION(2018, 7) {
     constexpr std::pair<u8, u8> ParseLine(std::string_view line) {
@@ -59,7 +59,7 @@ SOLUTION(2018, 7) {
         return hasWorker;
     }
 
-    PART_ONE() {
+    PART(1) {
         std::array<u32, 26> requirements;
         std::array<bool, 26> existance;
         BuildMap(lines, requirements, existance);
@@ -79,7 +79,7 @@ SOLUTION(2018, 7) {
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         std::array<u32, 26> requirements;
         std::array<bool, 26> existance;
         BuildMap(lines, requirements, existance);
@@ -124,7 +124,7 @@ SOLUTION(2018, 7) {
         return Constexpr::ToString(totalSeconds + remaining);
     }
 
-    TESTS() {
+    TEST(1) {
         //std::vector<std::string> lines = {
         //    "Step C must be finished before step A can begin.",
         //    "Step C must be finished before step F can begin.",

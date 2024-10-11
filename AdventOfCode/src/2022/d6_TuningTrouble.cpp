@@ -1,4 +1,4 @@
-#include "2022/d6_TuningTrouble.h"
+#include "Common.h"
 
 SOLUTION(2022, 6) {
     enum struct MessageType { Signal = 4, Message = 14};
@@ -24,15 +24,15 @@ SOLUTION(2022, 6) {
         return 0;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(FindUnique(lines[0], MessageType::Signal));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(FindUnique(lines[0], MessageType::Message));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(FindUnique("bvwbjplbgvbhsrlpgdmjqwftvncz", MessageType::Signal) == 5);
         static_assert(FindUnique("nppdvjthqldpwncqszvftbrmjlhg", MessageType::Signal) == 6);
         static_assert(FindUnique("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", MessageType::Signal) == 10);

@@ -1,4 +1,4 @@
-#include "2017/d2_Checksum.h"
+#include "Common.h"
 #include <execution>
 
 SOLUTION(2017, 2) {
@@ -25,15 +25,15 @@ SOLUTION(2017, 2) {
         return std::transform_reduce(lines.cbegin(), lines.cend(), 0u, std::plus<u32>(), func);
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Checksum(lines, FindDelta));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Checksum(lines, FindDivisors));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(FindDelta("5\t1\t9\t5") == 8);
         static_assert(FindDelta("7\t5\t3") == 4);
         static_assert(FindDelta("2\t4\t6\t8") == 6);

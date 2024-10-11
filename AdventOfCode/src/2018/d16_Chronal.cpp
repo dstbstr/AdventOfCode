@@ -1,4 +1,4 @@
-#include "2018/d16_Chronal.h"
+#include "Common.h"
 
 SOLUTION(2018, 16) {
     using Registers = std::array<s32, 4>;
@@ -157,7 +157,7 @@ SOLUTION(2018, 16) {
         return regs[0];
     }
 
-    PART_ONE() {
+    PART(1) {
         auto groups = SplitInputIntoGroups(lines);
         auto triplets = GetAllTriplets(groups);
 
@@ -165,7 +165,7 @@ SOLUTION(2018, 16) {
         return Constexpr::ToString(res);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto groups = SplitInputIntoGroups(lines);
         auto triplets = GetAllTriplets(groups);
         auto ops = FindOps(triplets);
@@ -173,7 +173,7 @@ SOLUTION(2018, 16) {
         return Constexpr::ToString(RunProgram(groups.back(), ops));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "Before: [3, 2, 1, 1]",
             "9 2 1 2",

@@ -1,4 +1,4 @@
-#include "2016/d21_Scrambler.h"
+#include "Common.h"
 
 SOLUTION(2016, 21) {
     constexpr std::array<size_t, 8> ShiftTable = { 1, 1, 6, 2, 7, 3, 0, 4 };
@@ -81,14 +81,14 @@ SOLUTION(2016, 21) {
         return running;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Scramble(lines, "abcdefgh");
     }
-    PART_TWO() {
+    PART(2) {
         return UnScramble(lines, "fbgdceah");
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "swap position 4 with position 0",
             "swap letter d with letter b",

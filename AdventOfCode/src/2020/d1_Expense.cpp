@@ -1,8 +1,8 @@
-#include "2020/d1_Expense.h"
+#include "Common.h"
 
 SOLUTION(2020, 1) {
 
-    PART_ONE() {
+    PART(1) {
         auto nums = ParseLinesAsNumbers<u32>(lines);
         std::sort(nums.begin(), nums.end());
         for (auto firstNum = 0; firstNum < nums.size(); firstNum++) {
@@ -23,7 +23,7 @@ SOLUTION(2020, 1) {
         return "Not Found";
     }
 
-    PART_TWO() {
+    PART(2) {
         auto nums = ParseLinesAsNumbers<u32>(lines);
         std::sort(nums.begin(), nums.end());
         for (auto firstNum = 0; firstNum < nums.size(); firstNum++) {
@@ -46,7 +46,7 @@ SOLUTION(2020, 1) {
         return "Not Found";
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

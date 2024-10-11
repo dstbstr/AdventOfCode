@@ -1,4 +1,4 @@
-#include "2016/d16_DragonChecksum.h"
+#include "Common.h"
 
 SOLUTION(2016, 16) {
     constexpr std::string Next(const std::string & value) {
@@ -33,16 +33,16 @@ SOLUTION(2016, 16) {
         return Checksum(running.substr(0, size));
     }
 
-    PART_ONE() {
+    PART(1) {
         return FillDisk(272, lines[0]);
 
     }
-    PART_TWO() {
+    PART(2) {
         return FillDisk(35651584, lines[0]);
 
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Next("1") == "100");
         static_assert(Next("0") == "001");
         static_assert(Next("11111") == "11111000000");

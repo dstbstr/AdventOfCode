@@ -1,4 +1,4 @@
-#include "2018/d10_StarMessage.h"
+#include "Common.h"
 
 SOLUTION(2018, 10) {
     struct Star {
@@ -93,18 +93,18 @@ SOLUTION(2018, 10) {
         return seconds;
     }
 
-    PART_ONE() {
+    PART(1) {
         std::string result;
         Solve(lines, result);
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         std::string ignored;
         return Constexpr::ToString(Solve(lines, ignored));
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

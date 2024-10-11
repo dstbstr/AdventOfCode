@@ -1,4 +1,4 @@
-#include "2017/d21_FractalArt.h"
+#include "Common.h"
 
 SOLUTION(2017, 21) {
     static constexpr auto Start = ".#./..#/###";
@@ -222,15 +222,15 @@ SOLUTION(2017, 21) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, 5));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, 18));
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

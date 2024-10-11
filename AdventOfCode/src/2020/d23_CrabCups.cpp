@@ -1,4 +1,4 @@
-#include "2020/d23_CrabCups.h"
+#include "Common.h"
 
 SOLUTION(2020, 23) {
     constexpr std::vector<u32> GetCups(std::string_view line, size_t max) {
@@ -74,7 +74,7 @@ SOLUTION(2020, 23) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return SolvePartOne(lines[0]);
     }
 
@@ -85,11 +85,11 @@ SOLUTION(2020, 23) {
         return static_cast<size_t>(cups[1]) * static_cast<size_t>(cups[cups[1]]);
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines[0]));
     }
 
-    TESTS() {
+    TEST(1) {
         std::string line = "389125467";
 
         if (SolvePartOne( line ) != "67384529") return false;

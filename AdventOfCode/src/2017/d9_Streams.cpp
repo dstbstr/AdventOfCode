@@ -1,4 +1,4 @@
-#include "2017/d9_Streams.h"
+#include "Common.h"
 
 SOLUTION(2017, 9) {
     constexpr void RemoveExtraNots(std::string & str) {
@@ -40,14 +40,14 @@ SOLUTION(2017, 9) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto running = std::string(lines[0]);
         RemoveExtraNots(running);
         RemoveGarbage(running);
         return Constexpr::ToString(CalculateScore(running));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto running = std::string(lines[0]);
         RemoveExtraNots(running);
         return Constexpr::ToString(RemoveGarbage(running));
@@ -66,7 +66,7 @@ SOLUTION(2017, 9) {
         return removed == expectedCount;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(TestRemoveNots("!!", ""));
         static_assert(TestRemoveNots("!", "!"));
         static_assert(TestRemoveNots("!!!", "!"));

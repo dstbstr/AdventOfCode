@@ -1,9 +1,9 @@
-#include "2019/d2_Comp1.h"
-#include "2019/Comp.h"
+#include "Common.h"
+#include "Comp.h"
 
 SOLUTION(2019, 2) {
 
-    PART_ONE() {
+    PART(1) {
         auto instructions = ParseInstructions(lines[0]);
         instructions[1] = 12;
         instructions[2] = 2;
@@ -14,7 +14,7 @@ SOLUTION(2019, 2) {
         return Constexpr::ToString(instructions[0]);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto initialInstructions = ParseInstructions(lines[0]);
         Args initialArgs;
         for (u64 noun = 0; noun < 100; noun++) {
@@ -34,7 +34,7 @@ SOLUTION(2019, 2) {
         return "No Solution Found";
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<s64> inst = { 1,1,1,4,99,5,6,0,99 };
         Args args;
         while (Apply(inst, args));

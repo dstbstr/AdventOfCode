@@ -1,4 +1,4 @@
-#include "2022/d23_Planting.h"
+#include "Common.h"
 
 SOLUTION(2022, 23) {
     using Map = std::array<std::array<bool, 500>, 500>;
@@ -203,7 +203,7 @@ SOLUTION(2022, 23) {
         }
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -218,11 +218,11 @@ SOLUTION(2022, 23) {
 
         return round + 1;
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "..............",
             "..............",

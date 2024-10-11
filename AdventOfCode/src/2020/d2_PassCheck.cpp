@@ -1,4 +1,4 @@
-#include "2020/d2_PassCheck.h"
+#include "Common.h"
 
 SOLUTION(2020, 2) {
     struct Entry {
@@ -35,17 +35,17 @@ SOLUTION(2020, 2) {
         return (entry.Word[entry.MinCount - 1] == entry.Letter) != (entry.Word[entry.MaxCount - 1] == entry.Letter);
     }
 
-    PART_ONE() {
+    PART(1) {
         auto entries = ParseLines(lines, ParseEntry);
         return Constexpr::ToString(std::count_if(entries.begin(), entries.end(), IsEntryValid));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto entries = ParseLines(lines, ParseEntry);
         return Constexpr::ToString(std::count_if(entries.begin(), entries.end(), IsEntryValid2));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(ParseEntry("1-3 a: abcde").MinCount == 1);
         static_assert(ParseEntry("1-3 a: abcde").MaxCount == 3);
         static_assert(ParseEntry("1-3 a: abcde").Letter == 'a');

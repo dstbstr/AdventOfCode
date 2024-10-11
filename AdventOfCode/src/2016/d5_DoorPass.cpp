@@ -1,4 +1,4 @@
-#include "2016/d5_DoorPass.h"
+#include "Common.h"
 #include "Core/Algorithms/md5Constexpr.h"
 
 SOLUTION(2016, 5) {
@@ -33,7 +33,7 @@ SOLUTION(2016, 5) {
 		}
 	}
 
-	PART_ONE() {
+	PART(1) {
 		std::vector<u64> hints = {
 			1739529,
 			1910966,
@@ -84,7 +84,7 @@ SOLUTION(2016, 5) {
 		return result;
 	}
 
-	PART_TWO() {
+	PART(2) {
 		std::vector<u64> hints = {
 			1910966,
 			1997199,
@@ -98,7 +98,7 @@ SOLUTION(2016, 5) {
 		return PartTwoImpl(lines[0], hints);
 	}
 
-	TESTS() {
+	TEST(1) {
 		std::vector<u64> hints = {
 			3231929,
 			5017308,

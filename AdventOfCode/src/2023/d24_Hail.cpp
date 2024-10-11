@@ -1,4 +1,4 @@
-#include "2023/d24_Hail.h"
+#include "Common.h"
 
 SOLUTION(2023, 24) {
     struct S1 {
@@ -47,7 +47,7 @@ SOLUTION(2023, 24) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines, { 200'000'000'000'000, 200'000'000'000'000 }, 200'000'000'000'000));
     }
 
@@ -79,7 +79,7 @@ SOLUTION(2023, 24) {
         return true;
     }
 
-    PART_TWO() {
+    PART(2) {
         auto stones = ParseLines(lines, ParsePartTwo);
 
         auto IsInt = [](double d) {
@@ -165,7 +165,7 @@ SOLUTION(2023, 24) {
         */
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
             "19, 13, 30 @ -2,  1, -2",
             "18, 19, 22 @ -1, -1, -2",
@@ -176,7 +176,7 @@ SOLUTION(2023, 24) {
 
         if (SolvePartOne(example, { 7, 7 }, 20) != 2) return false;
 
-        if (PartTwo(example) != "47") return false;
+        if (Part2(example) != "47") return false;
 
         return true;
     }

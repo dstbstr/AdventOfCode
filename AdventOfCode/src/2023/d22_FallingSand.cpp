@@ -1,4 +1,4 @@
-#include "2023/d22_FallingSand.h"
+#include "Common.h"
 
 SOLUTION(2023, 22) {
     struct Brick {
@@ -118,7 +118,7 @@ SOLUTION(2023, 22) {
             });
     }
 
-    PART_ONE() {
+    PART(1) {
         auto bricks = ParseLines(lines, ParseBrick);
         Compact(bricks);
 
@@ -129,7 +129,7 @@ SOLUTION(2023, 22) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         size_t result = 0;
         auto bricks = ParseLines(lines, ParseBrick);
         Compact(bricks);
@@ -141,7 +141,7 @@ SOLUTION(2023, 22) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
             "1,0,1~1,2,1",
             "0,0,2~2,0,2",
@@ -152,7 +152,7 @@ SOLUTION(2023, 22) {
             "1,1,8~1,1,9"
         };
 
-        if (PartOne(example) != "5") return false;
+        if (Part1(example) != "5") return false;
 
         return true;
     }

@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d23_TuringLock.h"
+#include "Common.h"
 
 SOLUTION(2015, 23) {
     //wow, this works, and is faster
@@ -51,13 +49,13 @@ SOLUTION(2015, 23) {
         return b;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, 0));
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, 1));
     }
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

@@ -1,5 +1,4 @@
-#pragma once
-#include "2015/d10_SeeAndSay.h"
+#include "Common.h"
 
 SOLUTION(2015, 10) {
     constexpr void AppendNext(char lastCharacter, int count, std::string & result) {
@@ -41,13 +40,13 @@ SOLUTION(2015, 10) {
     }
 
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(ApplyTimes(lines[0], 40).size());
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(ApplyTimes(lines[0], 50).size());
     }
-    TESTS() {
+    TEST(1) {
         static_assert(Next("1") == "11");
         static_assert(Next("11") == "21");
         static_assert(Next("21") == "1211");

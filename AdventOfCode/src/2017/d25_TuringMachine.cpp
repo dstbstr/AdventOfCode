@@ -1,4 +1,4 @@
-#include "2017/d25_TuringMachine.h"
+#include "Common.h"
 
 SOLUTION(2017, 25) {
 
@@ -59,7 +59,7 @@ In state A:
         };
     }
 
-    PART_ONE() {
+    PART(1) {
         auto groups = SplitInputIntoGroups(lines);
         char state = GetStartState(groups[0][0]) - 'A';
 
@@ -80,12 +80,12 @@ In state A:
         return Constexpr::ToString(std::count(bits.begin(), bits.end(), 1));
     }
 
-    PART_TWO() {
+    PART(2) {
         (void)lines;
         return "Merry Christmas";
     }
 
-    TESTS() {
+    TEST(1) {
         //std::vector<std::string> lines = {
         //    "Begin in state A.",
         //    "Perform a diagnostic checksum after 6 steps.",

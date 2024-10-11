@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d17_EggnogStorage.h"
+#include "Common.h"
 
 SOLUTION(2015, 17) {
     constexpr u32 CountCombinations(const std::vector<u32>&containers, size_t index, u32 remaining) {
@@ -81,16 +79,16 @@ SOLUTION(2015, 17) {
         return CountCombinationsWithMaxContainers(containers, 0, initial, 0, size);
     }
 
-    PART_ONE() {
+    PART(1) {
         auto containers = ParseLinesAsNumbers<u32>(lines);
         return Constexpr::ToString(CountCombinations(containers, 150));
     }
-    PART_TWO() {
+    PART(2) {
         auto containers = ParseLinesAsNumbers<u32>(lines);
         return Constexpr::ToString(CountSmallContainers(containers, 150));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<u32> containers = {20, 5, 10, 5, 15};
         std::sort(containers.begin(), containers.end());
 

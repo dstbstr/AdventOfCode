@@ -1,4 +1,4 @@
-#include "2023/d15_HashLens.h"
+#include "Common.h"
 
 SOLUTION(2023, 15) {
     constexpr u32 Hash(std::string_view input) {
@@ -9,7 +9,7 @@ SOLUTION(2023, 15) {
         return current;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto v = Constexpr::Split(lines[0], ",");
         auto result = std::accumulate(v.begin(), v.end(), 0ull, [](size_t running, std::string_view sv) {
             return running + Hash(sv);
@@ -18,7 +18,7 @@ SOLUTION(2023, 15) {
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto v = Constexpr::Split(lines[0], ",");
         std::array<std::vector<std::pair<std::string_view, u32>>, 256> map{};
         for (auto value : v) {
@@ -71,11 +71,11 @@ SOLUTION(2023, 15) {
         return Constexpr::ToString(result);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(Hash("HASH") == 52);
 
         std::vector<std::string> example = { "rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7" };
-        if (PartTwo(example) != "145") return false;
+        if (Part2(example) != "145") return false;
 
         return true;
     }

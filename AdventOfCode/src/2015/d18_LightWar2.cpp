@@ -1,6 +1,5 @@
-#pragma once
+#include "Common.h"
 
-#include "2015/d18_LightWar2.h"
 SOLUTION(2015, 18) {
     //# == on
     //. == off
@@ -84,7 +83,7 @@ SOLUTION(2015, 18) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto lights = BuildArray<100, 100>(Constexpr::JoinVec("", lines));
         for (auto i = 0; i < 100; i++) {
             Next(lights);
@@ -92,7 +91,7 @@ SOLUTION(2015, 18) {
 
         return Constexpr::ToString(CountLit(lights));
     }
-    PART_TWO() {
+    PART(2) {
         auto lights = BuildArray<100, 100>(Constexpr::JoinVec("", lines));
         SetCorners(lights);
 
@@ -103,7 +102,7 @@ SOLUTION(2015, 18) {
 
         return Constexpr::ToString(CountLit(lights));
     }
-    TESTS() {
+    TEST(1) {
         static_assert(BuildArray<6, 6>(
             ".#.#.#"
             "...##."

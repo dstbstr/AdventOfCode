@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d25_SecretCode.h"
+#include "Common.h"
 
 SOLUTION(2015, 25) {
     //1:1 = 20151125
@@ -27,7 +25,7 @@ SOLUTION(2015, 25) {
         return running;
     }
 
-    PART_ONE() {
+    PART(1) {
         //To continue, please consult the code grid in the manual.  Enter the code at row 2981, column 3075.
         const auto numbers = "0123456789";
         const auto line = lines[0];
@@ -43,12 +41,12 @@ SOLUTION(2015, 25) {
         return Constexpr::ToString(CalculateCode(CalculateIndex(row, col)));
     }
 
-    PART_TWO() {
+    PART(2) {
         (void)lines;
         return "Merry Christmas";
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(CalculateIndex(1, 1) == 1);
         static_assert(CalculateIndex(1, 2) == 3);
         static_assert(CalculateIndex(2, 1) == 2);

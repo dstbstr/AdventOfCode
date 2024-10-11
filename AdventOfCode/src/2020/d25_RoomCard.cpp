@@ -1,4 +1,4 @@
-#include "2020/d25_RoomCard.h"
+#include "Common.h"
 
 SOLUTION(2020, 25) {
     constexpr size_t RunLoop(size_t value, size_t subject) {
@@ -29,12 +29,12 @@ SOLUTION(2020, 25) {
     }
 
 
-    PART_ONE() {
+    PART(1) {
         auto values = ParseLinesAsNumbers<size_t>(lines);
         return Constexpr::ToString(Decrypt(values[0], values[1]));
     }
 
-    PART_TWO() {
+    PART(2) {
         (void)lines;
         return "Merry Christmas";
     }
@@ -55,7 +55,7 @@ SOLUTION(2020, 25) {
         return true;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(RunTest());
         static_assert(FindLoopSize(5764801) == 8);
         static_assert(FindLoopSize(17807724) == 11);

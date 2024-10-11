@@ -1,4 +1,4 @@
-#include "2022/d10_Crt.h"
+#include "Common.h"
 
 SOLUTION(2022, 10) {
     constexpr void RunLine(std::string_view line, u32 & tick, std::vector<s32>&xValues) {
@@ -60,15 +60,15 @@ SOLUTION(2022, 10) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SumSignalStrength(lines));
     }
 
-    PART_TWO() {
+    PART(2) {
         return BuildCrtString(lines);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

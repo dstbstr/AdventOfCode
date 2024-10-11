@@ -1,5 +1,5 @@
-#include "2019/d7_Comp3.h"
-#include "2019/Comp.h"
+#include "Common.h"
+#include "Comp.h"
 
 SOLUTION(2019, 7) {
     struct Amplifier {
@@ -21,7 +21,7 @@ SOLUTION(2019, 7) {
             return Code[State.Ip] % 100 == OpCode::Halt;
         }
     };
-    PART_ONE() {
+    PART(1) {
         auto code = ParseInstructions(lines[0]);
         s64 best = 0;
         std::vector<s64> phases = { 0, 1, 2, 3, 4 };
@@ -41,7 +41,7 @@ SOLUTION(2019, 7) {
         return Constexpr::ToString(best);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto code = ParseInstructions(lines[0]);
         s64 best = 0;
         std::vector<s64> phases = { 5, 6, 7, 8, 9 };
@@ -63,7 +63,7 @@ SOLUTION(2019, 7) {
         return Constexpr::ToString(best);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

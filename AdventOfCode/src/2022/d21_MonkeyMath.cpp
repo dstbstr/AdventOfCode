@@ -1,4 +1,4 @@
-#include "2022/d21_MonkeyMath.h"
+#include "Common.h"
 
 SOLUTION(2022, 21) {
 
@@ -86,11 +86,11 @@ SOLUTION(2022, 21) {
         return monkeys[rootIndex].Value;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
-    PART_TWO() {
+    PART(2) {
         size_t rootIndex = 0;
         size_t humanIndex = 0;
         size_t leftMonkeyIndex = 0;
@@ -175,7 +175,7 @@ SOLUTION(2022, 21) {
         return Constexpr::ToString(monkeys[humanIndex].Value);
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(ParseLine("root: pppw + sjmn").Name == "root");
         static_assert(ParseLine("root: pppw + sjmn").Operation == Op::Plus);
         static_assert(ParseLine("abcd: 42").Name == "abcd");

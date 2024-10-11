@@ -1,4 +1,4 @@
-#include "2022/d15_Beacon.h"
+#include "Common.h"
 
 SOLUTION(2022, 15) {
     struct Sensor {
@@ -52,7 +52,7 @@ SOLUTION(2022, 15) {
 
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines, 2'000'000));
     }
 
@@ -86,12 +86,12 @@ SOLUTION(2022, 15) {
         }
         return { 0, 0 };
     }
-    PART_TWO() {
+    PART(2) {
         auto missingPoint = SolvePartTwo(lines, { 0, 0 }, { 4'000'000, 4'000'000 });
         return Constexpr::ToString(missingPoint.X * 4'000'000 + missingPoint.Y);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector < std::string> lines = {
             "Sensor at x=2, y=18: closest beacon is at x=-2, y=15",
             "Sensor at x=9, y=16: closest beacon is at x=10, y=16",

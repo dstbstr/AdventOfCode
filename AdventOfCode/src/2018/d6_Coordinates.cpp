@@ -1,4 +1,4 @@
-#include "2018/d6_Coordinates.h"
+#include "Common.h"
 
 SOLUTION(2018, 6) {
     constexpr std::vector<u32> FindAreas(const std::vector<Coord>&coords, s32 area) {
@@ -42,7 +42,7 @@ SOLUTION(2018, 6) {
         return true;
     }
 
-    PART_ONE() {
+    PART(1) {
         std::vector<Coord> coords;
         for (const auto& line : lines) {
             coords.push_back(Coord(line));
@@ -63,7 +63,7 @@ SOLUTION(2018, 6) {
         return Constexpr::ToString(maxArea);
     }
 
-    PART_TWO() {
+    PART(2) {
         const s32 maxDistance = 10'000;
 
         std::vector<Coord> coords;
@@ -83,7 +83,7 @@ SOLUTION(2018, 6) {
         return Constexpr::ToString(count);
     }
 
-    TESTS() {
+    TEST(1) {
         //std::vector<std::string> lines = {
         //    "1, 1",
         //    "1, 6",

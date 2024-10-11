@@ -1,4 +1,4 @@
-#include "2020/d17_Reactor.h"
+#include "Common.h"
 
 SOLUTION(2020, 17) {
     using Reactor = Constexpr::SmallSet<Vec3<s32>>;
@@ -115,17 +115,17 @@ SOLUTION(2020, 17) {
         return reactor.size();
     }
 
-    PART_ONE() {
+    PART(1) {
         auto reactor = ParseReactor(lines);
         return Constexpr::ToString(Solve(reactor));
     }
 
-    PART_TWO() {
+    PART(2) {
         auto reactor = ParseBigReactor(lines);
         return Constexpr::ToString(Solve(reactor));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
            ".#.",
            "..#",

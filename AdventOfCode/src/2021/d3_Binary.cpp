@@ -1,4 +1,4 @@
-#include "2021/d3_Binary.h"
+#include "Common.h"
 
 //TODO: Change this to a constexpr solution
 #include <bitset>
@@ -56,7 +56,7 @@ SOLUTION(2021, 3) {
 
         return std::bitset<15>(lhs).to_ullong() * std::bitset<15>(rhs).to_ullong();
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -67,11 +67,11 @@ SOLUTION(2021, 3) {
         return std::bitset<15>(oxygen).to_ullong() * std::bitset<15>(co2).to_ullong();
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "00100",
             "11110",

@@ -1,4 +1,4 @@
-#include "2020/d12_RainRisk.h"
+#include "Common.h"
 #include "Facing.h"
 
 SOLUTION(2020, 12) {
@@ -86,14 +86,14 @@ SOLUTION(2020, 12) {
         return MDistance(pos);
     }
 
-    PART_ONE() {
+    PART(1) {
         Coord wayPoint{ 1, 0 };
         Coord pos{ 0, 0 };
         auto result = Solve(lines, wayPoint, pos, pos);
         return Constexpr::ToString(result);
     }
 
-    PART_TWO() {
+    PART(2) {
         Coord wayPoint{ 10, -1 };
         Coord pos{ 0, 0 };
         auto result = Solve(lines, wayPoint, pos, wayPoint);
@@ -114,7 +114,7 @@ SOLUTION(2020, 12) {
         return true;
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(TestTurns());
         if (!TestTurns()) return false;
 

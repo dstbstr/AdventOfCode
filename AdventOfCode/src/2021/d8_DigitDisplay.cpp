@@ -1,4 +1,4 @@
-#include "2021/d8_DigitDisplay.h"
+#include "Common.h"
 
 SOLUTION(2021, 8) {
     /*
@@ -92,7 +92,7 @@ SOLUTION(2021, 8) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -125,11 +125,11 @@ SOLUTION(2021, 8) {
         return result;
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = { "abcefg cf acdeg acdfg bcdf abdfg abdefg acf abcdefg abcdfg | fc fca cf caf" };
         if (SolvePartTwo(lines) != 1717) return false;
 

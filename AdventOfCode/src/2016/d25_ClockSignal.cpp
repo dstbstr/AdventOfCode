@@ -1,4 +1,4 @@
-#include "2016/d25_ClockSignal.h"
+#include "Common.h"
 
 SOLUTION(2016, 25) {
     constexpr s32 Unset = 919;
@@ -52,7 +52,7 @@ SOLUTION(2016, 25) {
         };
     }
 
-    PART_ONE() {
+    PART(1) {
         u64 a = 0;
         auto code = ParseLines(lines, GenInstruction);
         while (true) {
@@ -85,12 +85,12 @@ SOLUTION(2016, 25) {
         return "Not Found";
     }
 
-    PART_TWO() {
+    PART(2) {
         (void)lines;
         return "Merry Christmas";
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

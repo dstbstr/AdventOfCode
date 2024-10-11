@@ -1,4 +1,4 @@
-#include "2019/d18_CaveDoors.h"
+#include "Common.h"
 #include <bit>
 
 SOLUTION(2019, 18) {
@@ -277,13 +277,13 @@ SOLUTION(2019, 18) {
     };
 
 
-    PART_ONE() {
+    PART(1) {
         //Map solution(CopyToVector(lines));
         Map solution(lines);
         return Constexpr::ToString(solution.Solve());
     }
 
-    PART_TWO() {
+    PART(2) {
         //auto copy = CopyToVector(lines);
         auto copy = lines;
         SplitIntoRooms(copy);
@@ -292,7 +292,7 @@ SOLUTION(2019, 18) {
         return Constexpr::ToString(solution.Solve());
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "#########",
             "#b.A.@.a#",

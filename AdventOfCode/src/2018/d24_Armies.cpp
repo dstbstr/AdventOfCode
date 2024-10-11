@@ -1,4 +1,4 @@
-#include "2018/d24_Armies.h"
+#include "Common.h"
 
 SOLUTION(2018, 24) {
     enum struct DamageType { Unknown, Fire, Cold, Slashing, Bludgeoning, Radiation };
@@ -241,7 +241,7 @@ SOLUTION(2018, 24) {
         return std::accumulate(battle.begin(), battle.end(), 0, [](u32 previous, auto& p) {return previous + p.second.UnitCount; });
     }
 
-    PART_ONE() {
+    PART(1) {
         auto battle = GetBattle(lines);
         while (IsBattleRunning(battle)) {
             ResolveRound(battle);
@@ -250,7 +250,7 @@ SOLUTION(2018, 24) {
         return Constexpr::ToString(CountRemainingUnits(battle));
     }
 
-    PART_TWO() {
+    PART(2) {
         const auto initialBattle = GetBattle(lines);
 
         const int maxRounds = 5000;
@@ -280,7 +280,7 @@ SOLUTION(2018, 24) {
         return "No Solution Found";
     }
 
-    TESTS() {
+    TEST(1) {
         //std::vector<std::string> lines = {
         //    "Immune System:",
         //    "17 units each with 5390 hit points (weak to radiation, bludgeoning) with an attack that does 4507 fire damage at initiative 2",

@@ -1,4 +1,4 @@
-#include "2017/d6_Realloc.h"
+#include "Common.h"
 #include "Core/Algorithms/FloydCycle.h"
 
 SOLUTION(2017, 6) {
@@ -12,21 +12,21 @@ SOLUTION(2017, 6) {
         return in;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto banks = ParseLineAsNumbers<u32>(lines[0], "\t");
         u32 cycleStart, cycleLength;
         FloydCycle::FindCycle(banks, Next, cycleLength, cycleStart);
         return Constexpr::ToString(cycleLength + cycleStart);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto banks = ParseLineAsNumbers<u32>(lines[0], "\t");
         u32 cycleStart, cycleLength;
         FloydCycle::FindCycle(banks, Next, cycleLength, cycleStart);
         return Constexpr::ToString(cycleLength);
     }
 
-    TESTS() {
+    TEST(1) {
         //static_assert(PartOne({ "0\t2\t7\t0" }) == "5");
         //static_assert(PartTwo({ "0\t2\t7\t0" }) == "4");
     

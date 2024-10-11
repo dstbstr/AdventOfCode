@@ -1,4 +1,4 @@
-#include "2022/d1_ElfSnacks.h"
+#include "Common.h"
 
 SOLUTION(2022, 1) {
     constexpr size_t CountCalories(const std::vector<std::string>& lines) {
@@ -16,12 +16,12 @@ SOLUTION(2022, 1) {
         return elves;
     }
 
-    PART_ONE() {
+    PART(1) {
         auto elves = GetElves(lines);
         return Constexpr::ToString(elves.back());
     }
 
-    PART_TWO() {
+    PART(2) {
         auto elves = GetElves(lines);
         return Constexpr::ToString(elves.back() + elves[elves.size() - 2] + elves[elves.size() - 3]);
     }
@@ -48,7 +48,7 @@ SOLUTION(2022, 1) {
         if (elves[elves.size() - 1] + elves[elves.size() - 2] + elves[elves.size() - 3] != 45'000) return false;
         return true;
     }
-    TESTS() {
+    TEST(1) {
         static_assert(TestGetElves());
         if (!TestGetElves()) return false;
 

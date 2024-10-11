@@ -1,4 +1,4 @@
-#include "2020/d24_Lobby.h"
+#include "Common.h"
 #include "HexGrid.h"
 
 SOLUTION(2020, 24) {
@@ -72,15 +72,15 @@ SOLUTION(2020, 24) {
         return grid.size();
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Run(lines, 0));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Run(lines, 100));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "sesenwnenenewseeswwswswwnenewsewsw",
             "neeenesenwnwwswnenewnwwsewnenwseswesw",

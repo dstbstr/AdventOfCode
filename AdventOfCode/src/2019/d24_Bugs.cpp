@@ -1,5 +1,4 @@
-#include "2019/d24_Bugs.h"
-#include <set>
+#include "Common.h"
 
 SOLUTION(2019, 24) {
     using Grid = std::array<std::array<bool, 5>, 5>;
@@ -171,7 +170,7 @@ SOLUTION(2019, 24) {
         return CalcDiversity(grid);
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
@@ -190,11 +189,11 @@ SOLUTION(2019, 24) {
         return CountBugs(levels);
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines, 200));
     }
 
-    TESTS() {
+    TEST(1) {
         static_assert(CalcDiversity(ParseGrid(std::array<std::string_view, 5>{
             ".....",
                 ".....",

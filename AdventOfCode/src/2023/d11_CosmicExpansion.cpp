@@ -1,4 +1,4 @@
-#include "2023/d11_CosmicExpansion.h"
+#include "Common.h"
 
 SOLUTION(2023, 11) {
     using RowsAndCols = std::pair<std::vector<size_t>, std::vector<size_t>>;
@@ -72,15 +72,15 @@ SOLUTION(2023, 11) {
 
         return result;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, 2));
     }
     
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, 1'000'000));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> given = {
             "...#......",
             ".......#..",
@@ -94,7 +94,7 @@ SOLUTION(2023, 11) {
             "#...#....."
         };
         
-        if (PartOne(given) != "374") return false;
+        if (Part1(given) != "374") return false;
         return true;
     }
 }

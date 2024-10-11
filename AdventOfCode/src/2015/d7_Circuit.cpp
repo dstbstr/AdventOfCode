@@ -1,5 +1,4 @@
-#pragma once
-#include "2015/d7_Circuit.h"
+#include "Common.h"
 
 SOLUTION(2015, 7) {
     using Map = Constexpr::SmallMap<std::string, std::string>;
@@ -59,11 +58,11 @@ SOLUTION(2015, 7) {
         return map.at("a");
     }
 
-    PART_ONE() {
+    PART(1) {
         return Solve(lines);
     }
 
-    PART_TWO() {
+    PART(2) {
         auto partOneResult = Solve(lines);
 
         auto copy = lines;
@@ -77,7 +76,7 @@ SOLUTION(2015, 7) {
         return Solve(copy);
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> lines = {
             "123 -> x",
             "456 -> y",

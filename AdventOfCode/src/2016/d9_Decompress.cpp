@@ -1,4 +1,4 @@
-#include "2016/d9_Decompress.h"
+#include "Common.h"
 
 SOLUTION(2016, 9) {
     constexpr u64 Decompress(std::string_view line, bool recurse) {
@@ -30,15 +30,15 @@ SOLUTION(2016, 9) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Decompress(lines[0], false));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Decompress(lines[0], true));
     }
 
-    TESTS() {
+    TEST(1) {
         if (Decompress("(3x3)XYZ", true) != 9) return false;
         if (Decompress("X(8x2)(3x3)ABCY", true) != 20) return false;
         if (Decompress("(27x12)(20x12)(13x14)(7x10)(1x12)A", true) != 241920) return false;

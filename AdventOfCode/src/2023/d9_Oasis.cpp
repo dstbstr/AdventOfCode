@@ -1,4 +1,4 @@
-#include "2023/d9_Oasis.h"
+#include "Common.h"
 
 SOLUTION(2023, 9) {
 
@@ -48,23 +48,23 @@ SOLUTION(2023, 9) {
         return result;
     }
 
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, ExtractForward));
     }
 
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, ExtractBackward));
     }
 
-    TESTS() {
+    TEST(1) {
         std::vector<std::string> example = {
             "0 3 6 9 12 15",
             "1 3 6 10 15 21",
             "10 13 16 21 30 45"
         };
 
-        if (PartOne(example) != "114") return false;
-        if (PartTwo(example) != "2") return false;
+        if (Part1(example) != "114") return false;
+        if (Part2(example) != "2") return false;
         return true;
     }
 }

@@ -1,4 +1,4 @@
-#include "2017/d18_Duet.h"
+#include "Common.h"
 
 SOLUTION(2017, 18) {
     using Registers = std::array<s64, 26>;
@@ -46,7 +46,7 @@ SOLUTION(2017, 18) {
     }
 
     //seems like there must be a way to do p1 with p2's commands, but I didn't figure it out
-    PART_ONE() {
+    PART(1) {
         s64 ip = 0;
         s64 lastPlayed = 0;
         Registers registers{};
@@ -111,7 +111,7 @@ SOLUTION(2017, 18) {
     }
 
 
-    PART_TWO() {
+    PART(2) {
         s64 p0Ip = 0;
         s64 p1Ip = 0;
 
@@ -147,7 +147,7 @@ SOLUTION(2017, 18) {
         return Constexpr::ToString(p1SendCount);
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }

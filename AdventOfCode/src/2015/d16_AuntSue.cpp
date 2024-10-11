@@ -1,6 +1,4 @@
-#pragma once
-
-#include "2015/d16_AuntSue.h"
+#include "Common.h"
 
 SOLUTION(2015, 16) {
 
@@ -75,14 +73,14 @@ SOLUTION(2015, 16) {
         }
         return 0;
     }
-    PART_ONE() {
+    PART(1) {
         return Constexpr::ToString(Solve(lines, IsExactMatch));
     }
-    PART_TWO() {
+    PART(2) {
         return Constexpr::ToString(Solve(lines, IsRangeMatch));
     }
 
-    TESTS() {
+    TEST(1) {
         return true;
     }
 }
