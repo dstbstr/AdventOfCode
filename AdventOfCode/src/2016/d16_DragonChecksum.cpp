@@ -42,19 +42,18 @@ SOLUTION(2016, 16) {
 
     }
 
+    static_assert(Next("1") == "100");
+    static_assert(Next("0") == "001");
+    static_assert(Next("11111") == "11111000000");
+    static_assert(Next("111100001010") == "1111000010100101011110000");
+
+    static_assert(Checksum("110010110100") == "100");
+
+    static_assert(FillDisk(272, "01000100010010111") == "10010010110011010");
+
     TEST(1) {
-        static_assert(Next("1") == "100");
-        static_assert(Next("0") == "001");
-        static_assert(Next("11111") == "11111000000");
-        static_assert(Next("111100001010") == "1111000010100101011110000");
 
-        static_assert(Checksum("110010110100") == "100");
-
-        static_assert(FillDisk(272, "01000100010010111") == "10010010110011010");
-
-        if (FillDisk(20, "10000") != "01100") return false;
-
-        return true;
+        return FillDisk(20, "10000") == "01100";
     }
 }
 

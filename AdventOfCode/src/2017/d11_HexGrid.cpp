@@ -25,12 +25,8 @@ SOLUTION(2017, 11) {
         return Constexpr::ToString(max);
     }
 
-    TEST(1) {
-        //static_assert(PartOne({"ne,ne,ne"}) == "3");
-        //static_assert(PartOne({"ne,ne,sw,sw"}) == "0");
-        //static_assert(PartOne({"ne,ne,s,s"}) == "2");
-        //static_assert(PartOne({ "se,sw,se,sw,sw" }) == "3");
-
-        return true;
-    }
+    //static_assert(PartOne({"ne,ne,ne"}) == "3");
+    //static_assert(PartOne({"ne,ne,sw,sw"}) == "0");
+    //static_assert(PartOne({"ne,ne,s,s"}) == "2");
+    //static_assert(PartOne({ "se,sw,se,sw,sw" }) == "3");
 }

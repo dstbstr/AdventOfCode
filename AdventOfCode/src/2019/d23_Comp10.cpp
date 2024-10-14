@@ -158,8 +158,4 @@ SOLUTION(2019, 23) {
 
         return "Not Found";
     }
-
-    TEST(1) {
-        return true;
-    }
 }

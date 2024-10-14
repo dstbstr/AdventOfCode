@@ -175,11 +175,12 @@ SOLUTION(2022, 21) {
         return Constexpr::ToString(monkeys[humanIndex].Value);
     }
 
+    static_assert(ParseLine("root: pppw + sjmn").Name == "root");
+    static_assert(ParseLine("root: pppw + sjmn").Operation == Op::Plus);
+    static_assert(ParseLine("abcd: 42").Name == "abcd");
+    static_assert(ParseLine("abcd: 42").Value == 42);
+
     TEST(1) {
-        static_assert(ParseLine("root: pppw + sjmn").Name == "root");
-        static_assert(ParseLine("root: pppw + sjmn").Operation == Op::Plus);
-        static_assert(ParseLine("abcd: 42").Name == "abcd");
-        static_assert(ParseLine("abcd: 42").Value == 42);
 
         std::vector<std::string> lines = {
             "root: pppw + sjmn",

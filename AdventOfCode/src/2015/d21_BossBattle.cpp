@@ -72,9 +72,6 @@ SOLUTION(2015, 21) {
         return "Not Found";
     }
 
-    TEST(1) {
-        static_assert(CountRounds({ 8, 5, 5 }, { 12, 7, 2 }) == 4);
-        static_assert(CountRounds({ 12, 7, 2 }, { 8, 5, 5 }) == 4);
-        return true;
-    }
+    static_assert(CountRounds({ 8, 5, 5 }, { 12, 7, 2 }) == 4);
+    static_assert(CountRounds({ 12, 7, 2 }, { 8, 5, 5 }) == 4);
 }

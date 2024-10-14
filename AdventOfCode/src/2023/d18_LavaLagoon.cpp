@@ -64,7 +64,7 @@ SOLUTION(2023, 18) {
     }
 
     TEST(1) {
-        std::vector<std::string> example = {
+        std::vector<std::string> lines = {
             "R 6 (#70c710)",
             "D 5 (#0dc571)",
             "L 2 (#5713f0)",
@@ -81,8 +81,8 @@ SOLUTION(2023, 18) {
             "U 2 (#7a21e3)"
         };
 
-        if (Solve(example, Dig) != 62) return false;
-        if (Solve(example, Dig2) != 952'408'144'115ull) return false;
+        if (Solve(lines, Dig) != 62) return false;
+        if (Solve(lines, Dig2) != 952'408'144'115ull) return false;
 
         return true;
     }

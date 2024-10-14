@@ -60,33 +60,28 @@ SOLUTION(2015, 8) {
         return Constexpr::ToString(std::accumulate(growths.cbegin(), growths.cend(), 0));
     }
 
-    TEST(1) {
-        static_assert(CountCodeCharacters(R"("")") == 2);
-        static_assert(CountCodeCharacters(R"("abc")") == 5);
-        static_assert(CountCodeCharacters(R"("aaa\"aaa")") == 10);
-        static_assert(CountCodeCharacters(R"("\x27")") == 6);
+    static_assert(CountCodeCharacters(R"("")") == 2);
+    static_assert(CountCodeCharacters(R"("abc")") == 5);
+    static_assert(CountCodeCharacters(R"("aaa\"aaa")") == 10);
+    static_assert(CountCodeCharacters(R"("\x27")") == 6);
 
-        static_assert(CountMemoryCharacters(R"("")") == 0);
-        static_assert(CountMemoryCharacters(R"("abc")") == 3);
-        static_assert(CountMemoryCharacters(R"("aaa\"aaa")") == 7);
-        static_assert(CountMemoryCharacters(R"("\x27")") == 1);
+    static_assert(CountMemoryCharacters(R"("")") == 0);
+    static_assert(CountMemoryCharacters(R"("abc")") == 3);
+    static_assert(CountMemoryCharacters(R"("aaa\"aaa")") == 7);
+    static_assert(CountMemoryCharacters(R"("\x27")") == 1);
 
-        static_assert(CalculateDelta(R"("")") == 2);
-        static_assert(CalculateDelta(R"("abc")") == 2);
-        static_assert(CalculateDelta(R"("aaa\"aaa")") == 3);
-        static_assert(CalculateDelta(R"("\x27")") == 5);
+    static_assert(CalculateDelta(R"("")") == 2);
+    static_assert(CalculateDelta(R"("abc")") == 2);
+    static_assert(CalculateDelta(R"("aaa\"aaa")") == 3);
+    static_assert(CalculateDelta(R"("\x27")") == 5);
 
-        static_assert(CountReencodedCharacters(R"("")") == 6);
-        static_assert(CountReencodedCharacters(R"("abc")") == 9);
-        static_assert(CountReencodedCharacters(R"("aaa\"aaa")") == 16);
-        static_assert(CountReencodedCharacters(R"("\x27")") == 11);
+    static_assert(CountReencodedCharacters(R"("")") == 6);
+    static_assert(CountReencodedCharacters(R"("abc")") == 9);
+    static_assert(CountReencodedCharacters(R"("aaa\"aaa")") == 16);
+    static_assert(CountReencodedCharacters(R"("\x27")") == 11);
 
-        static_assert(CalculateGrowth(R"("")") == 4);
-        static_assert(CalculateGrowth(R"("abc")") == 4);
-        static_assert(CalculateGrowth(R"("aaa\"aaa")") == 6);
-        static_assert(CalculateGrowth(R"("\x27")") == 5);
-
-        return true;
-    }
-
+    static_assert(CalculateGrowth(R"("")") == 4);
+    static_assert(CalculateGrowth(R"("abc")") == 4);
+    static_assert(CalculateGrowth(R"("aaa\"aaa")") == 6);
+    static_assert(CalculateGrowth(R"("\x27")") == 5);
 }

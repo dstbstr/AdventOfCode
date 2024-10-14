@@ -45,20 +45,16 @@ SOLUTION(2020, 2) {
         return Constexpr::ToString(std::count_if(entries.begin(), entries.end(), IsEntryValid2));
     }
 
-    TEST(1) {
-        static_assert(ParseEntry("1-3 a: abcde").MinCount == 1);
-        static_assert(ParseEntry("1-3 a: abcde").MaxCount == 3);
-        static_assert(ParseEntry("1-3 a: abcde").Letter == 'a');
-        static_assert(ParseEntry("1-3 a: abcde").Word == "abcde");
+    static_assert(ParseEntry("1-3 a: abcde").MinCount == 1);
+    static_assert(ParseEntry("1-3 a: abcde").MaxCount == 3);
+    static_assert(ParseEntry("1-3 a: abcde").Letter == 'a');
+    static_assert(ParseEntry("1-3 a: abcde").Word == "abcde");
         
-        static_assert(IsEntryValid(ParseEntry("1-3 a: abcde")));
-        static_assert(IsEntryValid(ParseEntry("2-9 c: ccccccccc")));
-        static_assert(!IsEntryValid(ParseEntry("1-3 b: cdefg")));
+    static_assert(IsEntryValid(ParseEntry("1-3 a: abcde")));
+    static_assert(IsEntryValid(ParseEntry("2-9 c: ccccccccc")));
+    static_assert(!IsEntryValid(ParseEntry("1-3 b: cdefg")));
 
-        static_assert(IsEntryValid2(ParseEntry("1-3 a: abcde")));
-        static_assert(!IsEntryValid2(ParseEntry("2-9 c: ccccccccc")));
-        static_assert(!IsEntryValid2(ParseEntry("1-3 b: cdefg")));
-
-        return true;
-    }
+    static_assert(IsEntryValid2(ParseEntry("1-3 a: abcde")));
+    static_assert(!IsEntryValid2(ParseEntry("2-9 c: ccccccccc")));
+    static_assert(!IsEntryValid2(ParseEntry("1-3 b: cdefg")));
 }

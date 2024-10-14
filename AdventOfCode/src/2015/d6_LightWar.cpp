@@ -106,14 +106,15 @@ SOLUTION(2015, 6) {
     }
 
     TEST(1) {
-        if (!TestParseCommand()) return false;
+        return TestParseCommand();
+    }
 
+    TEST(2) {
         std::vector<std::string> lines = {
             "turn on 0,0 through 1,1",
             "toggle 1,1 through 2,2"
         };
-        if (SolvePartOne(lines) != 6) return false;
 
-        return true;
+        return SolvePartOne(lines) == 6;
     }
 }

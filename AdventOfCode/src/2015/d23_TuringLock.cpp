@@ -55,7 +55,4 @@ SOLUTION(2015, 23) {
     PART(2) {
         return Constexpr::ToString(Solve(lines, 1));
     }
-    TEST(1) {
-        return true;
-    }
 }

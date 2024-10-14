@@ -138,11 +138,10 @@ SOLUTION(2021, 17) {
         return true;
     }
 
-    TEST(1) {
-        static_assert(TestTargetConstructor());
-        static_assert(SolvePartOne( "target area: x=20..30, y=-10..-5" ) == 45);
-        if (SolvePartTwo("target area: x=20..30, y=-10..-5") != 112) return false;
+    static_assert(TestTargetConstructor());
+    static_assert(SolvePartOne( "target area: x=20..30, y=-10..-5" ) == 45);
 
-        return true;
+    TEST(1) {
+        return SolvePartTwo("target area: x=20..30, y=-10..-5") == 112;
     }
 }

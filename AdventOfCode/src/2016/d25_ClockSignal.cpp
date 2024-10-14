@@ -84,13 +84,4 @@ SOLUTION(2016, 25) {
         }
         return "Not Found";
     }
-
-    PART(2) {
-        (void)lines;
-        return "Merry Christmas";
-    }
-
-    TEST(1) {
-        return true;
-    }
 }

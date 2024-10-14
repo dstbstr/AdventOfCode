@@ -80,38 +80,35 @@ In state A:
         return Constexpr::ToString(std::count(bits.begin(), bits.end(), 1));
     }
 
-    PART(2) {
-        (void)lines;
-        return "Merry Christmas";
-    }
-
+    /*
     TEST(1) {
-        //std::vector<std::string> lines = {
-        //    "Begin in state A.",
-        //    "Perform a diagnostic checksum after 6 steps.",
-        //    "",
-        //    "In state A:",
-        //    "  If the current value is 0:",
-        //    "    - Write the value 1.",
-        //    "    - Move one slot to the right.",
-        //    "    - Continue with state B.",
-        //    "  If the current value is 1:",
-        //    "    - Write the value 0.",
-        //    "    - Move one slot to the left.",
-        //    "    - Continue with state B.",
-        //    "",
-        //    "In state B:",
-        //    "  If the current value is 0:",
-        //    "    - Write the value 1.",
-        //    "    - Move one slot to the left.",
-        //    "    - Continue with state A.",
-        //    "  If the current value is 1:",
-        //    "    - Write the value 1.",
-        //    "    - Move one slot to the right.",
-        //    "    - Continue with state A."
-        //};
-        //if (PartOne(lines) != "3") return false;
+        std::vector<std::string> lines = {
+            "Begin in state A.",
+            "Perform a diagnostic checksum after 6 steps.",
+            "",
+            "In state A:",
+            "  If the current value is 0:",
+            "    - Write the value 1.",
+            "    - Move one slot to the right.",
+            "    - Continue with state B.",
+            "  If the current value is 1:",
+            "    - Write the value 0.",
+            "    - Move one slot to the left.",
+            "    - Continue with state B.",
+            "",
+            "In state B:",
+            "  If the current value is 0:",
+            "    - Write the value 1.",
+            "    - Move one slot to the left.",
+            "    - Continue with state A.",
+            "  If the current value is 1:",
+            "    - Write the value 1.",
+            "    - Move one slot to the right.",
+            "    - Continue with state A."
+        };
+        if (Part1(lines) != "3") return false;
 
         return true;
     }
+    */
 }

@@ -76,17 +76,27 @@ SOLUTION(2023, 12) {
             "????.######..#####. 1,6,5",
             "?###???????? 3,2,1"
         };
-
-        if (CountValid("???.### 1,1,3") != 1) return false;
-        if (CountValid(".??..??...?##. 1,1,3") != 4) return false;
-        if (CountValid("?#?#?#?#?#?#?#? 1,3,1,6") != 1) return false;
-        if (CountValid("????.#...#... 4,1,1") != 1) return false;
-        if (CountValid("????.######..#####. 1,6,5") != 4) return false;
-        if (CountValid("?###???????? 3,2,1") != 10) return false;
-
         if (Part1(lines) != "21") return false;
         if (Part2(lines) != "525152") return false;
-
         return true;
+    }
+
+    TEST(2) {
+        return CountValid("???.### 1,1,3") == 1;
+    }
+    TEST(3) {
+        return CountValid(".??..??...?##. 1,1,3") == 4;
+    }
+    TEST(4) {
+        return CountValid("?#?#?#?#?#?#?#? 1,3,1,6") == 1;
+    }
+    TEST(5) {
+        return CountValid("????.#...#... 4,1,1") == 1;
+    }
+    TEST(6) {
+        return CountValid("????.######..#####. 1,6,5") == 4;
+    }
+    TEST(7) {
+        return CountValid("?###???????? 3,2,1") == 10;
     }
 }

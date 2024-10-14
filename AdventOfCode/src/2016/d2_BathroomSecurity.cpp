@@ -113,8 +113,6 @@ SOLUTION(2016, 2) {
             "UUUUD"
         };
 
-        if (GetSimpleCode(lines) != "1985") return false;
-
-        return true;
+        return GetSimpleCode(lines) == "1985";
     }
 }

@@ -105,15 +105,18 @@ SOLUTION(2015, 7) {
         if (map.at("h") != "65412") return false;
         if (map.at("i") != "65079") return false;
 
+        return true;
+    }
 
-        lines = {
-            "a -> b",
-            "b -> c",
-            "c -> d",
-            "42 -> a"
+    TEST(2) {
+        auto lines = {
+        "a -> b",
+        "b -> c",
+        "c -> d",
+        "42 -> a"
         };
 
-        map = ParseInput(lines);
+        auto map = ParseInput(lines);
         Resolve("d", map);
         if (map.at("a") != "42") return false;
         if (map.at("b") != "42") return false;

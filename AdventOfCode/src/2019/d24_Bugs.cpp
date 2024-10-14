@@ -193,15 +193,15 @@ SOLUTION(2019, 24) {
         return Constexpr::ToString(SolvePartTwo(lines, 200));
     }
 
-    TEST(1) {
-        static_assert(CalcDiversity(ParseGrid(std::array<std::string_view, 5>{
-            ".....",
-                ".....",
-                ".....",
-                "#....",
-                ".#..."
-        })) == 2129920);
-        
+    static_assert(CalcDiversity(ParseGrid(std::array<std::string_view, 5>{
+        ".....",
+        ".....",
+        ".....",
+        "#....",
+        ".#..."
+    })) == 2129920);
+
+    TEST(1) {       
         std::vector<std::string> lines = {
             "....#",
             "#..#.",
@@ -210,9 +210,18 @@ SOLUTION(2019, 24) {
             "#...."
         };
 
-        if (SolvePartOne(lines) != 2129920) return false;
-        if (SolvePartTwo(lines, 10) != 99) return false;
+        return SolvePartOne(lines) == 2129920;
+    }
 
-        return true;
+    TEST(2) {
+        std::vector<std::string> lines = {
+            "....#",
+            "#..#.",
+            "#..##",
+            "..#..",
+            "#...."
+        };
+
+        return SolvePartTwo(lines, 10) == 99;
     }
 }

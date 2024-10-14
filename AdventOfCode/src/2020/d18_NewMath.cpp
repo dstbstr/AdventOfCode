@@ -44,7 +44,12 @@ SOLUTION(2020, 18) {
         if (ShuntingYard::Evaluate<size_t>("((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2", operators) != 13632) return false;
         if (ShuntingYard::Evaluate<size_t>("6 * 8 * (2 * 9) + 2 * 8 * 4", operators) != 27712) return false;
 
-        operators = ShuntingYard::Detail::DefaultOperatorData<size_t>;
+        return true;
+    }
+
+
+    TEST(2) {
+        auto operators = ShuntingYard::Detail::DefaultOperatorData<size_t>;
         for (auto& [key, value] : operators) {
             value.Precedence = 3 - value.Precedence;
         }

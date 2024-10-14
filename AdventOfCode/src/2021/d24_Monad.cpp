@@ -73,8 +73,4 @@ SOLUTION(2021, 24) {
         (void)lines;
         return Constexpr::ToString(Solve(false));
     }
-
-    TEST(1) {
-        return true;
-    }
 }

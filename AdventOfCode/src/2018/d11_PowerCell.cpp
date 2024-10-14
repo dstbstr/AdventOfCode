@@ -93,11 +93,7 @@ SOLUTION(2018, 11) {
         return Constexpr::ToString(Vec3<size_t>{overallBestCoord.X, overallBestCoord.Y, bestSize});
     }
 
-    TEST(1) {
-        static_assert(CalculatePower({ 3, 5 }, 8) == 4);
-        static_assert(CalculatePower({ 122, 79 }, 57) == -5);
-        static_assert(CalculatePower({ 217,196 }, 39) == 0);
-        
-        return true;
-    }
+    static_assert(CalculatePower({ 3, 5 }, 8) == 4);
+    static_assert(CalculatePower({ 122, 79 }, 57) == -5);
+    static_assert(CalculatePower({ 217,196 }, 39) == 0);
 }

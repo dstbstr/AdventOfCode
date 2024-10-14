@@ -109,13 +109,12 @@ SOLUTION(2016, 23) {
 
     PART(1) {
         return Constexpr::ToString(CalculateConstant(lines) + Constexpr::Factorial(7));
-        //return Constexpr::ToString(Execute(lines, 7));
     }
     PART(2) {
         return Constexpr::ToString(CalculateConstant(lines) + Constexpr::Factorial(12ull));
-        //return Constexpr::ToString(Execute(lines, 12));
     }
 
+    /*
     TEST(1) {
         std::vector<std::string> lines = {
             "cpy 2 a",
@@ -127,8 +126,7 @@ SOLUTION(2016, 23) {
             "dec a"
         };
 
-        //if (Part1(lines) != "3") return false;
-
-        return true;
+        return Part1(lines) == "3";
     }
+    */
 }

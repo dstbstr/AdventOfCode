@@ -34,11 +34,6 @@ SOLUTION(2020, 25) {
         return Constexpr::ToString(Decrypt(values[0], values[1]));
     }
 
-    PART(2) {
-        (void)lines;
-        return "Merry Christmas";
-    }
-
     constexpr bool RunTest() {
         size_t value = 1;
         size_t subject = 7;
@@ -55,12 +50,8 @@ SOLUTION(2020, 25) {
         return true;
     }
 
-    TEST(1) {
-        static_assert(RunTest());
-        static_assert(FindLoopSize(5764801) == 8);
-        static_assert(FindLoopSize(17807724) == 11);
-        static_assert(Decrypt(5764801, 17807724) == 14897079);
-
-        return true;
-    }
+    static_assert(RunTest());
+    static_assert(FindLoopSize(5764801) == 8);
+    static_assert(FindLoopSize(17807724) == 11);
+    static_assert(Decrypt(5764801, 17807724) == 14897079);
 }

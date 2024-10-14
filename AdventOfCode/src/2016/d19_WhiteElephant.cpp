@@ -31,12 +31,5 @@ SOLUTION(2016, 19) {
         return Constexpr::ToString(FindAcrossWinner(playerCount));
     }
 
-    TEST(1) {
-        static_assert(FindLeftWinner(5) == 3);
-        /*
-        if (FindLeftWinner(5) != 3) return false;
-        if (FindAcrossWinner(5) != 2) return false;
-        */
-        return true;
-    }
+    static_assert(FindLeftWinner(5) == 3);
 }

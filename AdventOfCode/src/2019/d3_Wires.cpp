@@ -87,8 +87,4 @@ SOLUTION(2019, 3) {
             });
         return Constexpr::ToString(best);
     }
-
-    TEST(1) {
-        return true;
-    }
 }

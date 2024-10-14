@@ -19,15 +19,11 @@ SOLUTION(2017, 1) {
         return Constexpr::ToString(SumDigits(lines[0], lines[0].size() / 2));
     }
 
-    TEST(1) {
-        static_assert(SumDigits("1122", 1) == 3);
-        static_assert(SumDigits("1111", 1) == 4);
-        static_assert(SumDigits("1234", 1) == 0);
-        static_assert(SumDigits("91212129", 1) == 9);
-        static_assert(SumDigits("1212", 2) == 6);
-        static_assert(SumDigits("1221", 2) == 0);
-        static_assert(SumDigits("123425", 3) == 4);
-
-        return true;
-    }
+    static_assert(SumDigits("1122", 1) == 3);
+    static_assert(SumDigits("1111", 1) == 4);
+    static_assert(SumDigits("1234", 1) == 0);
+    static_assert(SumDigits("91212129", 1) == 9);
+    static_assert(SumDigits("1212", 2) == 6);
+    static_assert(SumDigits("1221", 2) == 0);
+    static_assert(SumDigits("123425", 3) == 4);
 }

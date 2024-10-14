@@ -238,13 +238,4 @@ SOLUTION(2019, 25) {
         auto result = "\n" + Constexpr::JoinVec("\n", output);
         return result;
     }
-
-    PART(2) {
-        (void)lines;
-        return "Merry Christmas";
-    }
-
-    TEST(1) {
-        return true;
-    }
 }

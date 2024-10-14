@@ -48,10 +48,9 @@ SOLUTION(2022, 1) {
         if (elves[elves.size() - 1] + elves[elves.size() - 2] + elves[elves.size() - 3] != 45'000) return false;
         return true;
     }
+    
+    static_assert(TestGetElves());
     TEST(1) {
-        static_assert(TestGetElves());
-        if (!TestGetElves()) return false;
-
-        return true;
+        return TestGetElves();
     }
 }

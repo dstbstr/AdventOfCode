@@ -67,13 +67,18 @@ SOLUTION(2023, 1) {
     }
 
     TEST(1) {
-        if (FindFirstNumber("1abc2") != 1) return false;
-        if (FindLastNumber("1abc2") != 2) return false;
+        return FindFirstNumber("1abc2") == 1;
+    }
 
-        auto et = ReplaceWords(std::vector < std::string>{"eightwo"})[0];
-        GET_LOGS().push_back(et);
-        if (ReplaceWords(std::vector < std::string>{"eightwo"})[0] != "82") return false;
+    TEST(2) {
+        return FindLastNumber("1abc2") == 2;
+    }
 
+    TEST(3) {
+        return ReplaceWords(std::vector < std::string>{"eightwo"})[0] == "82";
+    }
+
+    TEST(4) {
         std::vector<std::string> example = {
             "two1nine", //29
             "eighttwothree", //83
@@ -82,9 +87,7 @@ SOLUTION(2023, 1) {
             "4nineeightseven2", //42
             "zoneight234" //14
         };
-        
-        if (SumDigits(ReplaceWords(example)) != 205) return false;
 
-        return true;
+        return SumDigits(ReplaceWords(example)) == 205;
     }
 }

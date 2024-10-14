@@ -102,22 +102,6 @@ SOLUTION(2022, 19) {
             "Blueprint 2: Each ore robot costs 2 ore. Each clay robot costs 3 ore. Each obsidian robot costs 3 ore and 8 clay. Each geode robot costs 3 ore and 12 obsidian."
         };
 
-        //auto bps = ParseLines(lines, ParseBp);
-        //auto bps = ParseLines(lines, ParseBlueprint);
-
-        //auto bp = ParseBlueprint(lines[0]);
-        //if (Needs(15 * Robots[Clay], Clay, bp)) return false;
-        //if (CanAfford(5 * Robots[Geo], Geo, bp)) return false;
-
-        if (SolvePartOne(lines) != 33) return false;
-
-        /*
-        if (FindMostGeodes(bps[0], 24) != 9) return false;
-        if (FindMostGeodes(bps[1], 24) != 12) return false;
-
-        if (FindMostGeodes(bps[0], 32) != 56) return false;
-        if (FindMostGeodes(bps[1], 32) != 62) return false;
-        */
-        return true;
+        return SolvePartOne(lines) == 33;
     }
 }

@@ -35,10 +35,7 @@ SOLUTION(2018, 5) {
         return Constexpr::ToString(best);
     }
 
-    TEST(1) {
-        static_assert(Reduce("aA") == "");
-        static_assert(Reduce("aa") == "aa");
-        static_assert(Reduce("dabAcCaCBAcCcaDA") == "dabCBAcaDA");
-        return true;
-    }
+    static_assert(Reduce("aA") == "");
+    static_assert(Reduce("aa") == "aa");
+    static_assert(Reduce("dabAcCaCBAcCcaDA") == "dabCBAcaDA");
 }

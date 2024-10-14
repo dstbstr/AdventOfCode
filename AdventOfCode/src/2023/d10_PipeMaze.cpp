@@ -204,8 +204,7 @@ SOLUTION(2023, 10) {
     }
 
     TEST(1) {
-
-        std::vector<std::string> e1 = {
+        std::vector<std::string> lines = {
             ".....",
             ".S-7.",
             ".|.|.",
@@ -213,10 +212,13 @@ SOLUTION(2023, 10) {
             "....."
         };
 
-        if (Part1(e1) != "4") return false;
-        if (Part2(e1) != "1") return false;
+        if (Part1(lines) != "4") return false;
+        if (Part2(lines) != "1") return false;
+        return true;
+    }
 
-        e1 = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "..........",
             ".S------7.",
             ".|F----7|.",
@@ -228,9 +230,11 @@ SOLUTION(2023, 10) {
             ".........."
         };
 
-        if (Part2(e1) != "4") return false;
+        return Part2(lines) == "4";
+    }
 
-        e1 = {
+    TEST(3) {
+        std::vector<std::string> lines = {
             "FF7FSF7F7F7F7F7F---7",
             "L|LJ||||||||||||F--J",
             "FL-7LJLJ||||||LJL-77",
@@ -243,7 +247,6 @@ SOLUTION(2023, 10) {
             "L7JLJL-JLJLJL--JLJ.L"
         };
 
-        if (Part2(e1) != "10") return false;
-        return true;
+        return Part2(lines) == "10";
     }
 }

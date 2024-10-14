@@ -119,19 +119,21 @@ SOLUTION(2017, 19) {
         return Constexpr::ToString(steps);
     }
 
+    /*
     TEST(1) {
-        //std::vector<std::string> lines = {
-        //    "     |          ",
-        //    "     |  +--+    ",
-        //    "     A  |  C    ",
-        //    " F---|----E|--+ ",
-        //    "     |  |  |  D ",
-        //    "     +B-+  +--+ "
-        //};
-        //
-        //if (PartOne(lines) != "ABCDEF") return false;
-        //if (PartTwo(lines) != "38") return false;
+        std::vector<std::string> lines = {
+            "     |          ",
+            "     |  +--+    ",
+            "     A  |  C    ",
+            " F---|----E|--+ ",
+            "     |  |  |  D ",
+            "     +B-+  +--+ "
+        };
+        
+        if (PartOne(lines) != "ABCDEF") return false;
+        if (PartTwo(lines) != "38") return false;
 
         return true;
     }
+    */
 }

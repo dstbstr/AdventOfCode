@@ -101,8 +101,4 @@ SOLUTION(2019, 17) {
 
         return Constexpr::ToString(output);
     }
-
-    TEST(1) {
-        return true;
-    }
 }

@@ -264,9 +264,11 @@ SOLUTION(2019, 20) {
            "             Z     ",
         };
 
-        if (Solve(lines, FindShortestPath) != 23) return false;
+        return Solve(lines, FindShortestPath) == 23;
+    }
 
-        lines = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "                   A               ",
             "                   A               ",
             "  #################.#############  ",
@@ -306,9 +308,11 @@ SOLUTION(2019, 20) {
             "           U   P   P               ",
         };
 
-        if (Solve(lines, FindShortestPath) != 58) return false;
+        return Solve(lines, FindShortestPath) == 58;
+    }
 
-        lines = {
+    TEST(3) {
+        std::vector<std::string> lines = {
     "             Z L X W       C                 ",
     "             Z P Q B       K                 ",
     "  ###########.#.#.#.#######.###############  ",
@@ -348,8 +352,6 @@ SOLUTION(2019, 20) {
     "               A A D   M                     "
         };
 
-        if (Solve(lines, FindShortestRecursivePath) != 396) return false;
-
-        return true;
+        return Solve(lines, FindShortestRecursivePath) == 396;
     }
 }

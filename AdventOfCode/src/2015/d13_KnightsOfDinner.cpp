@@ -89,8 +89,6 @@ SOLUTION(2015, 13) {
             "David would gain 41 happiness units by sitting next to Carol."
         };
 
-        if (FindBestSeating(lines, false) != 330) return false;
-
-        return true;
+        return FindBestSeating(lines, false) == 330;
     }
 }

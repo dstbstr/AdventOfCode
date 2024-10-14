@@ -110,13 +110,12 @@ SOLUTION(2021, 14) {
         return Solve(lines, 40) == 2188189693529;
     }
 
-    TEST(1) {
-        static_assert(GetInitialCounts("NNCB")[Constexpr::FromBase26("NN")] == 1);
-        static_assert(GetInitialCounts("NNCB")[Constexpr::FromBase26("NC")] == 1);
-        static_assert(GetInitialCounts("NNCB")[Constexpr::FromBase26("CB")] == 1);
-        //static_assert(TestSolve());
-        if (!TestSolve()) return false;
+    static_assert(GetInitialCounts("NNCB")[Constexpr::FromBase26("NN")] == 1);
+    static_assert(GetInitialCounts("NNCB")[Constexpr::FromBase26("NC")] == 1);
+    static_assert(GetInitialCounts("NNCB")[Constexpr::FromBase26("CB")] == 1);
+    //static_assert(TestSolve());
 
-        return true;
+    TEST(1) {
+        return TestSolve();
     }
 }

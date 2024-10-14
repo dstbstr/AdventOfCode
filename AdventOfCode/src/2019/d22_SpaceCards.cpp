@@ -128,12 +128,8 @@ SOLUTION(2019, 22) {
         return running == expected;
     }
 
-    TEST(1) {
-        static_assert(RunTest({ 1, 2, 3 }, { 3, 2, 1 }, NewStack));
-        static_assert(RunTest({ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 3, 4, 5, 6, 7, 8, 9, 0, 1, 2 }, Cut, 3));
-        static_assert(RunTest({ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 6, 7, 8, 9, 0, 1, 2, 3, 4, 5 }, Cut, -4));
-        static_assert(RunTest({ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 0, 7, 4, 1, 8, 5, 2, 9, 6, 3 }, DealWithIncrement, 3));
-
-        return true;
-    }
+    static_assert(RunTest({ 1, 2, 3 }, { 3, 2, 1 }, NewStack));
+    static_assert(RunTest({ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 3, 4, 5, 6, 7, 8, 9, 0, 1, 2 }, Cut, 3));
+    static_assert(RunTest({ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 6, 7, 8, 9, 0, 1, 2, 3, 4, 5 }, Cut, -4));
+    static_assert(RunTest({ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 0, 7, 4, 1, 8, 5, 2, 9, 6, 3 }, DealWithIncrement, 3));
 }

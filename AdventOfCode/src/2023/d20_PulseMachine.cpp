@@ -212,7 +212,7 @@ SOLUTION(2023, 20) {
     }
 
     TEST(1) {
-        std::vector<std::string> example = {
+        std::vector<std::string> lines = {
             "broadcaster -> a, b, c",
             "%a -> b",
             "%b -> c",
@@ -220,9 +220,11 @@ SOLUTION(2023, 20) {
             "&inv -> a"
         };
 
-        if (Part1(example) != "32000000") return false;
+        return Part1(lines) == "32000000";
+    }
 
-        example = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "broadcaster -> a",
             "%a -> inv, con",
             "&inv -> b",
@@ -230,7 +232,7 @@ SOLUTION(2023, 20) {
             "&con -> output",
         };
 
-        if (Part1(example) != "11687500") return false;
-        return true;
+        return Part1(lines) == "11687500";
     }
+
 }

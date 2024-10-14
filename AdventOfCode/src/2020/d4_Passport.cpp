@@ -166,10 +166,10 @@ SOLUTION(2020, 4) {
         return ValidatePassport(ParsePassport(lines));
     }
 
-    TEST(1) {
-        static_assert(TestParsePassport());
-        static_assert(TestValidatePassport());
+    static_assert(TestParsePassport());
+    static_assert(TestValidatePassport());
 
+    TEST(1) {
         std::vector<std::string> lines = {
             "pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980",
             "hcl:#623a2f"

@@ -82,11 +82,11 @@ SOLUTION(2021, 10) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TEST(1) {
-        static_assert(GetScore("{([(<{}[<>[]}>{[]{[(<()>").first == 1197);
-        static_assert(GetScore("[[<[([]))<([[{}[[()]]]").first == 3);
-        static_assert(GetScore("(((({<>}<{<{<>}{[]{[]{}").second == 1480781);
+    static_assert(GetScore("{([(<{}[<>[]}>{[]{[(<()>").first == 1197);
+    static_assert(GetScore("[[<[([]))<([[{}[[()]]]").first == 3);
+    static_assert(GetScore("(((({<>}<{<{<>}{[]{[]{}").second == 1480781);
 
+    TEST(1) {
         std::vector<std::string> lines = {
             "[({(<(())[]>[[{[]{<()<>>",
             "[(()[<>])]({[<{<<[]>>(",
@@ -95,7 +95,6 @@ SOLUTION(2021, 10) {
             "<{([{{}}[<[[[<>{}]]]>[]]"
         };
 
-        if (SolvePartTwo(lines) != 288957) return false;
-        return true;
+        return SolvePartTwo(lines) == 288957;
     }
 }

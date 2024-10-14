@@ -112,11 +112,11 @@ SOLUTION(2016, 14) {
         return Constexpr::ToString(FindKey64(lines[0], true, PartTwoHints));
     }
 
+    /*
     TEST(1) {
-        //if (FindKey64("abc", true) != 22551) return false;
-
-        return true;
+        return FindKey64("abc", true) == 22551;
     }
+    */
 }
 
 

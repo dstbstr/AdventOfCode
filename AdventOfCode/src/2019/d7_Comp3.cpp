@@ -21,6 +21,7 @@ SOLUTION(2019, 7) {
             return Code[State.Ip] % 100 == OpCode::Halt;
         }
     };
+
     PART(1) {
         auto code = ParseInstructions(lines[0]);
         s64 best = 0;
@@ -61,9 +62,5 @@ SOLUTION(2019, 7) {
         } while (std::next_permutation(phases.begin(), phases.end()));
 
         return Constexpr::ToString(best);
-    }
-
-    TEST(1) {
-        return true;
     }
 }

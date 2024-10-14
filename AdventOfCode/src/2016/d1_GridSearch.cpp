@@ -1,5 +1,6 @@
 #include "Common.h"
 #include "Facing.h"
+#include <format>
 
 SOLUTION(2016, 1) {
     constexpr size_t FindTarget(std::string_view directions) {
@@ -14,7 +15,7 @@ SOLUTION(2016, 1) {
             Move(target, facing, amount);
         }
 
-        return MDistance(target, Coord{ 0, 0 });
+        return MDistance(target);
     }
 
     constexpr size_t FindTarget2(std::string_view directions) {
@@ -43,13 +44,8 @@ SOLUTION(2016, 1) {
         return Constexpr::ToString(FindTarget2(lines[0]));
     }
 
-    TEST(1) {
-        if (FindTarget("R2, L3") != 5) return false;
-        if (FindTarget("R2, R2, R2") != 2) return false;
-        if (FindTarget("R5, L5, R5, R3") != 12) return false;
-
-        if (FindTarget2("R8, R4, R4, R8") != 4) return false;
-        
-        return true;
-    }
+    static_assert(FindTarget("R2, L3") == 5);
+    static_assert(FindTarget("R2, R2, R2") == 2);
+    static_assert(FindTarget("R5, L5, R5, R3") == 12);
+    static_assert(FindTarget2("R8, R4, R4, R8") == 4);
 }

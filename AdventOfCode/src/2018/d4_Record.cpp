@@ -137,42 +137,44 @@ SOLUTION(2018, 4) {
         return Constexpr::ToString(resultMinute * resultGuardId);
     }
 
+    static_assert(ParseDateTime("1518-10-05 00:56").Month == 10);
+    static_assert(ParseDateTime("1518-10-05 00:56").Day == 5);
+    static_assert(ParseDateTime("1518-10-05 00:56").Hour == 0);
+    static_assert(ParseDateTime("1518-10-05 00:56").Minute == 56);
+
+    static_assert(ParseEvent("[1518-11-01 00:00] Guard #10 begins shift").EventTime == DateTime{ 11, 1, 0, 0 });
+    static_assert(ParseEvent("[1518-11-01 00:00] Guard #10 begins shift").GuardId == 10);
+    static_assert(ParseEvent("[1518-11-01 00:00] Guard #10 begins shift").EventAction == Action::Start);
+    static_assert(ParseEvent("[1518-10-05 00:56] falls asleep").EventTime == DateTime{ 10, 5, 0, 56 });
+    static_assert(ParseEvent("[1518-10-05 00:56] falls asleep").EventAction == Action::Sleep);
+    static_assert(ParseEvent("[1518-05-09 00:32] wakes up").EventAction == Action::Awake);
+    
+    /*
     TEST(1) {
-        static_assert(ParseDateTime("1518-10-05 00:56").Month == 10);
-        static_assert(ParseDateTime("1518-10-05 00:56").Day == 5);
-        static_assert(ParseDateTime("1518-10-05 00:56").Hour == 0);
-        static_assert(ParseDateTime("1518-10-05 00:56").Minute == 56);
-
-        static_assert(ParseEvent("[1518-11-01 00:00] Guard #10 begins shift").EventTime == DateTime{ 11, 1, 0, 0 });
-        static_assert(ParseEvent("[1518-11-01 00:00] Guard #10 begins shift").GuardId == 10);
-        static_assert(ParseEvent("[1518-11-01 00:00] Guard #10 begins shift").EventAction == Action::Start);
-        static_assert(ParseEvent("[1518-10-05 00:56] falls asleep").EventTime == DateTime{ 10, 5, 0, 56 });
-        static_assert(ParseEvent("[1518-10-05 00:56] falls asleep").EventAction == Action::Sleep);
-        static_assert(ParseEvent("[1518-05-09 00:32] wakes up").EventAction == Action::Awake);
-
-        //std::vector<std::string> lines = {
-        //    "[1518-11-01 00:00] Guard #10 begins shift",
-        //    "[1518-11-01 00:05] falls asleep",
-        //    "[1518-11-01 00:25] wakes up",
-        //    "[1518-11-01 00:30] falls asleep",
-        //    "[1518-11-01 00:55] wakes up",
-        //    "[1518-11-01 23:58] Guard #99 begins shift",
-        //    "[1518-11-02 00:40] falls asleep",
-        //    "[1518-11-02 00:50] wakes up",
-        //    "[1518-11-03 00:05] Guard #10 begins shift",
-        //    "[1518-11-03 00:24] falls asleep",
-        //    "[1518-11-03 00:29] wakes up",
-        //    "[1518-11-04 00:02] Guard #99 begins shift",
-        //    "[1518-11-04 00:36] falls asleep",
-        //    "[1518-11-04 00:46] wakes up",
-        //    "[1518-11-05 00:03] Guard #99 begins shift",
-        //    "[1518-11-05 00:45] falls asleep",
-        //    "[1518-11-05 00:55] wakes up"
-        //};
-        //
-        //if (PartOne(lines) != "240") return false;
-        //if (PartTwo(lines) != "4455") return false;
+        std::vector<std::string> lines = {
+            "[1518-11-01 00:00] Guard #10 begins shift",
+            "[1518-11-01 00:05] falls asleep",
+            "[1518-11-01 00:25] wakes up",
+            "[1518-11-01 00:30] falls asleep",
+            "[1518-11-01 00:55] wakes up",
+            "[1518-11-01 23:58] Guard #99 begins shift",
+            "[1518-11-02 00:40] falls asleep",
+            "[1518-11-02 00:50] wakes up",
+            "[1518-11-03 00:05] Guard #10 begins shift",
+            "[1518-11-03 00:24] falls asleep",
+            "[1518-11-03 00:29] wakes up",
+            "[1518-11-04 00:02] Guard #99 begins shift",
+            "[1518-11-04 00:36] falls asleep",
+            "[1518-11-04 00:46] wakes up",
+            "[1518-11-05 00:03] Guard #99 begins shift",
+            "[1518-11-05 00:45] falls asleep",
+            "[1518-11-05 00:55] wakes up"
+        };
+        
+        if (Part1(lines) != "240") return false;
+        if (Part2(lines) != "4455") return false;
 
         return true;
     }
+    */
 }

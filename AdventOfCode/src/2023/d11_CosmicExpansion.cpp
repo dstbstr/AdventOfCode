@@ -81,7 +81,7 @@ SOLUTION(2023, 11) {
     }
 
     TEST(1) {
-        std::vector<std::string> given = {
+        std::vector<std::string> lines = {
             "...#......",
             ".......#..",
             "#.........",
@@ -94,7 +94,6 @@ SOLUTION(2023, 11) {
             "#...#....."
         };
         
-        if (Part1(given) != "374") return false;
-        return true;
+        return Part1(lines) == "374";
     }
 }

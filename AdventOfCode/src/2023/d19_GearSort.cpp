@@ -185,7 +185,7 @@ SOLUTION(2023, 19) {
     }
 
     TEST(1) {
-        std::vector<std::string> example = {
+        std::vector<std::string> lines = {
         "px{a<2006:qkq,m>2090:A,rfg}",
         "pv{a>1716:R,A}",
         "lnx{m>1548:A,A}",
@@ -205,8 +205,8 @@ SOLUTION(2023, 19) {
         "{x=2127,m=1623,a=2188,s=1013}"
         };
 
-        if (Part1(example) != "19114") return false;
-        if (Part2(example) != "167409079868000") return false;
+        if (Part1(lines) != "19114") return false;
+        if (Part2(lines) != "167409079868000") return false;
 
         return true;
     }

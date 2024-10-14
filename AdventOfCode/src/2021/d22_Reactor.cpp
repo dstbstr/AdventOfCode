@@ -116,13 +116,13 @@ SOLUTION(2021, 22) {
         return true;
     }
 
-    TEST(1) {
-        static_assert(TestCubeSubtract());
+    static_assert(TestCubeSubtract());
 
-        static_assert(ParseLine("on x=-40..11,y=-14..32,z=-31..22").On);
-        static_assert(ParseLine("on x=-40..11,y=-14..32,z=-31..22").Min == Vec3<s32>{-40, -14, -31});
-        static_assert(ParseLine("on x=-40..11,y=-14..32,z=-31..22").Max == Vec3<s32>{11, 32, 22});
-        
+    static_assert(ParseLine("on x=-40..11,y=-14..32,z=-31..22").On);
+    static_assert(ParseLine("on x=-40..11,y=-14..32,z=-31..22").Min == Vec3<s32>{-40, -14, -31});
+    static_assert(ParseLine("on x=-40..11,y=-14..32,z=-31..22").Max == Vec3<s32>{11, 32, 22});
+
+    TEST(1) {       
         std::vector<std::string> lines = {
             "on x=-20..26,y=-36..17,z=-47..7",
             "on x=-20..33,y=-21..23,z=-26..28",
@@ -148,9 +148,11 @@ SOLUTION(2021, 22) {
             "on x=967..23432,y=45373..81175,z=27513..53682"
         };
 
-        if (Solve(lines, IsInRange) != 590784) return false;
+        return Solve(lines, IsInRange) == 590784;
+    }
 
-        lines = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "on x=-5..47,y=-31..22,z=-19..33",
             "on x=-44..5,y=-27..21,z=-14..35",
             "on x=-49..-1,y=-11..42,z=-10..38",
@@ -213,8 +215,6 @@ SOLUTION(2021, 22) {
             "off x=-93533..-4276,y=-16170..68771,z=-104985..-24507"
         };
 
-        if (Solve(lines, AcceptAll) != 2758514936282235u) return false;
-
-        return true;
+        return Solve(lines, AcceptAll) == 2758514936282235u;
     }
 }

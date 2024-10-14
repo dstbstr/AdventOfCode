@@ -60,27 +60,23 @@ SOLUTION(2022, 3) {
         return Constexpr::ToString(result);
     }
 
-    TEST(1) {
-        static_assert(GetLetterValue('a') == 1);
-        static_assert(GetLetterValue('A') == 27);
-        static_assert(GetLetterValue('z') == 26);
-        static_assert(GetLetterValue('Z') == 52);
+    static_assert(GetLetterValue('a') == 1);
+    static_assert(GetLetterValue('A') == 27);
+    static_assert(GetLetterValue('z') == 26);
+    static_assert(GetLetterValue('Z') == 52);
         
-        static_assert(FindDuplicate("vJrwpWtwJgWrhcsFMMfFFhFp") == 'p');
-        static_assert(FindDuplicate("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL") == 'L');
-        static_assert(FindDuplicate("PmmdzqPrVvPwwTWBwg") == 'P');
-        static_assert(FindDuplicate("wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn") == 'v');
+    static_assert(FindDuplicate("vJrwpWtwJgWrhcsFMMfFFhFp") == 'p');
+    static_assert(FindDuplicate("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL") == 'L');
+    static_assert(FindDuplicate("PmmdzqPrVvPwwTWBwg") == 'P');
+    static_assert(FindDuplicate("wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn") == 'v');
         
-        static_assert(FindBadge(
-            "vJrwpWtwJgWrhcsFMMfFFhFp",
-            "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
-            "PmmdzqPrVvPwwTWBwg") == 'r');
+    static_assert(FindBadge(
+        "vJrwpWtwJgWrhcsFMMfFFhFp",
+        "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+        "PmmdzqPrVvPwwTWBwg") == 'r');
 
-        static_assert(FindBadge(
-            "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
-            "ttgJtRGJQctTZtZT",
-            "CrZsJsPPZsGzwwsLwLmpwMDw") == 'Z');
-        
-        return true;
-    }
+    static_assert(FindBadge(
+        "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
+        "ttgJtRGJQctTZtZT",
+        "CrZsJsPPZsGzwwsLwLmpwMDw") == 'Z');
 }

@@ -58,7 +58,6 @@ SOLUTION(2023, 6) {
             "Distance:  9  40  200"
         };
 
-        if (Part1(lines) != "288") return false;
-        return true;
+        return Part1(lines) == "288";
     }
 }

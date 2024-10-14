@@ -229,8 +229,4 @@ SOLUTION(2017, 21) {
     PART(2) {
         return Constexpr::ToString(Solve(lines, 18));
     }
-
-    TEST(1) {
-        return true;
-    }
 }

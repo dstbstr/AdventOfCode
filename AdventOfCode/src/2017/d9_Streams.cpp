@@ -66,34 +66,30 @@ SOLUTION(2017, 9) {
         return removed == expectedCount;
     }
 
-    TEST(1) {
-        static_assert(TestRemoveNots("!!", ""));
-        static_assert(TestRemoveNots("!", "!"));
-        static_assert(TestRemoveNots("!!!", "!"));
-        static_assert(TestRemoveNots("!!!!", ""));
+    static_assert(TestRemoveNots("!!", ""));
+    static_assert(TestRemoveNots("!", "!"));
+    static_assert(TestRemoveNots("!!!", "!"));
+    static_assert(TestRemoveNots("!!!!", ""));
         
-        static_assert(TestRemoveGarbage("<>", "", 0));
-        static_assert(TestRemoveGarbage("<random characters>", "", 17));
-        static_assert(TestRemoveGarbage("<<<<>", "", 3));
-        static_assert(TestRemoveGarbage("<{!>}>", "", 2));
-        static_assert(TestRemoveGarbage("{{<ab>},{<ab>},{<ab>},{<ab>}}", "{{},{},{},{}}", 8));
-        static_assert(TestRemoveGarbage("{<{},{},{{}}>}", "{}", 10));
-        static_assert(TestRemoveGarbage("{{<!>},{<!>},{<!>},{<a>}}", "{{}}", 13));
-        static_assert(TestRemoveGarbage("{<>,<>,<>}", "{,,}", 0));
+    static_assert(TestRemoveGarbage("<>", "", 0));
+    static_assert(TestRemoveGarbage("<random characters>", "", 17));
+    static_assert(TestRemoveGarbage("<<<<>", "", 3));
+    static_assert(TestRemoveGarbage("<{!>}>", "", 2));
+    static_assert(TestRemoveGarbage("{{<ab>},{<ab>},{<ab>},{<ab>}}", "{{},{},{},{}}", 8));
+    static_assert(TestRemoveGarbage("{<{},{},{{}}>}", "{}", 10));
+    static_assert(TestRemoveGarbage("{{<!>},{<!>},{<!>},{<a>}}", "{{}}", 13));
+    static_assert(TestRemoveGarbage("{<>,<>,<>}", "{,,}", 0));
         
-        static_assert(CalculateScore("{}") == 1);
-        static_assert(CalculateScore("{{{}}}") == 6);
-        static_assert(CalculateScore("{{},{}}") == 5);
-        static_assert(CalculateScore("{{{},{},{{}}}}") == 16);
+    static_assert(CalculateScore("{}") == 1);
+    static_assert(CalculateScore("{{{}}}") == 6);
+    static_assert(CalculateScore("{{},{}}") == 5);
+    static_assert(CalculateScore("{{{},{},{{}}}}") == 16);
         
-        //static_assert(PartTwo({ "<>" }) == "0");
-        //static_assert(PartTwo({ "<random characters>" }) == "17");
-        //static_assert(PartTwo({ "<<<<>" }) == "3");
-        //static_assert(PartTwo({ "<{!>}>" }) == "2");
-        //static_assert(PartTwo({ "<!!>" }) == "0");
-        //static_assert(PartTwo({ "<!!!>>" }) == "0");
-        //static_assert(PartTwo({ "<{o\"i!a,<{i<a>" }) == "10");
-
-        return true;
-    }
+    //static_assert(PartTwo({ "<>" }) == "0");
+    //static_assert(PartTwo({ "<random characters>" }) == "17");
+    //static_assert(PartTwo({ "<<<<>" }) == "3");
+    //static_assert(PartTwo({ "<{!>}>" }) == "2");
+    //static_assert(PartTwo({ "<!!>" }) == "0");
+    //static_assert(PartTwo({ "<!!!>>" }) == "0");
+    //static_assert(PartTwo({ "<{o\"i!a,<{i<a>" }) == "10");
 }

@@ -78,21 +78,17 @@ SOLUTION(2018, 9) {
         */
     }
 
-    TEST(1) {
-        static_assert (Play<9, 25>() == 32);
-        static_assert (Play<10, 1618>() == 8317);
-        static_assert (Play<13, 7999>() == 146373);
-        static_assert (Play<17, 1104>() == 2764);
-        static_assert (Play<21, 6111>() == 54718);
-        static_assert (Play<30, 5807>() == 37305);
+    static_assert (Play<9, 25>() == 32);
+    static_assert (Play<10, 1618>() == 8317);
+    static_assert (Play<13, 7999>() == 146373);
+    static_assert (Play<17, 1104>() == 2764);
+    static_assert (Play<21, 6111>() == 54718);
+    static_assert (Play<30, 5807>() == 37305);
 
-        static_assert (Play2(9, 25) == 32);
-        static_assert (Play2(10, 1618) == 8317);
-        static_assert (Play2(13, 7999) == 146373);
-        static_assert (Play2(17, 1104) == 2764);
-        static_assert (Play2(21, 6111) == 54718);
-        static_assert (Play2(30, 5807) == 37305);
-
-        return true;
-    }
+    static_assert (Play2(9, 25) == 32);
+    static_assert (Play2(10, 1618) == 8317);
+    static_assert (Play2(13, 7999) == 146373);
+    static_assert (Play2(17, 1104) == 2764);
+    static_assert (Play2(21, 6111) == 54718);
+    static_assert (Play2(30, 5807) == 37305);
 }

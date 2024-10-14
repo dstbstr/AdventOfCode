@@ -65,9 +65,10 @@ SOLUTION(2018, 23) {
         return Constexpr::ToString(result);
     }
 
+    static_assert(ParseBot("pos=<11,22,33>, r=44").Pos == Vec3<s32>{11, 22, 33});
+    static_assert(ParseBot("pos=<11,22,33>, r=44").Radius == 44);
+    /*
     TEST(1) {
-        static_assert(ParseBot("pos=<11,22,33>, r=44").Pos == Vec3<s32>{11, 22, 33});
-        static_assert(ParseBot("pos=<11,22,33>, r=44").Radius == 44);
 
         std::vector<std::string> lines = {
             "pos=<10,12,12>, r=2",
@@ -78,7 +79,8 @@ SOLUTION(2018, 23) {
             "pos=<10,10,10>, r=5"
         };
 
-        //if (PartTwo(lines) != "36") return false;
+        if (Part2(lines) != "36") return false;
         return true;
     }
+    */
 }

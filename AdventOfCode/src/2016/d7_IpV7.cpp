@@ -109,30 +109,25 @@ SOLUTION(2016, 7) {
         return Constexpr::ToString(std::count_if(lines.begin(), lines.end(), SupportsSsl));
     }
 
-    TEST(1) {
-        static_assert(ContainsAbba("abba"));
-        static_assert(ContainsAbba("xyyx"));
-        static_assert(!ContainsAbba("mnop"));
-        static_assert(!ContainsAbba("aaaa"));
-        static_assert(ContainsAbba("ioxxoj"));
+    static_assert(ContainsAbba("abba"));
+    static_assert(ContainsAbba("xyyx"));
+    static_assert(!ContainsAbba("mnop"));
+    static_assert(!ContainsAbba("aaaa"));
+    static_assert(ContainsAbba("ioxxoj"));
         
-        static_assert(GetThreeLetterSequences({ "zazbz" }).size() == 2);
-        static_assert(GetThreeLetterSequences({ "zazbz" })[0] == "zaz");
-        static_assert(GetThreeLetterSequences({ "zazbz" })[1] == "zbz");
+    static_assert(GetThreeLetterSequences({ "zazbz" }).size() == 2);
+    static_assert(GetThreeLetterSequences({ "zazbz" })[0] == "zaz");
+    static_assert(GetThreeLetterSequences({ "zazbz" })[1] == "zbz");
         
-        static_assert(InvertThreeLetters("aba") == "bab");
+    static_assert(InvertThreeLetters("aba") == "bab");
 
-        static_assert(IsValid("abba[mnop]qrst"));
-        static_assert(!IsValid("abcd[bddb]xyyx"));
-        static_assert(!IsValid("aaaa[qwer]tyui"));
-        static_assert(IsValid("ioxxoj[asdfgh]zxcvbn"));
+    static_assert(IsValid("abba[mnop]qrst"));
+    static_assert(!IsValid("abcd[bddb]xyyx"));
+    static_assert(!IsValid("aaaa[qwer]tyui"));
+    static_assert(IsValid("ioxxoj[asdfgh]zxcvbn"));
         
-        static_assert(SupportsSsl("aba[bab]xyz"));
-        static_assert(!SupportsSsl("xyx[xyx]xyx"));
-        static_assert(SupportsSsl("aaa[kek]eke"));
-        static_assert(SupportsSsl("zazbz[bzb]cdb"));
-
-        if (!IsValid("abba[mnop]qrst")) return false;
-        return true;
-    }
+    static_assert(SupportsSsl("aba[bab]xyz"));
+    static_assert(!SupportsSsl("xyx[xyx]xyx"));
+    static_assert(SupportsSsl("aaa[kek]eke"));
+    static_assert(SupportsSsl("zazbz[bzb]cdb"));
 }

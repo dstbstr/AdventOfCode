@@ -83,18 +83,20 @@ SOLUTION(2018, 6) {
         return Constexpr::ToString(count);
     }
 
+    /*
     TEST(1) {
-        //std::vector<std::string> lines = {
-        //    "1, 1",
-        //    "1, 6",
-        //    "8, 3",
-        //    "3, 4",
-        //    "5, 5",
-        //    "8, 9"
-        //};
-        //
-        //if (PartOne(lines) != "17") return false;
+        std::vector<std::string> lines = {
+            "1, 1",
+            "1, 6",
+            "8, 3",
+            "3, 4",
+            "5, 5",
+            "8, 9"
+        };
+        
+        if (Part1(lines) != "17") return false;
 
         return true;
     }
+    */
 }

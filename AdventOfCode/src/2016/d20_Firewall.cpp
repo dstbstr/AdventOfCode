@@ -68,9 +68,7 @@ SOLUTION(2016, 20) {
             "4-7"
         };
 
-        if (FindLowest(lines) != 3) return false;
-
-        return true;
+        return FindLowest(lines) == 3;
     }
 }
 

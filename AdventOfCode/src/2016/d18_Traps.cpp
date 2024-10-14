@@ -26,10 +26,6 @@ SOLUTION(2016, 18) {
         return Constexpr::ToString(CountSafeTiles(lines[0], 400'000));
     }
 
-    TEST(1) {
-        static_assert(CountSafeTiles(".^^.^.^^^^", 10) == 38);
-
-        return true;
-    }
+    static_assert(CountSafeTiles(".^^.^.^^^^", 10) == 38);
 }
 

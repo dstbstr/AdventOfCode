@@ -73,27 +73,24 @@ SOLUTION(2018, 25) {
         return Constexpr::ToString(constellations.size());
     }
 
-    PART(2) {
-        (void)lines;
-        return "Merry Christmas";
-    }
-
+    /*
     TEST(1) {
-        //std::vector<std::string> lines = {
-        //    "1,-1,-1,-2",
-        //    "-2,-2,0,1",
-        //    "0,2,1,3",
-        //    "-2,3,-2,1",
-        //    "0,2,3,-2",
-        //    "-1,-1,1,-2",
-        //    "0,-2,-1,0",
-        //    "-2,2,3,-1",
-        //    "1,2,2,0",
-        //    "-1,-2,0,-2"
-        //};
-        //
-        //if (PartOne(lines) != "8") return false;
+        std::vector<std::string> lines = {
+            "1,-1,-1,-2",
+            "-2,-2,0,1",
+            "0,2,1,3",
+            "-2,3,-2,1",
+            "0,2,3,-2",
+            "-1,-1,1,-2",
+            "0,-2,-1,0",
+            "-2,2,3,-1",
+            "1,2,2,0",
+            "-1,-2,0,-2"
+        };
+        
+        if (Part1(lines) != "8") return false;
 
         return true;
     }
+    */
 }

@@ -56,21 +56,17 @@ SOLUTION(2015, 5) {
         return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsReallyNice) + 1); //why is this one wrong?
     }
 
-    TEST(1) {
-        static_assert(IsNice("ugknbfddgicrmopn"));
-        static_assert(IsNice("aaa"));
+    static_assert(IsNice("ugknbfddgicrmopn"));
+    static_assert(IsNice("aaa"));
 
-        static_assert(!IsNice("jchzalrnumimnmhp"));
-        static_assert(!IsNice("haegwjzuvuyypxyu"));
-        static_assert(!IsNice("dvszwmarrgswjxmb"));
+    static_assert(!IsNice("jchzalrnumimnmhp"));
+    static_assert(!IsNice("haegwjzuvuyypxyu"));
+    static_assert(!IsNice("dvszwmarrgswjxmb"));
 
-        static_assert(IsReallyNice("qjhvhtzxzqqjkmpb"));
-        static_assert(IsReallyNice("xxyxx"));
+    static_assert(IsReallyNice("qjhvhtzxzqqjkmpb"));
+    static_assert(IsReallyNice("xxyxx"));
 
-        static_assert(!IsReallyNice("uurcxstgmygtbstg"));
-        static_assert(!IsReallyNice("ieodomkazucvgmuy"));
-        static_assert(!IsReallyNice("aaa"));
-
-        return true;
-    }
+    static_assert(!IsReallyNice("uurcxstgmygtbstg"));
+    static_assert(!IsReallyNice("ieodomkazucvgmuy"));
+    static_assert(!IsReallyNice("aaa"));
 }

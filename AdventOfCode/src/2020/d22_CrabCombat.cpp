@@ -105,9 +105,8 @@ SOLUTION(2020, 22) {
         return Constexpr::ToString(Solve(lines, PlaySubGame));
     }
 
+    static_assert(CalculateScore({ 3, 2, 10, 6, 8, 5, 9, 4, 7, 1 }) == 306);
     TEST(1) {
-        static_assert(CalculateScore({ 3, 2, 10, 6, 8, 5, 9, 4, 7, 1 }) == 306);
-        
         std::vector<std::string> lines = {
             "Player 1:",
             "9","2","6","3","1",

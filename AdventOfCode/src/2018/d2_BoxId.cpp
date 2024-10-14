@@ -56,27 +56,27 @@ SOLUTION(2018, 2) {
         return hasTwos == expectedTwos && hasThrees == expectedThrees;
     }
 
+    static_assert(TestHasTwosAndThrees("abcdef", false, false));
+    static_assert(TestHasTwosAndThrees("abcd", false, false));
+    static_assert(TestHasTwosAndThrees("aacd", true, false));
+    static_assert(TestHasTwosAndThrees("aaad", false, true));
+
+    static_assert(OffByOne("abc", "adc"));
+    static_assert(!OffByOne("abcd", "efgh"));
+    /*
     TEST(1) {
-        static_assert(TestHasTwosAndThrees("abcdef", false, false));
-        static_assert(TestHasTwosAndThrees("abcd", false, false));
-        static_assert(TestHasTwosAndThrees("aacd", true, false));
-        static_assert(TestHasTwosAndThrees("aaad", false, true));
-
-        static_assert(OffByOne("abc", "adc"));
-        static_assert(!OffByOne("abcd", "efgh"));
         
-        //std::vector<std::string> lines = {
-        //    "abcdef",
-        //    "bababc",
-        //    "abbcde",
-        //    "abcccd",
-        //    "aabcdd",
-        //    "abcdee",
-        //    "ababab"
-        //};
-        //
-        //if (PartOne(lines) != "12") return false;
-
-        return true;
+        std::vector<std::string> lines = {
+            "abcdef",
+            "bababc",
+            "abbcde",
+            "abcccd",
+            "aabcdd",
+            "abcdee",
+            "ababab"
+        };
+        
+        return Part1(lines) == "12";
     }
+    */
 }

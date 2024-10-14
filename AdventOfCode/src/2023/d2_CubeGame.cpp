@@ -75,7 +75,7 @@ SOLUTION(2023, 2) {
         }
         return Constexpr::ToString(result);
     }
-    //2168 is too low
+ 
     PART(2) {
         auto games = ParseLines(lines, ParseGame);
 
@@ -83,9 +83,5 @@ SOLUTION(2023, 2) {
             return running + game.GetPower();
             });
         return Constexpr::ToString(result);
-    }
-
-    TEST(1) {
-        return true;
     }
 }

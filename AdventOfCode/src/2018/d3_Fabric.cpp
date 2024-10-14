@@ -74,8 +74,9 @@ SOLUTION(2018, 3) {
         return "Not Found";
     }
 
+    static_assert(Intersects(ParseRect("#1 @ 1,3: 4x4"), ParseRect("#2 @ 3,1: 4x4")));
+
     TEST(1) {
-        static_assert(Intersects(ParseRect("#1 @ 1,3: 4x4"), ParseRect("#2 @ 3,1: 4x4")));
         std::vector<std::string> lines = {
             "#1 @ 1,3: 4x4",
             "#2 @ 3,1: 4x4",

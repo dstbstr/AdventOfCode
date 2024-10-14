@@ -142,7 +142,7 @@ SOLUTION(2023, 22) {
     }
 
     TEST(1) {
-        std::vector<std::string> example = {
+        std::vector<std::string> lines = {
             "1,0,1~1,2,1",
             "0,0,2~2,0,2",
             "0,2,3~2,2,3",
@@ -152,8 +152,6 @@ SOLUTION(2023, 22) {
             "1,1,8~1,1,9"
         };
 
-        if (Part1(example) != "5") return false;
-
-        return true;
+        return Part1(lines) == "5";
     }
 }

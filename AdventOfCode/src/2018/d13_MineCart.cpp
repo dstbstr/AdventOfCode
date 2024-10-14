@@ -178,30 +178,32 @@ SOLUTION(2018, 13) {
         return "Not Found";
     }
 
+    /*
     TEST(1) {
-        //std::vector<std::string> lines = {
-        //        R"(/->-\        )",
-        //        R"(|   |  /----\)",
-        //        R"(| /-+--+-\  |)",
-        //        R"(| | |  | v  |)",
-        //        R"(\-+-/  \-+--/)",
-        //        R"(  \------/   )"
-        //    };
-        //
-        //if (PartOne(lines) != "{7,3}") return false;
-        //
-        //lines = {
-        //    R"(/>-<\  )",
-        //    R"(|   |  )",
-        //    R"(| /<+-\)",
-        //    R"(| | | v)",
-        //    R"(\>+</ |)",
-        //    R"(  |   ^)",
-        //    R"(  \<->/)"
-        //};
-        //
-        //if (PartTwo(lines) != "{6,4}") return false;
+        std::vector<std::string> lines = {
+                R"(/->-\        )",
+                R"(|   |  /----\)",
+                R"(| /-+--+-\  |)",
+                R"(| | |  | v  |)",
+                R"(\-+-/  \-+--/)",
+                R"(  \------/   )"
+            };
+        
+        if (PartOne(lines) != "{7,3}") return false;
+        
+        lines = {
+            R"(/>-<\  )",
+            R"(|   |  )",
+            R"(| /<+-\)",
+            R"(| | | v)",
+            R"(\>+</ |)",
+            R"(  |   ^)",
+            R"(  \<->/)"
+        };
+        
+        if (Part2(lines) != "{6,4}") return false;
 
         return true;
     }
+    */
 }

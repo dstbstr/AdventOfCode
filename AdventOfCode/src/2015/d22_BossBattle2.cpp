@@ -217,20 +217,26 @@ SOLUTION(2015, 22) {
         State initialState{ player, boss, {} };
         return Constexpr::ToString(FindBestMana(initialState, true));
     }
-    TEST(1) {
-        if (!TestCanCast()) return false;
-        if(!TestTickSpells()) return false;
 
+    TEST(1) {
+        return TestCanCast();
+    }
+
+    TEST(2) {
+        return TestTickSpells();
+    }
+
+    TEST(3) {
         Player player = { 10, 250, 0 };
         Boss boss = { 13, 8 };
         State initialState{ player, boss, {} };
-        if (FindBestMana(initialState, false) != 226) return false;
+        return FindBestMana(initialState, false) == 226;
+    }
 
-        player = { 10, 250, 0 };
-        boss = { 14, 8 };
-        initialState = { player, boss, {} };
-        if (FindBestMana(initialState, false) != 641) return false;
-
-        return true;
+    TEST(4) {
+        Player player = { 10, 250, 0 };
+        Boss boss = { 14, 8 };
+        State initialState = { player, boss, {} };
+        return FindBestMana(initialState, false) == 641;
     }
 }

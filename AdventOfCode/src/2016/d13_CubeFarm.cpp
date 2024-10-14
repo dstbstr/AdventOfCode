@@ -103,16 +103,14 @@ SOLUTION(2016, 13) {
         return Constexpr::ToString(FindUniquePositions(key, 50));
     }
 
+    static_assert(IsOpen({ 0, 0 }, 10));
+    static_assert(!IsOpen({ 1, 0 }, 10));
+    static_assert(IsOpen({ 2, 0 }, 10));
+    static_assert(IsOpen({ 0, 1 }, 10));
+    static_assert(IsOpen({ 1, 1 }, 10));
+
     TEST(1) {
-        static_assert(IsOpen({ 0, 0 }, 10));
-        static_assert(!IsOpen({ 1, 0 }, 10));
-        static_assert(IsOpen({ 2, 0 }, 10));
-        static_assert(IsOpen({ 0, 1 }, 10));
-        static_assert(IsOpen({ 1, 1 }, 10));
-
-        if (Bfs(10, { 7, 4 }) != 11) return false;
-
-        return true;
+        return Bfs(10, { 7, 4 }) == 11;
     }
 }
 

@@ -131,9 +131,11 @@ SOLUTION(2021, 8) {
 
     TEST(1) {
         std::vector<std::string> lines = { "abcefg cf acdeg acdfg bcdf abdfg abdefg acf abcdefg abcdfg | fc fca cf caf" };
-        if (SolvePartTwo(lines) != 1717) return false;
+        return SolvePartTwo(lines) == 1717;
+    }
 
-        lines = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdgacbe cefdb cefbgd gcbe",
             "edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec | fcgedb cgb dgebacf gc",
             "fgaebd cg bdaec gdafb agbcfd gdcbef bgcad gfac gcb cdgabef | cg cg fdcagb cbg",

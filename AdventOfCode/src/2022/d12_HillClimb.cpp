@@ -132,10 +132,9 @@ SOLUTION(2022, 12) {
         return Constexpr::ToString(best);
     }
 
+    static_assert(FindNext<3, 3>(0).size() == 2);
+    static_assert(FindNext<3, 3>(4).size() == 4);
     TEST(1) {
-        static_assert(FindNext<3, 3>(0).size() == 2);
-        static_assert(FindNext<3, 3>(4).size() == 4);
-
         std::vector<std::string> lines{
             "Sabqponm",
             "abcryxxl",

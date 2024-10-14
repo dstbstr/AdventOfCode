@@ -57,15 +57,11 @@ SOLUTION(2019, 4) {
         return Constexpr::ToString(Solve(start, end, ExtendedMatch));
     }
 
-    TEST(1) {
-        static_assert(Matches(111111));
-        static_assert(!Matches(223450));
-        static_assert(!Matches(123456));
+    static_assert(Matches(111111));
+    static_assert(!Matches(223450));
+    static_assert(!Matches(123456));
  
-        static_assert(ExtendedMatch(112233));
-        static_assert(!ExtendedMatch(123444));
-        static_assert(ExtendedMatch(111122));
-
-        return true;
-    }
+    static_assert(ExtendedMatch(112233));
+    static_assert(!ExtendedMatch(123444));
+    static_assert(ExtendedMatch(111122));
 }

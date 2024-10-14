@@ -298,9 +298,12 @@ SOLUTION(2019, 18) {
             "#b.A.@.a#",
             "#########"
         };
-        if (Map(lines).Solve() != 8) return false;
 
-        lines = {
+        return Map(lines).Solve() == 8;
+    }
+
+    TEST(2) {
+        std::vector<std::string> lines = {
             "########################",
             "#f.D.E.e.C.b.A.@.a.B.c.#",
             "######################.#",
@@ -308,18 +311,22 @@ SOLUTION(2019, 18) {
             "########################",
         };
 
-        if (Map(lines).Solve() != 86) return false;
+        return Map(lines).Solve() == 86;
+    }
 
-        lines = {
+    TEST(3) {
+        std::vector<std::string> lines = {
             "########################",
             "#...............b.C.D.f#",
             "#.######################",
             "#.....@.a.B.c.d.A.e.F.g#",
             "########################"
         };
-        if (Map(lines).Solve() != 132) return false;
+        return Map(lines).Solve() == 132;
+    }
 
-        lines = {
+    TEST(4) {
+        std::vector<std::string> lines = {
             "#######",
             "#a.#Cd#",
             "##...##",
@@ -329,9 +336,11 @@ SOLUTION(2019, 18) {
             "#######"
         };
         SplitIntoRooms(lines);
-        if (Map(lines).Solve() != 8) return false;
+        return Map(lines).Solve() == 8;
+    }
 
-        lines = {
+    TEST(5) {
+        std::vector<std::string> lines = {
             "#############",
             "#DcBa.#.GhKl#",
             "#.###...#I###",
@@ -341,9 +350,11 @@ SOLUTION(2019, 18) {
             "#############"
         };
         SplitIntoRooms(lines);
-        if (Map(lines).Solve() != 32) return false;
+        return Map(lines).Solve() == 32;
+    }
 
-        lines = {
+    TEST(6) {
+        std::vector<std::string> lines = {
             "#############",
             "#g#f.D#..h#l#",
             "#F###e#E###.#",
@@ -355,8 +366,6 @@ SOLUTION(2019, 18) {
             "#############"
         };
         SplitIntoRooms(lines);
-        if (Map(lines).Solve() != 72) return false;
-
-        return true;
+        return Map(lines).Solve() == 72;
     }
 }

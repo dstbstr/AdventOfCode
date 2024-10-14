@@ -98,52 +98,81 @@ SOLUTION(2015, 12) {
 
         return Constexpr::ToString(CountAll(root, "red"));
     }
+
     TEST(1) {
-        size_t index = 0;
+        size_t index = 0ull;
         auto root = ParseJson("[1,2,3]", index);
         if (root.Elements.size() != 3) return false;
         if (!root.Elements[0].IsNumber || root.Elements[0].NumericValue != 1) return false;
 
-        index = 0;
-        root = ParseJson("[[[3]]]", index);
+        return true;
+    }
+
+    TEST(2) {
+        size_t index = 0ull;
+        auto root = ParseJson("[[[3]]]", index);
         if (root.Elements.size() != 1) return false;
         if (root.Elements[0].Elements[0].Elements[0].NumericValue != 3) return false;
 
-        index = 0;
-        root = ParseJson(R"(["abc","def","ghi"])", index);
+        return true;
+    }
+
+    TEST(3) {
+        size_t index = 0ull;
+        auto root = ParseJson(R"(["abc","def","ghi"])", index);
         if (root.Elements.size() != 3) return false;
         if (!root.Elements[0].IsString) return false;
         if (root.Elements[0].StringValue != "abc") return false;
 
-        index = 0;
-        root = ParseJson(R"([["abc", "def"],[123, 345]])", index);
+        return true;
+   }
+
+    TEST(4) {
+        size_t index = 0ull;
+        auto root = ParseJson(R"([["abc", "def"],[123, 345]])", index);
         if (root.Elements.size() != 2) return false;
         if (root.Elements[0].Elements.size() != 2) return false;
         if (root.Elements[0].Elements[0].StringValue != "abc") return false;
         if (root.Elements[1].Elements.size() != 2) return false;
         if (root.Elements[1].Elements[0].NumericValue != 123) return false;
 
-        index = 0;
-        root = ParseJson(R"({"a":2,"b":4})", index);
+        return true;
+   }
+
+    TEST(5) {
+        size_t index = 0ull;
+        auto root = ParseJson(R"({"a":2,"b":4})", index);
         if (root.Objects.size() != 2) return false;
         if (root.Objects.at("a").NumericValue != 2) return false;
         if (root.Objects.at("b").NumericValue != 4) return false;
 
-        index = 0;
-        root = ParseJson(R"({"a":{"b":4},"c":-1})", index);
+        return true;
+   }
+
+    TEST(6) {
+        size_t index = 0ull;
+        auto root = ParseJson(R"({"a":{"b":4},"c":-1})", index);
         if (root.Objects.size() != 2) return false;
         if (root.Objects.at("a").Objects.size() != 1) return false;
         if (root.Objects.at("a").Objects.at("b").NumericValue != 4) return false;
 
-        index = 0;
-        root = ParseJson("[]", index);
+        return true;
+    }
+
+    TEST(7) {
+        size_t index = 0ull;
+        auto root = ParseJson("[]", index);
         if (root.IsNumber) return false;
         if (root.IsString) return false;
         if (!root.Elements.empty()) return false;
         if (!root.Objects.is_empty()) return false;
 
-        index = 0;
-        root = ParseJson("{}", index);
+        return true;
+    }
+
+    TEST(8) {
+        size_t index = 0ull;
+        auto root = ParseJson("{}", index);
         if (root.IsNumber) return false;
         if (root.IsString) return false;
         if (!root.Elements.empty()) return false;

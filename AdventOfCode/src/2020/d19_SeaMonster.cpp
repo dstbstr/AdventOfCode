@@ -142,9 +142,11 @@ SOLUTION(2020, 19) {
            "aaaabbb"
         };
 
-        if (Solve(lines, false) != 2) return false;
+        return Solve(lines, false) == 2;
+    }
 
-        lines = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "42: 9 14 | 10 1",
             "9: 14 27 | 1 26",
             "10: 23 14 | 28 1",
@@ -196,7 +198,7 @@ SOLUTION(2020, 19) {
 
         if (Solve(lines, false) != 3) return false;
         if (Solve(lines, true) != 12) return false;
-        
+
         return true;
     }
 }

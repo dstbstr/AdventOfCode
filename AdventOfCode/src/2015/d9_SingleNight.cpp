@@ -69,8 +69,6 @@ SOLUTION(2015, 9) {
             "Dublin to Belfast = 141"
         };
 
-        if (Solve(lines, true) != 605) return false;
-
-        return true;
+        return Solve(lines, true) == 605;
     }
 }

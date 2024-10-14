@@ -39,9 +39,5 @@ SOLUTION(2018, 1) {
         return Constexpr::ToString(bestKey);
     }
 
-    TEST(1) {
-        //static_assert(PartTwo({ "+10000000", "-9999999" }) == "10000000");
-
-        return true;
-    }
+    //static_assert(PartTwo({ "+10000000", "-9999999" }) == "10000000");
 }

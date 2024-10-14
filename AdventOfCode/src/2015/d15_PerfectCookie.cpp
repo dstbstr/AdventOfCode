@@ -86,13 +86,15 @@ SOLUTION(2015, 15) {
         if (ing.Texture != -3) return false;
         if (ing.Calories != 2) return false;
 
+        return true;
+    }
+
+    TEST(2) {
         std::vector<Ing> ings;
         ings.push_back(ParseIng("Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8"));
         ings.push_back(ParseIng("Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3"));
 
         std::vector<u32> amounts = { 44, 56 };
-        if (CalculateScore(ings, amounts) != 62842880) return false;
-
-        return true;
+        return CalculateScore(ings, amounts) == 62842880;
     }
 }

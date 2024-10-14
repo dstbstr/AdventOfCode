@@ -67,8 +67,4 @@ SOLUTION(2022, 10) {
     PART(2) {
         return BuildCrtString(lines);
     }
-
-    TEST(1) {
-        return true;
-    }
 }

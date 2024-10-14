@@ -102,14 +102,16 @@ SOLUTION(2017, 3) {
         return "Not Found";
     }
 
+    static_assert(FindTarget(12) == 3);
+    static_assert(FindTarget(23) == 2);
+    static_assert(FindTarget(1024) == 31);
+    static_assert(FindTarget(347991) == 480);
+    /*
     TEST(1) {
-        static_assert(FindTarget(12) == 3);
-        static_assert(FindTarget(23) == 2);
-        static_assert(FindTarget(1024) == 31);
-        static_assert(FindTarget(347991) == 480);
 
-        //if (Part2(20) != 23) return false;
-        //if (Part2(122) != 133) return false;
+        if (Part2(20) != 23) return false;
+        if (Part2(122) != 133) return false;
         return true;
     }
+    */
 }

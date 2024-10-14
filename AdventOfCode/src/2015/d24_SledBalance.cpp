@@ -82,13 +82,10 @@ SOLUTION(2015, 24) {
         auto weights = ParseLinesAsNumbers<u32>(lines);
         return Constexpr::ToString(FindMinimalEntanglement(weights, 4));
     }
-    TEST(1) {
-        static_assert(FindBalanceWeight({ 1, 2, 3, 4, 5, 7, 8, 9, 10, 11 }, 3) == 20);
-        static_assert(FindBalanceWeight({ 1, 2, 3, 4, 5, 7, 8, 9, 10, 11 }, 4) == 15);
 
-        static_assert(FindEntanglement({ 11,9 }) == 99);
-        static_assert(FindEntanglement({ 10,9,1 }) == 90);
+    static_assert(FindBalanceWeight({ 1, 2, 3, 4, 5, 7, 8, 9, 10, 11 }, 3) == 20);
+    static_assert(FindBalanceWeight({ 1, 2, 3, 4, 5, 7, 8, 9, 10, 11 }, 4) == 15);
 
-        return true;
-    }
+    static_assert(FindEntanglement({ 11,9 }) == 99);
+    static_assert(FindEntanglement({ 10,9,1 }) == 90);
 }

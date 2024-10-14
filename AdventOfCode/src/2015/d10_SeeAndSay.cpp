@@ -46,14 +46,11 @@ SOLUTION(2015, 10) {
     PART(2) {
         return Constexpr::ToString(ApplyTimes(lines[0], 50).size());
     }
-    TEST(1) {
-        static_assert(Next("1") == "11");
-        static_assert(Next("11") == "21");
-        static_assert(Next("21") == "1211");
-        static_assert(Next("1211") == "111221");
-        static_assert(Next("111221") == "312211");
-        //static_assert(ApplyTimes("1113222113", 40).size() == 252594);
 
-        return true;
-    }
+    static_assert(Next("1") == "11");
+    static_assert(Next("11") == "21");
+    static_assert(Next("21") == "1211");
+    static_assert(Next("1211") == "111221");
+    static_assert(Next("111221") == "312211");
+    //static_assert(ApplyTimes("1113222113", 40).size() == 252594);
 }

@@ -118,7 +118,12 @@ SOLUTION(2023, 3) {
 
 		if (symbols.size() != 6) return false;
 
+		if (Part1(input) != "4361") return false;
 
+		return true;
+	}
+
+	TEST(2) {
 		Number testNum;
 		testNum.Val = 12345;
 		testNum.Start = { 0, 0 };
@@ -126,29 +131,31 @@ SOLUTION(2023, 3) {
 
 		if (testNum.IsNear({ 2, 2 })) return false;
 		if (!testNum.IsNear({ 0, 5 })) return false;
+		return true;
+	}
 
-		Number testNum2;
-		testNum2.Val = 12345;
-		testNum2.Start = { 3, 3 };
-		testNum2.End = { 3, 7 };
+	TEST(3) {
+		Number testNum;
+		testNum.Val = 12345;
+		testNum.Start = { 3, 3 };
+		testNum.End = { 3, 7 };
 
-		if (!testNum2.IsNear({ 3, 2 })) return false;
-		if (!testNum2.IsNear({ 3, 8 })) return false;
-		if (!testNum2.IsNear({ 2, 2 })) return false;
-		if (!testNum2.IsNear({ 4, 2 })) return false;
-		if (!testNum2.IsNear({ 2, 7 })) return false;
-		if (!testNum2.IsNear({ 2, 8 })) return false;
-		if (!testNum2.IsNear({ 4, 7 })) return false;
-		if (!testNum2.IsNear({ 4, 8 })) return false;
-		if (!testNum2.IsNear({ 4, 5 })) return false;
-		
-		if (testNum2.IsNear({ 2, 1 })) return false;
-		if (testNum2.IsNear({ 2, 9 })) return false;
-		if (testNum2.IsNear({ 4, 1 })) return false;
-		if (testNum2.IsNear({ 4, 9 })) return false;
-		if (testNum2.IsNear({ 1, 5 })) return false;
-		
-		if (Part1(input) != "4361") return false;
+		if (!testNum.IsNear({ 3, 2 })) return false;
+		if (!testNum.IsNear({ 3, 8 })) return false;
+		if (!testNum.IsNear({ 2, 2 })) return false;
+		if (!testNum.IsNear({ 4, 2 })) return false;
+		if (!testNum.IsNear({ 2, 7 })) return false;
+		if (!testNum.IsNear({ 2, 8 })) return false;
+		if (!testNum.IsNear({ 4, 7 })) return false;
+		if (!testNum.IsNear({ 4, 8 })) return false;
+		if (!testNum.IsNear({ 4, 5 })) return false;
+
+		if (testNum.IsNear({ 2, 1 })) return false;
+		if (testNum.IsNear({ 2, 9 })) return false;
+		if (testNum.IsNear({ 4, 1 })) return false;
+		if (testNum.IsNear({ 4, 9 })) return false;
+		if (testNum.IsNear({ 1, 5 })) return false;
+
 		return true;
 	}
 }

@@ -36,8 +36,4 @@ SOLUTION(2017, 13) {
 
         return Constexpr::ToString(delay);
     }
-
-    TEST(1) {
-        return true;
-    }
 }

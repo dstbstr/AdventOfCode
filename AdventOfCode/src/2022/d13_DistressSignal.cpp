@@ -75,29 +75,30 @@ SOLUTION(2022, 13) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
-    TEST(1) {
-        static_assert(Compare("[1,1,3,1,1]", "[1,1,5,1,1]"));
-        static_assert(Compare("[[1],[2,3,4]]", "[[1],4]"));
-        static_assert(!Compare("[9]", "[[8,7,6]]"));
-        static_assert(Compare("[[4,4],4,4]", "[[4,4],4,4,4]"));
-        static_assert(!Compare("[7,7,7,7]", "[7,7,7]"));
-        static_assert(Compare("[]", "[3]"));
-        static_assert(!Compare("[[[]]]", "[[]]"));
-        static_assert(!Compare("[1,[2,[3,[4,[5,6,7]]]],8,9]", "[1,[2,[3,[4,[5,6,0]]]],8,9]"));
+    static_assert(Compare("[1,1,3,1,1]", "[1,1,5,1,1]"));
+    static_assert(Compare("[[1],[2,3,4]]", "[[1],4]"));
+    static_assert(!Compare("[9]", "[[8,7,6]]"));
+    static_assert(Compare("[[4,4],4,4]", "[[4,4],4,4,4]"));
+    static_assert(!Compare("[7,7,7,7]", "[7,7,7]"));
+    static_assert(Compare("[]", "[3]"));
+    static_assert(!Compare("[[[]]]", "[[]]"));
+    static_assert(!Compare("[1,[2,[3,[4,[5,6,7]]]],8,9]", "[1,[2,[3,[4,[5,6,0]]]],8,9]"));
 
-        static_assert(Compare("[2]", "[A]"));
-        static_assert(Compare("[A]", "[B]"));
-        static_assert(!Compare("[A]", "[2]"));
-        static_assert(!Compare("[[1],[4,3,2]", "[[1],2]"));
-        static_assert(!Compare("[1,[2,[1,2]],3]", "[1,[2,[1,2]],3]"));
-        static_assert(Compare("[1,[2,[1,2]],1]", "[1,[2,[1,2]],3]"));
-        static_assert(!Compare("[]", "[]"));
-        static_assert(!Compare("[[8,[[7]]]]", "[[[[8]]]]"));
-        static_assert(Compare("[8,[[7]]]]", "[[[[8],2]]]"));
-        static_assert(!Compare("[[1,2],4]", "[[1],5,5]"));
-        static_assert(Compare("[[1,2],4]", "[[[3]],5,5]"));
-        static_assert(!Compare("[1,2,3,[1,2,3],4,1]", "[1,2,3,[1,2,3],4,0]"));
-        static_assert(Compare("[[8,[[7,A,A,5],[8,4,9]],3,5],[[[3,9,4],5,[7,5,5]],[[3,2,5],[A],[5,5],0,[8]]],[4,2,[],[[7,5,6,3,0],[4,4,A,7],6,[8,A,9]]],[[4,[],4],A,1]]", "[[[[8], [3, A],[7,6,3,7,4],1,8]]]"));
+    static_assert(Compare("[2]", "[A]"));
+    static_assert(Compare("[A]", "[B]"));
+    static_assert(!Compare("[A]", "[2]"));
+    static_assert(!Compare("[[1],[4,3,2]", "[[1],2]"));
+    static_assert(!Compare("[1,[2,[1,2]],3]", "[1,[2,[1,2]],3]"));
+    static_assert(Compare("[1,[2,[1,2]],1]", "[1,[2,[1,2]],3]"));
+    static_assert(!Compare("[]", "[]"));
+    static_assert(!Compare("[[8,[[7]]]]", "[[[[8]]]]"));
+    static_assert(Compare("[8,[[7]]]]", "[[[[8],2]]]"));
+    static_assert(!Compare("[[1,2],4]", "[[1],5,5]"));
+    static_assert(Compare("[[1,2],4]", "[[[3]],5,5]"));
+    static_assert(!Compare("[1,2,3,[1,2,3],4,1]", "[1,2,3,[1,2,3],4,0]"));
+    static_assert(Compare("[[8,[[7,A,A,5],[8,4,9]],3,5],[[[3,9,4],5,[7,5,5]],[[3,2,5],[A],[5,5],0,[8]]],[4,2,[],[[7,5,6,3,0],[4,4,A,7],6,[8,A,9]]],[[4,[],4],A,1]]", "[[[[8], [3, A],[7,6,3,7,4],1,8]]]"));
+
+    TEST(1) {
         std::vector<std::string> lines = {
             "[1,1,3,1,1]",
             "[1,1,5,1,1]",

@@ -61,8 +61,4 @@ SOLUTION(2017, 22) {
         return Constexpr::ToString(result);
 
     }
-
-    TEST(1) {
-        return true;
-    }
 }

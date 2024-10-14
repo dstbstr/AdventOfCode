@@ -300,9 +300,8 @@ SOLUTION(2016, 11) {
         return true;
     }
 
+    static_assert(TestHash());
     TEST(1) {
-        static_assert(TestHash());
-
         std::vector<std::string> lines = {
             "The first floor contains a hydrogen-compatible microchip and a lithium-compatible microchip.",
             "The second floor contains a hydrogen generator.",
@@ -310,8 +309,6 @@ SOLUTION(2016, 11) {
             "The fourth floor contains nothing relevant."
         };
 
-        if (Solve(lines) != 11) return false;
-
-        return true;
+        return Solve(lines) == 11;
     }
 }

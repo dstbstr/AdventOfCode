@@ -70,8 +70,4 @@ SOLUTION(2019, 11) {
 
         return result;
     }
-
-    TEST(1) {
-        return true;
-    }
 }

@@ -54,15 +54,20 @@ SOLUTION(2021, 6) {
         return true;
     }
    
-    TEST(1) {
-        static_assert(TestNextDay());
-        if (!TestNextDay()) return false;
-        std::string line = "3,4,3,1,2";
-        if (Solve(line, 0) != 5) return false;
-        if (Solve(line, 18) != 26) return false;
-        if (Solve(line, 80) != 5934) return false;
-        if (Solve(line, 256) != 26984457539) return false;
+    static_assert(TestNextDay());
 
-        return true;
+    static const std::string TestLine = "3,4,3,1,2"s;
+
+    TEST(1) {
+        return Solve(TestLine, 0) == 5;
+    }
+    TEST(2) {
+        return Solve(TestLine, 18) == 26;
+    }
+    TEST(3) {
+        return Solve(TestLine, 80) == 5934;
+    }
+    TEST(4) {
+        return Solve(TestLine, 256) == 26984457539;
     }
 }

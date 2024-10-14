@@ -57,23 +57,19 @@ SOLUTION(2022, 4) {
         return Constexpr::ToString(RunImpl(lines, Overlap));
     }
 
-    TEST(1) {
-        static_assert(FullyContains({ 6, 6 }, { 4, 6 }));
-        static_assert(FullyContains({ 4, 6 }, { 6, 6 }));
-        static_assert(FullyContains({ 2, 8 }, { 3, 7 }));
-        static_assert(FullyContains({ 3, 7 }, { 2, 8 }));
-        static_assert(!FullyContains({ 2, 4 }, { 6, 8 }));
-        static_assert(!FullyContains({ 2, 6 }, { 4, 8 }));
-        static_assert(FullyContains({ 55, 55 }, { 55, 83 }));
+    static_assert(FullyContains({ 6, 6 }, { 4, 6 }));
+    static_assert(FullyContains({ 4, 6 }, { 6, 6 }));
+    static_assert(FullyContains({ 2, 8 }, { 3, 7 }));
+    static_assert(FullyContains({ 3, 7 }, { 2, 8 }));
+    static_assert(!FullyContains({ 2, 4 }, { 6, 8 }));
+    static_assert(!FullyContains({ 2, 6 }, { 4, 8 }));
+    static_assert(FullyContains({ 55, 55 }, { 55, 83 }));
         
-        static_assert(!Overlap({ 2, 4 }, { 6, 8 }));
-        static_assert(!Overlap({ 2, 3 }, { 4, 5 }));
-        static_assert(Overlap({ 5, 7 }, { 7, 9 }));
-        static_assert(Overlap({ 2, 8 }, { 3, 7 }));
-        static_assert(Overlap({ 6, 6 }, { 4, 6 }));
-        static_assert(Overlap({ 2, 6 }, { 4, 8 }));
-        static_assert(Overlap({ 55, 55 }, { 55, 83 }));
-        
-        return true;
-    }
+    static_assert(!Overlap({ 2, 4 }, { 6, 8 }));
+    static_assert(!Overlap({ 2, 3 }, { 4, 5 }));
+    static_assert(Overlap({ 5, 7 }, { 7, 9 }));
+    static_assert(Overlap({ 2, 8 }, { 3, 7 }));
+    static_assert(Overlap({ 6, 6 }, { 4, 6 }));
+    static_assert(Overlap({ 2, 6 }, { 4, 8 }));
+    static_assert(Overlap({ 55, 55 }, { 55, 83 }));
 }

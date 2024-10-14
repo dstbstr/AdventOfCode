@@ -89,22 +89,6 @@ SOLUTION(2018, 21) {
         GatherValues(lines, previousMask, initialValue, multiplier);
 
         return Constexpr::ToString(Step(0, previousMask, initialValue, multiplier));
-        /*
-        auto ipReg = GetIpReg(lines[0]);
-        Regs regs{};
-        size_t& ip = regs[ipReg];
-        std::vector<std::string> copy(lines.begin() + 1, lines.end());
-        auto inst = ParseLines(copy, GenInst);
-
-        while (true) {
-            if (ip >= inst.size()) break;
-            if (ip == 28) return Constexpr::ToString(regs[4]);
-            inst[ip](regs);
-            ip++;
-        }
-
-        return "Not Found";
-        */
     }
 
 
@@ -123,37 +107,5 @@ SOLUTION(2018, 21) {
             n = n2;
         }
         return "Not Found";
-        /*
-        auto ipReg = GetIpReg(lines[0]);
-        Regs regs{};
-        size_t& ip = regs[ipReg];
-        std::vector<std::string> copy(lines.begin() + 1, lines.end());
-        auto inst = ParseLines(copy, GenInst);
-
-        Constexpr::Set<u64> seen;
-        u64 previous = 0;
-        while (true) {
-            if (ip >= inst.size()) break;
-            if (ip == 28) {
-                auto val = regs[4];
-                auto newVal = Step(previous);
-                if (val != newVal) {
-                    break; //bummer
-                }
-                if (!seen.insert(val)) {
-                    return Constexpr::ToString(previous);
-                }
-                previous = val;
-            }
-            inst[ip](regs);
-            ip++;
-        }
-
-        return "Not Found";
-        */
-    }
-
-    TEST(1) {
-        return true;
     }
 }

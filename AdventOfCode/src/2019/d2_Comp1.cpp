@@ -38,8 +38,6 @@ SOLUTION(2019, 2) {
         std::vector<s64> inst = { 1,1,1,4,99,5,6,0,99 };
         Args args;
         while (Apply(inst, args));
-        if (inst[0] != 30) return false;
-
-        return true;
+        return inst[0] == 30;
     }
 }

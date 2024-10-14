@@ -103,11 +103,7 @@ SOLUTION(2022, 2) {
         return Constexpr::ToString(Solve(lines, ParseUpdatedInput));
     }
 
-    TEST(1) {
-        static_assert(GetPoints(Play::Paper, Play::Rock) == 8);
-        static_assert(GetPoints(Play::Rock, Play::Paper) == 1);
-        static_assert(GetPoints(Play::Scissors, Play::Scissors) == 6);
-        
-        return true;
-    }
+    static_assert(GetPoints(Play::Paper, Play::Rock) == 8);
+    static_assert(GetPoints(Play::Rock, Play::Paper) == 1);
+    static_assert(GetPoints(Play::Scissors, Play::Scissors) == 6);
 }

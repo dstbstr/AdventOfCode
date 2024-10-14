@@ -81,8 +81,4 @@ SOLUTION(2017, 23) {
 
         return Constexpr::ToString(count);       
     }
-
-    TEST(1) {
-        return true;
-    }
 }

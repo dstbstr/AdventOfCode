@@ -96,7 +96,7 @@ SOLUTION(2019, 6) {
         BuildData(lines, map, cache);
         auto shared = FindCommonAncestor(map, cache, "YOU", "SAN");
         if (cache.at("YOU") + cache.at("SAN") - (cache.at(shared) * 2) - 2 != 4) return false;
-        //if (PartTwo(lines) != "4") return false;
+        //if (Part2(lines) != "4") return false;
 
         return true;
     }

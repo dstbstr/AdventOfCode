@@ -39,15 +39,11 @@ SOLUTION(2020, 6) {
         return Constexpr::ToString(Run(lines, CountAllInGroup));
     }
 
-    TEST(1) {
-        static_assert(CountAnyInGroup(std::vector<std::string>{ "a" }) == 1);
-        static_assert(CountAnyInGroup(std::vector<std::string>{"a", "b", "c"}) == 3);
-        static_assert(CountAnyInGroup(std::vector<std::string>{"a", "a", "a"}) == 1);
+    static_assert(CountAnyInGroup(std::vector<std::string>{ "a" }) == 1);
+    static_assert(CountAnyInGroup(std::vector<std::string>{"a", "b", "c"}) == 3);
+    static_assert(CountAnyInGroup(std::vector<std::string>{"a", "a", "a"}) == 1);
 
-        static_assert(CountAllInGroup(std::vector<std::string>{"abc"}) == 3);
-        static_assert(CountAllInGroup(std::vector<std::string>{"a", "b", "c"}) == 0);
-        static_assert(CountAllInGroup(std::vector<std::string>{"a", "a", "a"}) == 1);
-
-        return true;
-    }
+    static_assert(CountAllInGroup(std::vector<std::string>{"abc"}) == 3);
+    static_assert(CountAllInGroup(std::vector<std::string>{"a", "b", "c"}) == 0);
+    static_assert(CountAllInGroup(std::vector<std::string>{"a", "a", "a"}) == 1);
 }

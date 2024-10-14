@@ -64,9 +64,10 @@ SOLUTION(2016, 3) {
         return Constexpr::ToString(result);
     }
 
+    static_assert(IsValid(5, 10, 25) == false);
+
+    /*
     TEST(1) {
-        static_assert(IsValid(5, 10, 25) == false);
-        /*
         std::vector<std::string> lines = {
             "101 301 501",
             "102 302 502",
@@ -77,7 +78,7 @@ SOLUTION(2016, 3) {
         };
 
         if (PartTwo(lines) != "6") return false;
-        */
         return true;
     }
+    */
 }

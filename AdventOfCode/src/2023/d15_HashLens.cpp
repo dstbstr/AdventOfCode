@@ -71,12 +71,10 @@ SOLUTION(2023, 15) {
         return Constexpr::ToString(result);
     }
 
+    static_assert(Hash("HASH") == 52);
+
     TEST(1) {
-        static_assert(Hash("HASH") == 52);
-
         std::vector<std::string> example = { "rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7" };
-        if (Part2(example) != "145") return false;
-
-        return true;
+        return Part2(example) == "145";
     }
 }

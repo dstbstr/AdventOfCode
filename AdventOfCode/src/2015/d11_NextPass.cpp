@@ -97,33 +97,30 @@ SOLUTION(2015, 11) {
         return NextPass(NextPass(lines[0]));
     }
 
-    TEST(1) {
-        static_assert(Increment("a") == "b");
-        static_assert(Increment("z") == "a");
-        static_assert(Increment("azzz") == "baaa");
-        static_assert(Increment("xyz") == "xza");
+    static_assert(Increment("a") == "b");
+    static_assert(Increment("z") == "a");
+    static_assert(Increment("azzz") == "baaa");
+    static_assert(Increment("xyz") == "xza");
 
-        static_assert(ReplaceInvalid("oil") == "paa");
-        static_assert(ReplaceInvalid("happy") == "happy");
+    static_assert(ReplaceInvalid("oil") == "paa");
+    static_assert(ReplaceInvalid("happy") == "happy");
         
-        static_assert(ContainsStraight("abc") == true);
-        static_assert(ContainsStraight("aabbc") == false);
-        static_assert(ContainsStraight("aabcc") == true);
-        static_assert(ContainsStraight("cba") == false);
-        static_assert(ContainsStraight("aaa") == false);
+    static_assert(ContainsStraight("abc") == true);
+    static_assert(ContainsStraight("aabbc") == false);
+    static_assert(ContainsStraight("aabcc") == true);
+    static_assert(ContainsStraight("cba") == false);
+    static_assert(ContainsStraight("aaa") == false);
 
-        static_assert(ContainsTwoPairs("aabb") == true);
-        static_assert(ContainsTwoPairs("abcd") == false);
-        static_assert(ContainsTwoPairs("aaa") == false);
-        static_assert(ContainsTwoPairs("aaaa") == true);
+    static_assert(ContainsTwoPairs("aabb") == true);
+    static_assert(ContainsTwoPairs("abcd") == false);
+    static_assert(ContainsTwoPairs("aaa") == false);
+    static_assert(ContainsTwoPairs("aaaa") == true);
 
-        static_assert(IsValid("abbceffg") == false);
-        static_assert(IsValid("abcdffaa") == true);
-        static_assert(IsValid("ghjaabcc") == true);
+    static_assert(IsValid("abbceffg") == false);
+    static_assert(IsValid("abcdffaa") == true);
+    static_assert(IsValid("ghjaabcc") == true);
 
-        //static_assert(NextPass("ghijklmn") == "ghjaabcc");
-        //static_assert(NextPass("vzbxkghb") == "vzbxxyzz");
-        //static_assert(NextPass("vzbxxyzz") == "vzcaabcc");
-        return true;
-    }
+    //static_assert(NextPass("ghijklmn") == "ghjaabcc");
+    //static_assert(NextPass("vzbxkghb") == "vzbxxyzz");
+    //static_assert(NextPass("vzbxxyzz") == "vzcaabcc");
 }

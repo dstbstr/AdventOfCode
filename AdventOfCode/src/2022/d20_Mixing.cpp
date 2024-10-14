@@ -81,15 +81,15 @@ SOLUTION(2022, 20) {
         return start == end;
     }
 
-    TEST(1) {
-        static_assert(TestShift(0, { 1, 2, -3, 3, -2, 0, 4 }, { 2, 1, -3, 3, -2, 0, 4 }));
-        static_assert(TestShift(0, { 2, 1, -3, 3, -2, 0, 4 }, { 1, -3, 2, 3, -2, 0, 4 }));
-        static_assert(TestShift(1, { 1, -3, 2, 3, -2, 0, 4 }, { 1, 2, 3, -2, -3, 0, 4 }));
-        static_assert(TestShift(2, { 1, 2, 3, -2, -3, 0, 4 }, { 1, 2, -2, -3, 0, 3, 4 }));
-        static_assert(TestShift(2, { 1, 2, -2, -3, 0, 3, 4 }, { 1, 2, -3, 0, 3, 4, -2 }));
-        static_assert(TestShift(3, { 1, 2, -3, 0, 3, 4, -2 }, { 1, 2, -3, 0, 3, 4, -2 }));
-        static_assert(TestShift(5, { 1, 2, -3, 0, 3, 4, -2 }, { 1, 2, -3, 4, 0, 3, -2 }));
+    static_assert(TestShift(0, { 1, 2, -3, 3, -2, 0, 4 }, { 2, 1, -3, 3, -2, 0, 4 }));
+    static_assert(TestShift(0, { 2, 1, -3, 3, -2, 0, 4 }, { 1, -3, 2, 3, -2, 0, 4 }));
+    static_assert(TestShift(1, { 1, -3, 2, 3, -2, 0, 4 }, { 1, 2, 3, -2, -3, 0, 4 }));
+    static_assert(TestShift(2, { 1, 2, 3, -2, -3, 0, 4 }, { 1, 2, -2, -3, 0, 3, 4 }));
+    static_assert(TestShift(2, { 1, 2, -2, -3, 0, 3, 4 }, { 1, 2, -3, 0, 3, 4, -2 }));
+    static_assert(TestShift(3, { 1, 2, -3, 0, 3, 4, -2 }, { 1, 2, -3, 0, 3, 4, -2 }));
+    static_assert(TestShift(5, { 1, 2, -3, 0, 3, 4, -2 }, { 1, 2, -3, 4, 0, 3, -2 }));
 
+    TEST(1) {
         std::vector<std::string> lines = {"1","2","-3","3","-2","0","4"};
 
         if (Solve(lines, 1, 1) != 3) return false;

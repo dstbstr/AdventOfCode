@@ -41,22 +41,13 @@ SOLUTION(2015, 25) {
         return Constexpr::ToString(CalculateCode(CalculateIndex(row, col)));
     }
 
-    PART(2) {
-        (void)lines;
-        return "Merry Christmas";
-    }
+    static_assert(CalculateIndex(1, 1) == 1);
+    static_assert(CalculateIndex(1, 2) == 3);
+    static_assert(CalculateIndex(2, 1) == 2);
+    static_assert(CalculateIndex(2, 2) == 5);
+    static_assert(CalculateIndex(4, 7) == 52);
 
-    TEST(1) {
-        static_assert(CalculateIndex(1, 1) == 1);
-        static_assert(CalculateIndex(1, 2) == 3);
-        static_assert(CalculateIndex(2, 1) == 2);
-        static_assert(CalculateIndex(2, 2) == 5);
-        static_assert(CalculateIndex(4, 7) == 52);
-
-        static_assert(CalculateCode(1) == 20151125);
-        static_assert(CalculateCode(2) == 31916031);
-        static_assert(CalculateCode(3) == 18749137);
-
-        return true;
-    }
+    static_assert(CalculateCode(1) == 20151125);
+    static_assert(CalculateCode(2) == 31916031);
+    static_assert(CalculateCode(3) == 18749137);
 }

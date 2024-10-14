@@ -85,8 +85,6 @@ SOLUTION(2021, 20) {
             "..###"
         };
 
-        if (Solve(lines, 2) != 35) return false;
-        //if (Execute(lines, 50) != 3351) return false;
-        return true;
+        return Solve(lines, 2) == 35;
     }
 }

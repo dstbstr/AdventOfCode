@@ -97,17 +97,17 @@ SOLUTION(2016, 22) {
         return Constexpr::ToString(SolvePartTwo(lines));
     }
 
+    static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Pos.X == 0);
+    static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Pos.Y == 0);
+    static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Size == 93);
+    static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Used == 67);
+    static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Available == 26);
+    static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").PercentFull == 72);
+
+    static_assert(ParseLine("/dev/grid/node-x123-y234     93T   67T    26T   72%").Pos.X == 123);
+    static_assert(ParseLine("/dev/grid/node-x123-y234     93T   67T    26T   72%").Pos.Y == 234);
+
     TEST(1) {
-        static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Pos.X == 0);
-        static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Pos.Y == 0);
-        static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Size == 93);
-        static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Used == 67);
-        static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Available == 26);
-        static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").PercentFull == 72);
-
-        static_assert(ParseLine("/dev/grid/node-x123-y234     93T   67T    26T   72%").Pos.X == 123);
-        static_assert(ParseLine("/dev/grid/node-x123-y234     93T   67T    26T   72%").Pos.Y == 234);
-
         std::vector<std::string> lines = {
             "root@ebhq-gridcenter# df -h",
             "Filesystem            Size  Used  Avail  Use%",

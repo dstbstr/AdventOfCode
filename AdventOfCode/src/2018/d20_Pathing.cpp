@@ -64,16 +64,13 @@ SOLUTION(2018, 20) {
         return Constexpr::ToString(result);
     }
 
-    TEST(1) {
-        auto KeepMax = [](size_t length, size_t& r) {
-            r = std::max(length, r);
-            };
-        static_assert(Solve("^WNE$", KeepMax) == 3);
-        static_assert(Solve("^ENWWW(NEEE|SSE(EE|N))$", KeepMax) == 10);
-        static_assert(Solve("^ENNWSWW(NEWS|)SSSEEN(WNSE|)EE(SWEN|)NNN$", KeepMax) == 18);
-        static_assert(Solve("^ESSWWN(E|NNENN(EESS(WNSE|)SSS|WWWSSSSE(SW|NNNE)))$", KeepMax) == 23);
-        static_assert(Solve( "^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$" , KeepMax) == 31);
- 
-        return true;
+    constexpr void TestKeepMax(size_t length, size_t& r) {
+        r = std::max(length, r);
     }
+
+    static_assert(Solve("^WNE$", TestKeepMax) == 3);
+    static_assert(Solve("^ENWWW(NEEE|SSE(EE|N))$", TestKeepMax) == 10);
+    static_assert(Solve("^ENNWSWW(NEWS|)SSSEEN(WNSE|)EE(SWEN|)NNN$", TestKeepMax) == 18);
+    static_assert(Solve("^ESSWWN(E|NNENN(EESS(WNSE|)SSS|WWWSSSSE(SW|NNNE)))$", TestKeepMax) == 23);
+    static_assert(Solve( "^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$" , TestKeepMax) == 31);
 }

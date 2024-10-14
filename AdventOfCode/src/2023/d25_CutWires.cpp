@@ -129,13 +129,4 @@ SOLUTION(2023, 25) {
     PART(1) {
         return Constexpr::ToString(Solve(lines));
     }
-
-    PART(2) {
-        (void)lines;
-        return "Merry Christmas";
-    }
-
-    TEST(1) {
-        return true;
-    }
 }

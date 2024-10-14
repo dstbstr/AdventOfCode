@@ -114,8 +114,9 @@ SOLUTION(2020, 12) {
         return true;
     }
 
+    static_assert(TestTurns());
+
     TEST(1) {
-        static_assert(TestTurns());
         if (!TestTurns()) return false;
 
         std::vector<std::string> lines = {

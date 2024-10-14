@@ -63,11 +63,10 @@ SOLUTION(2016, 12) {
         return Constexpr::ToString(registers[0]);
     }
 
+    static_assert(GetValue("a", { 12, 24 }) == 12);
+    static_assert(GetValue("b", { 12, 24 }) == 24);
+    static_assert(GetValue("4", { 12, 24 }) == 4);
     TEST(1) {
-        static_assert(GetValue("a", { 12, 24 }) == 12);
-        static_assert(GetValue("b", { 12, 24 }) == 24);
-        static_assert(GetValue("4", { 12, 24 }) == 4);
-
         std::vector<std::string> lines = {
             "cpy 41 a",
             "inc a",

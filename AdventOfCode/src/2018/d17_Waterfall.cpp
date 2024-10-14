@@ -196,10 +196,11 @@ SOLUTION(2018, 17) {
         };
 
         auto [lhs, rhs] = Solve(lines);
-        if (lhs != 29) return false;
-        if (rhs != 28) return false;
-        
-        lines = {
+        return lhs == 29 && rhs == 28;
+    }
+
+    TEST(2) {
+        std::vector<std::string> lines = {
             "x=499, y=3..4",
             "y=4, x=499..501",
             "x=501, y=3..4",
@@ -208,9 +209,7 @@ SOLUTION(2018, 17) {
             "x=506, y=6..8"
         };
 
-        auto [lhs2, rhs2] = Solve(lines);
-        if (lhs2 + rhs2 != 53) return false;
-
-        return true;
+        auto [lhs, rhs] = Solve(lines);
+        return lhs + rhs == 53;
     }
 }

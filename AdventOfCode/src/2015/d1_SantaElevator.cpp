@@ -22,24 +22,16 @@ SOLUTION(2015, 1) {
 		return Constexpr::ToString(FindBasementStep(lines[0]));
 	}
 
-    TEST(1) {
-        static_assert(FindFloor("") == 0);
-        static_assert(FindFloor("(())") == 0);
-        static_assert(FindFloor("()()") == 0);
-        static_assert(FindFloor("(((") == 3);
-        static_assert(FindFloor("(()(()(") == 3);
-        static_assert(FindFloor("())") == -1);
-        static_assert(FindFloor("))(") == -1);
-        static_assert(FindFloor(")))") == -3);
-        static_assert(FindFloor(")())())") == -3);
+    static_assert(FindFloor("") == 0);
+    static_assert(FindFloor("(())") == 0);
+    static_assert(FindFloor("()()") == 0);
+    static_assert(FindFloor("(((") == 3);
+    static_assert(FindFloor("(()(()(") == 3);
+    static_assert(FindFloor("())") == -1);
+    static_assert(FindFloor("))(") == -1);
+    static_assert(FindFloor(")))") == -3);
+    static_assert(FindFloor(")())())") == -3);
 
-        return true;
-    }
-
-    TEST(2) {
-        static_assert(FindBasementStep(")") == 1);
-        static_assert(FindBasementStep("()())") == 5);
-
-        return true;
-    }
+    static_assert(FindBasementStep(")") == 1);
+    static_assert(FindBasementStep("()())") == 5);
 }

@@ -146,8 +146,4 @@ SOLUTION(2017, 18) {
 
         return Constexpr::ToString(p1SendCount);
     }
-
-    TEST(1) {
-        return true;
-    }
 }

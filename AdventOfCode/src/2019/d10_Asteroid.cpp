@@ -98,12 +98,6 @@ SOLUTION(2019, 10) {
     }
 
     TEST(1) {
-        auto TestPartOne = [](const auto& lines, size_t expected) {
-            auto map = ParseMap(lines);
-            auto targets = FindMostTargets(map);
-            return targets.size() == expected;
-            };
-
         std::vector<std::string> lines = {
             ".#..#",
             ".....",
@@ -112,9 +106,12 @@ SOLUTION(2019, 10) {
             "...##"
         };
         
-        if (!TestPartOne(lines, 8)) return false;
+        auto targets = FindMostTargets(ParseMap(lines));
+        return targets.size() == 8;
+    }
 
-        lines = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "......#.#.",
             "#..#.#....",
             "..#######.",
@@ -126,9 +123,12 @@ SOLUTION(2019, 10) {
             "##...#..#.",
             ".#....####"
         };
-        if (!TestPartOne(lines, 33)) return false;
+        auto targets = FindMostTargets(ParseMap(lines));
+        return targets.size() == 33;
+    }
 
-        lines = {
+    TEST(3) {
+        std::vector<std::string> lines = {
             "#.#...#.#.",
             ".###....#.",
             ".#....#...",
@@ -140,9 +140,12 @@ SOLUTION(2019, 10) {
             "......#...",
             ".####.###."
         };
-        if (!TestPartOne(lines, 35)) return false;
+        auto targets = FindMostTargets(ParseMap(lines));
+        return targets.size() == 35;
+    }
 
-        lines = {
+    TEST(4) {
+        std::vector<std::string> lines = {
             ".#..#..###",
             "####.###.#",
             "....###.#.",
@@ -154,9 +157,12 @@ SOLUTION(2019, 10) {
             ".##...##.#",
             ".....#.#.."
         };
-        if (!TestPartOne(lines, 41)) return false;
+        auto targets = FindMostTargets(ParseMap(lines));
+        return targets.size() == 35;
+    }
 
-        lines = {
+    TEST(5) {
+        std::vector<std::string> lines = {
             ".#..##.###...#######",
             "##.############..##.",
             ".#.######.########.#",
@@ -178,10 +184,36 @@ SOLUTION(2019, 10) {
             "#.#.#.#####.####.###",
             "###.##.####.##.#..##"
         };
-
-        if (!TestPartOne(lines, 210)) return false;
-        //if (PartTwo(lines) != "802") return false;
-
-        return true;
+        auto targets = FindMostTargets(ParseMap(lines));
+        return targets.size() == 210;
     }
+
+    /*
+    TEST(6) {
+        std::vector<std::string> lines = {
+            ".#..##.###...#######",
+            "##.############..##.",
+            ".#.######.########.#",
+            ".###.#######.####.#.",
+            "#####.##.#.##.###.##",
+            "..#####..#.#########",
+            "####################",
+            "#.####....###.#.#.##",
+            "##.#################",
+            "#####.##.###..####..",
+            "..######..##.#######",
+            "####.##.####...##..#",
+            ".#####..#.######.###",
+            "##...#.##########...",
+            "#.##########.#######",
+            ".####.#.###.###.#.##",
+            "....##.##.###..#####",
+            ".#.#.###########.###",
+            "#.#.#.#####.####.###",
+            "###.##.####.##.#..##"
+        };
+        return Part2(lines) == "802";
+    }
+    */
+
 }

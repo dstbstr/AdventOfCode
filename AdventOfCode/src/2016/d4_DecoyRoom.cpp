@@ -80,8 +80,6 @@ SOLUTION(2016, 4) {
 
     TEST(1) {
         auto room = ParseRoom("qzmt-zixmtkozy-ivhz-343[abcde]");
-        if (DecryptRoom(room) != "very encrypted name") return false;
-        
-        return true;
+        return DecryptRoom(room) == "very encrypted name";
     }
 }

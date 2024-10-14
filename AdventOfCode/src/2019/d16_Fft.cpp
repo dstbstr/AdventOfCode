@@ -87,19 +87,23 @@ SOLUTION(2019, 16) {
         return running.substr(0, 8);
     }
 
+    static_assert(GetMultipliers(8, 1) == std::vector<s32>{1, 0, -1, 0, 1, 0, -1, 0});
+    static_assert(GetMultipliers(8, 2) == std::vector<s32>{0, 1, 1, 0, 0, -1, -1, 0});
+    static_assert(GetMultipliers(8, 3) == std::vector<s32>{0, 0, 1, 1, 1, 0, 0, 0});
+    static_assert(GetMultipliers(8, 4) == std::vector<s32>{0, 0, 0, 1, 1, 1, 1, 0});
+    static_assert(GetMultipliers(8, 5) == std::vector<s32>{0, 0, 0, 0, 1, 1, 1, 1});
+
+    static_assert(RunPhase("12345678") == "48226158");
+
     TEST(1) {
-        static_assert(GetMultipliers(8, 1) == std::vector<s32>{1, 0, -1, 0, 1, 0, -1, 0});
-        static_assert(GetMultipliers(8, 2) == std::vector<s32>{0, 1, 1, 0, 0, -1, -1, 0});
-        static_assert(GetMultipliers(8, 3) == std::vector<s32>{0, 0, 1, 1, 1, 0, 0, 0});
-        static_assert(GetMultipliers(8, 4) == std::vector<s32>{0, 0, 0, 1, 1, 1, 1, 0});
-        static_assert(GetMultipliers(8, 5) == std::vector<s32>{0, 0, 0, 0, 1, 1, 1, 1});
-
-        static_assert(RunPhase("12345678") == "48226158");
-        
-        if (RunPhase("12345678") != "48226158") return false;
-        //if (PartOne({"80871224585914546619083218645595"}) != "24176176") return false;
-        //if (PartTwo({ "03036732577212944063491565474664" }) != "84462026") return false;
-
-        return true;
+        return RunPhase("12345678") == "48226158";
     }
+    /*
+    TEST(2) {
+        return Part1({"80871224585914546619083218645595"}) == "24176176";
+    }
+    TEST(3) {
+        return Part2({ "03036732577212944063491565474664" }) == "84462026";
+    }
+    */
 }

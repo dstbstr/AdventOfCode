@@ -58,19 +58,10 @@ SOLUTION(2015, 2) {
         return Solve(lines, CalculateRibbon);
     }
 
-    TEST(1) {
-        static_assert(CalculateWrappingPaper(2, 3, 4) == 58);
-        static_assert(CalculateWrappingPaper(1, 1, 10) == 43);
+    static_assert(CalculateWrappingPaper(2, 3, 4) == 58);
+    static_assert(CalculateWrappingPaper(1, 1, 10) == 43);
 
-
-        return true;
-    }
-
-    TEST(2) {
-        static_assert(CalculateRibbon(2, 3, 4) == 34);
-        static_assert(CalculateRibbon(1, 1, 10) == 14);
-        static_assert(CalculateRibbon(2, 2, 2) == 16);
-
-        return true;
-    }
+    static_assert(CalculateRibbon(2, 3, 4) == 34);
+    static_assert(CalculateRibbon(1, 1, 10) == 14);
+    static_assert(CalculateRibbon(2, 2, 2) == 16);
 }

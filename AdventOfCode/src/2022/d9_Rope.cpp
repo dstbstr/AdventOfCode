@@ -68,31 +68,31 @@ SOLUTION(2022, 9) {
         return initialTail == expectedTail;
     }
 
+    static_assert(TestMoveTail({ 0, 0 }, { 0, 0 }, { 0, 0 }));
+
+    static_assert(TestMoveTail({ 1, 0 }, { 0, 0 }, { 0, 0 }));
+    static_assert(TestMoveTail({ 0, 1 }, { 0, 0 }, { 0, 0 }));
+    static_assert(TestMoveTail({ 0, 0 }, { 1, 0 }, { 1, 0 }));
+    static_assert(TestMoveTail({ 0, 0 }, { 0, 1 }, { 0, 1 }));
+
+    static_assert(TestMoveTail({ 1, 1 }, { 0, 0 }, { 0, 0 }));
+    static_assert(TestMoveTail({ 0, 0 }, { 1, 1 }, { 1, 1 }));
+    static_assert(TestMoveTail({ 1, 0 }, { 0, 1 }, { 0, 1 }));
+    static_assert(TestMoveTail({ 0, 1 }, { 1, 0 }, { 1, 0 }));
+
+    static_assert(TestMoveTail({ 2, 0 }, { 0, 0 }, { 1, 0 }));
+    static_assert(TestMoveTail({ 0, 2 }, { 0, 0 }, { 0, 1 }));
+    static_assert(TestMoveTail({ 0, 0 }, { 2, 0 }, { 1, 0 }));
+    static_assert(TestMoveTail({ 0, 0 }, { 0, 2 }, { 0, 1 }));
+
+    static_assert(TestMoveTail({ 2, 1 }, { 0, 0 }, { 1, 1 }));
+    static_assert(TestMoveTail({ 1, 2 }, { 0, 0 }, { 1, 1 }));
+    static_assert(TestMoveTail({ 0, 0 }, { 2, 1 }, { 1, 0 }));
+    static_assert(TestMoveTail({ 0, 0 }, { 1, 2 }, { 0, 1 }));
+
+    static_assert(TestMoveTail({ 2, 2 }, { 0, 0 }, { 1, 1 }));
+
     TEST(1) {
-        static_assert(TestMoveTail({ 0, 0 }, { 0, 0 }, { 0, 0 }));
-
-        static_assert(TestMoveTail({ 1, 0 }, { 0, 0 }, { 0, 0 }));
-        static_assert(TestMoveTail({ 0, 1 }, { 0, 0 }, { 0, 0 }));
-        static_assert(TestMoveTail({ 0, 0 }, { 1, 0 }, { 1, 0 }));
-        static_assert(TestMoveTail({ 0, 0 }, { 0, 1 }, { 0, 1 }));
-
-        static_assert(TestMoveTail({ 1, 1 }, { 0, 0 }, { 0, 0 }));
-        static_assert(TestMoveTail({ 0, 0 }, { 1, 1 }, { 1, 1 }));
-        static_assert(TestMoveTail({ 1, 0 }, { 0, 1 }, { 0, 1 }));
-        static_assert(TestMoveTail({ 0, 1 }, { 1, 0 }, { 1, 0 }));
-
-        static_assert(TestMoveTail({ 2, 0 }, { 0, 0 }, { 1, 0 }));
-        static_assert(TestMoveTail({ 0, 2 }, { 0, 0 }, { 0, 1 }));
-        static_assert(TestMoveTail({ 0, 0 }, { 2, 0 }, { 1, 0 }));
-        static_assert(TestMoveTail({ 0, 0 }, { 0, 2 }, { 0, 1 }));
-
-        static_assert(TestMoveTail({ 2, 1 }, { 0, 0 }, { 1, 1 }));
-        static_assert(TestMoveTail({ 1, 2 }, { 0, 0 }, { 1, 1 }));
-        static_assert(TestMoveTail({ 0, 0 }, { 2, 1 }, { 1, 0 }));
-        static_assert(TestMoveTail({ 0, 0 }, { 1, 2 }, { 0, 1 }));
-
-        static_assert(TestMoveTail({ 2, 2 }, { 0, 0 }, { 1, 1 }));
-
         std::vector<std::string> lines = {
             "R 4",
             "U 4",
@@ -103,9 +103,11 @@ SOLUTION(2022, 9) {
             "L 5",
             "R 2"
         };
-        if (CountUniqueTailPositions(lines, 2) != 13) return false;
+        return CountUniqueTailPositions(lines, 2) == 13;
+    }
 
-        lines = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "R 5",
             "U 8",
             "L 8",
@@ -115,8 +117,6 @@ SOLUTION(2022, 9) {
             "L 25",
             "U 20"
         };
-        if (CountUniqueTailPositions(lines, 10) != 36) return false;
-        
-        return true;
+        return CountUniqueTailPositions(lines, 10) == 36;
     }
 }

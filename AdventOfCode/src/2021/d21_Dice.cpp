@@ -117,12 +117,14 @@ SOLUTION(2021, 21) {
         return Constexpr::ToString(SolveP2(p1Pos, p2Pos));
     }
 
+    static_assert(SolveP1(4, 8) == 739785);
+    static_assert(SolveP1(6, 10) == 853776);
+    
     TEST(1) {
-        static_assert(SolveP1(4, 8) == 739785);
-        static_assert(SolveP1(6, 10) == 853776);
+        return SolveP1(4, 8) == 739785;
+    }
 
-        if (SolveP1(4, 8) != 739785) return false;
-        if (SolveP2(4, 8) != 444356092776315u) return false;
-        return true;
+    TEST(2) {
+        return SolveP2(4, 8) == 444356092776315u;
     }
 }

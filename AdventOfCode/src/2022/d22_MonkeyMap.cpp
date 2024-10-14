@@ -565,9 +565,9 @@ SOLUTION(2022, 22) {
         return Constexpr::ToString(GetResult(resultPos, facing));
     }
 
+    static_assert(SplitPath("10R5L5R10L4R5L5") == std::vector<std::string>{"10", "R", "5", "L", "5", "R", "10", "L", "4", "R", "5", "L", "5"});
+
     TEST(1) {
-        static_assert(SplitPath("10R5L5R10L4R5L5") == std::vector<std::string>{"10", "R", "5", "L", "5", "R", "10", "L", "4", "R", "5", "L", "5"});
-        
         std::vector<std::string> lines = {
             "        ...#",
             "        .#..",
@@ -585,9 +585,6 @@ SOLUTION(2022, 22) {
             "10R5L5R10L4R5L5"
         };
 
-        if (SolvePartOne(lines) != 6032) return false;
-        //if (PartTwo(lines) != "5031") return false;
-
-        return true;
+        return SolvePartOne(lines) == 6032;
     }
 }

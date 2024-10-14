@@ -109,8 +109,6 @@ SOLUTION(2016, 24) {
            "#4.......3#",
            "###########"
         };
-        if (Solve(lines, false) != 14) return false;
-        
-        return true;
+        return Solve(lines, false) == 14;
     }
 }

@@ -139,7 +139,6 @@ SOLUTION(2023, 14) {
             "#OO..#...."
         };
 
-        if (Part1(example) != "136") return false;
-        return true;
+        return Part1(example) == "136";
     }
 }

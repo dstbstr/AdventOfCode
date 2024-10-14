@@ -19,8 +19,4 @@ SOLUTION(2019, 9) {
     PART(2) {
         return Constexpr::ToString(Solve(lines[0], 2));
     }
-
-    TEST(1) {
-        return true;
-    }
 }

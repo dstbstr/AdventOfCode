@@ -31,12 +31,8 @@ SOLUTION(2017, 12) {
         return Constexpr::ToString(groupCount);
     }
 
-    TEST(1) {
-        static_assert(ParseLine("0 <-> 2").size() == 1);
-        static_assert(ParseLine("0 <-> 2")[0] == 2u);
-        static_assert(ParseLine("2 <-> 0, 3, 4").size() == 3);
-        static_assert(ParseLine("2 <-> 0, 3, 4") == std::vector<u32>{0, 3, 4});
-        
-        return true;
-    }
+    static_assert(ParseLine("0 <-> 2").size() == 1);
+    static_assert(ParseLine("0 <-> 2")[0] == 2u);
+    static_assert(ParseLine("2 <-> 0, 3, 4").size() == 3);
+    static_assert(ParseLine("2 <-> 0, 3, 4") == std::vector<u32>{0, 3, 4});
 }

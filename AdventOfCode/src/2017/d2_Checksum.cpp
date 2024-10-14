@@ -33,14 +33,10 @@ SOLUTION(2017, 2) {
         return Constexpr::ToString(Checksum(lines, FindDivisors));
     }
 
-    TEST(1) {
-        static_assert(FindDelta("5\t1\t9\t5") == 8);
-        static_assert(FindDelta("7\t5\t3") == 4);
-        static_assert(FindDelta("2\t4\t6\t8") == 6);
+    static_assert(FindDelta("5\t1\t9\t5") == 8);
+    static_assert(FindDelta("7\t5\t3") == 4);
+    static_assert(FindDelta("2\t4\t6\t8") == 6);
         
-        static_assert(Checksum(std::vector<std::string>{"5\t1\t9\t5", "7\t5\t3", "2\t4\t6\t8"}, FindDelta) == 18);
-        static_assert(Checksum(std::vector<std::string>{"5\t9\t2\t8", "9\t4\t7\t3", "3\t8\t6\t5"}, FindDivisors) == 9);
-
-        return true;
-    }
+    static_assert(Checksum(std::vector<std::string>{"5\t1\t9\t5", "7\t5\t3", "2\t4\t6\t8"}, FindDelta) == 18);
+    static_assert(Checksum(std::vector<std::string>{"5\t9\t2\t8", "9\t4\t7\t3", "3\t8\t6\t5"}, FindDivisors) == 9);
 }

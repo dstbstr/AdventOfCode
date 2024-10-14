@@ -124,19 +124,21 @@ SOLUTION(2018, 7) {
         return Constexpr::ToString(totalSeconds + remaining);
     }
 
+    /*
     TEST(1) {
-        //std::vector<std::string> lines = {
-        //    "Step C must be finished before step A can begin.",
-        //    "Step C must be finished before step F can begin.",
-        //    "Step A must be finished before step B can begin.",
-        //    "Step A must be finished before step D can begin.",
-        //    "Step B must be finished before step E can begin.",
-        //    "Step D must be finished before step E can begin.",
-        //    "Step F must be finished before step E can begin."
-        //};
-        //
-        //if (PartOne(lines) != "CABDFE") return false;
+        std::vector<std::string> lines = {
+            "Step C must be finished before step A can begin.",
+            "Step C must be finished before step F can begin.",
+            "Step A must be finished before step B can begin.",
+            "Step A must be finished before step D can begin.",
+            "Step B must be finished before step E can begin.",
+            "Step D must be finished before step E can begin.",
+            "Step F must be finished before step E can begin."
+        };
+        
+        if (Part1(lines) != "CABDFE") return false;
 
         return true;
     }
+    */
 }

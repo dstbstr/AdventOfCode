@@ -130,17 +130,17 @@ SOLUTION(2017, 7) {
         return actualOddIndex == expectedOddIndex;
     }
 
-    TEST(1) {
-        static_assert(ParseNode("ab (42)").Name == "ab");
-        static_assert(ParseNode("ab (42)").Weight == 42);
-        static_assert(ParseNode("ab (42) -> bc, cd").Carrying.size() == 2);
-        static_assert(ParseNode("ab (42) -> bc, cd").Carrying[0] == "bc");
+    static_assert(ParseNode("ab (42)").Name == "ab");
+    static_assert(ParseNode("ab (42)").Weight == 42);
+    static_assert(ParseNode("ab (42) -> bc, cd").Carrying.size() == 2);
+    static_assert(ParseNode("ab (42) -> bc, cd").Carrying[0] == "bc");
         
-        static_assert(TestAllMatch({ 1, 1, 1 }, true, 0));
-        static_assert(TestAllMatch({ 0, 1, 1 }, false, 0));
-        static_assert(TestAllMatch({ 1, 0, 1 }, false, 1));
-        static_assert(TestAllMatch({ 1, 1, 0 }, false, 2));
+    static_assert(TestAllMatch({ 1, 1, 1 }, true, 0));
+    static_assert(TestAllMatch({ 0, 1, 1 }, false, 0));
+    static_assert(TestAllMatch({ 1, 0, 1 }, false, 1));
+    static_assert(TestAllMatch({ 1, 1, 0 }, false, 2));
 
+    TEST(1) {
         std::vector<std::string> lines = {
             "pbga (66)",
             "xhth (57)",

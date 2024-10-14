@@ -99,11 +99,13 @@ SOLUTION(2017, 14) {
         return Constexpr::ToString(groups);
     }
 
+    /*
     TEST(1) {
-        //std::vector<std::string> lines = { "flqrgnkx" };
-        //if(PartOne(lines) != "8108") return false;
-        //if(PartTwo(lines) != "1242") return false;
+        std::vector<std::string> lines = { "flqrgnkx" };
+        if(PartOne(lines) != "8108") return false;
+        if(PartTwo(lines) != "1242") return false;
         
         return true;
     }
+    */
 }

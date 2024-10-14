@@ -111,16 +111,12 @@ SOLUTION(2021, 13) {
         return SolvePartOne(lines) == 17;
     }
 
-    TEST(1) {
-        static_assert(ParseInput(std::array<std::string, 2>{ "6,10", "0,14" }).size() == 2);
-        static_assert(ParseInput(std::array<std::string, 2>{ "6,10", "0,14" })[0].X == 6);
+    static_assert(ParseInput(std::array<std::string, 2>{ "6,10", "0,14" }).size() == 2);
+    static_assert(ParseInput(std::array<std::string, 2>{ "6,10", "0,14" })[0].X == 6);
         
-        static_assert(ParseFold("fold along y=7").Edge == 7);
-        static_assert(ParseFold("fold along y=7").IsX == false);
-        static_assert(ParseFold("fold along x=3").IsX == true);
+    static_assert(ParseFold("fold along y=7").Edge == 7);
+    static_assert(ParseFold("fold along y=7").IsX == false);
+    static_assert(ParseFold("fold along x=3").IsX == true);
 
-        static_assert(TestPartOne());
-
-        return true;
-    }
+    static_assert(TestPartOne());
 }

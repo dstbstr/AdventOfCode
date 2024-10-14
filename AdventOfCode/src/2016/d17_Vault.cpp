@@ -131,33 +131,30 @@ SOLUTION(2016, 17) {
         return Constexpr::ToString(FindLongestPath(lines[0]));
     }
 
+    static_assert(IsOpen('b'));
+    static_assert(IsOpen('f'));
+    static_assert(!IsOpen('0'));
+    static_assert(!IsOpen('a'));
+    static_assert(!IsOpen('9'));
+
+    static_assert(GetOpenDoors("ced9") == std::vector<char>{'U', 'D', 'L'});
+
+    static_assert(GetValidDirections(0) == std::vector<char>{'D', 'R'});
+
+    static_assert(GetNewPos(0, 'R') == 1);
+    static_assert(GetNewPos(0, 'D') == 4);
+
+    static_assert(FindShortestPath("hijkl") == "Something went very wrong");
+    static_assert(FindShortestPath("ihgpwlah") == "DDRRRD");
     TEST(1) {
-        static_assert(IsOpen('b'));
-        static_assert(IsOpen('f'));
-        static_assert(!IsOpen('0'));
-        static_assert(!IsOpen('a'));
-        static_assert(!IsOpen('9'));
+        return FindLongestPath("ihgpwlah") == 370;
+    }
 
-        static_assert(GetOpenDoors("ced9") == std::vector<char>{'U', 'D', 'L'});
+    TEST(2) {
+        return FindLongestPath("kglvqrro") == 492;
+    }
 
-        static_assert(GetValidDirections(0) == std::vector<char>{'D', 'R'});
-
-        static_assert(GetNewPos(0, 'R') == 1);
-        static_assert(GetNewPos(0, 'D') == 4);
-
-        static_assert(FindShortestPath("hijkl") == "Something went very wrong");
-        static_assert(FindShortestPath("ihgpwlah") == "DDRRRD");
-        //static_assert(FindShortestPath("kglvqrro") == "DDUDRLRRUDRD");
-        //static_assert(FindShortestPath("ulqzkmiv") == "DRURDRUDDLLDLUURRDULRLDUUDDDRR");
-
-        //if (FindShortestPath("hijkl") != "hijkl") return false;
-        //if (FindShortestPath("ihgpwlah") != "DDRRRD") return false;
-        //if (FindShortestPath("kglvqrro") != "DDUDRLRRUDRD") return false;
-        //if (FindShortestPath("ulqzkmiv") != "DRURDRUDDLLDLUURRDULRLDUUDDDRR") return false;
-
-        if (FindLongestPath("ihgpwlah") != 370) return false;
-        if (FindLongestPath("kglvqrro") != 492) return false;
-        if (FindLongestPath("ulqzkmiv") != 830) return false;
-        return true;
+    TEST(3) {
+        return FindLongestPath("ulqzkmiv") == 830;
     }
 }

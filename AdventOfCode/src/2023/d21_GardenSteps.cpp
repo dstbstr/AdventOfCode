@@ -87,8 +87,4 @@ SOLUTION(2023, 21) {
     PART(2) {
         return Constexpr::ToString(Solve(lines, 26501365));
     }
-
-    TEST(1) {
-        return true;
-    }
 }

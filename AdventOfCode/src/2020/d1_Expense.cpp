@@ -45,8 +45,4 @@ SOLUTION(2020, 1) {
 
         return "Not Found";
     }
-
-    TEST(1) {
-        return true;
-    }
 }

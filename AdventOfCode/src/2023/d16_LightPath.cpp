@@ -84,7 +84,7 @@ SOLUTION(2023, 16) {
 	}
 
 	TEST(1) {
-		std::vector<std::string> example = {
+		std::vector<std::string> lines = {
 			".|...\\....",
 			"|.-.\\.....",
 			".....|-...",
@@ -97,8 +97,6 @@ SOLUTION(2023, 16) {
 			"..//.|...."
 		};
 
-		if (Part1(example) != "46") return false;
-
-		return true;
+		return Part1(lines) == "46";
 	}
 }

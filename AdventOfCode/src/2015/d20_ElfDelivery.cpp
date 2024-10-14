@@ -34,14 +34,14 @@ SOLUTION(2015, 20) {
     PART(2) {
         return Constexpr::ToString(Solve(lines[0], CountLazyPresents, 800'000));
     }
+    static_assert(CountPresents(1) == 10);
+    static_assert(CountPresents(2) == 30);
+    static_assert(CountPresents(786240) >= 34'000'000);
+
+    static_assert(CountLazyPresents(1) == 11);
+    static_assert(CountLazyPresents(2) == 33);
+
     TEST(1) {
-        static_assert(CountPresents(1) == 10);
-        static_assert(CountPresents(2) == 30);
-        static_assert(CountPresents(786240) >= 34'000'000);
-
-        static_assert(CountLazyPresents(1) == 11);
-        static_assert(CountLazyPresents(2) == 33);
-
         auto divisors = Constexpr::GetDivisors(24);
         std::sort(divisors.begin(), divisors.end());
         if (divisors.size() != 8) return false;

@@ -37,10 +37,6 @@ SOLUTION(2017, 5) {
         return Constexpr::ToString(StepsToExit(lines, ShortJump));
     }
 
-    TEST(1) {
-        static_assert(StepsToExit(std::vector<std::string>{ "0", "3", "0", "1", "-3" }, Jump) == 5);
-        static_assert(StepsToExit(std::vector<std::string>{ "0", "3", "0", "1", "-3" }, ShortJump) == 10);
-
-        return true;
-    }
+    static_assert(StepsToExit(std::vector<std::string>{ "0", "3", "0", "1", "-3" }, Jump) == 5);
+    static_assert(StepsToExit(std::vector<std::string>{ "0", "3", "0", "1", "-3" }, ShortJump) == 10);
 }

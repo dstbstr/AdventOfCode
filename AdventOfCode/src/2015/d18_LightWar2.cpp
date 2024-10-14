@@ -102,39 +102,36 @@ SOLUTION(2015, 18) {
 
         return Constexpr::ToString(CountLit(lights));
     }
-    TEST(1) {
-        static_assert(BuildArray<6, 6>(
-            ".#.#.#"
-            "...##."
-            "#....#"
-            "..#..."
-            "#.#..#"
-            "####..")[2][0] == true);
+
+    static_assert(BuildArray<6, 6>(
+        ".#.#.#"
+        "...##."
+        "#....#"
+        "..#..."
+        "#.#..#"
+        "####..")[2][0] == true);
  
-        static_assert(CountLitNeighbors(BuildArray<6, 6>(
-            ".#.#.#"
-            "...##."
-            "#....#"
-            "..#..."
-            "#.#..#"
-            "####.."), 0, 0) == 1);
+    static_assert(CountLitNeighbors(BuildArray<6, 6>(
+        ".#.#.#"
+        "...##."
+        "#....#"
+        "..#..."
+        "#.#..#"
+        "####.."), 0, 0) == 1);
 
-        static_assert(CountLitNeighbors(BuildArray<6, 6>(
-            ".#.#.#"
-            "...##."
-            "#....#"
-            "..#..."
-            "#.#..#"
-            "####.."), 1, 4) == 4);
+    static_assert(CountLitNeighbors(BuildArray<6, 6>(
+        ".#.#.#"
+        "...##."
+        "#....#"
+        "..#..."
+        "#.#..#"
+        "####.."), 1, 4) == 4);
 
-        static_assert(CountLit(BuildArray<6, 6>(
-            ".#.#.#"
-            "...##."
-            "#....#"
-            "..#..."
-            "#.#..#"
-            "####..")) == 15);
-
-        return true;
-    }
+    static_assert(CountLit(BuildArray<6, 6>(
+        ".#.#.#"
+        "...##."
+        "#....#"
+        "..#..."
+        "#.#..#"
+        "####..")) == 15);
 }

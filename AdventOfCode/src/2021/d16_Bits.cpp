@@ -189,32 +189,28 @@ SOLUTION(2021, 16) {
         return true;
     }
 
-    TEST(1) {
-        static_assert(HexToBits("3") == "0011");
-        static_assert(HexToBits("A") == "1010");
-        static_assert(HexToBits("D2FE28") == "110100101111111000101000");
+    static_assert(HexToBits("3") == "0011");
+    static_assert(HexToBits("A") == "1010");
+    static_assert(HexToBits("D2FE28") == "110100101111111000101000");
 
-        static_assert(BitsToValue<u8>("0011") == u8(3));
-        static_assert(BitsToValue<u32>("1111") == u32(15));
+    static_assert(BitsToValue<u8>("0011") == u8(3));
+    static_assert(BitsToValue<u32>("1111") == u32(15));
 
-        static_assert(TestParseValue());
+    static_assert(TestParseValue());
 
-        static_assert(TestParsePacket());
+    static_assert(TestParsePacket());
         
-        static_assert(SolvePartOne("8A004A801A8002F478") == 16);
-        static_assert(SolvePartOne("620080001611562C8802118E34") == 12);
-        static_assert(SolvePartOne("C0015000016115A2E0802F182340") == 23);
-        static_assert(SolvePartOne("A0016C880162017C3686B18A3D4780") == 31);
+    static_assert(SolvePartOne("8A004A801A8002F478") == 16);
+    static_assert(SolvePartOne("620080001611562C8802118E34") == 12);
+    static_assert(SolvePartOne("C0015000016115A2E0802F182340") == 23);
+    static_assert(SolvePartOne("A0016C880162017C3686B18A3D4780") == 31);
  
-        static_assert(GetPacket("C200B40A82").Evaluate() == 3);
-        static_assert(GetPacket("04005AC33890").Evaluate() == 54);
-        static_assert(GetPacket("880086C3E88112").Evaluate() == 7);
-        static_assert(GetPacket("CE00C43D881120").Evaluate() == 9);
-        static_assert(GetPacket("D8005AC2A8F0").Evaluate() == 1);
-        static_assert(GetPacket("F600BC2D8F").Evaluate() == 0);
-        static_assert(GetPacket("9C005AC2F8F0").Evaluate() == 0);
-        static_assert(GetPacket("9C0141080250320F1802104A08").Evaluate() == 1);
-        
-        return true;
-    }
+    static_assert(GetPacket("C200B40A82").Evaluate() == 3);
+    static_assert(GetPacket("04005AC33890").Evaluate() == 54);
+    static_assert(GetPacket("880086C3E88112").Evaluate() == 7);
+    static_assert(GetPacket("CE00C43D881120").Evaluate() == 9);
+    static_assert(GetPacket("D8005AC2A8F0").Evaluate() == 1);
+    static_assert(GetPacket("F600BC2D8F").Evaluate() == 0);
+    static_assert(GetPacket("9C005AC2F8F0").Evaluate() == 0);
+    static_assert(GetPacket("9C0141080250320F1802104A08").Evaluate() == 1);
 }

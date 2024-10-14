@@ -97,20 +97,22 @@ SOLUTION(2018, 19) {
         return Constexpr::ToString(std::accumulate(divisors.begin(), divisors.end(), 0));
     }
 
+    /*
     TEST(1) {
-        //std::vector<std::string> lines = {
-        //    "#ip 0",
-        //    "seti 5 0 1",
-        //    "seti 6 0 2",
-        //    "addi 0 1 0",
-        //    "addr 1 2 3",
-        //    "setr 1 0 0",
-        //    "seti 8 0 4",
-        //    "seti 9 0 5"
-        //};
-        //
-        //if (PartOne(lines) != "7") return false;
+        std::vector<std::string> lines = {
+            "#ip 0",
+            "seti 5 0 1",
+            "seti 6 0 2",
+            "addi 0 1 0",
+            "addr 1 2 3",
+            "setr 1 0 0",
+            "seti 8 0 4",
+            "seti 9 0 5"
+        };
+        
+        if (Part1(lines) != "7") return false;
 
         return true;
     }
+    */
 }

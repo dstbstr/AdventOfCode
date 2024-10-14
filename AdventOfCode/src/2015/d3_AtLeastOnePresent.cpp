@@ -77,14 +77,10 @@ SOLUTION(2015, 3) {
         return Constexpr::ToString(CountDeliveriesWithRobot(lines[0]));
     }
 
-    TEST(1) {
-        static_assert(CountDeliveries(">") == 2);
-        static_assert(CountDeliveries("^>v<") == 4);
+    static_assert(CountDeliveries(">") == 2);
+    static_assert(CountDeliveries("^>v<") == 4);
 
-        static_assert(CountDeliveriesWithRobot("^v") == 3);
-        static_assert(CountDeliveriesWithRobot("^>v<") == 3);
-        static_assert(CountDeliveriesWithRobot("^v^v^v^v^v") == 11);
-
-        return true;
-    }
+    static_assert(CountDeliveriesWithRobot("^v") == 3);
+    static_assert(CountDeliveriesWithRobot("^>v<") == 3);
+    static_assert(CountDeliveriesWithRobot("^v^v^v^v^v") == 11);
 }

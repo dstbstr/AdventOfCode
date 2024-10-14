@@ -46,6 +46,7 @@ SOLUTION(2018, 14) {
         return Constexpr::ToString(current.find(target));
     }
 
+    /*
     TEST(1) {
         //if (PartOne({ "5" }) != "0124515891") return false;
         //if (PartOne({"9"}) != "5158916779") return false;
@@ -59,4 +60,5 @@ SOLUTION(2018, 14) {
 
         return true;
     }
+    */
 }

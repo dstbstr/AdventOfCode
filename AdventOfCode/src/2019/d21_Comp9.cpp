@@ -104,8 +104,4 @@ SOLUTION(2019, 21) {
         AddCommand(RUN, args);
         return Start(instructions, args);
     }
-
-    TEST(1) {
-        return true;
-    }
 }

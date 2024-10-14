@@ -21,9 +21,5 @@ SOLUTION(2017, 10) {
         return KnotHash::HashToHex(KnotHash::Hash(lines[0]));
     }
 
-    TEST(1) {
-        //static_assert(PartTwo({ "1,2,3" }) == "3efbe78a8d82f29979031a4aa0b16a9d");
-
-        return true;
-    }
+    //static_assert(PartTwo({ "1,2,3" }) == "3efbe78a8d82f29979031a4aa0b16a9d");
 }

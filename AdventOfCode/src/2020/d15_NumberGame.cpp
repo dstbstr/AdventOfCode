@@ -38,10 +38,14 @@ SOLUTION(2020, 15) {
     }
 
     TEST(1) {
-        if (Solve<2020>("0,3,6") != 436) return false;
-        if (Solve<2020>("0,3,6") != 436) return false;
-        if (Solve<30'000'000>("0,3,6") != 175594) return false;
+        return Solve<2020>("0,3,6") == 436;
+    }
 
-        return true;
+    TEST(2) {
+        return Solve<2020>("0,3,6") == 436;
+    }
+
+    TEST(3) {
+        return Solve<30'000'000>("0,3,6") == 175594;
     }
 }

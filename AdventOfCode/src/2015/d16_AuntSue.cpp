@@ -79,8 +79,4 @@ SOLUTION(2015, 16) {
     PART(2) {
         return Constexpr::ToString(Solve(lines, IsRangeMatch));
     }
-
-    TEST(1) {
-        return true;
-    }
 }

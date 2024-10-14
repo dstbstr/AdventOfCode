@@ -106,7 +106,7 @@ SOLUTION(2023, 17) {
 	}
 
 	TEST(1) {
-		std::vector<std::string> example = {
+		std::vector<std::string> lines = {
 			"2413432311323",
 			"3215453535623",
 			"3255245654254",
@@ -122,10 +122,14 @@ SOLUTION(2023, 17) {
 			"4322674655533"
 		};
 
-		if (Solve(example, 0, 3) != 102) return false;
-		if (Solve(example, 4, 10) != 94) return false;
+		if (Solve(lines, 0, 3) != 102) return false;
+		if (Solve(lines, 4, 10) != 94) return false;
 
-		example = {
+		return true;
+	}
+
+	TEST(2) {
+		std::vector<std::string> lines = {
 			"111111111111",
 			"999999999991",
 			"999999999991",
@@ -133,7 +137,6 @@ SOLUTION(2023, 17) {
 			"999999999991"
 		};
 
-		if (Solve(example, 4, 10) != 71) return false;
-		return true;
+		return Solve(lines, 4, 10) == 71;
 	}
 }

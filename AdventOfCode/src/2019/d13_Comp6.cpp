@@ -103,8 +103,4 @@ SOLUTION(2019, 13) {
 
         return Constexpr::ToString(game.Score);
     }
-
-    TEST(1) {
-        return true;
-    }
 }

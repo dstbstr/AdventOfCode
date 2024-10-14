@@ -207,9 +207,6 @@ SOLUTION(2022, 16) {
             "Valve JJ has flow rate=21; tunnel leads to valve II"
         };
 
-        if (FindBestSolo<10, u8>(lines) != 1651) return false;
-        //if (FindBestPair<10, u8>(lines) != 1707) return false;
-
-        return true;
+        return FindBestSolo<10, u8>(lines) == 1651;
     }
 }

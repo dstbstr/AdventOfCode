@@ -95,28 +95,23 @@ SOLUTION(2022, 25) {
         return SolvePartOne(lines);
     }
 
-    PART(2) {
-        (void)lines;
-        return "Merry Christmas!";
-    }
+    static_assert(FromSnafu("1=-0-2") == 1747);
+    static_assert(FromSnafu("1121-1110-1=0") == 314159265);
+
+    static_assert(ToSnafu(1) == "1");
+    static_assert(ToSnafu(2) == "2");
+    static_assert(ToSnafu(3) == "1=");
+    static_assert(ToSnafu(4) == "1-");
+    static_assert(ToSnafu(5) == "10");
+    static_assert(ToSnafu(6) == "11");
+    static_assert(ToSnafu(7) == "12");
+    static_assert(ToSnafu(8) == "2=");
+    static_assert(ToSnafu(9) == "2-");
+    static_assert(ToSnafu(10) == "20");
+    static_assert(ToSnafu(1747) == "1=-0-2");
+    static_assert(ToSnafu(314159265) == "1121-1110-1=0");
 
     TEST(1) {
-        static_assert(FromSnafu("1=-0-2") == 1747);
-        static_assert(FromSnafu("1121-1110-1=0") == 314159265);
-
-        static_assert(ToSnafu(1) == "1");
-        static_assert(ToSnafu(2) == "2");
-        static_assert(ToSnafu(3) == "1=");
-        static_assert(ToSnafu(4) == "1-");
-        static_assert(ToSnafu(5) == "10");
-        static_assert(ToSnafu(6) == "11");
-        static_assert(ToSnafu(7) == "12");
-        static_assert(ToSnafu(8) == "2=");
-        static_assert(ToSnafu(9) == "2-");
-        static_assert(ToSnafu(10) == "20");
-        static_assert(ToSnafu(1747) == "1=-0-2");
-        static_assert(ToSnafu(314159265) == "1121-1110-1=0");
-
         std::vector<std::string> lines = {
             "1=-0-2",
             "12111",
@@ -133,8 +128,6 @@ SOLUTION(2022, 25) {
             "122"
         };
 
-        if (SolvePartOne(lines) != "2=-1=0") return false;
-
-        return true;
+        return SolvePartOne(lines) == "2=-1=0";
     }
 }

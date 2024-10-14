@@ -115,7 +115,7 @@ SOLUTION(2023, 8) {
     }
 
     TEST(1) {
-        std::vector<std::string> example = {
+        std::vector<std::string> lines = {
             "RL",
             "",
             "AAA = (BBB, CCC)",
@@ -127,9 +127,11 @@ SOLUTION(2023, 8) {
             "ZZZ = (ZZZ, ZZZ)"
         };
 
-        if (Part1(example) != "2") return false;
+        return Part1(lines) == "2";
+    }
 
-        std::vector<std::string> e2 = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "LR",
             "",
             "11A = (11B, XXX)",
@@ -142,7 +144,6 @@ SOLUTION(2023, 8) {
             "XXX = (XXX, XXX)"
         };
 
-        if (Part2(e2) != "6") return false;
-        return true;
+        return Part2(lines) == "6";
     }
 }

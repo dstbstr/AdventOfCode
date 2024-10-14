@@ -102,9 +102,8 @@ SOLUTION(2020, 14) {
     }
 
 
+    static_assert(TestUpdateMasks());
     TEST(1) {
-        static_assert(TestUpdateMasks());
-        if (!TestUpdateMasks()) return false;
         std::vector<std::string> lines = {
             "mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X",
             "mem[8] = 11",
@@ -112,24 +111,25 @@ SOLUTION(2020, 14) {
             "mem[8] = 0"
         };
 
-        if (Solve(lines, Write) != 165) return false;
+        return Solve(lines, Write) == 165;
+    }
 
-        lines = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "mask = 000000000000000000000000000000X1001X",
             "mem[42] = 100",
             "mask = 00000000000000000000000000000000X0XX",
             "mem[26] = 1"
         };
-        if (Solve(lines, Write2) != 208) return false;
-
-        lines = {
+        return Solve(lines, Write2) == 208;
+    }
+    TEST(3) {
+        std::vector<std::string> lines = {
             "mask = 000000000000000000000000000000000XXX",
             "mem[8] = 4",
             "mask = XX0000000000000000000000000000000000",
             "mem[0] = 5"
         };
-        if (Solve(lines, Write2) != 52) return false;
-
-        return true;
+        return Solve(lines, Write2) == 52;
     }
 }

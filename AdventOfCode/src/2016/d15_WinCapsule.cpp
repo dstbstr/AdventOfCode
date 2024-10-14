@@ -43,7 +43,6 @@ SOLUTION(2016, 15) {
     }
     PART(2) {
         auto copy = lines;
-        //auto copy = CopyToVector(lines);
         copy.push_back("Disc #7 has 11 positions; at time=0, it is at position 0.");
 
         auto discs = ParseLines(copy, ParseDisc);
@@ -51,15 +50,13 @@ SOLUTION(2016, 15) {
         return Constexpr::ToString(BestSpin(discs));
     }
 
-    TEST(1) {
-        static_assert(Win({ {5, 4}, {2, 1} }, 0) == false);
-        static_assert(Win({ {5, 4}, {2, 1} }, 5));
+    static_assert(Win({ {5, 4}, {2, 1} }, 0) == false);
+    static_assert(Win({ {5, 4}, {2, 1} }, 5));
 
+    TEST(1) {
         std::vector<Disc> discs = { {5, 4}, {2, 1} };
 
-        if (BestSpin(discs) != 5) return false;
-
-        return true;
+        return BestSpin(discs) == 5;
     }
 }
 

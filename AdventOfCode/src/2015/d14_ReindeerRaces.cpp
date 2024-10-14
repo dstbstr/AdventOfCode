@@ -74,15 +74,11 @@ SOLUTION(2015, 14) {
         return Constexpr::ToString(*std::max_element(points.cbegin(), points.cend()));
     }
 
-    TEST(1) {
-        static_assert(FindDistance({ 14,10,127 }, 10) == 140);
-        static_assert(FindDistance({ 14,10,127 }, 11) == 140);
-        static_assert(FindDistance({ 14,10,127 }, 1000) == 1120);
+    static_assert(FindDistance({ 14,10,127 }, 10) == 140);
+    static_assert(FindDistance({ 14,10,127 }, 11) == 140);
+    static_assert(FindDistance({ 14,10,127 }, 1000) == 1120);
 
-        static_assert(FindDistance({ 16,11,162 }, 10) == 160);
-        static_assert(FindDistance({ 16,11,162 }, 11) == 176);
-        static_assert(FindDistance({ 16,11,162 }, 1000) == 1056);
-
-        return true;
-    }
+    static_assert(FindDistance({ 16,11,162 }, 10) == 160);
+    static_assert(FindDistance({ 16,11,162 }, 11) == 176);
+    static_assert(FindDistance({ 16,11,162 }, 1000) == 1056);
 }

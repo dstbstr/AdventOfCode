@@ -113,8 +113,4 @@ SOLUTION(2019, 12) {
         auto lcm = Constexpr::FindLcm<u64>(pX, pY, pZ);
         return Constexpr::ToString(lcm * 2);
     }
-
-    TEST(1) {
-        return true;
-    }
 }

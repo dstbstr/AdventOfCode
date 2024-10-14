@@ -71,21 +71,23 @@ SOLUTION(2017, 20) {
         return Constexpr::ToString(particles.size());
     }
 
+    static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Position == Vec3<s64>{-317, 1413, 1507});
+    static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Velocity == Vec3<s64>{19, -102, -108});
+    static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Accel == Vec3<s64>{1, -3, -3});
+    static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Index == 1);
+    /*
     TEST(1) {
-        static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Position == Vec3<s64>{-317, 1413, 1507});
-        static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Velocity == Vec3<s64>{19, -102, -108});
-        static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Accel == Vec3<s64>{1, -3, -3});
-        static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Index == 1);
         
-        //std::vector<std::string> lines = {
-        //   "p=<-6,0,0>, v=<3,0,0>, a=<0,0,0>",
-        //   "p=<-4,0,0>, v=<2,0,0>, a=<0,0,0>",
-        //   "p=<-2,0,0>, v=<1,0,0>, a=<0,0,0>",
-        //   "p=<3,0,0>, v=<-1,0,0>, a=<0,0,0>"
-        //};
-        //
-        //if (PartTwo(lines) != "1") return false;
+        std::vector<std::string> lines = {
+           "p=<-6,0,0>, v=<3,0,0>, a=<0,0,0>",
+           "p=<-4,0,0>, v=<2,0,0>, a=<0,0,0>",
+           "p=<-2,0,0>, v=<1,0,0>, a=<0,0,0>",
+           "p=<3,0,0>, v=<-1,0,0>, a=<0,0,0>"
+        };
+        
+        if (PartTwo(lines) != "1") return false;
         
         return true;
     }
+    */
 }

@@ -49,16 +49,12 @@ SOLUTION(2020, 5) {
         return "Not Found";
     }
 
-    TEST(1) {
-        static_assert(FindSeat("FBFBBFFRLR") == RowCol{ 44, 5 });
-        static_assert(FindSeat("FFFBBBFRRR") == RowCol{ 14, 7 });
-        static_assert(FindSeat("BFFFBBFRRR") == RowCol{ 70, 7 });
-        static_assert(FindSeat("BBFFBBFRLL") == RowCol{ 102, 4 });
-        static_assert(FindSeat("FFFFFFFLLL") == RowCol{ 0, 0 });
-        static_assert(FindSeat("BBBBBBBRRR") == RowCol{ 127, 7 });
+    static_assert(FindSeat("FBFBBFFRLR") == RowCol{ 44, 5 });
+    static_assert(FindSeat("FFFBBBFRRR") == RowCol{ 14, 7 });
+    static_assert(FindSeat("BFFFBBFRRR") == RowCol{ 70, 7 });
+    static_assert(FindSeat("BBFFBBFRLL") == RowCol{ 102, 4 });
+    static_assert(FindSeat("FFFFFFFLLL") == RowCol{ 0, 0 });
+    static_assert(FindSeat("BBBBBBBRRR") == RowCol{ 127, 7 });
 
-        static_assert(GetId({ 44, 5 }) == 357);
-        
-        return true;
-    }
+    static_assert(GetId({ 44, 5 }) == 357);
 }

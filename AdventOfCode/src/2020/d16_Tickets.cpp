@@ -204,9 +204,11 @@ SOLUTION(2020, 16) {
            "38,6,12"
         };
 
-        if (SolvePartOne(lines) != 71) return false;
+        return SolvePartOne(lines) == 71;
+    }
 
-        lines = {
+    TEST(2) {
+        std::vector<std::string> lines = {
             "class: 0-1 or 4-19",
             "row: 0-5 or 8-19",
             "seat: 0-13 or 16-19",
@@ -220,7 +222,6 @@ SOLUTION(2020, 16) {
             "5,14,9"
         };
 
-        if (SolvePartTwo(lines) != 1) return false;
-        return true;
+        return SolvePartTwo(lines) == 1;
     }
 }

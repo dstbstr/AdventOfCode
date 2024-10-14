@@ -131,8 +131,4 @@ SOLUTION(2019, 15) {
 
         return Constexpr::ToString(FloodFill(map, target));
     }
-
-    TEST(1) {
-        return true;
-    }
 }

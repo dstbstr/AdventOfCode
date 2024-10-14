@@ -197,7 +197,7 @@ SOLUTION(2023, 23) {
     }
 
     TEST(1) {
-        std::vector<std::string> example = {
+        std::vector<std::string> lines = {
             "#.#####################",
             "#.......#########...###",
             "#######.#########.#.###",
@@ -223,8 +223,8 @@ SOLUTION(2023, 23) {
             "#####################.#"
         };
 
-        if (FindMaxPath(example, GetNeighbors) != 94) return false;
-        if (Part2(example) != "154") return false;
+        if (FindMaxPath(lines, GetNeighbors) != 94) return false;
+        if (Part2(lines) != "154") return false;
 
         return true;
     }

@@ -37,7 +37,15 @@ SolutionRunner RunFromCommandLine(int argc, char** argv, std::unique_ptr<IInputR
 
 
 struct LogWriter : public Log::ISink {
-    LogWriter(Log::Filter filter = {}) : ISink(filter) {}
+    LogWriter(Log::Filter filter = {}) : ISink(filter) {
+		// Disable synchronization with C stdio
+        // No interop with C
+		std::ios_base::sync_with_stdio(false);
+		
+        // Untie stdio streams from C++ streams
+        // Not using cin, so no need to synchronize with cout
+        std::cin.tie(nullptr);
+    }
     void Write(const Log::Entry& entry) override {
         std::cout << entry.Message << '\n';
     }
@@ -51,7 +59,8 @@ int main(int argc, char** argv) {
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>(), sync);
         } else {
-            return SolutionRunner (2015, 1, std::make_unique<ExeInputReader>(), sync);
+            return SolutionRunner (2023, 25, std::make_unique<ExeInputReader>(), sync);
+            //return SolutionRunner(std::make_unique<ExeInputReader>(), sync);
         }
     }();
         

@@ -71,8 +71,8 @@ SOLUTION(2021, 15) {
         return Constexpr::ToString(Solve(bigMap));
     }
 
+    /*
     TEST(1) {
-        /*
         std::vector<std::string> lines = {
             "1163751742",
             "1381373672",
@@ -94,23 +94,26 @@ SOLUTION(2021, 15) {
             "11191",
             "99991"
         };
-        */
+    }
+    */
+
+    TEST(2) {
         std::vector<std::string> lines = {
             "19111",
             "11191",
             "99991"
         };
-        if (Solve(ParseInput(lines)) != 8) return false;
+        return Solve(ParseInput(lines)) == 8;
+    }
 
-        lines = {
+    TEST(3) {
+        std::vector<std::string> lines = {
             "119",
             "919",
             "119",
             "199",
             "111"
         };
-        if (Solve(ParseInput(lines)) != 8) return false;
-
-        return true;
+        return Solve(ParseInput(lines)) == 8;
     }
 }

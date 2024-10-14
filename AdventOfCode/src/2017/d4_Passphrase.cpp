@@ -37,15 +37,11 @@ SOLUTION(2017, 4) {
         return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsSecure));
     }
 
-    TEST(1) {
-        static_assert(IsValid("aa bb cc"));
-        static_assert(!IsValid("aa bb aa"));
-        static_assert(IsValid("aa aaa"));
+    static_assert(IsValid("aa bb cc"));
+    static_assert(!IsValid("aa bb aa"));
+    static_assert(IsValid("aa aaa"));
 
-        static_assert(IsSecure("abcde fghij"));
-        static_assert(!IsSecure("abcde xyz ecdab"));
-        //static_assert(IsSecure("a ab abc abd abf abj"));
-
-        return true;
-    }
+    static_assert(IsSecure("abcde fghij"));
+    static_assert(!IsSecure("abcde xyz ecdab"));
+    //static_assert(IsSecure("a ab abc abd abf abj"));
 }
