@@ -14,6 +14,7 @@ public:
 
 	void Run();
 	void LogTimingData(size_t maxResults = 0, std::chrono::microseconds minElapsed = std::chrono::microseconds(0)) const;
+	void LogResults() const;
 
 private:
 	std::unique_ptr<IInputReader> m_InputReader{nullptr};

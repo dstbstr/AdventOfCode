@@ -33,7 +33,7 @@ include(FetchContent)
 #################################
 # dstbstr/CppCore
 #################################
-FetchContent_Declare(CppCore GIT_REPOSITORY https://github.com/dstbstr/CppCore GIT_TAG main)
+FetchContent_Declare(CppCore GIT_REPOSITORY https://github.com/dstbstr/CppCore GIT_TAG origin/main)
 
 FetchContent_MakeAvailable(CppCore)
 # Include sub-projects.

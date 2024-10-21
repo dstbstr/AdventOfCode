@@ -158,7 +158,7 @@ SOLUTION(2019, 10) {
             ".....#.#.."
         };
         auto targets = FindMostTargets(ParseMap(lines));
-        return targets.size() == 35;
+        return targets.size() == 41;
     }
 
     TEST(5) {

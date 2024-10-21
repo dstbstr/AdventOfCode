@@ -1,20 +1,23 @@
 #include "Runner/SolutionRunner.h"
+#include "Common.h"
+
 #include "Core/Constexpr/ConstexprStrUtils.h"
 #include "Core/Instrumentation/Logging.h"
 #include "Core/Instrumentation/ScopedTimer.h"
-//#include "Core/Threading/Runner.h"
-//#include "Core/Threading/IRunnable.h"
-#include "Common.h"
+#include "Core/Threading/Tasks.h"
 #include "Core/Utilities/TimeUtils.h"
 
 #include <chrono>
 #include <format>
 #include <future>
+#include <iostream> // for progress bar
 
 namespace {
     std::string MakeKey(size_t year, size_t day, size_t part) {
-		return Constexpr::ToString(year) + "/" + Constexpr::ToString(day) + ":" + Constexpr::ToString(part);
+		return Constexpr::ToString(year) + "_" + Constexpr::ToString(day) + "_" + Constexpr::ToString(part);
 	}
+
+    std::map<size_t, std::map<size_t, std::map<size_t, std::string>>> Results{};
 
     void WriteLogs() {
         if (!GET_LOGS().empty()) Log::Info("## Logs ##");
@@ -29,7 +32,6 @@ namespace {
             timingData[std::string(key)] = elapsed;
         };
     };
-
 }
 
 bool SolutionRunner::CheckTestsPass(size_t year, size_t day) {
@@ -40,28 +42,27 @@ bool SolutionRunner::CheckTestsPass(size_t year, size_t day) {
 	for (const auto& [testNum, testFunc] : GetTests()[year][day]) {
 		auto testTime = ScopedTimer(MakeKey(year, day, testNum), GatherTiming(m_TimingData));
 		if (!testFunc()) {
-			Log::Info(std::format("Test {} Fail", testNum));
+			Log::Info(std::format("{}_{} Test {} Fail", year, day, testNum));
 			return false;
 		}
         passedTests++;
 	}
-    Log::Info(std::format("{} Tests Passed", passedTests));
     return true;
 }
 
 void SolutionRunner::AddSolution(size_t year, size_t day) {
+    Results[year][day][1] = "";
+	Results[year][day][2] = "";
 	m_ToRun.emplace_back([=]() {
-        Log::Info(std::format("### {} Day {} ###", year, day));
         if (!CheckTestsPass(year, day)) return;
 
         for (const auto& [part, func] : GetSolutions()[year][day]) {
-            std::string result;
             auto input = m_InputReader->ReadInput(year, day);
             {
                 auto partTime = ScopedTimer(MakeKey(year, day, part), GatherTiming(m_TimingData));
-                result = func(input);
+                auto result = func(input);
+                Results.at(year).at(day).at(part) = result;
             }
-            Log::Info(std::format("Part {}: {}", part, result));
             WriteLogs();
         }
     });
@@ -94,7 +95,6 @@ SolutionRunner::SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputRe
     AddSolution(year, day);
 }
 
-
 void SolutionRunner::Run() {
     if(m_Sync) {
 		for (const auto& run : m_ToRun) {
@@ -102,20 +102,10 @@ void SolutionRunner::Run() {
 		}
 	}
 	else {
-        // TODO: Rewrite the Runner to be cross-platform
-        std::vector<std::future<void>> futures;
-        std::vector copy = m_ToRun;
-        auto maxThreads = std::max(1ull, static_cast<size_t>(std::thread::hardware_concurrency()));
-        while(!copy.empty()) {
-			auto taskCount = std::min(copy.size(), maxThreads);
-            for(auto i = 0; i < taskCount; i++) {
-				futures.push_back(std::async(std::launch::async, copy[i]));
-            }
-			for (const auto& future : futures) {
-                future.wait();
-            }
-			copy.erase(copy.begin(), copy.begin() + taskCount);
-        }
+        auto progressBar = [](size_t, size_t, double percentage) {
+			std::cout << "\r" << std::format("{:.2f}%", percentage * 100);
+        };
+        WhenAll(m_ToRun, progressBar).wait();
     }
 }
 
@@ -130,4 +120,18 @@ void SolutionRunner::LogTimingData(size_t maxResults, std::chrono::microseconds 
 
         Log::Info(std::format("{}: {}", key, TimeUtils::DurationToString(elapsed)));
     }
+}
+
+void SolutionRunner::LogResults() const {
+    Log::Info("");
+	for (const auto& [year, days] : Results) {
+		Log::Info(std::format("\n### {} ###", year));
+		for (const auto& [day, parts] : days) {
+			Log::Info(std::format("\nDay {}", day));
+			for (const auto& [part, result] : parts) {
+                if (result.empty()) continue;
+				Log::Info(std::format("Part {}: {}", part, result));
+			}
+		}
+	}
 }
