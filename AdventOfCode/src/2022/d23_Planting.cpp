@@ -3,7 +3,9 @@
 SOLUTION(2022, 23) {
     using Map = std::array<std::array<bool, 500>, 500>;
 
-    using Action = std::function<bool(RowCol&, const Map&)>;
+    //using Action = std::function<bool(RowCol&, const Map&)>;
+    //using Action = std::invocable<bool, RowCol&, const Map&>;
+    using Action = bool(*)(RowCol&, const Map&);
 
     constexpr std::vector<std::vector<bool>> ReduceMap(const Map & map) {
         UCoord min{ 500, 500 };

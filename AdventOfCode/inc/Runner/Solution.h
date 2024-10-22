@@ -5,8 +5,14 @@
 #include <string>
 
 using SolutionFunc = std::function<std::string(const std::vector<std::string>&)>;
+using TestFunc = std::function<bool()>;
+
+//surprisingly, this is slower than std::function
+//using SolutionFunc = std::string(*)(const std::vector<std::string>&);
+//using TestFunc = bool(*)();
+
 std::unordered_map<size_t, std::unordered_map<size_t, std::unordered_map<size_t, SolutionFunc>>>& GetSolutions();
-std::unordered_map<size_t, std::unordered_map<size_t, std::unordered_map<size_t, std::function<bool()>>>>& GetTests();
+std::unordered_map<size_t, std::unordered_map<size_t, std::unordered_map<size_t, TestFunc>>>& GetTests();
 
 struct SolutionRegistrar {
 	SolutionRegistrar(size_t year, size_t day, size_t part, SolutionFunc solution) {
@@ -15,7 +21,7 @@ struct SolutionRegistrar {
 };
 
 struct TestRegistrar {
-	TestRegistrar(size_t year, size_t day, size_t testNum, std::function<bool()> testFunc) {
+	TestRegistrar(size_t year, size_t day, size_t testNum, TestFunc testFunc) {
 		GetTests()[year][day][testNum] = testFunc;
 	}
 };

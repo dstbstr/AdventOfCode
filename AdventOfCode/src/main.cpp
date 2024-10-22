@@ -53,14 +53,14 @@ struct LogWriter : public Log::ISink {
 
 int main(int argc, char** argv) {
     LogWriter logWriter{};
-
+    
     bool sync = false;
     auto runner = [&]{
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>(), sync);
         } else {
-            //return SolutionRunner (2017, std::make_unique<ExeInputReader>(), sync);
-            return SolutionRunner(std::make_unique<ExeInputReader>(), sync);
+            return SolutionRunner (2017, std::make_unique<ExeInputReader>(), sync);
+            //return SolutionRunner(std::make_unique<ExeInputReader>(), sync);
         }
     }();
         
@@ -69,8 +69,9 @@ int main(int argc, char** argv) {
             Log::Info(std::format("{}: {}", label, TimeUtils::DurationToString(elapsed, TimeUtils::TimeUnit::SECOND)));
         });
         runner.Run();
-        runner.LogResults();
+        Log::Info("");
     }
 
-    runner.LogTimingData();
+    //runner.LogResults();
+    //runner.LogTimingData();
 }

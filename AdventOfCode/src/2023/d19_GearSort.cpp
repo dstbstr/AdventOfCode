@@ -123,7 +123,7 @@ SOLUTION(2023, 19) {
             std::string label;
             auto func = ParseFunc(line, label);
 
-            funcs.emplace(label, func);
+            funcs.emplace(label, std::move(func));
         }
 
         auto gears = ParseLines(groups[1], ParseGear);

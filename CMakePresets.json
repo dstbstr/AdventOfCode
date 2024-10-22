@@ -7,10 +7,14 @@
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "installDir": "${sourceDir}/out/install/${presetName}",
-            "cacheVariables": {
-                "CMAKE_C_COMPILER": "cl.exe",
-                "CMAKE_CXX_COMPILER": "cl.exe"
-            },
+          "cacheVariables": {
+            "CMAKE_C_COMPILER": "cl.exe",
+            "CMAKE_CXX_COMPILER": "cl.exe"
+          },
+          "environment": {
+            "CMAKE_CXX_FLAGS": "$env{PRESET_COMPILER_FLAGS}",
+            "CMAKE_EXE_LINKER_FLAGS": "$env{PRESET_LINK_FLAGS}"
+          },
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
@@ -29,14 +33,32 @@
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
-        {
-            "name": "x64-release",
-            "displayName": "x64 Release",
-            "inherits": "x64-debug",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
+      {
+        "name": "x64-release",
+        "displayName": "x64 Release",
+        "inherits": "x64-debug",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "PRESET_COMPILER_FLAGS": "/GL",
+          "PRESET_LINK_FLAGS": "/LTCG"
+        }
+      },
+      {
+        "name": "x64-pgo-gen",
+        "inherits": "x64-release",
+        "environment": {
+          "PRESET_COMPILER_FLAGS": "/GL",
+          "PRESET_LINK_FLAGS": "/LTCG /GENPROFILE:PGD=${sourceDir}/out/build/profile.pgd"
+        }
+      },
+      {
+        "name": "x64-pgo-use",
+        "inherits": "x64-release",
+        "environment": {
+          "PRESET_COMPILER_FLAGS": "/GL",
+          "PRESET_LINK_FLAGS": "/LTCG /USEPROFILE:PGD=${sourceDir}/out/build/profile.pgd"
+        }
+      },
         {
             "name": "x86-debug",
             "displayName": "x86 Debug",
