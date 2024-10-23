@@ -8,9 +8,15 @@
 
 class SolutionRunner {
 public:
-	SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, bool sync = false);
-	SolutionRunner(size_t year, std::unique_ptr<IInputReader>&& inputReader, bool sync = false);
-	SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputReader>&& inputReader, bool sync = false);
+	struct Settings {
+		bool Sync{ false };
+		bool SkipTests{ false };
+		bool SlowFirst{ false };
+	};
+
+	SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, Settings settings);
+	SolutionRunner(size_t year, std::unique_ptr<IInputReader>&& inputReader, Settings settings);
+	SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputReader>&& inputReader, Settings settings);
 
 	void Run();
 	void LogTimingData(size_t maxResults = 0, std::chrono::microseconds minElapsed = std::chrono::microseconds(0)) const;
@@ -19,6 +25,8 @@ public:
 private:
 	std::unique_ptr<IInputReader> m_InputReader{nullptr};
 	bool m_Sync{false};
+	bool m_SkipTests{ false };
+	bool m_SlowFirst{ false };
 	std::map<std::string, std::chrono::microseconds> m_TimingData{};
 	std::vector<std::function<void()>> m_ToRun;
 

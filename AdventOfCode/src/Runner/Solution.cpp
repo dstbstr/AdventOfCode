@@ -8,3 +8,8 @@ std::unordered_map<size_t, std::unordered_map<size_t, std::unordered_map<size_t,
     static std::unordered_map<size_t, std::unordered_map<size_t, std::unordered_map<size_t, TestFunc>>> Tests{};
     return Tests;
 }
+
+std::set<std::tuple<size_t, size_t>>& GetSlowProblems() {
+	static std::set<std::tuple<size_t, size_t>> SlowProblems{};
+	return SlowProblems;
+}

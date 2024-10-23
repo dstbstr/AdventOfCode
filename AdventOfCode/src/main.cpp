@@ -12,25 +12,25 @@
 #include <map>
 #include <iostream>
 
-SolutionRunner RunFromCommandLine(int argc, char** argv, std::unique_ptr<IInputReader>&& inputReader, bool sync) {
+SolutionRunner RunFromCommandLine(int argc, char** argv, std::unique_ptr<IInputReader>&& inputReader, SolutionRunner::Settings settings) {
     if(argv[1][0] == '*') {
-        return SolutionRunner(std::move(inputReader), sync);
+        return SolutionRunner(std::move(inputReader), settings);
 	}
 	else {
 		size_t year;
 		Constexpr::ParseNumber(argv[1], year);
 		if (argc > 2) {
 			if (argv[2][0] == '*') {
-				return SolutionRunner(year, std::move(inputReader), sync);
+				return SolutionRunner(year, std::move(inputReader), settings);
 			}
 			else {
 				size_t day;
 				Constexpr::ParseNumber(argv[2], day);
-				return SolutionRunner(year, day, std::move(inputReader), sync);
+				return SolutionRunner(year, day, std::move(inputReader), settings);
 			}
 		}
 		else {
-			return SolutionRunner(year, std::move(inputReader), sync);
+			return SolutionRunner(year, std::move(inputReader), settings);
 		}
     }
 }
@@ -54,13 +54,17 @@ struct LogWriter : public Log::ISink {
 int main(int argc, char** argv) {
     LogWriter logWriter{};
     
-    bool sync = false;
+    SolutionRunner::Settings runSettings{
+        .Sync = false,
+        .SkipTests = false,
+        .SlowFirst = false
+    };
     auto runner = [&]{
         if (argc > 1) {
-            return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>(), sync);
+            return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>(), runSettings);
         } else {
-            return SolutionRunner (2017, std::make_unique<ExeInputReader>(), sync);
-            //return SolutionRunner(std::make_unique<ExeInputReader>(), sync);
+            //return SolutionRunner (2017, std::make_unique<ExeInputReader>(), sync);
+            return SolutionRunner(std::make_unique<ExeInputReader>(), runSettings);
         }
     }();
         

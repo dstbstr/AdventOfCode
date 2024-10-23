@@ -2,6 +2,7 @@
 
 #include <functional>
 #include <unordered_map>
+#include <set>
 #include <string>
 
 using SolutionFunc = std::function<std::string(const std::vector<std::string>&)>;
@@ -13,6 +14,7 @@ using TestFunc = std::function<bool()>;
 
 std::unordered_map<size_t, std::unordered_map<size_t, std::unordered_map<size_t, SolutionFunc>>>& GetSolutions();
 std::unordered_map<size_t, std::unordered_map<size_t, std::unordered_map<size_t, TestFunc>>>& GetTests();
+std::set<std::tuple<size_t, size_t>>& GetSlowProblems();
 
 struct SolutionRegistrar {
 	SolutionRegistrar(size_t year, size_t day, size_t part, SolutionFunc solution) {
@@ -23,6 +25,12 @@ struct SolutionRegistrar {
 struct TestRegistrar {
 	TestRegistrar(size_t year, size_t day, size_t testNum, TestFunc testFunc) {
 		GetTests()[year][day][testNum] = testFunc;
+	}
+};
+
+struct SlowRegistrar {
+	SlowRegistrar(size_t year, size_t day) {
+		GetSlowProblems().insert({year, day});
 	}
 };
 
@@ -39,3 +47,5 @@ namespace Year##_year##Day##_day
 #define TEST(_TestNum) constexpr bool Test##_TestNum(); \
 	TestRegistrar reg_Test##_TestNum{_CurrentYear, _CurrentDay, _TestNum, Test##_TestNum}; \
 	constexpr bool Test##_TestNum()
+
+#define SLOW SlowRegistrar slowRegistrar{_CurrentYear, _CurrentDay}

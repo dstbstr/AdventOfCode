@@ -1,6 +1,8 @@
 #include "Common.h"
 
 SOLUTION(2023, 23) {
+    SLOW;
+
     constexpr std::vector<RowCol> GetNeighbors(RowCol pos, const std::vector<std::string>&lines) {
         RowCol limits = { lines.size() - 1, lines[0].size() - 1 };
         const auto h = RowCol{ 0, 1 };

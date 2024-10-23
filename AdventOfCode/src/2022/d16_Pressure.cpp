@@ -2,6 +2,7 @@
 #include "Core/Algorithms/FloydWarshall.h"
 
 SOLUTION(2022, 16) {
+    SLOW;
 
     struct Room {
         std::string Name = "";

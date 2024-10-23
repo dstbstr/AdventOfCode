@@ -13,8 +13,8 @@
 #include <iostream> // for progress bar
 
 namespace {
-    std::string MakeKey(size_t year, size_t day, size_t part) {
-		return Constexpr::ToString(year) + "_" + Constexpr::ToString(day) + "_" + Constexpr::ToString(part);
+    std::string MakeKey(size_t year, size_t day, size_t part, bool isTest) {
+		return (isTest ? "Test_" : "") + Constexpr::ToString(year) + "_" + Constexpr::ToString(day) + "_" + Constexpr::ToString(part);
 	}
 
     std::map<size_t, std::map<size_t, std::map<size_t, std::string>>> Results{};
@@ -40,8 +40,8 @@ bool SolutionRunner::CheckTestsPass(size_t year, size_t day) {
     }
     size_t passedTests = 0;
 	for (const auto& [testNum, testFunc] : GetTests()[year][day]) {
-		auto testTime = ScopedTimer(MakeKey(year, day, testNum), GatherTiming(m_TimingData));
-		if (!testFunc()) {
+		auto testTime = ScopedTimer(MakeKey(year, day, testNum, true), GatherTiming(m_TimingData));
+		if (!testFunc()) [[unlikely]] {
 			Log::Info(std::format("{}_{} Test {} Fail", year, day, testNum));
 			return false;
 		}
@@ -53,24 +53,34 @@ bool SolutionRunner::CheckTestsPass(size_t year, size_t day) {
 void SolutionRunner::AddSolution(size_t year, size_t day) {
     Results[year][day][1] = "";
 	Results[year][day][2] = "";
-	m_ToRun.emplace_back([=]() {
-        if (!CheckTestsPass(year, day)) return;
+    auto func = [=]() {
+        if(!m_SkipTests) {
+			if (!CheckTestsPass(year, day)) [[unlikely]] return;
+        }
 
         for (const auto& [part, func] : GetSolutions()[year][day]) {
             auto input = m_InputReader->ReadInput(year, day);
             {
-                auto partTime = ScopedTimer(MakeKey(year, day, part), GatherTiming(m_TimingData));
+                auto partTime = ScopedTimer(MakeKey(year, day, part, false), GatherTiming(m_TimingData));
                 auto result = func(input);
                 Results.at(year).at(day).at(part) = result;
             }
             WriteLogs();
         }
-    });
+    };
+    if(m_SlowFirst && GetSlowProblems().contains({year, day})) {
+		m_ToRun.emplace(m_ToRun.begin(), func);
+	}
+	else {
+		m_ToRun.emplace_back(func);
+    }
 }
 
-SolutionRunner::SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, bool sync) 
+SolutionRunner::SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, SolutionRunner::Settings settings) 
     : m_InputReader(std::move(inputReader))
-    , m_Sync(sync)
+    , m_Sync(settings.Sync)
+	, m_SkipTests(settings.SkipTests)
+	, m_SlowFirst(settings.SlowFirst)
 {
 	for (const auto& [year, days] : GetSolutions()) {
 		for (const auto& [day, parts] : days) {
@@ -79,18 +89,22 @@ SolutionRunner::SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, bool
 	}
 }
 
-SolutionRunner::SolutionRunner(size_t year, std::unique_ptr<IInputReader>&& inputReader, bool sync) 
+SolutionRunner::SolutionRunner(size_t year, std::unique_ptr<IInputReader>&& inputReader, SolutionRunner::Settings settings) 
     : m_InputReader(std::move(inputReader))
-    , m_Sync(sync)
+    , m_Sync(settings.Sync)
+    , m_SkipTests(settings.SkipTests)
+    , m_SlowFirst(settings.SlowFirst)
 {
 	for (const auto& [day, parts] : GetSolutions()[year]) {
 		AddSolution(year, day);
 	}
 }
 
-SolutionRunner::SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputReader>&& inputReader, bool sync) 
+SolutionRunner::SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputReader>&& inputReader, SolutionRunner::Settings settings) 
     : m_InputReader(std::move(inputReader))
-    , m_Sync(sync)
+    , m_Sync(settings.Sync)
+    , m_SkipTests(settings.SkipTests)
+    , m_SlowFirst(settings.SlowFirst)
 {
     AddSolution(year, day);
 }
