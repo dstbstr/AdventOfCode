@@ -1,0 +1,3 @@
+[submodule "CppCore"]
+	path = CppCore
+	url = https://github.com/dstbstr/CppCore

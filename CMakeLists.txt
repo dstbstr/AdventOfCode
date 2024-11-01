@@ -33,8 +33,14 @@ include(FetchContent)
 #################################
 # dstbstr/CppCore
 #################################
-FetchContent_Declare(CppCore GIT_REPOSITORY https://github.com/dstbstr/CppCore GIT_TAG origin/main)
 
-FetchContent_MakeAvailable(CppCore)
+#get_directory_property(LocalCore CppCore )
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/CppCore)
+    add_subdirectory("CppCore")
+else()
+    FetchContent_Declare(CppCore GIT_REPOSITORY https://github.com/dstbstr/CppCore GIT_TAG origin/main)
+    FetchContent_MakeAvailable(CppCore)
+endif()
+
 # Include sub-projects.
 add_subdirectory ("AdventOfCode")

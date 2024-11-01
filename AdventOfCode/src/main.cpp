@@ -63,8 +63,8 @@ int main(int argc, char** argv) {
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>(), runSettings);
         } else {
-            //return SolutionRunner (2017, std::make_unique<ExeInputReader>(), sync);
-            return SolutionRunner(std::make_unique<ExeInputReader>(), runSettings);
+            return SolutionRunner (2023, std::make_unique<ExeInputReader>(), runSettings);
+            //return SolutionRunner(std::make_unique<ExeInputReader>(), runSettings);
         }
     }();
         
