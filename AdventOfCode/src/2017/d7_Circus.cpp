@@ -15,7 +15,7 @@ SOLUTION(2017, 7) {
         node.Name = split[0];
         Constexpr::ParseNumber(split[1].substr(1, split[1].size() - 2), node.Weight);
 
-        for (auto i = 3; i < split.size(); i++) {
+        for (auto i = 3ull; i < split.size(); i++) {
             if (split[i].back() == ',') {
                 node.Carrying.push_back(std::string(split[i].substr(0, split[i].size() - 1)));
             }

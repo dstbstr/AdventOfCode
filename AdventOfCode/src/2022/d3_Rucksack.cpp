@@ -11,7 +11,7 @@ SOLUTION(2022, 3) {
     }
 
     constexpr char FindDuplicate(std::string_view line) {
-        for (auto i = 0; i < line.size() / 2; i++) {
+        for (size_t i = 0u; i < line.size() / 2; i++) {
             for (auto j = line.size() / 2; j < line.size(); j++) {
                 if (line[i] == line[j]) {
                     return line[i];
@@ -53,7 +53,7 @@ SOLUTION(2022, 3) {
 
     PART(2) {
         u32 result = 0;
-        for (auto i = 0; i < lines.size(); i += 3) {
+        for (size_t i = 0u; i < lines.size(); i += 3) {
             result += GetLetterValue(FindBadge(lines[i], lines[i + 1], lines[i + 2]));
         }
 

@@ -9,8 +9,8 @@ SOLUTION(2018, 22) {
     constexpr size_t GetIndex(size_t row, size_t col, size_t up, size_t left) {
         return (up != Unset) && (left != Unset) ? up * left : (col * ColMul) + (row * RowMul);
     }
-    constexpr std::vector<Vec3<size_t>> BuildMap(RowCol target, RowCol limits, size_t depth) {
-        std::vector<Vec3<size_t>> result;
+    constexpr std::vector<Vec3<u64>> BuildMap(RowCol target, RowCol limits, size_t depth) {
+        std::vector<Vec3<u64>> result;
         std::vector<size_t> indexes;
 
         for (size_t row = 0; row <= limits.Row; row++) {
@@ -18,7 +18,7 @@ SOLUTION(2018, 22) {
                 auto up = row == 0 ? Unset : indexes[((row - 1) * (limits.Col + 1)) + col];
                 auto left = col == 0 ? Unset : indexes.back();
                 auto index = (depth + GetIndex(row, col, up, left)) % limit;
-                Vec3<size_t> pos = { col, row, (index % 3) + 1 };
+                Vec3<u64> pos = { col, row, (index % 3) + 1 };
 
                 result.push_back(pos);
                 indexes.push_back(index);
@@ -29,8 +29,8 @@ SOLUTION(2018, 22) {
         return result;
     }
 
-    constexpr size_t GetRisk(const std::vector<Vec3<size_t>>& map) {
-        size_t result = 0;
+    constexpr u64 GetRisk(const std::vector<Vec3<u64>>& map) {
+        u64 result = 0;
         for (const auto& pos : map) {
             result += pos.Z;
         }
@@ -69,12 +69,17 @@ SOLUTION(2018, 22) {
     //Shared
     // 6 - lhs.Z - rhs.Z
 
-    size_t Bfs(const std::vector<Vec3<size_t>>& map, RowCol target) {
-        Vec4<size_t> Horizontal = { 1, 0, 0, 0 };
-        Vec4<size_t> Vertical = { 0, 1, 0, 0 };
+    size_t Bfs(const std::vector<Vec3<u64>>& map, RowCol target) {
+        Vec4<size_t> Horizontal = { 1u, 0u, 0u, 0u };
+        Vec4<size_t> Vertical = { 0u, 1u, 0u, 0u };
         auto back = map.back();
-        Vec4<size_t> limits = { back.X, back.Y, back.Z, 3 };
-        Vec4<size_t> end = { target.Col, target.Row, 1, 2 };
+        Vec4<size_t> limits = { 
+            static_cast<size_t>(back.X), 
+            static_cast<size_t>(back.Y), 
+            static_cast<size_t>(back.Z), 
+            size_t(3u)
+        };
+        Vec4<size_t> end = { target.Col, target.Row, size_t(1u), size_t(2u) };
 
         using Entry = std::pair<size_t, Vec4<size_t>>;
         std::vector<Entry> q{{0, { 0, 0, 1, 2 }}};
@@ -93,23 +98,24 @@ SOLUTION(2018, 22) {
                 }
                 if (!seen.insert(pos)) continue;
 
-                std::vector<Vec3<size_t>> neighbors;
+                std::vector<Vec3<u64>> neighbors;
+
                 if (pos.Y > 0) neighbors.push_back(map[GetMapIndex1(pos - Vertical, limits)]);
                 if (pos.X > 0) neighbors.push_back(map[GetMapIndex1(pos - Horizontal, limits)]);
                 if (pos.Y < limits.Y) neighbors.push_back(map[GetMapIndex1(pos + Vertical, limits)]);
                 if (pos.X < limits.X) neighbors.push_back(map[GetMapIndex1(pos + Horizontal, limits)]);
 
                 for (auto& n : neighbors) {
-                    if (pos.W != n.Z) {
-                        next.push_back({ 0, { n.X, n.Y, n.Z, pos.W } }); //keep same tool
+					auto sizetN = Vec3<size_t>{ static_cast<size_t>(n.X), static_cast<size_t>(n.Y), static_cast<size_t>(n.Z )};
+                    if (pos.W != sizetN.Z) {
+                        next.push_back({ 0, { sizetN.X, sizetN.Y, sizetN.Z, pos.W } }); //keep same tool
                     }
-                    if (pos.Z == n.Z) {
+                    if (pos.Z == sizetN.Z) {
                         continue; //No need to switch
                     }
-                    size_t commonTool = (6 - pos.Z) - n.Z;
-                    next.push_back({ 7, {n.X, n.Y, n.Z, commonTool } }); //switch to common tool
+                    size_t commonTool = (6 - pos.Z) - sizetN.Z;
+                    next.push_back({ 7, {sizetN.X, sizetN.Y, sizetN.Z, commonTool } }); //switch to common tool
                 }
-
             }
             minute++;
             q = next;
@@ -150,8 +156,8 @@ SOLUTION(2018, 22) {
 
     TEST(1) {
         RowCol target = { 10, 10 };
-        auto map = BuildMap(target, target, 510);
-        if (GetRisk(map) != 114) return false;
+        auto map = BuildMap(target, target, size_t(510u));
+        if (GetRisk(map) != 114ull) return false;
 
         return true;
     }

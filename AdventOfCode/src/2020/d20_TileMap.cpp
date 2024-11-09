@@ -28,9 +28,9 @@ SOLUTION(2020, 20) {
     constexpr Tile ParseTile(const auto& lines) {
         Tile result;
         Constexpr::ParseNumber(lines[0].substr(5, 4), result.Id);
-        for (auto row = 1; row < lines.size(); row++) {
+        for (size_t row = 1u; row < lines.size(); row++) {
             std::vector<bool> currentRow;
-            for (auto col = 0; col < lines[row].size(); col++) {
+            for (size_t col = 0u; col < lines[row].size(); col++) {
                 currentRow.push_back(lines[row][col] == '#');
             }
             result.Pixels.push_back(currentRow);
@@ -44,6 +44,7 @@ SOLUTION(2020, 20) {
         switch (dir) {
         case Up: return pixels[0];
         case Down: return pixels.back();
+        default: break;
         }
 
         std::vector<bool> result;
@@ -135,11 +136,11 @@ SOLUTION(2020, 20) {
     void PrintTileGrid(const TileGrid & tileGrid) {
         const size_t tileHeight = tileGrid.at(0).at(0).Pixels.size();
         const size_t tileWidth = tileGrid.at(0).at(0).Pixels.at(0).size();
-        for (auto gridRow = 0; gridRow < tileGrid.size(); gridRow++) {
-            for (auto tileRow = 0; tileRow < tileHeight; tileRow++) {
+        for (size_t gridRow = 0u; gridRow < tileGrid.size(); gridRow++) {
+            for (size_t tileRow = 0u; tileRow < tileHeight; tileRow++) {
                 std::string row = "";
-                for (auto gridCol = 0; gridCol < tileGrid.at(gridRow).size(); gridCol++) {
-                    for (auto tileCol = 0; tileCol < tileWidth; tileCol++) {
+                for (size_t gridCol = 0u; gridCol < tileGrid.at(gridRow).size(); gridCol++) {
+                    for (size_t tileCol = 0u; tileCol < tileWidth; tileCol++) {
                         auto val = tileGrid.at(gridRow).at(gridCol).Pixels.at(tileRow).at(tileCol);
                         row += (val ? '#' : '.');
                     }
@@ -245,7 +246,7 @@ SOLUTION(2020, 20) {
 
     constexpr void FitRemainingRows(TileMap & tiles, const NeighborMap & neighbors, TileGrid & tileGrid, Constexpr::SmallSet<size_t>&seen) {
         auto rowSize = tileGrid[0].size();
-        for (auto row = 1; row < rowSize; row++) {
+        for (size_t row = 1u; row < rowSize; row++) {
             std::vector<Tile> currentRow;
             size_t upId = tileGrid[row - 1][0].Id;
             auto n = neighbors.at(upId);
@@ -254,7 +255,7 @@ SOLUTION(2020, 20) {
             currentRow.push_back(tiles.at(leftId));
             seen.insert(leftId);
 
-            for (auto col = 1; col < rowSize; col++) {
+            for (size_t col = 1u; col < rowSize; col++) {
                 upId = tileGrid[row - 1][col].Id;
                 leftId = currentRow.back().Id;
 
@@ -329,8 +330,8 @@ SOLUTION(2020, 20) {
         return result;
     }
 
-    constexpr size_t CalculateRoughness(const PixelGrid & image, const PixelGrid & mask) {
-        size_t result = 0;
+    constexpr u64 CalculateRoughness(const PixelGrid & image, const PixelGrid & mask) {
+        u64 result = 0;
         for (size_t row = 0; row < image.size(); row++) {
             for (size_t col = 0; col < image[row].size(); col++) {
                 result += image[row][col] && mask[row][col];
@@ -339,7 +340,7 @@ SOLUTION(2020, 20) {
         return result;
     }
 
-    constexpr size_t SolvePartOne(const auto& lines) {
+    constexpr u64 SolvePartOne(const auto& lines) {
         auto groups = SplitInputIntoGroups(lines);
         Constexpr::SmallMap<size_t, Tile> tiles;
         for (const auto& group : groups) {
@@ -348,7 +349,7 @@ SOLUTION(2020, 20) {
         }
 
         auto neighbors = FindNeighbors(tiles);
-        size_t result = 1;
+        u64 result = 1;
         for (const auto& [id, matches] : neighbors) {
             if (matches.size() == 2) {
                 result *= id;
@@ -361,7 +362,7 @@ SOLUTION(2020, 20) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
-    constexpr size_t SolvePartTwo(const auto& lines) {
+    constexpr u64 SolvePartTwo(const auto& lines) {
         auto groups = SplitInputIntoGroups(lines);
         TileMap tiles;
         for (const auto& group : groups) {

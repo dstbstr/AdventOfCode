@@ -15,8 +15,8 @@ SOLUTION(2017, 12) {
     PART(2) {
         auto connections = ParseLines(lines, ParseLine);
         std::vector<u32> remainingGroups;
-        for (auto i = 0; i < connections.size(); i++) {
-            remainingGroups.push_back(i);
+        for (size_t i = 0u; i < connections.size(); i++) {
+            remainingGroups.push_back(static_cast<u32>(i));
         }
 
         u32 groupCount = 0;

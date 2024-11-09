@@ -10,7 +10,7 @@ SOLUTION(2018, 1) {
     PART(2) {
         auto deltas = ParseLinesAsNumbers<s32>(lines);
         std::vector<s32> frequencies {0};
-        for (auto i = 0; i < deltas.size(); i++) {
+        for (size_t i = 0u; i < deltas.size(); i++) {
             frequencies.push_back(frequencies.back() + deltas[i]);
         }
 

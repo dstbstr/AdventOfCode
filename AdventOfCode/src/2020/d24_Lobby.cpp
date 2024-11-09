@@ -6,7 +6,7 @@ SOLUTION(2020, 24) {
     constexpr std::vector<PointyHex::Direction> GetDirections(std::string_view line) {
         using namespace PointyHex;
         std::vector<Direction> result;
-        for (auto i = 0; i < line.size(); i++) {
+        for (size_t i = 0u; i < line.size(); i++) {
             auto c = line[i];
             if (c == 'e') result.push_back(Direction::E);
             else if (c == 'w') result.push_back(Direction::W);
@@ -66,7 +66,7 @@ SOLUTION(2020, 24) {
 
     constexpr size_t Run(const auto& lines, size_t days) {
         auto grid = GetInitialGrid(lines);
-        for (auto i = 0; i < days; i++) {
+        for (size_t i = 0u; i < days; i++) {
             Next(grid);
         }
         return grid.size();

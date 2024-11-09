@@ -62,8 +62,8 @@ SOLUTION(2023, 15) {
         }
 
         size_t result = 0;
-        for (auto box = 0; box < map.size(); box++) {
-            for (auto slot = 0; slot < map[box].size(); slot++) {
+        for (size_t box = 0u; box < map.size(); box++) {
+            for (size_t slot = 0u; slot < map[box].size(); slot++) {
                 auto [label, focus] = map[box][slot];
                 result += (box + 1) * (slot + 1) * focus;
             }

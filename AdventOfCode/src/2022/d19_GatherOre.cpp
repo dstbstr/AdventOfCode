@@ -27,7 +27,7 @@ SOLUTION(2022, 19) {
     }
 
     constexpr bool all(const Entry& cost, const Entry& have) {
-        for (auto i = 0; i < cost.size(); i++) {
+        for (size_t i = 0u; i < cost.size(); i++) {
             if (cost[i] > have[i]) return false;
         }
         return true;

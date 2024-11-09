@@ -12,8 +12,8 @@ SOLUTION(2015, 18) {
             throw std::logic_error("Bad input");
         }
 
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
+        for (size_t i = 0u; i < N; i++) {
+            for (size_t j = 0u; j < M; j++) {
                 result[i][j] = input[i * N + j] == '#';
             }
         }
@@ -48,8 +48,8 @@ SOLUTION(2015, 18) {
     constexpr void Next(std::array<std::array<bool, N>, M>&in) {
         auto temp = std::array<std::array<bool, N>, M>{};
 
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
+        for (size_t i = 0u; i < N; i++) {
+            for (size_t j = 0u; j < M; j++) {
                 auto litNeighbors = CountLitNeighbors(in, i, j);
                 if (in[i][j]) {
                     temp[i][j] = litNeighbors == 2 || litNeighbors == 3;
@@ -74,8 +74,8 @@ SOLUTION(2015, 18) {
     template<size_t N, size_t M>
     constexpr u32 CountLit(const std::array<std::array<bool, N>, M>&in) {
         u32 result = 0;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
+        for (size_t i = 0u; i < N; i++) {
+            for (size_t j = 0u; j < M; j++) {
                 if (in[i][j]) result++;
             }
         }

@@ -29,7 +29,7 @@ SOLUTION(2019, 13) {
         return std::make_pair(Coord{ static_cast<s32>(x), static_cast<s32>(y) }, z);
     }
 
-    constexpr Coord BoardSize{ 41, 24 };
+    //constexpr Coord BoardSize{ 41, 24 };
     constexpr Coord ScorePos{ -1, 0 };
 
     constexpr void UpdateGame(Game & game, std::vector<s64>&instructions, Args & args) {

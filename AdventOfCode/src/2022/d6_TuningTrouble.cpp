@@ -8,7 +8,7 @@ SOLUTION(2022, 6) {
         size_t runLength = static_cast<size_t>(messageType);
         for (size_t i = 0; i < input.size() - runLength; i++) {
             allChars.clear();
-            for (auto j = 0; j < runLength; j++) {
+            for (size_t j = 0u; j < runLength; j++) {
                 if (std::find(allChars.begin(), allChars.end(), input[i + j]) == allChars.end()) {
                     allChars.push_back(input[i + j]);
                 }

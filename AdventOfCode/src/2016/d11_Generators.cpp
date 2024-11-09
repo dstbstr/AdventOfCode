@@ -60,7 +60,7 @@ SOLUTION(2016, 11) {
         for (const auto& line : lines) {
             Floor floor;
             auto s = Constexpr::Split(line, " ");
-            for (auto i = 0; i < s.size(); i++) {
+            for (size_t i = 0u; i < s.size(); i++) {
                 if (s[i].substr(0, 3) == "gen") {
                     floor.Generators.push_back(s[i - 1][0]);
                 }

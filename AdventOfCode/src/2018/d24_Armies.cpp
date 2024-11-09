@@ -113,7 +113,7 @@ SOLUTION(2018, 24) {
             auto words = Constexpr::RemoveAllOfCopy(std::string(modifier), ",");
             auto s = Constexpr::Split(words, " ");
             std::vector<DamageType> damageTypes;
-            for (auto i = 2; i < s.size(); i++) {
+            for (auto i = 2ull; i < s.size(); i++) {
                 damageTypes.push_back(ParseDamageType(s[i]));
             }
             if (s[0] == "immune") {
@@ -223,7 +223,7 @@ SOLUTION(2018, 24) {
         Battle battle;
         Team team = Team::Immune;
         u32 groupId = 1;
-        for (auto i = 1; i < lines.size(); i++) {
+        for (auto i = 1ull; i < lines.size(); i++) {
             if (lines[i] == "") {
                 team = Team::Infection;
                 i++;

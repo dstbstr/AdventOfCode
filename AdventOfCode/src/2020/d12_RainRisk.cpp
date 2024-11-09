@@ -52,6 +52,7 @@ SOLUTION(2020, 12) {
         case Cmd::South: toUpdate.Y += val; return;
         case Cmd::East: toUpdate.X += val; return;
         case Cmd::West: toUpdate.X -= val; return;
+        default: break;
         }
 
         if (instruction.Op == Cmd::Forward) {

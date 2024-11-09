@@ -2,9 +2,9 @@
 
 SOLUTION(2023, 10) {
     using Map = Constexpr::BigMap<RowCol, std::pair<RowCol, RowCol>>;
-    static RowCol StartPos = { 0, 0 };
+    //static RowCol StartPos = { 0, 0 };
 
-    constexpr void Connect(char current, RowCol pos, Map & map) {
+    constexpr void Connect(char current, RowCol pos, Map& map, RowCol& startPos) {
         RowCol up = { pos.Row - 1, pos.Col };
         RowCol down = { pos.Row + 1, pos.Col };
         RowCol left = { pos.Row, pos.Col - 1 };
@@ -16,17 +16,17 @@ SOLUTION(2023, 10) {
         case 'J': map[pos] = std::make_pair(up, left); break;
         case '7': map[pos] = std::make_pair(left, down); break;
         case 'F': map[pos] = std::make_pair(right, down); break;
-        case 'S': StartPos = pos; break;
+        case 'S': startPos = pos; break;
         }
     }
 
-    constexpr Map CreateMap(const std::vector<std::string>&lines) {
+    constexpr Map CreateMap(const std::vector<std::string>& lines, RowCol& startPos) {
         Map result;
         RowCol pos = { 0, 0 };
 
         for (const auto& line : lines) {
             for (auto c : line) {
-                Connect(c, pos, result);
+                Connect(c, pos, result, startPos);
                 pos.Col++;
             }
             pos.Row++;
@@ -41,31 +41,31 @@ SOLUTION(2023, 10) {
         return left == prev ? right : left;
     }
 
-    constexpr bool TryGetPath(RowCol start, const Map & map, std::vector<RowCol>&outPath) {
+    constexpr bool TryGetPath(RowCol start, const Map & map, std::vector<RowCol>&outPath, const RowCol& startPos) {
         if (!map.contains(start)) return false;
         RowCol current = start;
         RowCol next = map.at(current).first;
         outPath.clear();
-        if (next == StartPos) next = map.at(current).second;
+        if (next == startPos) next = map.at(current).second;
         outPath.push_back(current);
         while (true) {
             auto prev = current;
             current = next;
             next = GetNext(current, prev, map);
             outPath.push_back(current);
-            if (next == StartPos) break;
+            if (next == startPos) break;
             if (!map.contains(next)) return false;
         }
-        outPath.push_back(StartPos);
+        outPath.push_back(startPos);
         return true;
     }
 
-    constexpr std::vector<RowCol> GetPath(const Map & map) {
-        auto neighbors = GetDirectNeighbors(StartPos, { 999, 999 });
+    constexpr std::vector<RowCol> GetPath(const Map & map, const RowCol& startPos) {
+        auto neighbors = GetDirectNeighbors(startPos, { 999, 999 });
         std::vector<std::vector<RowCol>> candidates;
         for (auto n : neighbors) {
             std::vector<RowCol> result;
-            if (TryGetPath(n, map, result)) {
+            if (TryGetPath(n, map, result, startPos)) {
                 candidates.push_back(result);
             }
         }
@@ -78,9 +78,12 @@ SOLUTION(2023, 10) {
             });
         return candidates.back();
     }
+
     PART(1) {
-        auto map = CreateMap(lines);
-        auto path = GetPath(map);
+        RowCol startPos = { 0, 0 };
+
+        auto map = CreateMap(lines, startPos);
+        auto path = GetPath(map, startPos);
         return Constexpr::ToString((path.size() / 2));
     }
 
@@ -91,7 +94,7 @@ SOLUTION(2023, 10) {
         return result;
     }
 
-    constexpr char GetStartPosSymbol(const std::vector<RowCol>&path) {
+    constexpr char GetStartPosSymbol(const std::vector<RowCol>& path, const RowCol& startPos) {
         auto a = path[0];
         auto b = path[path.size() - 2];
         
@@ -104,7 +107,7 @@ SOLUTION(2023, 10) {
 
         if (a.Row < b.Row) {
             if (a.Col < b.Col) {
-                if (StartPos.Row == a.Row) {
+                if (startPos.Row == a.Row) {
                     return '7';
                 }
                 else {
@@ -112,7 +115,7 @@ SOLUTION(2023, 10) {
                 }
             }
             else {
-                if (StartPos.Row == a.Row) {
+                if (startPos.Row == a.Row) {
                     return 'F';
                 }
                 else {
@@ -122,7 +125,7 @@ SOLUTION(2023, 10) {
         }
         else {
             if (a.Col < b.Col) {
-                if (StartPos.Row == a.Row) {
+                if (startPos.Row == a.Row) {
                     return 'J';
                 }
                 else {
@@ -130,7 +133,7 @@ SOLUTION(2023, 10) {
                 }
             }
             else {
-                if (StartPos.Row == a.Row) {
+                if (startPos.Row == a.Row) {
                     return 'L';
                 }
                 else {
@@ -180,22 +183,24 @@ SOLUTION(2023, 10) {
         return result;
     }
 
-    constexpr std::vector<std::string> Transform(const std::vector<std::string>& lines) {
+    constexpr std::vector<std::string> Transform(const std::vector<std::string>& lines, RowCol& startPos) {
         std::vector<std::string> result;
-        auto path = GetPath(CreateMap(lines));
+        auto path = GetPath(CreateMap(lines, startPos), startPos);
         auto loop = GetLoop(path);
         RowCol pos{ 0, 0 };
 
         auto copy = lines;
-        copy[StartPos.Row][StartPos.Col] = GetStartPosSymbol(path);
+        copy[startPos.Row][startPos.Col] = GetStartPosSymbol(path, startPos);
         for (const auto& line : copy) {
             result.push_back(TransformRow(pos, line, loop));
             pos.Row++;
         }
         return result;
     }
+
     PART(2) {
-        auto transformed = Transform(lines);
+		RowCol startPos = { 0, 0 };
+        auto transformed = Transform(lines, startPos);
         auto result = std::accumulate(transformed.begin(), transformed.end(), 0ull, [](size_t running, const std::string& line) {
             return running + std::count(line.begin(), line.end(), 'I');
             });

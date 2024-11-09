@@ -4,7 +4,7 @@ add_executable (${PROJECT_NAME})
 
 target_link_libraries(${PROJECT_NAME} Core)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/PROFILE")
+#set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/PROFILE")
 target_include_directories(${PROJECT_NAME} PUBLIC inc)
 target_precompile_headers(${PROJECT_NAME}
 PRIVATE

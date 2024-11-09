@@ -16,11 +16,11 @@ SOLUTION(2022, 22) {
         size_t longestLine = 0;
 
         //Skip the empty line and the path line
-        for (auto i = 0; i < lines.size() - 2; i++) {
+        for (size_t i = 0u; i < lines.size() - 2; i++) {
             longestLine = std::max(longestLine, lines[i].size());
         }
 
-        for (auto i = 0; i < lines.size() - 2; i++) {
+        for (size_t i = 0u; i < lines.size() - 2; i++) {
             lines[i] = lines[i].append(longestLine - lines[i].size(), ' ');
         }
     }
@@ -513,8 +513,6 @@ SOLUTION(2022, 22) {
         auto facing = Facing::Right;
         u32 distance;
 
-        u32 commandsProcessed = 0;
-
         for (auto cmd : path) {
             if (cmd[0] == 'R') {
                 facing = static_cast<Facing>((facing + 1) % facingValues);
@@ -526,8 +524,6 @@ SOLUTION(2022, 22) {
                 Constexpr::ParseNumber(cmd, distance);
                 Travel(currentPos, distance, facing, map, x, y);
             }
-
-            commandsProcessed++;
         }
 
         return GetResult(currentPos, facing);

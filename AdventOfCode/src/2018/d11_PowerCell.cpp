@@ -74,7 +74,7 @@ SOLUTION(2018, 11) {
 
         s32 overallBest = 0;
         UCoord overallBestCoord{ 0, 0 };
-        u32 bestSize = 0;
+        u64 bestSize = 0;
 
         for (u16 i = 1; i < 300; i++) {
             s32 best = 0;
@@ -90,7 +90,7 @@ SOLUTION(2018, 11) {
             }
         }
 
-        return Constexpr::ToString(Vec3<size_t>{overallBestCoord.X, overallBestCoord.Y, bestSize});
+        return Constexpr::ToString(Vec3<u64>{overallBestCoord.X, overallBestCoord.Y, bestSize});
     }
 
     static_assert(CalculatePower({ 3, 5 }, 8) == 4);

@@ -17,7 +17,7 @@ SOLUTION(2015, 25) {
 
     constexpr size_t CalculateCode(size_t index) {
         size_t running = 20151125;
-        for (int i = 1; i < index; i++) {
+        for (auto i = 1ull; i < index; i++) {
             running *= 252533;
             running %= 33554393;
         }
@@ -48,6 +48,10 @@ SOLUTION(2015, 25) {
     static_assert(CalculateIndex(4, 7) == 52);
 
     static_assert(CalculateCode(1) == 20151125);
-    static_assert(CalculateCode(2) == 31916031);
-    static_assert(CalculateCode(3) == 18749137);
+    //static_assert(CalculateCode(2) == 31916031);
+    //static_assert(CalculateCode(3) == 18749137);
+    TEST(1) {
+        return CalculateCode(2) == 31916031 && 
+        CalculateCode(3) == 18749137;
+    }
 }

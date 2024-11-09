@@ -68,13 +68,30 @@ SOLUTION(2023, 19) {
         return inst;
     }
 
+    struct Functor {
+        std::vector<Inst> parameters;
+		constexpr Functor() = default;
+		constexpr Functor(std::vector<Inst>&& p) : parameters(std::move(p)) {}
+
+		constexpr std::string operator()(const Gear& gear) {
+            for (auto p : parameters) {
+                if (p.XmasIndex == 99) return p.Dest;
+                auto val = gear.Xmas[p.XmasIndex];
+                if (p.Gt && val > p.Value) return p.Dest;
+                else if (!p.Gt && val < p.Value) return p.Dest;
+            }
+            throw "Wat?";
+        }
+    };
+
     constexpr auto ParseFunc(const std::string& line, std::string& outLabel) {
         auto a = Constexpr::Split(line, "{");
         outLabel = std::string(a[0]);
         auto b = Constexpr::Split(a[1], ",");
 
+        return Functor(ParseLines(b, ParseInst));
+        /*
         auto parameters = ParseLines(b, ParseInst);
-
         return [parameters](const Gear& gear) {
             for (auto p : parameters) {
                 if (p.XmasIndex == 99) return p.Dest;
@@ -84,13 +101,42 @@ SOLUTION(2023, 19) {
             }
             throw "Wat?";
             };
+            */
     }
 
+    struct Functor2 {
+		std::vector<Inst> parameters;
+        constexpr Functor2() = default;
+		constexpr Functor2(std::vector<Inst>&& p) : parameters(std::move(p)) {}
+        constexpr std::vector<std::pair<std::string, GearRange>> operator()(const GearRange& range) {
+            std::vector<std::pair<std::string, GearRange>> result;
+            GearRange running = range;
+            for (auto p : parameters) {
+                auto match = running;
+                if (p.XmasIndex == 99) {
+                }
+                else if (p.Gt) {
+                    match.Xmas[p.XmasIndex].first = p.Value;
+                    running.Xmas[p.XmasIndex].second = p.Value;
+                }
+                else {
+                    match.Xmas[p.XmasIndex].second = p.Value - 1;
+                    running.Xmas[p.XmasIndex].first = p.Value - 1;
+                }
+
+                result.push_back(std::make_pair(p.Dest, match));
+            }
+
+            return result;
+        }   
+    };
     constexpr auto ParseFunc2(const std::string& line, std::string& outLabel) {
         auto a = Constexpr::Split(line, "{");
         outLabel = std::string(a[0]);
         auto b = Constexpr::Split(a[1], ",");
 
+        return Functor2(ParseLines(b, ParseInst));
+        /*
         auto parameters = ParseLines(b, ParseInst);
 
         return [parameters](const GearRange& range) {
@@ -114,11 +160,13 @@ SOLUTION(2023, 19) {
 
             return result;
             };
+            */
     }
 
     PART(1) {
         auto groups = SplitInputIntoGroups(lines);
-        Constexpr::BigMap<std::string, std::function<std::string(const Gear&)>> funcs{};
+        //Constexpr::BigMap<std::string, std::function<std::string(const Gear&)>> funcs{};
+        Constexpr::BigMap<std::string, Functor> funcs{};
         for (const auto& line : groups[0]) {
             std::string label;
             auto func = ParseFunc(line, label);
@@ -153,7 +201,8 @@ SOLUTION(2023, 19) {
 
     PART(2) {
         auto groups = SplitInputIntoGroups(lines);
-        Constexpr::BigMap<std::string, std::function<std::vector<std::pair<std::string, GearRange>>(const GearRange&)>> funcs{};
+        //Constexpr::BigMap<std::string, std::function<std::vector<std::pair<std::string, GearRange>>(const GearRange&)>> funcs{};
+		Constexpr::BigMap<std::string, Functor2> funcs{};
         for (const auto& line : groups[0]) {
             std::string label;
             auto func = ParseFunc2(line, label);

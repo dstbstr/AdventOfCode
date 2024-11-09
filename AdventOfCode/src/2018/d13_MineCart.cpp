@@ -65,7 +65,7 @@ SOLUTION(2018, 13) {
     }
 
     constexpr bool HasCollision(const std::vector<Cart>&carts, UCoord & collisionPos) {
-        for (auto i = 0; i < carts.size(); i++) {
+        for (size_t i = 0u; i < carts.size(); i++) {
             for (auto j = i + 1; j < carts.size(); j++) {
                 if (carts[i].Pos == carts[j].Pos && !carts[i].IsDead && !carts[j].IsDead) {
                     collisionPos = carts[i].Pos;

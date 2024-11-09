@@ -14,7 +14,7 @@ SOLUTION(2016, 7) {
     constexpr std::vector<std::string> GetThreeLetterSequences(const std::string& str) {
         std::vector<std::string> result;
 
-        for (auto i = 0; i < str.size() - 2; i++) {
+        for (size_t i = 0u; i < str.size() - 2; i++) {
             if (str[i] == str[i + 2] && str[i + 1] != str[i]) {
                 result.push_back(str.substr(i, 3));
             }

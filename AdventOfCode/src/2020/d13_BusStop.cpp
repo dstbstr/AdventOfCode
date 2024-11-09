@@ -43,7 +43,7 @@ SOLUTION(2020, 13) {
         Constexpr::ParseNumber(split[0], jump);
 
         size_t result = 0;
-        for (auto i = 1; i < split.size(); i++) {
+        for (size_t i = 1u; i < split.size(); i++) {
             if (split[i][0] == 'x') continue;
             size_t val;
             Constexpr::ParseNumber(split[i], val);

@@ -13,7 +13,7 @@ SOLUTION(2016, 4) {
         Room result;
         Constexpr::ParseNumber(s2.back(), result.Id);
         result.Checksum = s1[1].substr(0, s1[1].size() - 1);
-        for (auto i = 0; i < s2.size() - 1; i++) {
+        for (size_t i = 0u; i < s2.size() - 1; i++) {
             result.Parts.push_back(std::string(s2[i]));
         }
         return result;
@@ -52,7 +52,7 @@ SOLUTION(2016, 4) {
 
         for (auto i = 0; i < 5; i++) {
             auto expectedCount = sortedCounts[i];
-            for (auto j = 0; j < counts.size(); j++) {
+            for (auto j = 0ull; j < counts.size(); j++) {
                 if (counts[j] == expectedCount) {
                     expectedChecksum += static_cast<char>(j + 'a');
                     counts[j] = -1;

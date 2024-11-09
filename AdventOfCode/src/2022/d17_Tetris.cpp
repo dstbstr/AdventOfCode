@@ -144,7 +144,6 @@ SOLUTION(2022, 17) {
 
         size_t horizontalIndex = 0;
         size_t pieceIndex = 0;
-        u64 pieceCount = 0;
         s64 top = 0;
         u32 period = 0;
 
@@ -155,7 +154,6 @@ SOLUTION(2022, 17) {
         while (true) {
             offset++;
             auto oldTop = top;
-            pieceCount++;
             auto piece = pieces[(pieceIndex++) % pieces.size()];
             piece.TopLeft = { 2, top + 7 };
             while (true) {
@@ -207,7 +205,7 @@ SOLUTION(2022, 17) {
         auto periods = remainingPieces / period;
         u64 result = prePeriod + (periods * amountPerPeriod);
 
-        for (auto i = 0; i < remainingPieces % period; i++) {
+        for (size_t i = 0u; i < remainingPieces % period; i++) {
             result += increaseAmounts[i];
         }
 

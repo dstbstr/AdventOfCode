@@ -24,7 +24,7 @@ SOLUTION(2017, 23) {
             s[2][0] >= 'a' ? i = s[2][0] - 'a' : Constexpr::ParseNumber(s[2], v);
         }
 
-        return [cmd, regIndex, v, i](s64& ip, Registers& regs, size_t& result) {
+        return [cmd, regIndex, v, i](s64& ip, Registers& regs, u64& result) {
             auto& lhs = regs[regIndex];
             auto rhs = i == Unset ? v : regs[i];
 
@@ -45,7 +45,7 @@ SOLUTION(2017, 23) {
         Registers regs{};
 
         s64 ip = 0;
-        size_t result = 0;
+        u64 result = 0;
 
         auto maxIp = static_cast<s64>(lines.size());
         auto cmds = ParseLines(lines, GenCommand);

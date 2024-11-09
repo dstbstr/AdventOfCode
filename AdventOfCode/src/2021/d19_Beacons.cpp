@@ -182,10 +182,10 @@ SOLUTION(2021, 19) {
         return Constexpr::ToString(SolvePartOne(lines));
     }
 
-    constexpr size_t SolvePartTwo(const auto& lines) {
+    constexpr u64 SolvePartTwo(const auto& lines) {
         auto [scanners, beacons] = CombineScanners(lines);
 
-        size_t best = 0;
+        u64 best = 0;
         for (size_t i = 0; i < scanners.size(); i++) {
             for (size_t j = i + 1; j < scanners.size(); j++) {
                 best = std::max(best, MDistance(scanners[i], scanners[j]));

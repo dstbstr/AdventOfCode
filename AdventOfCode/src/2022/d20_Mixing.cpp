@@ -73,7 +73,7 @@ SOLUTION(2022, 20) {
 
     constexpr bool TestShift(size_t index, std::vector<s64> start, std::vector<s64> end) {
         std::vector<size_t> indexes;
-        for (auto i = 0; i < start.size(); i++) {
+        for (size_t i = 0u; i < start.size(); i++) {
             indexes.push_back(i);
         }
 

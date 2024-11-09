@@ -39,13 +39,13 @@ SOLUTION(2017, 15) {
     }
 
     PART(1) {
-        u64 a, b;
+        size_t a, b;
         ParseLines(lines, a, b);
         return Constexpr::ToString(solve(a, 0, b, 0, 40'000'000ull));
     }
 
     PART(2) {
-        u64 a, b;
+        size_t a, b;
         ParseLines(lines, a, b);
         return Constexpr::ToString(solve(a, 3, b, 7, 5'000'000ull));
     }

@@ -210,7 +210,7 @@ SOLUTION(2021, 23) {
 
         std::string result = "...........";
         for (auto bot = 'A'; bot < 'E'; bot++) {
-            for (auto spot = 0; spot < denSize; spot++) {
+            for (size_t spot = 0u; spot < denSize; spot++) {
                 result += bot;
             }
         }
@@ -322,7 +322,7 @@ SOLUTION(2021, 23) {
             }
         }
 
-        return 0ull;
+        return size_t(0u);
     }
 
     PART(1) {

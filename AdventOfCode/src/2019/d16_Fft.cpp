@@ -8,7 +8,7 @@ SOLUTION(2019, 16) {
         result.reserve(inputSize);
         while (result.size() < inputSize) {
             for (auto m : multipliers) {
-                for (auto i = 0; i < row; i++) {
+                for (size_t i = 0u; i < row; i++) {
                     result.push_back(m);
                 }
             }
@@ -35,13 +35,13 @@ SOLUTION(2019, 16) {
             size_t groupSize = row + 1;
             while (col < inputSize) {
                 auto limit = std::min(groupSize, inputSize - col);
-                for (auto i = 0; i < limit; i++) {
+                for (size_t i = 0u; i < limit; i++) {
                     val += numbers[col++];
                 }
                 col += groupSize; //skip zeros
                 if (col >= inputSize) break;
                 limit = std::min(groupSize, inputSize - col);
-                for (auto i = 0; i < limit; i++) {
+                for (size_t i = 0u; i < limit; i++) {
                     val -= numbers[col++];
                 }
                 col += groupSize; //skip zeros
@@ -76,7 +76,7 @@ SOLUTION(2019, 16) {
         running = running.substr(offset);
         std::reverse(running.begin(), running.end());
         for (auto i = 0; i < 100; i++) {
-            for (auto c = 1; c < running.size(); c++) {
+            for (auto c = 1ull; c < running.size(); c++) {
                 char val = (running[c - 1] - '0') + (running[c] - '0');
                 val %= 10;
                 running[c] = val + '0';

@@ -1,7 +1,7 @@
 #include "Common.h"
 
 SOLUTION(2020, 23) {
-    constexpr std::vector<u32> GetCups(std::string_view line, size_t max) {
+    constexpr std::vector<u32> GetCups(std::string_view line, u64 max) {
         //389125467
         //cups[0] = 3
         //cups[1] = 2
@@ -20,7 +20,7 @@ SOLUTION(2020, 23) {
         u32 prev = 0;
         u32 next = 0;
         cups[0] = first;
-        for (auto i = 1; i < line.size(); i++) {
+        for (size_t i = 1u; i < line.size(); i++) {
             prev = line[i - 1] - '0';
             next = line[i] - '0';
             cups[prev] = next;
@@ -42,7 +42,7 @@ SOLUTION(2020, 23) {
         auto max = static_cast<u32>(cups.size() - 1);
         u32 r1, r2, r3, dest, after;
 
-        for (auto round = 0; round < rounds; round++) {
+        for (size_t round = 0u; round < rounds; round++) {
             r1 = cups[cups[0]];
             r2 = cups[r1];
             r3 = cups[r2];
@@ -78,17 +78,21 @@ SOLUTION(2020, 23) {
         return SolvePartOne(lines[0]);
     }
 
-    constexpr size_t SolvePartTwo(std::string_view line) {
+    constexpr u64 SolvePartTwo(std::string_view line) {
         auto cups = GetCups(line, 1'000'000);
         RunRounds(cups, 10'000'000);
 
-        return static_cast<size_t>(cups[1]) * static_cast<size_t>(cups[cups[1]]);
+        return static_cast<u64>(cups[1]) * static_cast<u64>(cups[cups[1]]);
     }
 
     PART(2) {
         return Constexpr::ToString(SolvePartTwo(lines[0]));
     }
 
+	//static_assert(SolvePartOne("389125467") == "67384529");
+	//static_assert(SolvePartTwo("389125467") == 149245887792);
+
+    
     TEST(1) {
         std::string line = "389125467";
 
@@ -97,4 +101,5 @@ SOLUTION(2020, 23) {
 
         return true;
     }
+    
 }

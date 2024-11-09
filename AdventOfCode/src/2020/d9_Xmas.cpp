@@ -23,7 +23,7 @@ SOLUTION(2020, 9) {
 
     constexpr auto FindKey(const auto & nums, size_t windowSize) {
         std::vector<size_t> window;
-        for (auto i = 0; i < windowSize; i++) {
+        for (size_t i = 0u; i < windowSize; i++) {
             window.push_back(nums[i]);
         }
 
@@ -38,7 +38,7 @@ SOLUTION(2020, 9) {
             window.push_back(nums[i]);
         }
 
-        return 0ull;
+        return size_t(0u);
     }
 
     template<typename T>
@@ -82,7 +82,7 @@ SOLUTION(2020, 9) {
         std::vector<std::size_t> nums = { 35, 20, 15, 25, 47, 40, 62, 55, 65, 95, 102, 117, 150, 182, 127, 219, 299, 277, 309, 576 };
         if (FindKey(nums, 5) != 127) return false;
         size_t min, max;
-        FindContiguousNums(nums, 127ull, min, max);
+        FindContiguousNums(nums, size_t(127u), min, max);
         if (min != 15) return false;
         if (max != 47) return false;
 

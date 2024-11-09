@@ -33,7 +33,7 @@ SOLUTION(2016, 3) {
     PART(2) {
         u32 result = 0;
         std::array<std::array<u32, 3>, 3> tris;
-        for (auto i = 0; i < lines.size(); i += 3) {
+        for (size_t i = 0u; i < lines.size(); i += 3) {
             auto split1 = Constexpr::Split(lines[i], " ");
             auto split2 = Constexpr::Split(lines[i + 1], " ");
             auto split3 = Constexpr::Split(lines[i + 2], " ");

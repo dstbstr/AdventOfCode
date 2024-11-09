@@ -97,7 +97,7 @@ SOLUTION(2023, 7) {
 			auto leftHand = HandFunc(lhs.first);
 			auto rightHand = HandFunc(rhs.first);
 			if (leftHand != rightHand) return static_cast<u32>(leftHand) < static_cast<u32>(rightHand);
-			for (auto i = 0; i < lhs.first.size(); i++) {
+			for (size_t i = 0u; i < lhs.first.size(); i++) {
 				auto left = ScoreFunc(lhs.first[i]);
 				auto right = ScoreFunc(rhs.first[i]);
 				if (left != right) return left < right;

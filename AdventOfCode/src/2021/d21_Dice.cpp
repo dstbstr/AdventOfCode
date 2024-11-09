@@ -1,7 +1,7 @@
 #include "Common.h"
 
 SOLUTION(2021, 21) {
-    constexpr bool Roll(size_t & dieRolls, size_t & dieValue, size_t & pos, size_t & score) {
+    constexpr bool Roll(u64& dieRolls, u64& dieValue, u64& pos, u64& score) {
         auto spaces = (dieValue + 1) * 3;
         pos = (pos + spaces) % 10;
         score += pos + 1;
@@ -12,31 +12,31 @@ SOLUTION(2021, 21) {
     }
 
     //s1, s2, p1, p2
-    using Cache = std::array<std::array<std::array<std::array<std::pair<size_t, size_t>, 10>, 10>, 21>, 21>;
-    constexpr auto Missing = std::make_pair<size_t, size_t>(0, 0);
+    using Cache = std::array<std::array<std::array<std::array<std::pair<u64, u64>, 10>, 10>, 21>, 21>;
+    constexpr auto Missing = std::make_pair<u64, u64>(0, 0);
 
-    constexpr std::vector<size_t> GetPositions(size_t current) {
+    constexpr std::vector<u64> GetPositions(u64 current) {
         return { (current + 1) % 10, (current + 2) % 10, (current + 3) % 10 };
     }
 
     struct Player {
-        size_t Score = 0;
-        size_t Pos = 0;
+        u64 Score = 0;
+        u64 Pos = 0;
         Cache* Cache = nullptr;
     };
 
-    constexpr std::array<std::pair<size_t, size_t>, 7> SpaceCounts = { {
-        {3, 1},
-        {4, 3},
-        {5, 6},
-        {6, 7},
-        {7, 6},
-        {8, 3},
-        {9, 1}
+    constexpr std::array<std::pair<u64, u64>, 7> SpaceCounts = { {
+        {3ull, 1ull},
+        {4ull, 3ull},
+        {5ull, 6ull},
+        {6ull, 7ull},
+        {7ull, 6ull},
+        {8ull, 3ull},
+        {9ull, 1ull}
     } };
 
-    constexpr std::vector<std::pair<Player, size_t>> GetNext(const Player & p) {
-        std::vector<std::pair<Player, size_t>> result;
+    constexpr std::vector<std::pair<Player, u64>> GetNext(const Player & p) {
+        std::vector<std::pair<Player, u64>> result;
         for (auto& sc : SpaceCounts) {
             auto next = p;
             next.Pos = (p.Pos + sc.first) % 10;
@@ -48,12 +48,12 @@ SOLUTION(2021, 21) {
     }
 
     //roll die 3 times, add score once
-    constexpr std::pair<size_t, size_t> Recurse(Player p1, Player p2, bool isP1Turn) {
+    constexpr std::pair<u64, u64> Recurse(Player p1, Player p2, bool isP1Turn) {
         auto& cache = isP1Turn ? *p1.Cache : *p2.Cache;
         auto& seen = cache[p1.Score][p2.Score][p1.Pos][p2.Pos];
 
         if (seen == Missing) {
-            std::pair<size_t, size_t> wins{};
+            std::pair<u64, u64> wins{};
             auto nextPlayers = GetNext(isP1Turn ? p1 : p2);
             for (const auto& [p, count] : nextPlayers) {
                 if (p.Score >= 21) {
@@ -72,15 +72,15 @@ SOLUTION(2021, 21) {
         return seen;
     }
 
-    constexpr size_t SolveP1(size_t p1Pos, size_t p2Pos) {
+    constexpr u64 SolveP1(u64 p1Pos, u64 p2Pos) {
         //let's make these zero based
         p1Pos--;
         p2Pos--;
 
-        size_t dieRolls = 0;
-        size_t dieValue = 1;
-        size_t p1Score = 0;
-        size_t p2Score = 0;
+        u64 dieRolls = 0;
+        u64 dieValue = 1;
+        u64 p1Score = 0;
+        u64 p2Score = 0;
         while (true) {
             if (Roll(dieRolls, dieValue, p1Pos, p1Score)) break;
             if (Roll(dieRolls, dieValue, p2Pos, p2Score)) break;
@@ -88,6 +88,7 @@ SOLUTION(2021, 21) {
 
         return std::min(p1Score, p2Score) * dieRolls;
     }
+
     PART(1) {
         size_t p1Pos, p2Pos;
 
@@ -96,7 +97,7 @@ SOLUTION(2021, 21) {
         return Constexpr::ToString(SolveP1(p1Pos, p2Pos));
     }
 
-    constexpr size_t SolveP2(size_t p1Pos, size_t p2Pos) {
+    constexpr u64 SolveP2(size_t p1Pos, size_t p2Pos) {
         p1Pos--;
         p2Pos--;
         auto p1Cache = new Cache();

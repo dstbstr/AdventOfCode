@@ -84,7 +84,7 @@ constexpr bool Apply(std::vector<s64>& instructions, Args& args) {
     for (auto i = 0; i < detail::ArgCount(op); i++) {
         auto pIndex = args.Ip + i + 1;
         auto val = instructions[pIndex];
-        auto mode = modes.size() <= i ? ParamMode::Position : modes[i];
+        auto mode = static_cast<u8>(modes.size()) <= i ? ParamMode::Position : modes[i];
         parameters.push_back(std::make_pair(val, mode));
     }
 
@@ -166,7 +166,7 @@ inline bool ApplyDebug(std::vector<s64>& instructions, Args& args) {
     for (auto i = 0; i < detail::ArgCount(op); i++) {
         auto pIndex = args.Ip + i + 1;
         auto val = instructions[pIndex];
-        auto mode = modes.size() <= i ? ParamMode::Position : modes[i];
+        auto mode = static_cast<u8>(modes.size()) <= i ? ParamMode::Position : modes[i];
         parameters.push_back(std::make_pair(val, mode));
     }
 

@@ -3,7 +3,7 @@
 SOLUTION(2017, 1) {
     constexpr u32 SumDigits(std::string_view line, size_t offset) {
         u32 result = 0;
-        for (auto i = 0; i < line.size(); i++) {
+        for (size_t i = 0u; i < line.size(); i++) {
             if (line[i] == line[(i + offset) % line.size()]) {
                 result += line[i] - '0';
             }

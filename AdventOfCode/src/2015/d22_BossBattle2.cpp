@@ -91,6 +91,7 @@ SOLUTION(2015, 22) {
         case Spell::Shield: state.Player.Armor = 7; return;
         case Spell::Poison: state.Boss.Hp -= 3; return;
         case Spell::Recharge: state.Player.Mana += 101; return;
+        case Spell::BossTurn: throw "Wat?";
         }
     }
     constexpr void TickSpells(State& state) {

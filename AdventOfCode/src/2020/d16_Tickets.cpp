@@ -100,7 +100,7 @@ SOLUTION(2020, 16) {
 
     constexpr Constexpr::SmallMap<std::string, size_t> UntangleFields(const std::vector<Field>&fields, const std::vector<Ticket>&tickets) {
         std::vector<std::vector<std::string>> available;
-        for (auto i = 0; i < fields.size(); i++) {
+        for (size_t i = 0u; i < fields.size(); i++) {
             std::vector<std::string> v;
             available.push_back(v);
         }

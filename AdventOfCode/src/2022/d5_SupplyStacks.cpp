@@ -8,7 +8,7 @@ SOLUTION(2022, 5) {
         result.resize((lines[0].size() / 4) + 1);
 
         for (s32 line = static_cast<s32>(lines.size()) - 2; line >= 0; line--) {
-            for (auto c = 1, i = 0; c < lines[0].size(); c += 4, i++) {
+            for (size_t c = 1u, i = 0u; c < lines[0].size(); c += 4, i++) {
                 auto box = lines[line][c];
                 if (box == ' ') continue;
                 result[i].push(box);
@@ -47,7 +47,7 @@ SOLUTION(2022, 5) {
 
     constexpr std::string SolvePartOne(const auto& lines) {
         return Solve(lines, [](Vec3<size_t> move, Stacks& stacks) {
-            for (auto i = 0; i < move.X; i++) {
+            for (size_t i = 0u; i < move.X; i++) {
                 stacks[move.Z].push(stacks[move.Y].pop());
             }
             });
@@ -60,10 +60,10 @@ SOLUTION(2022, 5) {
     constexpr std::string SolvePartTwo(const auto& lines) {
         return Solve(lines, [](Vec3<size_t> move, Stacks& stacks) {
             Constexpr::Stack<char> temp;
-            for (auto i = 0; i < move.X; i++) {
+            for (size_t i = 0u; i < move.X; i++) {
                 temp.push(stacks[move.Y].pop());
             }
-            for (auto i = 0; i < move.X; i++) {
+            for (size_t i = 0u; i < move.X; i++) {
                 stacks[move.Z].push(temp.pop());
             }
         });

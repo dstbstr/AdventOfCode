@@ -46,6 +46,7 @@ SOLUTION(2016, 25) {
                 break;
             }
             case Command::Out: outValue = i1 == Unset ? v1 : regs[i1]; break;
+            case Command::Tgl: throw "Wat?";
             }
             ip++;
             return outValue;

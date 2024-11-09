@@ -81,7 +81,7 @@ SOLUTION(2022, 24) {
         auto yOffset = timeStep % rows;
         auto xOffset = timeStep % cols;
 
-        for (auto row = 1; row <= rows; row++) {
+        for (size_t row = 1u; row <= rows; row++) {
             std::rotate(left[row].begin() + 1, left[row].begin() + 1 + xOffset, left[row].end() - 1);
             std::rotate(right[row].rbegin() + 1, right[row].rbegin() + 1 + xOffset, right[row].rend() - 1);
         }
@@ -115,12 +115,10 @@ SOLUTION(2022, 24) {
 
     constexpr std::string PrintBlizzard(const Blizzard & blizzard, const RowCol & santaPos) {
         auto limits = GetRowColCounts(blizzard);
-        RowCol start = { 0, 1 };
-        RowCol end = { limits.Row - 1, limits.Col - 2 };
         std::string result = "\n";
 
-        for (auto row = 0; row < limits.Row; row++) {
-            for (auto col = 0; col < limits.Col; col++) {
+        for (size_t row = 0u; row < limits.Row; row++) {
+            for (size_t col = 0u; col < limits.Col; col++) {
                 if (row == 0 || col == 0) {
                     result.push_back('#');
                 }

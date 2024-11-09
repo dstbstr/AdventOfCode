@@ -21,7 +21,7 @@ SOLUTION(2021, 3) {
         outLeft = "";
         outRight = "";
 
-        for (auto i = 0; i < lines[0].size(); i++) {
+        for (size_t i = 0u; i < lines[0].size(); i++) {
             auto most = FindMostCommon(lines, i);
             auto least = most == '1' ? '0' : '1';
             outLeft.push_back(most);

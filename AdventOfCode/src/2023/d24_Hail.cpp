@@ -34,7 +34,7 @@ SOLUTION(2023, 24) {
         double s, t;
 
         size_t result = 0;
-        for (auto i = 0; i < stones.size(); i++) {
+        for (size_t i = 0u; i < stones.size(); i++) {
             auto a = stones[i];
             for (auto j = i + 1; j < stones.size(); j++) {
                 auto b = stones[j];

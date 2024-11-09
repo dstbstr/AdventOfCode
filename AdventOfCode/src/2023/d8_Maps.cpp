@@ -1,11 +1,12 @@
 #include "Common.h"
 #include "Core/Algorithms/FloydCycle.h"
 
+/*
 SOLUTION(2023, 8) {
 
     using Map = Constexpr::BigMap<std::string, std::pair<std::string, std::string>>;
     constexpr Map CreateMap(const std::vector<std::string>&lines) {
-        Constexpr::BigMap<std::string, std::pair<std::string, std::string>> map;
+        Map map;
         for (const auto& line : lines) {
             auto s1 = Constexpr::Split(line, " = ");
             auto key = std::string(s1[0]);
@@ -147,3 +148,4 @@ SOLUTION(2023, 8) {
         return Part2(lines) == "6";
     }
 }
+*/

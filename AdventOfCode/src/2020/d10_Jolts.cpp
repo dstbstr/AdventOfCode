@@ -42,7 +42,7 @@ SOLUTION(2020, 10) {
         std::sort(nums.begin(), nums.end());
         size_t runLength = 0;
         size_t result = 1;
-        for (auto i = 1; i < nums.size(); i++) {
+        for (size_t i = 1u; i < nums.size(); i++) {
             if (nums[i] - nums[i - 1] == 3) {
                 result *= CountPaths(runLength);
                 runLength = 0;

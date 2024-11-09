@@ -50,7 +50,7 @@ SOLUTION(2015, 11) {
 
 
     constexpr bool ContainsStraight(const std::string & input) {
-        for (auto i = 2; i < input.size(); i++) {
+        for (auto i = 2ull; i < input.size(); i++) {
             if (input[i] == input[i - 1] + 1 && input[i] == input[i - 2] + 2) {
                 return true;
             }
@@ -61,7 +61,7 @@ SOLUTION(2015, 11) {
 
     constexpr bool ContainsTwoPairs(const std::string & input) {
         bool onePair = false;
-        for (auto i = 1; i < input.size(); i++) {
+        for (auto i = 1ull; i < input.size(); i++) {
             if (input[i] == input[i - 1]) {
                 if (onePair) {
                     return true;

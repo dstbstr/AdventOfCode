@@ -33,7 +33,7 @@ SOLUTION(2023, 14) {
             pos.Row++;
             
             for (size_t row = 1; row < map.size(); row++) {
-                for(auto col = 0; col < map[row].size(); col++) {
+                for(size_t col = 0u; col < map[row].size(); col++) {
                     Slide(pos, same, up, map, max);
                     pos.Col++;
                 }
@@ -43,8 +43,8 @@ SOLUTION(2023, 14) {
         }
         else if (dir == Direction::South) {
             pos.Row = map.size() - 2;
-            for (auto row = 0; row < map.size() - 1; row++) {
-                for (auto col = 0; col < map[row].size(); col++) {
+            for (size_t row = 0u; row < map.size() - 1; row++) {
+                for (size_t col = 0u; col < map[row].size(); col++) {
                     Slide(pos, same, down, map, max);
                     pos.Col++;
                 }
@@ -54,8 +54,8 @@ SOLUTION(2023, 14) {
         }
         else if (dir == Direction::East) {
             pos.Col = map[0].size() - 2;
-            for (auto col = 0; col < map[0].size() - 1; col++) {
-                for (auto row = 0; row < map.size(); row++) {
+            for (size_t col = 0u; col < map[0].size() - 1; col++) {
+                for (size_t row = 0u; row < map.size(); row++) {
                     Slide(pos, right, same, map, max);
                     pos.Row++;
                 }
@@ -65,8 +65,8 @@ SOLUTION(2023, 14) {
         }
         else {
             pos.Col = 1;
-            for (auto col = 0; col < map[0].size() - 1; col++) {
-                for (auto row = 0; row < map.size(); row++) {
+            for (size_t col = 0u; col < map[0].size() - 1; col++) {
+                for (size_t row = 0u; row < map.size(); row++) {
                     Slide(pos, left, same, map, max);
                     pos.Row++;
                 }
@@ -79,7 +79,7 @@ SOLUTION(2023, 14) {
     constexpr size_t CalculateLoad(const std::vector<std::string>& map) {
         size_t result = 0;
         size_t weight = map.size();
-        for (auto i = 0; i < map.size(); i++) {
+        for (size_t i = 0u; i < map.size(); i++) {
             result += std::count(map[i].begin(), map[i].end(), 'O') * weight;
             weight--;
         }

@@ -111,7 +111,7 @@ SOLUTION(2021, 8) {
             for (auto digit : rhs) {
                 auto key = std::string(digit);
                 std::sort(key.begin(), key.end());
-                for (auto i = 0; i < knownNumbers.size(); i++) {
+                for (size_t i = 0u; i < knownNumbers.size(); i++) {
                     if (knownNumbers[i] == key) {
                         number += (i * multiplier);
                         multiplier /= 10;

@@ -17,6 +17,7 @@ SOLUTION(2019, 21) {
         case AND: AddAll("AND "); break;
         case OR: AddAll("OR "); break;
         case NOT: AddAll("NOT "); break;
+        default: break;
         }
 
         args.Inputs.push_back(lhs);
@@ -35,6 +36,7 @@ SOLUTION(2019, 21) {
         switch (cmd) {
         case WALK: AddAll("WALK\n"); break;
         case RUN: AddAll("RUN\n"); break;
+        default: break;
         }
     }
 

@@ -24,7 +24,7 @@ SOLUTION(2021, 6) {
 
     constexpr auto Solve(std::string_view line, size_t days) {
         auto fish = GetInitialFish(line);
-        for (auto day = 0; day < days; day++) {
+        for (size_t day = 0u; day < days; day++) {
             NextDay(fish);
         }
 

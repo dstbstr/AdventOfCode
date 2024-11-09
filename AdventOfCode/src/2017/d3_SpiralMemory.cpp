@@ -64,8 +64,8 @@ SOLUTION(2017, 3) {
         Constexpr::SmallMap<Coord, u32> result;
 
         result[spiral.at(1)] = 1;
-        for (auto key = 2; key < spiral.size(); key++) {
-            auto coord = spiral.at(key);
+        for (size_t key = 2u; key < spiral.size(); key++) {
+            auto coord = spiral.at(static_cast<u32>(key));
             auto neighbors = GetAllNeighbors(coord, max, min);
             u32 value = 0;
             for (auto neighbor : neighbors) {

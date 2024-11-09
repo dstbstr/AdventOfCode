@@ -29,7 +29,7 @@ SOLUTION(2019, 23) {
         Args args;
         std::vector<Computer> result;
         for (s64 i = 0; i < 50; i++) {
-            Computer computer = { instructions, args, i };
+            Computer computer = { .Instructions = instructions, .Args = args, .Id = i, .WorkQueue = {} };
             computer.Args.Inputs.push_back(i);
             Apply(computer.Instructions, computer.Args);
             result.push_back(computer);
@@ -84,15 +84,12 @@ SOLUTION(2019, 23) {
         }
     }
 
-    Packet NatPacket;
-    s64 PreviousY = Unset;
-
-    constexpr s64 InvokeNat(std::vector<Computer>& computers) {
-        if (PreviousY == NatPacket.Y) {
-            return NatPacket.Y;
+    constexpr s64 InvokeNat(std::vector<Computer>& computers, Packet& natPacket, s64& previousY) {
+        if (previousY == natPacket.Y) {
+            return natPacket.Y;
         }
-        PreviousY = NatPacket.Y;
-        computers[0].WorkQueue.push(NatPacket);
+        previousY = natPacket.Y;
+        computers[0].WorkQueue.push(natPacket);
         return 0;
     }
 
@@ -124,6 +121,9 @@ SOLUTION(2019, 23) {
         auto computers = InitializeComputers(lines[0]);
         u32 emptyFrames = 0;
         Packet packet;
+        Packet natPacket;
+        s64 previousY = Unset;
+
         while (true) {
             u32 sendCount = 0;
             for (auto& computer : computers) {
@@ -135,7 +135,7 @@ SOLUTION(2019, 23) {
                     sendCount++;
                     packet = ConsumeOutput(computer);
                     if (packet.Destination == 255) {
-                        NatPacket = packet;
+                        natPacket = packet;
                     }
                     else {
                         SendPacket(computers, packet);
@@ -146,7 +146,7 @@ SOLUTION(2019, 23) {
             if (sendCount == 0 && AreQueuesEmpty(computers)) {
                 emptyFrames++;
                 if (emptyFrames == 10) {
-                    auto res = InvokeNat(computers);
+                    auto res = InvokeNat(computers, natPacket, previousY);
                     if (res > 0) {
                         return Constexpr::ToString(res);
                     }

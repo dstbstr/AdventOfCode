@@ -18,7 +18,7 @@ SOLUTION(2018, 12) {
     constexpr std::string NextGeneration(const std::string & pots, const Rules& rules) {
         std::string running = pots.substr(0, 5);
         auto next = pots + ".";
-        for (auto i = 4; i < pots.size() - 1; i++) {
+        for (auto i = 4ull; i < pots.size() - 1; i++) {
             next[i - 2] = rules.at(running);
             running = running.substr(1) + pots[i + 1];
         }

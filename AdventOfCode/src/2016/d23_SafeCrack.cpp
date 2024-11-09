@@ -12,6 +12,7 @@ SOLUTION(2016, 23) {
         else if (cmdStr == "tgl") cmd = Command::Tgl;
         else if (cmdStr == "inc") cmd = Command::Inc;
         else if (cmdStr == "dec") cmd = Command::Dec;
+        else throw "Wat?";
 
         s32 v1 = Unset;
         s32 v2 = Unset;

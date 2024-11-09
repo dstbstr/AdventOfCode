@@ -22,6 +22,7 @@ constexpr Direction ParseDirection(char c) {
     case 'w': case 'W': return Direction::West;
     case 's': case 'S': return Direction::South;
     }
+    throw "Wat?";
 }
 
 constexpr std::string ToString(Facing facing) {

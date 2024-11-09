@@ -13,7 +13,7 @@ SOLUTION(2021, 1) {
 
     constexpr size_t CountIncreasingWindow(const std::vector<u32>&nums) {
         size_t result = 0;
-        for (auto i = 0; i < nums.size() - 3; i++) {
+        for (size_t i = 0u; i < nums.size() - 3; i++) {
             auto lhs = nums[i] + nums[i + 1] + nums[i + 2];
             auto rhs = lhs - nums[i] + nums[i + 3];
             result += lhs < rhs;

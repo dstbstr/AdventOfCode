@@ -1,11 +1,11 @@
 #include "Common.h"
 
 SOLUTION(2020, 14) {
-    using Memory = Constexpr::SmallMap<size_t, size_t>;
+    using Memory = Constexpr::SmallMap<u64, u64>;
 
     //mask = 110000011XX0000X101000X10X01XX001011
-    constexpr void UpdateMasks(std::string_view str, size_t & zeroMask, size_t & oneMask) {
-        size_t value = 1;
+    constexpr void UpdateMasks(std::string_view str, u64 & zeroMask, u64& oneMask) {
+        u64 value = 1;
         zeroMask = 0;
         oneMask = 0;
         for (auto it = str.rbegin(); it != str.rend(); it++) {
@@ -15,20 +15,20 @@ SOLUTION(2020, 14) {
         }
     }
 
-    constexpr void Write(size_t val, size_t address, Memory & memory, size_t zeroMask, size_t oneMask) {
+    constexpr void Write(u64 val, u64 address, Memory & memory, u64 zeroMask, u64 oneMask) {
         val &= ~zeroMask;
         val |= oneMask;
         memory[address] = val;
     }
 
-    constexpr void UpdateFloaters(size_t address, size_t floating, Memory & memory, size_t toWrite) {
+    constexpr void UpdateFloaters(u64 address, u64 floating, Memory & memory, u64 toWrite) {
         if (floating == 0) return;
 
-        std::vector<size_t> seenValues{ 0 };
-        size_t power = 1;
+        std::vector<u64> seenValues{ 0ull };
+        u64 power = 1;
         while (power <= floating) {
             if ((floating & power) == power) {
-                std::vector<size_t> toAdd;
+                std::vector<u64> toAdd;
                 for (auto v : seenValues) {
                     toAdd.push_back(v + power);
                 }
@@ -42,10 +42,10 @@ SOLUTION(2020, 14) {
         }
     }
 
-    constexpr void Write2(size_t val, size_t address, Memory & memory, size_t zeroMask, size_t oneMask) {
+    constexpr void Write2(u64 val, u64 address, Memory & memory, u64 zeroMask, u64 oneMask) {
         address |= oneMask;
-        size_t floating = ~(zeroMask | oneMask);
-        size_t floatingMask = ((~0ull) >> (64 - 36));
+        u64 floating = ~(zeroMask | oneMask);
+        u64 floatingMask = ((~0ull) >> (64 - 36));
         floating &= floatingMask; //strip out 1s above 36 bits
         address &= (~floating); //erase floating bits from address
 
@@ -53,8 +53,8 @@ SOLUTION(2020, 14) {
     }
 
     constexpr size_t Solve(const auto& lines, auto writeFunc) {
-        size_t zeroMask = 0;
-        size_t oneMask = 0;
+        u64 zeroMask = 0;
+        u64 oneMask = 0;
         Memory memory{};
         for (const auto& line : lines) {
             auto split = Constexpr::Split(line, " = ");
@@ -62,14 +62,14 @@ SOLUTION(2020, 14) {
                 UpdateMasks(split[1], zeroMask, oneMask);
             }
             else {
-                size_t val, address;
+                u64 val, address;
                 Constexpr::ParseNumber(split[1], val);
                 Constexpr::ParseNumber(split[0].substr(3, split[0].size() - 4), address);
                 writeFunc(val, address, memory, zeroMask, oneMask);
             }
         }
 
-        size_t result = 0;
+        u64 result = 0;
         for (const auto& [address, value] : memory) {
             result += value;
         }
@@ -92,8 +92,8 @@ SOLUTION(2020, 14) {
     */
     constexpr bool TestUpdateMasks() {
         std::string mask = "11000011XX0000X101000X10X01XX001011";
-        size_t zeroMask = 0;
-        size_t oneMask = 0;
+        u64 zeroMask = 0;
+        u64 oneMask = 0;
 
         UpdateMasks(mask, zeroMask, oneMask);
         if (zeroMask != 8084900404) return false;

@@ -7,7 +7,8 @@ SOLUTION(2018, 21) {
     constexpr auto GenInst(std::string_view line) {
         auto s = Constexpr::Split(line, " ");
         auto opStr = s[0];
-        s32 a, b, c;
+        //s32 a, b, c;
+        u32 a, b, c;
         Constexpr::ParseNumber(s[1], a);
         Constexpr::ParseNumber(s[2], b);
         Constexpr::ParseNumber(s[3], c);
@@ -29,6 +30,7 @@ SOLUTION(2018, 21) {
         else if (opStr == "eqir") op = Op::Eqir;
         else if (opStr == "eqri") op = Op::Eqri;
         else if (opStr == "eqrr") op = Op::Eqrr;
+        else throw "Wat?";
 
         return [a, b, c, op](Regs& regs) {
             switch (op) {

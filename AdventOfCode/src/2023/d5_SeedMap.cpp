@@ -96,7 +96,7 @@ SOLUTION(2023, 5) {
 
     constexpr Map ParseMap(const std::vector<std::string>& lines) {
         Map result;
-        for (auto i = 1; i < lines.size(); i++) {
+        for (size_t i = 1u; i < lines.size(); i++) {
             result.Ranges.push_back(ParseRange(lines[i]));
         }
 
@@ -128,7 +128,7 @@ SOLUTION(2023, 5) {
         auto groups = SplitInputIntoGroups(lines);
         auto seedRanges = ParseLineAsNumbers<s64>(groups[0][0].substr(7), " ");
         std::vector<Seeds> seeds = {};
-        for (auto i = 0; i < seedRanges.size(); i += 2) {
+        for (size_t i = 0u; i < seedRanges.size(); i += 2) {
             seeds.emplace_back(seedRanges[i], seedRanges[i + 1]);
         }
 

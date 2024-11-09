@@ -176,7 +176,7 @@ SOLUTION(2022, 16) {
             });
 
         u32 best = 0;
-        for (auto i = 0; i < pairs.size(); i++) {
+        for (size_t i = 0u; i < pairs.size(); i++) {
             for (auto j = i + 1; j < pairs.size(); j++) {
                 if ((pairs[i].first & pairs[j].first) == 0) {
                     best = std::max(best, pairs[i].second + pairs[j].second);

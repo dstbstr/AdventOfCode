@@ -1,8 +1,7 @@
 #include "Common.h"
 
 SOLUTION(2015, 3) {
-    static constexpr size_t GridSize = 1000;
-    static constexpr size_t BitsSize = GridSize * GridSize;
+    constexpr size_t GridSize = 1000;
 
     constexpr size_t GetPos(u32 x, u32 y)
     {
@@ -57,7 +56,7 @@ SOLUTION(2015, 3) {
 
         seen[seenIndex++] = GetPos(santaX, santaY);
 
-        for (auto i = 0; i < input.size(); i += 2)
+        for (size_t i = 0u; i < input.size(); i += 2)
         {
             Move(input[i], santaX, santaY);
             result += UpdateSeen(santaX, santaY, seenIndex, seen);

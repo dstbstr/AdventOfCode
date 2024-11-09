@@ -32,7 +32,7 @@ SOLUTION(2015, 10) {
     constexpr std::string ApplyTimes(std::string_view input, size_t times) {
         std::string running = std::string(input);
 
-        for (auto i = 0; i < times; i++) {
+        for (size_t i = 0u; i < times; i++) {
             running = Next(running);
         }
 

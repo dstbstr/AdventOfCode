@@ -17,7 +17,7 @@ SOLUTION(2017, 24) {
     constexpr size_t Dfs(size_t pieceNeeded, std::vector<UCoord> pieces, size_t currentStrength) {
         size_t best = currentStrength;
 
-        for (auto i = 0; i < pieces.size(); i++) {
+        for (size_t i = 0u; i < pieces.size(); i++) {
             auto piece = pieces[i];
             if (piece.X != pieceNeeded && piece.Y != pieceNeeded) continue;
             auto nextNeeded = piece.X == pieceNeeded ? piece.Y : piece.X;
@@ -33,7 +33,7 @@ SOLUTION(2017, 24) {
     constexpr std::vector<UCoord> FindLongestBridge(size_t pieceNeeded, std::vector<UCoord> pieces, std::vector<UCoord> currentBridge) {
         std::vector<UCoord> result = currentBridge;
 
-        for (auto i = 0; i < pieces.size(); i++) {
+        for (size_t i = 0u; i < pieces.size(); i++) {
             auto piece = pieces[i];
             if (piece.X != pieceNeeded && piece.Y != pieceNeeded) continue;
             auto nextNeeded = piece.X == pieceNeeded ? piece.Y : piece.X;

@@ -29,8 +29,6 @@ SOLUTION(2023, 23) {
 
     constexpr std::vector<RowCol> GetNeighborsNoSlopes(RowCol pos, const std::vector<std::string>& lines) {
         RowCol limits = { lines.size() - 1, lines[0].size() - 1 };
-        const auto h = RowCol{ 0, 1 };
-        const auto v = RowCol{ 1, 0 };
         std::vector<RowCol> result;
         const auto neighbors = GetDirectNeighbors(pos, limits);
         std::copy_if(neighbors.begin(), neighbors.end(), std::back_inserter(result), [&](RowCol rc) {

@@ -80,8 +80,8 @@ SOLUTION(2022, 11) {
             });
 
         u64 running = 0;
-        for (auto round = 0; round < rounds; round++) {
-            for (size_t i = 0; i < monkeys.size(); i++) {
+        for (size_t round = 0u; round < rounds; round++) {
+            for (size_t i = 0u; i < monkeys.size(); i++) {
                 auto& monkey = monkeys[i];
                 monkey.ItemsHandled += monkey.Items.size();
                 for (auto item : monkey.Items) {

@@ -104,7 +104,7 @@ SOLUTION(2020, 4) {
 
         if (passport.HairColor[0] != '#') return false;
         if (passport.HairColor.size() != 7) return false;
-        for (auto i = 1; i < passport.HairColor.size(); i++) {
+        for (size_t i = 1u; i < passport.HairColor.size(); i++) {
             auto c = passport.HairColor[i];
             if (c >= 'a' && c <= 'f') continue;
             if (c >= '0' && c <= '9') continue;

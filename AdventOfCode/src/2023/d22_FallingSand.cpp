@@ -100,11 +100,11 @@ SOLUTION(2023, 22) {
             return lhs.End.Z < rhs.End.Z;
             });
 
-        for (auto i = 0; i < bricks.size(); i++) {
+        for (size_t i = 0u; i < bricks.size(); i++) {
             auto& brick = bricks[i];
 
             s32 maxZ = 0;
-            for (auto j = 0; j < i; j++) {
+            for (size_t j = 0u; j < i; j++) {
                 if (OverlapsXy(brick, bricks[j])) {
                     maxZ = std::max(maxZ, bricks[j].End.Z); 
                 }
@@ -123,7 +123,7 @@ SOLUTION(2023, 22) {
         Compact(bricks);
 
         size_t result = 0;
-        for (auto i = 0; i < bricks.size(); i++) {
+        for (size_t i = 0u; i < bricks.size(); i++) {
             result += CanDestroy(bricks, i);
         }
         return Constexpr::ToString(result);
@@ -134,7 +134,7 @@ SOLUTION(2023, 22) {
         auto bricks = ParseLines(lines, ParseBrick);
         Compact(bricks);
 
-        for (auto i = 0; i < bricks.size(); i++) {
+        for (size_t i = 0u; i < bricks.size(); i++) {
             result += CountChainReaction(bricks, i);
         }
 

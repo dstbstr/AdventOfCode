@@ -97,7 +97,7 @@ SOLUTION(2018, 16) {
             }
         }
 
-        for (auto i = 0; i < 16; i++) {
+        for (auto i = 0u; i < 16; i++) {
             if (i == opId) continue;
             if (remaining[i][opCode]) {
                 remaining[i][opCode] = false;

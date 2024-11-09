@@ -33,7 +33,7 @@ SOLUTION(2015, 13) {
     constexpr s32 CalculateHappiness(const std::vector<std::string>& people, const PreferenceMap& preferences) {
         s32 result = 0;
 
-        for (auto i = 0; i < people.size() - 1; i++) {
+        for (size_t i = 0u; i < people.size() - 1; i++) {
             result += preferences.at(people[i]).at(people[i + 1]);
             result += preferences.at(people[i + 1]).at(people[i]);
         }

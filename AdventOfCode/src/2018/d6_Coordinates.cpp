@@ -32,7 +32,7 @@ SOLUTION(2018, 6) {
         return result;
     }
 
-    constexpr bool IsInRegion(const Coord & pos, std::vector<Coord> targets, s32 maxDistance) {
+    constexpr bool IsInRegion(const Coord & pos, std::vector<Coord> targets, size_t maxDistance) {
         size_t totalDistance = 0;
         for (const auto& target : targets) {
             totalDistance += MDistance(pos, target);
@@ -54,7 +54,6 @@ SOLUTION(2018, 6) {
 
         u32 maxArea = 0;
         for (size_t i = 0; i < coords.size(); i++) {
-            auto coord = coords[i];
             if (areas[i] == areas2[i]) {
                 maxArea = std::max(maxArea, areas[i]);
             }
@@ -64,7 +63,7 @@ SOLUTION(2018, 6) {
     }
 
     PART(2) {
-        const s32 maxDistance = 10'000;
+        const size_t maxDistance = 10'000;
 
         std::vector<Coord> coords;
         for (const auto& line : lines) {

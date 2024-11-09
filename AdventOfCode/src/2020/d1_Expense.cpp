@@ -5,7 +5,7 @@ SOLUTION(2020, 1) {
     PART(1) {
         auto nums = ParseLinesAsNumbers<u32>(lines);
         std::sort(nums.begin(), nums.end());
-        for (auto firstNum = 0; firstNum < nums.size(); firstNum++) {
+        for (auto firstNum = 0ull; firstNum < nums.size(); firstNum++) {
             bool tooBig = false;
             for (auto secondNum = firstNum + 1; secondNum < nums.size(); secondNum++) {
                 auto sum = nums[firstNum] + nums[secondNum];
@@ -26,7 +26,7 @@ SOLUTION(2020, 1) {
     PART(2) {
         auto nums = ParseLinesAsNumbers<u32>(lines);
         std::sort(nums.begin(), nums.end());
-        for (auto firstNum = 0; firstNum < nums.size(); firstNum++) {
+        for (auto firstNum = 0ull; firstNum < nums.size(); firstNum++) {
             for (auto secondNum = firstNum + 1; secondNum < nums.size(); secondNum++) {
                 bool tooBig = false;
                 for (auto thirdNum = secondNum + 1; thirdNum < nums.size(); thirdNum++) {

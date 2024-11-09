@@ -14,7 +14,7 @@ SOLUTION(2016, 6) {
     template<size_t MsgLength>
     constexpr std::string Decode(CountType<MsgLength>&counts) {
         std::string result = "";
-        for (auto i = 0; i < MsgLength; i++) {
+        for (size_t i = 0u; i < MsgLength; i++) {
             u32 best = 0;
             u32 bestIndex = 0;
             for (auto count = 0; count < 26; count++) {
@@ -33,7 +33,7 @@ SOLUTION(2016, 6) {
     template<size_t MsgLength>
     constexpr std::string DecodeMin(CountType<MsgLength>&counts) {
         std::string result = "";
-        for (auto i = 0; i < MsgLength; i++) {
+        for (size_t i = 0u; i < MsgLength; i++) {
             u32 best = 999;
             u32 bestIndex = 0;
             for (auto count = 0; count < 26; count++) {

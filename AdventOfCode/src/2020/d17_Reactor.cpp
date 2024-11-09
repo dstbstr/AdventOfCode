@@ -42,10 +42,10 @@ SOLUTION(2020, 17) {
 
     constexpr Reactor ParseReactor(const auto& lines) {
         Reactor result;
-        for (s32 row = 0; row < lines.size(); row++) {
-            for (s32 col = 0; col < lines[row].size(); col++) {
+        for (size_t row = 0u; row < lines.size(); row++) {
+            for (size_t col = 0u; col < lines[row].size(); col++) {
                 if (lines[row][col] == '#') {
-                    result.insert({ col, row, 0 });
+                    result.insert({ static_cast<s32>(col), static_cast<s32>(row), 0 });
                 }
             }
         }
@@ -55,10 +55,10 @@ SOLUTION(2020, 17) {
 
     constexpr BigReactor ParseBigReactor(const auto& lines) {
         BigReactor result;
-        for (s32 row = 0; row < lines.size(); row++) {
-            for (s32 col = 0; col < lines[row].size(); col++) {
+        for (size_t row = 0u; row < lines.size(); row++) {
+            for (size_t col = 0u; col < lines[row].size(); col++) {
                 if (lines[row][col] == '#') {
-                    result.insert({ col, row, 0, 0 });
+                    result.insert({ static_cast<s32>(col), static_cast<s32>(row), 0, 0 });
                 }
             }
         }

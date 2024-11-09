@@ -206,7 +206,7 @@ SOLUTION(2019, 25) {
 
         auto path = AStarMin<Coord>(droid.Pos, to.Pos, n);
 
-        for (auto i = 1; i < path.size(); ++i) {
+        for (auto i = 1ull; i < path.size(); ++i) {
             MoveAdjacent(droid, map.at(path[i - 1]), map.at(path[i]));
         }
     }

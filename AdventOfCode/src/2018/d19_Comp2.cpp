@@ -35,6 +35,7 @@ SOLUTION(2018, 19) {
         else if (opStr == "eqir") op = Op::Eqir;
         else if (opStr == "eqri") op = Op::Eqri;
         else if (opStr == "eqrr") op = Op::Eqrr;
+        else throw "Wat?";
 
         return [a, b, c, op](Regs& regs) {
             switch (op) {
@@ -71,8 +72,8 @@ SOLUTION(2018, 19) {
         auto copy = std::vector<std::string>(lines.begin() + 1, lines.end());
         auto inst = ParseLines(copy, GenInst);
         Regs regs{};
-        s32& ip = regs[ipReg];
-        while (ip < inst.size()) {
+        auto& ip = regs[ipReg];
+        while (static_cast<size_t>(ip) < inst.size()) {
             inst[ip](regs);
             ip++;
         }

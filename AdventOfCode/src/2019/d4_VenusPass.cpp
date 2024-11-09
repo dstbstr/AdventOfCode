@@ -5,7 +5,7 @@ SOLUTION(2019, 4) {
         auto str = Constexpr::ToString(val);
 
         bool hasPair = false;
-        for (auto i = 1; i < str.size(); i++) {
+        for (auto i = 1ull; i < str.size(); i++) {
             if (str[i] < str[i - 1]) return false;
             if (str[i] == str[i - 1]) hasPair = true;
         }
@@ -17,7 +17,7 @@ SOLUTION(2019, 4) {
         auto str = Constexpr::ToString(val);
         std::vector<std::string> pairs;
 
-        for (auto i = 0; i < str.size() - 1; i++) {
+        for (size_t i = 0u; i < str.size() - 1; i++) {
             if (str[i + 1] < str[i]) return false;
             if (str[i] == str[i + 1]) {
                 pairs.push_back(str.substr(i, 2));

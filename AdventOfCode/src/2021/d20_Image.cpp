@@ -20,7 +20,7 @@ SOLUTION(2021, 20) {
         for (s32 r = row - 1; r < row + 2; r++) {
             for (s32 c = col - 1; c < col + 2; c++) {
                 if (r < 0 || c < 0) bits.push_back(defVal);
-                else if (r > current.size() - 1 || c > current.size() - 1) bits.push_back(defVal);
+                else if (r > static_cast<s32>(current.size() - 1) || c > static_cast<s32>(current.size() - 1)) bits.push_back(defVal);
                 else bits.push_back(current[r][c] ? '#' : '.');
             }
         }
@@ -46,7 +46,7 @@ SOLUTION(2021, 20) {
     }
 
     constexpr void Enhance(const std::string & key, Image & image, size_t count) {
-        for (auto i = 0; i < count; i++) {
+        for (size_t i = 0u; i < count; i++) {
             image = Next(image, key, i % 2 == 0);
         }
     }

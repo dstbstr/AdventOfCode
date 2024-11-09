@@ -58,9 +58,9 @@ SOLUTION(2018, 3) {
     PART(2) {
         auto rects = ParseLines(lines, ParseRect);
 
-        for (auto i = 0; i < rects.size(); i++) {
+        for (size_t i = 0u; i < rects.size(); i++) {
             bool found = false;
-            for (auto j = 0; j < rects.size(); j++) {
+            for (size_t j = 0u; j < rects.size(); j++) {
                 if (i == j) continue;
                 if (Intersects(rects[i], rects[j])) {
                     found = true;

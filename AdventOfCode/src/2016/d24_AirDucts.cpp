@@ -6,9 +6,9 @@ SOLUTION(2016, 24) {
 
     constexpr Walls FindWalls(const auto& lines) {
         Walls result;
-        for (auto row = 0; row < lines.size(); row++) {
+        for (auto row = 0ull; row < lines.size(); row++) {
             std::vector<bool> line;
-            for (auto col = 0; col < lines[row].size(); col++) {
+            for (auto col = 0ull; col < lines[row].size(); col++) {
                 line.push_back(lines[row][col] == '#');
             }
             result.push_back(line);

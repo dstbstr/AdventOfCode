@@ -9,7 +9,7 @@ SOLUTION(2018, 2) {
         for (const auto& c : line) {
             counts[c - 'a']++;
         }
-        for (auto i = 0; i < counts.size(); i++) {
+        for (size_t i = 0u; i < counts.size(); i++) {
             outHasTwos |= counts[i] == 2;
             outHasThrees |= counts[i] == 3;
         }
@@ -39,7 +39,7 @@ SOLUTION(2018, 2) {
     PART(2) {
         auto copy = lines;
         std::sort(copy.begin(), copy.end());
-        for (auto i = 0; i < copy.size() - 1; i++) {
+        for (size_t i = 0u; i < copy.size() - 1; i++) {
             if (OffByOne(copy[i], copy[i + 1])) {
                 return "\n" + std::string(copy[i]) + '\n' + std::string(copy[i + 1]);
             }

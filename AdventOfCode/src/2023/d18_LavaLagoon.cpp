@@ -30,22 +30,22 @@ SOLUTION(2023, 18) {
     }
 
     
-    constexpr size_t GetPerimeter(const Points& points) {
-        size_t result = 0;
-        for (auto i = 0; i < points.size() - 1; i++) {
+    constexpr u64 GetPerimeter(const Points& points) {
+        u64 result = 0ull;
+        for (size_t i = 0u; i < points.size() - 1; i++) {
             result += MDistance(points[i], points[i + 1]);
         }
         result += MDistance(points.back(), points[0]);
         return result;
     }
 
-    constexpr size_t FindArea(const Points& points) {
-        auto interior = static_cast<size_t>(Shoelace::GetInteriorArea(points));
+    constexpr u64 FindArea(const Points& points) {
+        auto interior = static_cast<u64>(Shoelace::GetInteriorArea(points));
         auto p = GetPerimeter(points);
-        return (interior + ( p / 2) + 1); //Pick's Theorem
+        return (interior + (p / 2) + 1); //Pick's Theorem
     }
     
-    constexpr size_t Solve(const std::vector<std::string>& lines, auto Func) {
+    constexpr u64 Solve(const std::vector<std::string>& lines, auto Func) {
         Points points;
         Coord pos{ 0, 0 };
 

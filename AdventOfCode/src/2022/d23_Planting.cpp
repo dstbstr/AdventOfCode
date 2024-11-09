@@ -14,10 +14,10 @@ SOLUTION(2022, 23) {
         for (size_t row = 0; row < map.size(); row++) {
             for (size_t col = 0; col < map[row].size(); col++) {
                 if (!map[row][col]) continue;
-                min.X = std::min(min.X, col);
-                min.Y = std::min(min.Y, row);
-                max.X = std::max(max.X, col);
-                max.Y = std::max(max.Y, row);
+                min.X = std::min(min.X, static_cast<u64>(col));
+                min.Y = std::min(min.Y, static_cast<u64>(row));
+                max.X = std::max(max.X, static_cast<u64>(col));
+                max.Y = std::max(max.Y, static_cast<u64>(row));
             }
         }
 
@@ -117,8 +117,8 @@ SOLUTION(2022, 23) {
             row.fill(false);
         }
 
-        for (auto row = 0; row < lines.size(); row++) {
-            for (auto col = 0; col < lines[row].size(); col++) {
+        for (size_t row = 0u; row < lines.size(); row++) {
+            for (size_t col = 0u; col < lines[row].size(); col++) {
                 result[row + 100][col + 100] = lines[row][col] == '#';
             }
         }
@@ -157,7 +157,7 @@ SOLUTION(2022, 23) {
 
         std::vector<std::pair<RowCol, RowCol>> resets;
 
-        for (auto i = 0; i < moves.size() - 1; i++) {
+        for (size_t i = 0u; i < moves.size() - 1; i++) {
             auto m1 = moves[i];
             bool match = false;
 

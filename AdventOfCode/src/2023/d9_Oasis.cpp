@@ -4,7 +4,7 @@ SOLUTION(2023, 9) {
 
     constexpr std::vector<s64> Next(const std::vector<s64>&current) {
         std::vector<s64> result;
-        for (auto i = 1; i < current.size(); i++) {
+        for (size_t i = 1u; i < current.size(); i++) {
             result.push_back(current[i] - current[i - 1]);
         }
         return result;

@@ -1,15 +1,15 @@
 #include "Common.h"
 
 SOLUTION(2020, 25) {
-    constexpr size_t RunLoop(size_t value, size_t subject) {
+    constexpr u64 RunLoop(u64 value, u64 subject) {
         value *= subject;
         return value % 20201227;
     }
 
-    constexpr size_t FindLoopSize(size_t publicKey) {
-        size_t value = 1;
-        size_t subject = 7;
-        size_t loopCount = 0;
+    constexpr u64 FindLoopSize(u64 publicKey) {
+        u64 value = 1;
+        u64 subject = 7;
+        u64 loopCount = 0;
         while (value != publicKey) {
             value = RunLoop(value, subject);
             loopCount++;
@@ -18,10 +18,10 @@ SOLUTION(2020, 25) {
         return loopCount;
     }
 
-    constexpr size_t Decrypt(size_t pk1, size_t pk2) {
+    constexpr u64 Decrypt(size_t pk1, size_t pk2) {
         auto loopSize = FindLoopSize(pk1);
-        size_t value = 1;
-        for (auto i = 0; i < loopSize; i++) {
+        u64 value = 1;
+        for (size_t i = 0u; i < loopSize; i++) {
             value = RunLoop(value, pk2);
         }
 
@@ -35,8 +35,8 @@ SOLUTION(2020, 25) {
     }
 
     constexpr bool RunTest() {
-        size_t value = 1;
-        size_t subject = 7;
+        u64 value = 1;
+        u64 subject = 7;
         for (auto i = 0; i < 8; i++) {
             value = RunLoop(value, subject);
         }

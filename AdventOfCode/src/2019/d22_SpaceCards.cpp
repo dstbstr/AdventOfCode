@@ -18,7 +18,7 @@ SOLUTION(2019, 22) {
     constexpr void DealWithIncrement(std::vector<u64>&deck, u32 increment) {
         std::vector<u64> result = deck;
         size_t cardIndex = 0;
-        for (auto i = 0; i < deck.size(); i++) {
+        for (size_t i = 0u; i < deck.size(); i++) {
             result[cardIndex] = deck[i];
             cardIndex = (cardIndex + increment) % deck.size();
         }
@@ -97,7 +97,7 @@ SOLUTION(2019, 22) {
     PART(1) {
         size_t deckSize = 10'007;
         std::vector<u64> deck(deckSize);
-        for (auto i = 0; i < deckSize; i++) {
+        for (size_t i = 0u; i < deckSize; i++) {
             deck[i] = i;
         }
         Shuffle(lines, deck);

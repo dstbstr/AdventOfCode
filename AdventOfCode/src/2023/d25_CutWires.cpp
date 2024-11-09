@@ -1,4 +1,5 @@
 #include "Common.h"
+#include "Core/Constexpr/ConstexprRandom.h"
 
 SOLUTION(2023, 25) {    
     using Graph = std::vector<std::vector<int>>;
@@ -55,14 +56,16 @@ SOLUTION(2023, 25) {
             }
 
             };
-        for (auto i = 0; i < n; i++) bfs(i);
+        for (size_t i = 0u; i < n; i++) bfs(static_cast<int>(i));
         return result;
     }
 
-    constexpr bool CouldBeBridge(int u, int v, size_t n, const std::vector<std::vector<int>>& dist) {
+    constexpr bool CouldBeBridge(int u, int v, u32 n, const std::vector<std::vector<int>>& dist) {
         int tries = 300, failures = 0;
+        u32 target = 0;
         for (int i = 0; i < tries; i++) {
-            int target = rand() % n;
+            target = Constexpr::Random::Next(0u, n, target);
+            //int target = rand() % n;
             failures += 0 == Constexpr::AbsDistance(dist[u][target], dist[v][target]);
         }
 
@@ -90,33 +93,29 @@ SOLUTION(2023, 25) {
         auto graph = CreateGraph(edges, n);
         auto dist = CalcMinDistances(graph, n);
 
-        auto addEdge = [&graph](int u, int v) {
-            graph[u].push_back(v);
-            graph[v].push_back(u);
-            };
         auto removeEdge = [&graph](int u, int v) {
             graph[u].erase(std::find(graph[u].begin(), graph[u].end(), v));
             graph[v].erase(std::find(graph[v].begin(), graph[v].end(), u));
             };
 
-        for (auto i = 0; i < edges.size(); i++) {
+        for (size_t i = 0u; i < edges.size(); i++) {
             auto [u1, v1] = edges[i];
-            if (!CouldBeBridge(u1, v1, n, dist)) continue;
+            if (!CouldBeBridge(u1, v1, static_cast<u32>(n), dist)) continue;
             removeEdge(u1, v1);
 
             for (auto j = i + 1; j < edges.size(); j++) {
                 auto [u2, v2] = edges[j];
-                if (!CouldBeBridge(u2, v2, n, dist)) continue;
+                if (!CouldBeBridge(u2, v2, static_cast<u32>(n), dist)) continue;
                 removeEdge(u2, v2);
 
                 for (auto k = j + 1; k < edges.size(); k++) {
                     auto [u3, v3] = edges[k];
-                    if (!CouldBeBridge(u3, v3, n, dist)) continue;
+                    if (!CouldBeBridge(u3, v3, static_cast<u32>(n), dist)) continue;
                     removeEdge(u3, v3);
 
                     //Solved
                     auto g1 = CountGroup(0, graph);
-                    if (g1 < n) {
+                    if (g1 < static_cast<int>(n)) {
                         return g1 * (static_cast<int>(n) - g1);
                     }
                 }

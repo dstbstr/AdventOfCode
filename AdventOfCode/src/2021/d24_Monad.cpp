@@ -25,7 +25,7 @@ SOLUTION(2021, 24) {
     } };
 
     constexpr void Eval(int input, const Entry & e, size_t & result) {
-        bool match = (result % 26) + e.MatchDelta != input;
+        bool match = static_cast<int>((result % size_t(26u)) + e.MatchDelta) != input;
         result /= (25 * e.Shrink) + 1;
 
         int mul = (25 * match) + 1;

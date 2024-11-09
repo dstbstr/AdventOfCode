@@ -14,14 +14,14 @@ SOLUTION(2023, 11) {
             };
 
         std::vector<size_t> rows;
-        for (auto row = 0; row < lines.size(); row++) {
+        for (size_t row = 0u; row < lines.size(); row++) {
             if (emptyRow(lines[row])) {
                 rows.push_back(row);
             }
         }
 
         std::vector<size_t> cols;
-        for (auto col = 0; col < lines[0].size(); col++) {
+        for (size_t col = 0u; col < lines[0].size(); col++) {
             if (emptyCol(col)) {
                 cols.push_back(col);
             }
@@ -64,7 +64,7 @@ SOLUTION(2023, 11) {
         auto galaxies = GetGalaxies(lines);
         auto rowsAndCols = GetEmptyRowsAndCols(lines);
 
-        for (auto i = 0; i < galaxies.size(); i++) {
+        for (size_t i = 0u; i < galaxies.size(); i++) {
             for (auto j = i + 1; j < galaxies.size(); j++) {
                 result += GetDistance(galaxies[i], galaxies[j], rowsAndCols, factor - 1);
             }

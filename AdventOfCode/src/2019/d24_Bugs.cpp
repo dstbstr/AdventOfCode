@@ -126,7 +126,7 @@ SOLUTION(2019, 24) {
         const RowCol Center = { 2, 2 };
 
         std::vector<Grid> nextLevels = current;
-        for (auto level = 0; level < current.size(); level++) {
+        for (auto level = 0ull; level < current.size(); level++) {
             for (size_t row = 0; row < 5; row++) {
                 for (size_t col = 0; col < 5; col++) {
                     RowCol pos = { row, col };
@@ -176,13 +176,13 @@ SOLUTION(2019, 24) {
 
     constexpr auto SolvePartTwo(const auto& lines, size_t minutes) {
         std::vector<Grid> levels;
-        for (auto i = 0; i < minutes + 2; i++) {
+        for (size_t i = 0u; i < minutes + 2; i++) {
             levels.push_back(Grid{});
         }
 
         levels[(minutes / 2) + 1] = ParseGrid(lines);
 
-        for (auto minute = 0; minute < minutes; minute++) {
+        for (size_t minute = 0u; minute < minutes; minute++) {
             levels = Next(levels);
         }
 

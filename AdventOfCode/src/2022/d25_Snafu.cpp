@@ -44,7 +44,7 @@ SOLUTION(2022, 25) {
         }
 
         std::string result = "";
-        while (i < Powers.size()) {
+        while (i < static_cast<int>(Powers.size())) {
             auto power = Powers[i];
             if (running < 0) {
                 if (Constexpr::Abs(running + power) > Constexpr::Abs(running)) {

@@ -8,7 +8,7 @@ SOLUTION(2023, 6) {
         auto distStrs = Constexpr::Split(distTrimmed, " ");
 
         std::vector<std::pair<u64, u64>> result;
-        for (auto i = 0; i < timeStrs.size(); i++) {
+        for (size_t i = 0u; i < timeStrs.size(); i++) {
             auto p = std::make_pair(0u, 0u);
             Constexpr::ParseNumber(timeStrs[i], p.first);
             Constexpr::ParseNumber(distStrs[i], p.second); 

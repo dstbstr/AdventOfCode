@@ -37,12 +37,12 @@ SOLUTION(2016, 8) {
     template<size_t Rows, size_t Cols>
     constexpr void RotCol(Bits<Rows, Cols>&bits, u32 col, u32 amount) {
         std::vector<bool> temp;
-        for (auto row = 0; row < bits.size(); row++) {
+        for (auto row = 0ull; row < bits.size(); row++) {
             size_t target = (bits.size() + row - amount) % bits.size();
             temp.push_back(bits[target][col]);
         }
 
-        for (size_t row = 0; row < bits.size(); row++) {
+        for (size_t row = 0ull; row < bits.size(); row++) {
             bits[row][col] = temp[row];
         }
     }

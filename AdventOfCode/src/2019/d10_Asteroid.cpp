@@ -12,10 +12,10 @@ SOLUTION(2019, 10) {
 
     constexpr Map ParseMap(const auto& lines) {
         Map result;
-        for (s32 row = 0; row < lines.size(); row++) {
-            for (s32 col = 0; col < lines[row].size(); col++) {
+        for (auto row = 0ull; row < lines.size(); row++) {
+            for (auto col = 0ull; col < lines[row].size(); col++) {
                 if (lines[row][col] == '#') {
-                    result.push_back({ col, row });
+                    result.push_back({ static_cast<s64>(col), static_cast<s64>(row) });
                 }
             }
         }

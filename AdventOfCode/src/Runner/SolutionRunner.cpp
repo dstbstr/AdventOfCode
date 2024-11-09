@@ -38,14 +38,12 @@ bool SolutionRunner::CheckTestsPass(size_t year, size_t day) {
     if (!GetTests().contains(year) || !GetTests()[year].contains(day)) {
         return true;
     }
-    size_t passedTests = 0;
 	for (const auto& [testNum, testFunc] : GetTests()[year][day]) {
 		auto testTime = ScopedTimer(MakeKey(year, day, testNum, true), GatherTiming(m_TimingData));
 		if (!testFunc()) [[unlikely]] {
 			Log::Info(std::format("{}_{} Test {} Fail", year, day, testNum));
 			return false;
 		}
-        passedTests++;
 	}
     return true;
 }
@@ -53,7 +51,7 @@ bool SolutionRunner::CheckTestsPass(size_t year, size_t day) {
 void SolutionRunner::AddSolution(size_t year, size_t day) {
     Results[year][day][1] = "";
 	Results[year][day][2] = "";
-    auto func = [=]() {
+    auto func = [this, year, day]() {
         if(!m_SkipTests) {
 			if (!CheckTestsPass(year, day)) [[unlikely]] return;
         }

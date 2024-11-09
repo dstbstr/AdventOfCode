@@ -42,8 +42,8 @@ SOLUTION(2017, 16) {
     constexpr auto GenMove(std::string_view move) {
         auto type = move[0];
         auto details = move.substr(1);
-        size_t v1, v2;
-        char d1, d2;
+        size_t v1{0}, v2{0};
+        char d1{' '}, d2{' '};
         if (type == 's') {
             Constexpr::ParseNumber(details, v1);
         }
@@ -57,6 +57,7 @@ SOLUTION(2017, 16) {
             d1 = s[0][0];
             d2 = s[1][0];
         }
+		else throw "Wat?";
 
         return [type, v1, v2, d1, d2](std::string& dancers) {
             switch (type) {

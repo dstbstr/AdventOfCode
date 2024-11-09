@@ -90,7 +90,7 @@ SOLUTION(2018, 7) {
 
         while (true) {
             bool allDone = true;
-            for (auto i = 0; i < existance.size(); i++) {
+            for (size_t i = 0u; i < existance.size(); i++) {
                 if (existance[i]) {
                     allDone = false;
                     break;

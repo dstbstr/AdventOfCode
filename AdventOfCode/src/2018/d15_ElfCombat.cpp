@@ -70,7 +70,7 @@ SOLUTION(2018, 15) {
     constexpr RowCol FindAttackTarget(const Grid& grid, const Hp& hp, const RowCol& unit, const RowCol& limits) {
         auto neighbors = GetDirectNeighbors(unit, limits);
         std::sort(neighbors.begin(), neighbors.end());
-        size_t lowestLife = 999;
+        s32 lowestLife = 999;
         RowCol result{ 0, 0 };
         for (const auto& n : neighbors) {
             //let's not kill our friends

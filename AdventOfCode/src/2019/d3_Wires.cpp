@@ -66,7 +66,7 @@ SOLUTION(2019, 3) {
 
     }
     PART(1) {
-        size_t best = 9999;
+        u64 best = 9999;
         Solve(lines, [&](const Segment& s1, const Segment& s2) {
             auto intersection = FindIntersection(s1, s2);
             auto dist = MDistance(intersection);

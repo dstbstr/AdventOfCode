@@ -35,7 +35,7 @@ SOLUTION(2022, 9) {
         seen.SetSentinel({ 9999, 9999 });
 
         std::vector<Coord> knots;
-        for (auto i = 0; i < knotCount; i++) {
+        for (size_t i = 0u; i < knotCount; i++) {
             knots.push_back({ 0, 0 });
         }
 

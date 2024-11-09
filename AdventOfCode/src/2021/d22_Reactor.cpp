@@ -77,14 +77,14 @@ SOLUTION(2021, 22) {
         return true;
     }
 
-    constexpr auto Solve(const auto& lines, auto pred) {
+    constexpr u64 Solve(const auto& lines, auto pred) {
         std::vector<Cube> cubes;
         for (const auto& line : lines) {
             auto cube = ParseLine(line);
             if (pred(cube)) cubes.push_back(cube);
         }
 
-        size_t result = 0;
+        u64 result = 0;
         for (size_t i = 0; i < cubes.size(); i++) {
             auto cube = cubes[i];
             if (!cube.On) continue;
@@ -215,6 +215,6 @@ SOLUTION(2021, 22) {
             "off x=-93533..-4276,y=-16170..68771,z=-104985..-24507"
         };
 
-        return Solve(lines, AcceptAll) == 2758514936282235u;
+        return Solve(lines, AcceptAll) == 2758514936282235ull;
     }
 }

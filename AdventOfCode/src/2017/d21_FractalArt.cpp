@@ -205,7 +205,7 @@ SOLUTION(2017, 21) {
         std::vector<std::string> q{Start};
         std::vector<std::string> next;
 
-        for (auto i = 0; i < iterations; i++) {
+        for (size_t i = 0u; i < iterations; i++) {
             for (const auto& pattern : q) {
                 auto n = cache.contains(pattern) ? cache.at(pattern) : Next(pattern, transforms);
                 cache[pattern] = n;

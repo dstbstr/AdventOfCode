@@ -49,7 +49,7 @@ SOLUTION(2022, 13) {
 
     constexpr size_t SolvePartTwo(const auto& lines) {
         std::vector<std::string> all;
-        for (auto i = 0; i < lines.size(); i += 3) {
+        for (size_t i = 0u; i < lines.size(); i += 3) {
             all.push_back(lines[i]);
             all.push_back(lines[i + 1]);
         }
@@ -64,7 +64,7 @@ SOLUTION(2022, 13) {
         std::sort(all.begin(), all.end(), Compare);
 
         size_t result = 1;
-        for (auto i = 0; i < all.size(); i++) {
+        for (size_t i = 0u; i < all.size(); i++) {
             if (all[i] == a || all[i] == b) {
                 result *= (i + 1);
             }

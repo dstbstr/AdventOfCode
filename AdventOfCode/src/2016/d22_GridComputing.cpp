@@ -37,7 +37,7 @@ SOLUTION(2016, 22) {
         auto dirs = ParseLines(skipOne, ParseLine);
 
         u32 fitCount = 0;
-        for (auto i = 0; i < dirs.size() - 1; i++) {
+        for (size_t i = 0u; i < dirs.size() - 1; i++) {
             for (auto j = i; j < dirs.size(); j++) {
                 if (CanFitContents(dirs[i], dirs[j]) || CanFitContents(dirs[j], dirs[i])) {
                     fitCount++;
@@ -50,10 +50,9 @@ SOLUTION(2016, 22) {
     constexpr u32 SolvePartTwo(const auto& lines) {
         Constexpr::SmallMap<UCoord, Dir> map;
 
-        UCoord origin{ 0, 0 };
         UCoord emptyDir{ 0, 0 };
         UCoord limits{ 0, 0 };
-        for (auto i = 2; i < lines.size(); i++) {
+        for (auto i = 2ull; i < lines.size(); i++) {
             auto dir = ParseLine(lines[i]);
             map[dir.Pos] = dir;
             if (dir.Used == 0) {
@@ -82,7 +81,7 @@ SOLUTION(2016, 22) {
         auto optimalPath = AStarMin<UCoord>(goal, target, neighborFunc);
         u32 steps = 0;
 
-        for (auto i = 1; i < optimalPath.size(); i++) {
+        for (auto i = 1ull; i < optimalPath.size(); i++) {
             target = optimalPath[i];
             auto path = AStarMin<UCoord>(emptyDir, target, neighborFunc);
             steps += static_cast<u32>(path.size());

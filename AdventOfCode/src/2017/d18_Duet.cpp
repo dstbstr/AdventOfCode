@@ -40,6 +40,7 @@ SOLUTION(2017, 18) {
             case Command::Mod: lhs %= rhs; break;
             case Command::Jgz: ip += (rhs - 1) * (lhs > 0); break;
             case Command::Rcv: return lastPlayed * (lhs != 0);
+            case Command::Unknown: throw "Wat?";
             }
             return 0ll;
         };
@@ -104,6 +105,7 @@ SOLUTION(2017, 18) {
                 inQueue.pop();
                 break;
             }
+            case Command::Unknown: throw "Wat?";
             }
 
             return true;

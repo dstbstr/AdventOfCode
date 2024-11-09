@@ -75,7 +75,7 @@ SOLUTION(2022, 21) {
         size_t rootIndex = 0;
 
         Constexpr::SmallMap<std::string, size_t> monkeyMap;
-        for (auto i = 0; i < monkeys.size(); i++) {
+        for (size_t i = 0u; i < monkeys.size(); i++) {
             monkeyMap[monkeys[i].Name] = i;
             if (monkeys[i].Name == "root") {
                 rootIndex = i;
@@ -99,7 +99,7 @@ SOLUTION(2022, 21) {
         auto monkeys = ParseLines(lines, ParseLine);
 
         Constexpr::SmallMap<std::string, size_t> monkeyMap;
-        for (auto i = 0; i < monkeys.size(); i++) {
+        for (size_t i = 0u; i < monkeys.size(); i++) {
             monkeyMap[monkeys[i].Name] = i;
             if (monkeys[i].Name == "root") {
                 rootIndex = i;
@@ -148,18 +148,21 @@ SOLUTION(2022, 21) {
             switch (currentMonkey.Operation) {
             case Op::Plus: nextValue = targetValue - knownValue; break;
             case Op::Mul: nextValue = targetValue / knownValue; break;
+            default: break;
             }
             if (nextValue == 0) {
                 if (leftKnown) {
                     switch (currentMonkey.Operation) {
                     case Op::Minus: nextValue = knownValue - targetValue; break;
                     case Op::Div: nextValue = knownValue / targetValue; break;
+                    default: break;
                     }
                 }
                 else {
                     switch (currentMonkey.Operation) {
                     case Op::Minus: nextValue = targetValue + knownValue; break;
                     case Op::Div: nextValue = targetValue * knownValue; break;
+                    default: break;
                     }
                 }
             }

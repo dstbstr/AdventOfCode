@@ -24,7 +24,7 @@ SOLUTION(2021, 14) {
 
     constexpr Counts GetInitialCounts(const std::string & polymer) {
         Counts result{};
-        for (auto i = 0; i < polymer.size() - 1; i++) {
+        for (size_t i = 0u; i < polymer.size() - 1; i++) {
             result[Constexpr::FromBase26(polymer.substr(i, 2))]++;
         }
         return result;
@@ -44,8 +44,8 @@ SOLUTION(2021, 14) {
         return result;
     }
 
-    constexpr std::array<size_t, 26> GetLetterCounts(const Counts & counts, const std::vector<std::string>& knownKeys) {
-        std::array<size_t, 26> result{};
+    constexpr std::array<u64, 26> GetLetterCounts(const Counts & counts, const std::vector<std::string>& knownKeys) {
+        std::array<u64, 26> result{};
         for (const auto& key : knownKeys) {
             auto count = counts[Constexpr::FromBase26(key)];
             result[key[0] - 'A'] += count;
@@ -62,13 +62,13 @@ SOLUTION(2021, 14) {
         BuildMaps(groups[1], knownKeys, produceMap);
 
         auto counts = GetInitialCounts(polymer);
-        for (auto i = 0; i < iterations; i++) {
+        for (size_t i = 0u; i < iterations; i++) {
             counts = Next(counts, produceMap, knownKeys);
         }
 
         auto letterCounts = GetLetterCounts(counts, knownKeys);
         letterCounts[polymer.back() - 'A']++; //need to add in one instance of the last letter
-        size_t min = std::numeric_limits<size_t>::max();
+        auto min = std::numeric_limits<u64>::max();
         for (auto count : letterCounts) {
             if (count > 0) {
                 min = std::min(min, count);
@@ -106,8 +106,8 @@ SOLUTION(2021, 14) {
             "CC -> N",
             "CN -> C"
         };
-        if (Solve(lines, 10) != 1588) return false;
-        return Solve(lines, 40) == 2188189693529;
+        if (Solve(lines, 10) != 1588ull) return false;
+        return Solve(lines, 40) == 2188189693529ull;
     }
 
     static_assert(GetInitialCounts("NNCB")[Constexpr::FromBase26("NN")] == 1);
