@@ -273,4 +273,4 @@ target_sources(${PROJECT_NAME}
 	"src/2023/d23_ScenicWalk.cpp"
 	"src/2023/d24_Hail.cpp"
 	"src/2023/d25_CutWires.cpp"
-)
+ "src/2024/d1_.cpp")

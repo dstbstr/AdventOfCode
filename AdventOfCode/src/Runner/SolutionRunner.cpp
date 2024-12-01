@@ -11,6 +11,7 @@
 #include <format>
 #include <future>
 #include <iostream> // for progress bar
+#include <string_view>
 
 namespace {
     std::string MakeKey(size_t year, size_t day, size_t part, bool isTest) {
@@ -124,7 +125,7 @@ void SolutionRunner::Run() {
 void SolutionRunner::LogTimingData(size_t maxResults, std::chrono::microseconds minElapsed) const {
     std::vector<std::pair<std::string, std::chrono::microseconds>> copy(m_TimingData.begin(), m_TimingData.end());
     std::sort(copy.begin(), copy.end(), [](auto lhs, auto rhs) { return rhs.second < lhs.second; });
-
+    
     size_t resultId = 0;
     for (auto [key, elapsed] : copy) {
         if (minElapsed > std::chrono::microseconds(0) && elapsed < minElapsed) break;
@@ -135,7 +136,6 @@ void SolutionRunner::LogTimingData(size_t maxResults, std::chrono::microseconds 
 }
 
 void SolutionRunner::LogResults() const {
-    Log::Info("");
 	for (const auto& [year, days] : Results) {
 		Log::Info(std::format("\n### {} ###", year));
 		for (const auto& [day, parts] : days) {

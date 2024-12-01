@@ -7,10 +7,14 @@
 #include "Core/Instrumentation/ISink.h"
 #include "Core/Utilities/TimeUtils.h"
 
-#include <string>
 #include <chrono>
-#include <map>
+#include <filesystem>
+#include <format>
+#include <fstream>
 #include <iostream>
+#include <map>
+#include <string>
+#include <string_view>
 
 SolutionRunner RunFromCommandLine(int argc, char** argv, std::unique_ptr<IInputReader>&& inputReader, SolutionRunner::Settings settings) {
     if(argv[1][0] == '*') {
@@ -35,9 +39,25 @@ SolutionRunner RunFromCommandLine(int argc, char** argv, std::unique_ptr<IInputR
     }
 }
 
+struct FileLogWriter : public Log::ISink {
+    std::ofstream m_File{};
 
-struct LogWriter : public Log::ISink {
-    LogWriter(Log::Filter filter = {}) : ISink(filter) {
+    FileLogWriter(Log::Filter filter = {}) : ISink(filter) {
+        auto fileName = TimeUtils::TodayNowLocalToString("%Y-%m-%d_%H-%M-%S");
+        fileName += ".log";
+        m_File.open(fileName);
+        if (!m_File.is_open()) {
+            std::cerr << "Failed to open log file" << fileName << "\n";
+            std::abort();
+        }
+    }
+    void Write(const Log::Entry& entry) override {
+        m_File << entry.Message << '\n';
+    }
+};
+
+struct StdLogWriter : public Log::ISink {
+    StdLogWriter(Log::Filter filter = {}) : ISink(filter) {
 		// Disable synchronization with C stdio
         // No interop with C
 		std::ios_base::sync_with_stdio(false);
@@ -52,10 +72,11 @@ struct LogWriter : public Log::ISink {
 };
 
 int main(int argc, char** argv) {
-    LogWriter logWriter{};
+    StdLogWriter stdLogWriter{};
+    //FileLogWriter fileLogWriter{};
     
     SolutionRunner::Settings runSettings{
-        .Sync = false,
+        .Sync = true,
         .SkipTests = false,
         .SlowFirst = false
     };
@@ -63,19 +84,19 @@ int main(int argc, char** argv) {
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>(), runSettings);
         } else {
-            return SolutionRunner (2023, std::make_unique<ExeInputReader>(), runSettings);
+            return SolutionRunner (2024, 1, std::make_unique<ExeInputReader>(), runSettings);
             //return SolutionRunner(std::make_unique<ExeInputReader>(), runSettings);
         }
     }();
         
     {
-		ScopedTimer timer("Total Runtime", [](std::string_view label, std::chrono::microseconds elapsed) {
-            Log::Info(std::format("{}: {}", label, TimeUtils::DurationToString(elapsed, TimeUtils::TimeUnit::SECOND)));
-        });
+		// ScopedTimer timer("Total Runtime", [](std::string_view label, std::chrono::microseconds elapsed) {
+        //     Log::Info(std::format("{}: {}", label, TimeUtils::DurationToString(elapsed, TimeUtils::TimeUnit::SECOND)));
+        // });
         runner.Run();
-        Log::Info("");
+        //Log::Info("");
     }
 
-    //runner.LogResults();
-    //runner.LogTimingData();
+    runner.LogResults();
+    runner.LogTimingData();
 }
