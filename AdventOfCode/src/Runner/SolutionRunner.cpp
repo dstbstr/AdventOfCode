@@ -122,10 +122,41 @@ void SolutionRunner::Run() {
     }
 }
 
-void SolutionRunner::LogTimingData(size_t maxResults, std::chrono::microseconds minElapsed) const {
+bool SortByProblem(const std::pair<std::string, std::chrono::microseconds>& lhs, const std::pair<std::string, std::chrono::microseconds>& rhs) {
+	auto parseParts = [](const std::string& str) -> std::tuple<s32, s32, s32, bool> {
+		auto parts = Constexpr::Split(str, "_");
+		s32 a, b, c;
+		if (parts.size() == 3) {
+			Constexpr::ParseNumber(parts[0], a);
+			Constexpr::ParseNumber(parts[1], b);
+			Constexpr::ParseNumber(parts[2], c);
+			return { a, b, c, false };
+		}
+		else {
+			Constexpr::ParseNumber(parts[1], a);
+			Constexpr::ParseNumber(parts[2], b);
+			Constexpr::ParseNumber(parts[3], c);
+			return { a, b, c, true };
+		}
+	};
+	auto [lhsYear, lhsDay, lhsPart, lhsTest] = parseParts(lhs.first);
+	auto [rhsYear, rhsDay, rhsPart, rhsTest] = parseParts(rhs.first);
+
+	if (lhsYear != rhsYear) return lhsYear < rhsYear;
+	if (lhsDay != rhsDay) return lhsDay < rhsDay;
+	if (lhsTest != rhsTest) return rhsTest;
+	return lhsPart < rhsPart;
+}
+
+void SolutionRunner::LogTimingData(SortBy sortBy, size_t maxResults, std::chrono::microseconds minElapsed) const {
     std::vector<std::pair<std::string, std::chrono::microseconds>> copy(m_TimingData.begin(), m_TimingData.end());
-    std::sort(copy.begin(), copy.end(), [](auto lhs, auto rhs) { return rhs.second < lhs.second; });
-    
+	if (sortBy == SortBy::RunTime) {
+        std::sort(copy.begin(), copy.end(), [](auto lhs, auto rhs) { return rhs.second < lhs.second; });
+    }
+	else {
+		std::sort(copy.begin(), copy.end(), SortByProblem);
+    }
+
     size_t resultId = 0;
     for (auto [key, elapsed] : copy) {
         if (minElapsed > std::chrono::microseconds(0) && elapsed < minElapsed) break;

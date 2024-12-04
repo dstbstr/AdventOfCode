@@ -13,13 +13,18 @@ public:
 		bool SkipTests{ false };
 		bool SlowFirst{ false };
 	};
+	enum struct SortBy {
+		RunTime,
+		Problem
+	};
+
 
 	SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, Settings settings);
 	SolutionRunner(size_t year, std::unique_ptr<IInputReader>&& inputReader, Settings settings);
 	SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputReader>&& inputReader, Settings settings);
 
 	void Run();
-	void LogTimingData(size_t maxResults = 0, std::chrono::microseconds minElapsed = std::chrono::microseconds(0)) const;
+	void LogTimingData(SortBy sortBy, size_t maxResults = 0, std::chrono::microseconds minElapsed = std::chrono::microseconds(0)) const;
 	void LogResults() const;
 
 private:

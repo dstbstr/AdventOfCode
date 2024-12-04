@@ -3,6 +3,8 @@
 add_executable (${PROJECT_NAME})
 
 target_link_libraries(${PROJECT_NAME} Core)
+target_link_libraries(${PROJECT_NAME} ctre)
+
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/PROFILE")
 target_include_directories(${PROJECT_NAME} PUBLIC inc)
@@ -273,4 +275,29 @@ target_sources(${PROJECT_NAME}
 	"src/2023/d23_ScenicWalk.cpp"
 	"src/2023/d24_Hail.cpp"
 	"src/2023/d25_CutWires.cpp"
- "src/2024/d1_.cpp")
+
+	"src/2024/d1_HistorianHisteria.cpp"
+	"src/2024/d2_RedNoseReports.cpp"
+	"src/2024/d3_MullItOver.cpp" 
+	"src/2024/d4.cpp" 
+	"src/2024/d5.cpp" 
+	"src/2024/d6.cpp" 
+	"src/2024/d7.cpp" 
+	"src/2024/d8.cpp" 
+	"src/2024/d9.cpp" 
+	"src/2024/d10.cpp" 
+	"src/2024/d11.cpp" 
+	"src/2024/d12.cpp" 
+	"src/2024/d13.cpp" 
+	"src/2024/d14.cpp" 
+	"src/2024/d15.cpp" 
+	"src/2024/d16.cpp" 
+	"src/2024/d17.cpp" 
+	"src/2024/d18.cpp" 
+	"src/2024/d19.cpp" 
+	"src/2024/d20.cpp" 
+	"src/2024/d21.cpp" 
+	"src/2024/d23.cpp" 
+	"src/2024/d22.cpp" 
+	"src/2024/d24.cpp" 
+	"src/2024/d25.cpp")

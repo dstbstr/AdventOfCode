@@ -84,7 +84,8 @@ int main(int argc, char** argv) {
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>(), runSettings);
         } else {
-            return SolutionRunner (2024, 1, std::make_unique<ExeInputReader>(), runSettings);
+            //return SolutionRunner(2023, std::make_unique<ExeInputReader>(), runSettings);
+            return SolutionRunner (2024, 3, std::make_unique<ExeInputReader>(), runSettings);
             //return SolutionRunner(std::make_unique<ExeInputReader>(), runSettings);
         }
     }();
@@ -94,9 +95,9 @@ int main(int argc, char** argv) {
         //     Log::Info(std::format("{}: {}", label, TimeUtils::DurationToString(elapsed, TimeUtils::TimeUnit::SECOND)));
         // });
         runner.Run();
-        //Log::Info("");
     }
 
     runner.LogResults();
-    runner.LogTimingData();
+    Log::Info("");
+    runner.LogTimingData(SolutionRunner::SortBy::Problem);
 }

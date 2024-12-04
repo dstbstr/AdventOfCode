@@ -42,5 +42,9 @@ else()
     FetchContent_MakeAvailable(CppCore)
 endif()
 
+# Compile Time Regular Expressions
+FetchContent_Declare(ctre GIT_REPOSITORY https://github.com/hanickadot/compile-time-regular-expressions GIT_TAG origin/main)
+FetchContent_MakeAvailable(ctre)
+
 # Include sub-projects.
 add_subdirectory ("AdventOfCode")
