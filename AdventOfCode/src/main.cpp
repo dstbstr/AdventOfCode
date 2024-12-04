@@ -84,15 +84,15 @@ int main(int argc, char** argv) {
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>(), runSettings);
         } else {
-            //return SolutionRunner(2023, std::make_unique<ExeInputReader>(), runSettings);
-            return SolutionRunner (2024, 3, std::make_unique<ExeInputReader>(), runSettings);
+            //return SolutionRunner(2024, std::make_unique<ExeInputReader>(), runSettings);
+            return SolutionRunner (2024, 4, std::make_unique<ExeInputReader>(), runSettings);
             //return SolutionRunner(std::make_unique<ExeInputReader>(), runSettings);
         }
     }();
         
     {
 		// ScopedTimer timer("Total Runtime", [](std::string_view label, std::chrono::microseconds elapsed) {
-        //     Log::Info(std::format("{}: {}", label, TimeUtils::DurationToString(elapsed, TimeUtils::TimeUnit::SECOND)));
+        //     Log::Info(std::format("{}: {}", label, TimeUtils::DurationToString(elapsed)));
         // });
         runner.Run();
     }

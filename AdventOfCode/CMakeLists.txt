@@ -279,7 +279,7 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d1_HistorianHisteria.cpp"
 	"src/2024/d2_RedNoseReports.cpp"
 	"src/2024/d3_MullItOver.cpp" 
-	"src/2024/d4.cpp" 
+	"src/2024/d4_CeresSearch.cpp" 
 	"src/2024/d5.cpp" 
 	"src/2024/d6.cpp" 
 	"src/2024/d7.cpp" 

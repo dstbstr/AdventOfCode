@@ -43,6 +43,7 @@ bool SolutionRunner::CheckTestsPass(size_t year, size_t day) {
 		auto testTime = ScopedTimer(MakeKey(year, day, testNum, true), GatherTiming(m_TimingData));
 		if (!testFunc()) [[unlikely]] {
 			Log::Info(std::format("{}_{} Test {} Fail", year, day, testNum));
+			WriteLogs();
 			return false;
 		}
 	}
