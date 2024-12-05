@@ -70,20 +70,18 @@ SOLUTION(2024, 4) {
 		return Constexpr::ToString(SolvePart2(lines));
 	}
 
-	TEST(1) {
-		std::vector<std::string> lines = {
+	constexpr std::vector<std::string> GetSimpleInput() {
+		return {
 			"..X...",
 			".SAMX.",
 			".A..A.",
 			"XMAS.S",
 			".X...."
 		};
-
-		return SolvePart1(lines) == 4;
 	}
 
-	TEST(2) {
-		std::vector<std::string> lines = {
+	constexpr std::vector<std::string> GetLargeInput() {
+		return {
 			"MMMSXXMASM",
 			"MSAMXMSMSA",
 			"AMXSXMAAMM",
@@ -95,24 +93,9 @@ SOLUTION(2024, 4) {
 			"MAMMMXMMMM",
 			"MXMXAXMASX"
 		};
-
-		return SolvePart1(lines) == 18;
 	}
 
-	TEST(3) {
-		std::vector<std::string> lines = {
-			"MMMSXXMASM",
-			"MSAMXMSMSA",
-			"AMXSXMAAMM",
-			"MSAMASMSMX",
-			"XMASAMXAMM",
-			"XXAMMXXAMA",
-			"SMSMSASXSS",
-			"SAXAMASAAA",
-			"MAMMMXMMMM",
-			"MXMXAXMASX"
-		};
-
-		return SolvePart2(lines) == 9;
-	}
+	static_assert(SolvePart1(GetSimpleInput()) == 4);
+	static_assert(SolvePart1(GetLargeInput()) == 18);
+	static_assert(SolvePart2(GetLargeInput()) == 9);
 }

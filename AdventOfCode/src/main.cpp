@@ -84,20 +84,27 @@ int main(int argc, char** argv) {
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>(), runSettings);
         } else {
-            //return SolutionRunner(2024, std::make_unique<ExeInputReader>(), runSettings);
-            return SolutionRunner (2024, 4, std::make_unique<ExeInputReader>(), runSettings);
+            return SolutionRunner(2024, std::make_unique<ExeInputReader>(), runSettings);
+            //return SolutionRunner (2024, 5, std::make_unique<ExeInputReader>(), runSettings);
             //return SolutionRunner(std::make_unique<ExeInputReader>(), runSettings);
         }
     }();
         
-    {
-		// ScopedTimer timer("Total Runtime", [](std::string_view label, std::chrono::microseconds elapsed) {
-        //     Log::Info(std::format("{}: {}", label, TimeUtils::DurationToString(elapsed)));
-        // });
-        runner.Run();
-    }
+    bool simple = false;
 
-    runner.LogResults();
-    Log::Info("");
-    runner.LogTimingData(SolutionRunner::SortBy::Problem);
+    if(simple)
+    {
+		ScopedTimer timer("Total Runtime", [](std::string_view label, std::chrono::microseconds elapsed) {
+            Log::Info(std::format("{}: {}", label, TimeUtils::DurationToString(elapsed)));
+        });
+        runner.Run();
+        if(!runSettings.Sync) {
+            Log::Info("");
+        }
+    } else {
+        runner.Run();
+        runner.LogResults();
+        Log::Info("");
+        runner.LogTimingData(SolutionRunner::SortBy::Problem);
+    }
 }

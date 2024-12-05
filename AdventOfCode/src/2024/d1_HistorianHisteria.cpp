@@ -57,27 +57,17 @@ SOLUTION(2024, 1) {
         return Constexpr::ToString(SolvePart2(lines));
     }
 
-    TEST(1) {
-        std::vector<std::string> lines = {
-            "3   4",
-            "4   3",
-            "2   5",
-            "1   3",
-            "3   9",
-            "3   3"
-        };
-        return SolvePart1(lines) == 11;
-    }
+	constexpr std::vector<std::string> GetTestInput() {
+		return {
+			"3   4",
+			"4   3",
+			"2   5",
+			"1   3",
+			"3   9",
+			"3   3"
+		};
+	}
 
-    TEST(2) {
-        std::vector<std::string> lines = {
-            "3   4",
-            "4   3",
-            "2   5",
-            "1   3",
-            "3   9",
-            "3   3"
-        };
-        return SolvePart2(lines) == 31;
-    }
+	static_assert(SolvePart1(GetTestInput()) == 11);
+	static_assert(SolvePart2(GetTestInput()) == 31);
 }
