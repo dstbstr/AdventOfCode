@@ -78,7 +78,8 @@ int main(int argc, char** argv) {
     SolutionRunner::Settings runSettings{
         .Sync = false,
 		.PrintTiming = true,
-		.PrintResults = true
+		.PrintResults = false,
+		.TimingSort = SolutionRunner::SortBy::RunTime
     };
     auto runner = [&]{
         if (argc > 1) {

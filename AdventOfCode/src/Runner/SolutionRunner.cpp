@@ -167,7 +167,9 @@ void SolutionRunner::Run(const SolutionRunner::Settings& settings) {
 			WhenAll(m_ToRun, progressBar).wait();
 		}
 	}
-	
+	if(settings.Sync) {
+		Log::Info("");
+	}
 	if (settings.PrintResults) {
 		LogResults();
 		Log::Info("");
