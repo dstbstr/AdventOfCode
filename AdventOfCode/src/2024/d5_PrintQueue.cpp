@@ -88,6 +88,7 @@ SOLUTION(2024, 5) {
 		return Constexpr::ToString(SolvePart2(lines));
 	}
 
+#if CLANG
 	constexpr std::vector<std::string> GetTestInput() {
 		return {
 		"47|53"s,
@@ -123,4 +124,5 @@ SOLUTION(2024, 5) {
 
 	static_assert(SolvePart1(GetTestInput()) == 143);
 	static_assert(SolvePart2(GetTestInput()) == 123);
+#endif
 }

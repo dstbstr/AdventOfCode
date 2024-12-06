@@ -2,7 +2,6 @@
 #include "Facing.h"
 
 SOLUTION(2023, 16) {
-	SLOW;
 	constexpr Facing TurnIfNeeded(Facing dir, char c) {
 		if (c != '/' && c != '\\') return dir;
 

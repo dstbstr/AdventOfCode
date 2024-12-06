@@ -48,10 +48,6 @@ SOLUTION(2015, 25) {
     static_assert(CalculateIndex(4, 7) == 52);
 
     static_assert(CalculateCode(1) == 20151125);
-    //static_assert(CalculateCode(2) == 31916031);
-    //static_assert(CalculateCode(3) == 18749137);
-    TEST(1) {
-        return CalculateCode(2) == 31916031 && 
-        CalculateCode(3) == 18749137;
-    }
+    static_assert(CalculateCode(2) == 31916031);
+    static_assert(CalculateCode(3) == 18749137);
 }

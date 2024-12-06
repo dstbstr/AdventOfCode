@@ -1,7 +1,7 @@
 #include "Common.h"
 #include "Core/Algorithms/FloydCycle.h"
 
-/*
+
 SOLUTION(2023, 8) {
 
     using Map = Constexpr::BigMap<std::string, std::pair<std::string, std::string>>;
@@ -76,10 +76,10 @@ SOLUTION(2023, 8) {
         std::vector<size_t> result;
         auto pos = std::make_pair(startPos, 0ULL);
 
-        for (auto i = 0; i < cycleStart; i++) {
+        for (size_t i = 0u; i < cycleStart; i++) {
             pos = Next2(pos, dirs, map);
         }
-        for (auto i = 0; i < cycleLength; i++) {
+        for (size_t i = 0u; i < cycleLength; i++) {
             if (pos.first[2] == 'Z') result.push_back(i);
             pos = Next2(pos, dirs, map);
         }
@@ -148,4 +148,3 @@ SOLUTION(2023, 8) {
         return Part2(lines) == "6";
     }
 }
-*/

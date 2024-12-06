@@ -16,25 +16,25 @@
 #include <string>
 #include <string_view>
 
-SolutionRunner RunFromCommandLine(int argc, char** argv, std::unique_ptr<IInputReader>&& inputReader, SolutionRunner::Settings settings) {
+SolutionRunner RunFromCommandLine(int argc, char** argv, std::unique_ptr<IInputReader>&& inputReader) {
     if(argv[1][0] == '*') {
-        return SolutionRunner(std::move(inputReader), settings);
+        return SolutionRunner(std::move(inputReader));
 	}
 	else {
 		size_t year;
 		Constexpr::ParseNumber(argv[1], year);
 		if (argc > 2) {
 			if (argv[2][0] == '*') {
-				return SolutionRunner(year, std::move(inputReader), settings);
+				return SolutionRunner(year, std::move(inputReader));
 			}
 			else {
 				size_t day;
 				Constexpr::ParseNumber(argv[2], day);
-				return SolutionRunner(year, day, std::move(inputReader), settings);
+				return SolutionRunner(year, day, std::move(inputReader));
 			}
 		}
 		else {
-			return SolutionRunner(year, std::move(inputReader), settings);
+			return SolutionRunner(year, std::move(inputReader));
 		}
     }
 }
@@ -76,35 +76,19 @@ int main(int argc, char** argv) {
     //FileLogWriter fileLogWriter{};
     
     SolutionRunner::Settings runSettings{
-        .Sync = true,
-        .SkipTests = false,
-        .SlowFirst = false
+        .Sync = false,
+		.PrintTiming = true,
+		.PrintResults = true
     };
     auto runner = [&]{
         if (argc > 1) {
-            return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>(), runSettings);
+            return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>());
         } else {
-            return SolutionRunner(2024, std::make_unique<ExeInputReader>(), runSettings);
-            //return SolutionRunner (2024, 5, std::make_unique<ExeInputReader>(), runSettings);
-            //return SolutionRunner(std::make_unique<ExeInputReader>(), runSettings);
+            //return SolutionRunner(2024, std::make_unique<ExeInputReader>());
+            //return SolutionRunner (2024, 6, std::make_unique<ExeInputReader>());
+            return SolutionRunner(std::make_unique<ExeInputReader>());
         }
     }();
         
-    bool simple = false;
-
-    if(simple)
-    {
-		ScopedTimer timer("Total Runtime", [](std::string_view label, std::chrono::microseconds elapsed) {
-            Log::Info(std::format("{}: {}", label, TimeUtils::DurationToString(elapsed)));
-        });
-        runner.Run();
-        if(!runSettings.Sync) {
-            Log::Info("");
-        }
-    } else {
-        runner.Run();
-        runner.LogResults();
-        Log::Info("");
-        runner.LogTimingData(SolutionRunner::SortBy::Problem);
-    }
+    runner.Run(runSettings);
 }

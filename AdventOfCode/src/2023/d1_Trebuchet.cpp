@@ -66,19 +66,11 @@ SOLUTION(2023, 1) {
         return Constexpr::ToString(SumDigits(transformed));
     }
 
+    static_assert(FindFirstNumber("1abc2") == 1);
+    static_assert(FindLastNumber("1abc2") == 2);
+    static_assert(ReplaceWords(std::vector<std::string>{ "eightwo" })[0] == "82");
+
     TEST(1) {
-        return FindFirstNumber("1abc2") == 1;
-    }
-
-    TEST(2) {
-        return FindLastNumber("1abc2") == 2;
-    }
-
-    TEST(3) {
-        return ReplaceWords(std::vector < std::string>{"eightwo"})[0] == "82";
-    }
-
-    TEST(4) {
         std::vector<std::string> example = {
             "two1nine", //29
             "eighttwothree", //83

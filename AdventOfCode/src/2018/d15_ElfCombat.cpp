@@ -2,8 +2,6 @@
 #include "Core/Algorithms/AStar.h"
 
 SOLUTION(2018, 15) {
-    SLOW;
-
     using Grid = std::vector<std::string>;
     using Hp = Constexpr::SmallMap<RowCol, s32>;
 

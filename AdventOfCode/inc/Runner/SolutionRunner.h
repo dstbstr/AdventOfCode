@@ -8,30 +8,26 @@
 
 class SolutionRunner {
 public:
-	struct Settings {
-		bool Sync{ false };
-		bool SkipTests{ false };
-		bool SlowFirst{ false };
-	};
 	enum struct SortBy {
 		RunTime,
 		Problem
 	};
 
+	struct Settings {
+		bool Sync{ false };
+		bool PrintTiming{ false };
+		bool PrintResults{ false };
+		SortBy TimingSort{ SortBy::RunTime };
+	};
 
-	SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, Settings settings);
-	SolutionRunner(size_t year, std::unique_ptr<IInputReader>&& inputReader, Settings settings);
-	SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputReader>&& inputReader, Settings settings);
+	SolutionRunner(std::unique_ptr<IInputReader>&& inputReader);
+	SolutionRunner(size_t year, std::unique_ptr<IInputReader>&& inputReader);
+	SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputReader>&& inputReader);
 
-	void Run();
-	void LogTimingData(SortBy sortBy, size_t maxResults = 0, std::chrono::microseconds minElapsed = std::chrono::microseconds(0)) const;
-	void LogResults() const;
+	void Run(const Settings& settings);
 
 private:
 	std::unique_ptr<IInputReader> m_InputReader{nullptr};
-	bool m_Sync{false};
-	bool m_SkipTests{ false };
-	bool m_SlowFirst{ false };
 	std::map<std::string, std::chrono::microseconds> m_TimingData{};
 	std::vector<std::function<void()>> m_ToRun;
 

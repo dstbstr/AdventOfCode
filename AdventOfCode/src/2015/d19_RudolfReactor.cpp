@@ -70,8 +70,8 @@ SOLUTION(2015, 19) {
         }
         return Constexpr::ToString(steps);
     }
+
     TEST(1) {
-        /*
         std::vector<std::string> lines = {
             "H => HO",
             "H => OH",
@@ -80,8 +80,6 @@ SOLUTION(2015, 19) {
             "HOH"
         };
 
-        if (PartOne(lines) != "4") return false;
-        */
-        return true;
+        return Part1(lines) == "4";
     }
 }
