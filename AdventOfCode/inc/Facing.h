@@ -8,10 +8,10 @@ enum Direction {North, East, South, West};
 
 constexpr Facing ParseFacing(char c) {
     switch (c){
-    case 'u': case 'U': return Facing::Up;
-    case 'd': case 'D': return Facing::Down;
-    case 'l': case 'L': return Facing::Left;
-    case 'r': case 'R': return Facing::Right;
+    case 'u': case 'U': case '^': return Facing::Up;
+    case 'd': case 'D': case 'v': return Facing::Down;
+    case 'l': case 'L': case '<': return Facing::Left;
+    case 'r': case 'R': case '>': return Facing::Right;
     default: throw "Unknown";
     }
 }

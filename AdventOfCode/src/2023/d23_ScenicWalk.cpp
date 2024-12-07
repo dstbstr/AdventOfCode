@@ -156,6 +156,7 @@ SOLUTION(2023, 23) {
         return result;
     }
 
+    /*
     PART(2) {
         auto nodes = FindNodes(lines);
         auto map = BuildEdges(lines, nodes);
@@ -193,6 +194,159 @@ SOLUTION(2023, 23) {
 
         return Constexpr::ToString(best);
     }
+    */
+
+    /*
+    constexpr size_t Part2B(const std::vector<std::string>& lines) {
+        Coord origin = { 0, 0 };
+        const s64 width = static_cast<s64>(lines[0].size());
+        auto limits = GetLimits<Coord>(lines);
+		Coord horizontal = { 1, 0 };
+		Coord vertical = { 0, 1 };
+        auto map = lines;
+        for(auto& line : map) {
+			for (auto& c : line) {
+				if (c != '#') c = '.';
+			}
+        }
+        struct Node {
+            Coord Pos{0, 0};
+            bool IsInPath{ false };
+            std::vector<std::pair<Node*, s32>> Trips{};
+            s32 TripIndex{ -1 };
+            s32 TotalDistance{ 0 };
+        };
+
+        std::vector<Node> nodes;
+
+        auto createAndRegister = [&](Coord pos) {
+            nodes.emplace_back(pos);
+            map[pos.Y][pos.X] = '0' - static_cast<u8>(nodes.size() - 1);
+        };
+        auto countFree = [&](Coord pos) {
+            if (!pos.Between(origin, limits)) return 0;
+            return lines[pos.Y][pos.X] == '#' ? 1 : 0;
+        };
+        auto tryCreate = [&](Coord pos) {
+            if (lines[pos.Y][pos.X] == '#') return;
+			auto freeCount = countFree(pos - horizontal) + countFree(pos + horizontal) + countFree(pos - vertical) + countFree(pos + vertical);
+            if (freeCount < 3) return;
+            createAndRegister(pos);
+        };
+
+        createAndRegister({ 1, 0 }); //home
+        Constexpr::ForEach(origin, limits, tryCreate);
+        createAndRegister({ limits.X - 1, limits.Y }); //end
+
+        auto walk4 = [&](Coord pos, auto walked, auto& futurePoints) {
+			if (!pos.Between(origin, limits)) return;
+            auto index = pos.Y * width + pos.X;
+            if (walked[index] != 0) return;
+			if (map[pos.Y][pos.X] == '#') return;
+			walked[index] = 1;
+			futurePoints.push_back(pos);
+        };
+		auto walk3 = [&](const Node& node, Coord pos) {
+            auto walked = std::vector<u8>(lines.size() * lines[0].size());
+            auto index = node.Pos.Y * width + node.Pos.X;
+			walked[index] = 1;
+			auto index2 = pos.Y * width + pos.X;
+            walked[index2] = 1;
+
+            auto futurePoints = std::vector<Coord>{ pos };
+            s32 distance = 0;
+            while(true) {
+                if (futurePoints.empty()) throw "Wat?";
+                distance++;
+                std::rotate(futurePoints.begin(), futurePoints.begin() + 1, futurePoints.end());
+                auto current = futurePoints.back();
+				futurePoints.pop_back();
+
+                if(map[current.Y][current.X] != '.') {
+					auto indexOfEnd = map[current.Y][current.X] - '0';
+					auto endNode = &nodes[indexOfEnd];
+                    endNode->Trips.emplace_back(std::make_pair(endNode, distance));
+                    return;
+                }
+
+                walk4(current - horizontal, walked, futurePoints);
+				walk4(current + horizontal, walked, futurePoints);
+				walk4(current - vertical, walked, futurePoints);
+				walk4(current + vertical, walked, futurePoints);
+            }
+		};
+        auto walk2 = [&](const Node& node, Coord pos) {
+            if (!pos.Between(origin, limits)) return;
+            walk3(node, pos);
+        };
+        auto walk1 = [&](const Node& node) {
+            walk2(node, node.Pos - horizontal);
+			walk2(node, node.Pos + horizontal);
+			walk2(node, node.Pos - vertical);
+			walk2(node, node.Pos + vertical);
+        };
+
+        Node* guardian = nullptr;
+        std::vector<Node*> path{};
+
+        auto search = [&]() {
+            auto target = nodes.back();
+            s32 best = 0;
+            while(true) {
+                if (path.empty()) return best;
+                auto node = path.back();
+                if(node->Pos == target.Pos) {
+                    best = std::max(best, node->TotalDistance);
+                    auto* n1 = path.back();
+                    path.pop_back();
+					n1->IsInPath = false;
+
+                    auto* n2 = path.back();
+                    path.pop_back();
+                    n2->IsInPath = false;
+                    continue;
+                }
+                if(guardian ) {
+                    if(node != guardian && guardian->IsInPath) {
+                        path.pop_back();
+                        continue;
+                    }
+                }
+
+                node->TripIndex++;
+                if(node->TripIndex >= static_cast<s32>(node->Trips.size())) {
+                    auto* n = path.back();
+					n->IsInPath = false;
+					path.pop_back();
+                    continue;
+                }
+                auto trip = node->Trips[node->TripIndex];
+                auto next = trip.first;
+                if (next->IsInPath) continue;
+                next->TripIndex = -1;
+				next->IsInPath = true;
+                next->TotalDistance += trip.second;
+				path.push_back(next);
+            }
+        };
+
+        auto findLengthOfLongestTravel = [&]() {
+            auto targetNode = nodes.back();
+            if(targetNode.Trips.size() == 1) {
+                guardian = targetNode.Trips[0].first;
+            }
+            
+            path.emplace_back(&nodes[0]);
+            path[0]->IsInPath = true;
+            return search();
+        };
+
+        return findLengthOfLongestTravel();
+    }
+
+    PART(2) {
+		return Constexpr::ToString(Part2B(lines));
+    }
 
     TEST(1) {
         std::vector<std::string> lines = {
@@ -226,4 +380,5 @@ SOLUTION(2023, 23) {
 
         return true;
     }
+    */
 }

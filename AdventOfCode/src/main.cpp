@@ -76,18 +76,18 @@ int main(int argc, char** argv) {
     //FileLogWriter fileLogWriter{};
     
     SolutionRunner::Settings runSettings{
-        .Sync = false,
+        .Sync = true,
 		.PrintTiming = true,
-		.PrintResults = false,
-		.TimingSort = SolutionRunner::SortBy::RunTime
+		.PrintResults = true,
+		.TimingSort = SolutionRunner::SortBy::Problem
     };
     auto runner = [&]{
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>());
         } else {
             //return SolutionRunner(2024, std::make_unique<ExeInputReader>());
-            //return SolutionRunner (2024, 6, std::make_unique<ExeInputReader>());
-            return SolutionRunner(std::make_unique<ExeInputReader>());
+            return SolutionRunner (2024, 6, std::make_unique<ExeInputReader>());
+            //return SolutionRunner(std::make_unique<ExeInputReader>());
         }
     }();
         
