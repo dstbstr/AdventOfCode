@@ -283,7 +283,7 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d5_PrintQueue.cpp" 
 	"src/2024/d6_GuardGallivant.cpp" 
 	"src/2024/d7_BridgeRepair.cpp" 
-	"src/2024/d8.cpp" 
+	"src/2024/d8_ResonantCollinearity.cpp"
 	"src/2024/d9.cpp" 
 	"src/2024/d10.cpp" 
 	"src/2024/d11.cpp" 

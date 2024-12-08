@@ -196,7 +196,6 @@ SOLUTION(2023, 23) {
     }
     */
 
-    /*
     constexpr size_t Part2B(const std::vector<std::string>& lines) {
         Coord origin = { 0, 0 };
         const s64 width = static_cast<s64>(lines[0].size());
@@ -225,10 +224,10 @@ SOLUTION(2023, 23) {
         };
         auto countFree = [&](Coord pos) {
             if (!pos.Between(origin, limits)) return 0;
-            return lines[pos.Y][pos.X] == '#' ? 1 : 0;
+            return map[pos.Y][pos.X] == '#' ? 1 : 0;
         };
         auto tryCreate = [&](Coord pos) {
-            if (lines[pos.Y][pos.X] == '#') return;
+            if (map[pos.Y][pos.X] == '#') return;
 			auto freeCount = countFree(pos - horizontal) + countFree(pos + horizontal) + countFree(pos - vertical) + countFree(pos + vertical);
             if (freeCount < 3) return;
             createAndRegister(pos);
@@ -341,6 +340,9 @@ SOLUTION(2023, 23) {
             return search();
         };
 
+        for(const auto& node : nodes) {
+			walk1(node);
+		}
         return findLengthOfLongestTravel();
     }
 
@@ -380,5 +382,5 @@ SOLUTION(2023, 23) {
 
         return true;
     }
-    */
+    
 }
