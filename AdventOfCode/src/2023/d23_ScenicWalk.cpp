@@ -1,355 +1,147 @@
 #include "Common.h"
 
 SOLUTION(2023, 23) {
-    constexpr std::vector<RowCol> GetNeighbors(RowCol pos, const std::vector<std::string>&lines) {
-        RowCol limits = { lines.size() - 1, lines[0].size() - 1 };
-        const auto h = RowCol{ 0, 1 };
-        const auto v = RowCol{ 1, 0 };
-        const auto c = lines[pos.Row][pos.Col];
-        std::vector<RowCol> result;
-        if (c != '.') {
-            switch (c) {
-            case '<': result.push_back(pos - h); break;
-            case '>': result.push_back(pos + h); break;
-            case 'v': result.push_back(pos + v); break;
-            case '^': result.push_back(pos - v); break;
-            }
-        }
-        else {
-            auto neighbors = GetDirectNeighbors(pos, limits);
-            std::copy_if(neighbors.begin(), neighbors.end(), std::back_inserter(result), [&](RowCol rc) {
-                return lines[rc.Row][rc.Col] != '#';
-                });
-        }
+    constexpr RowCol horizontal{ 0, 1 };
+    constexpr RowCol vertical{ 1, 0 };
+    RowCol start{ 0, 1 };
 
-        return result;
-    }
-
-    constexpr std::vector<RowCol> GetNeighborsNoSlopes(RowCol pos, const std::vector<std::string>& lines) {
-        RowCol limits = { lines.size() - 1, lines[0].size() - 1 };
-        std::vector<RowCol> result;
-        const auto neighbors = GetDirectNeighbors(pos, limits);
-        std::copy_if(neighbors.begin(), neighbors.end(), std::back_inserter(result), [&](RowCol rc) {
-            return lines[rc.Row][rc.Col] != '#';
-            });
-
-        return result;
-    }
-
-    constexpr size_t FindMaxPath(const std::vector<std::string>& lines, auto NFunc) {
-        const RowCol limits = { lines.size() - 1, lines[0].size() - 1 };
-        const RowCol start = { 0, 1 };
-        const RowCol end = { limits.Row, limits.Col - 1 };
-
-        struct State {
-            RowCol Pos;
-            Constexpr::BigSet<RowCol, 10000> Path;
-        };
-        std::vector<State> q{ {start, {}} };
-        
-        size_t best = 0;
-        State current;
-        while (!q.empty()) {
-            current = q.back();
-            q.pop_back();
-
-            if (current.Pos == end) {
-                best = std::max(best, current.Path.size());
-                continue;
-            }
-
-            auto ns = NFunc(current.Pos, lines);
-            auto next = current;
-            next.Path.insert(current.Pos);
-            for (auto n : ns) {
-                if (current.Path.contains(n)) continue;
-                next.Pos = n;
-                q.push_back(next);
-            }
-        }
-
-        return best;
-    }
-    PART(1) {
-        return Constexpr::ToString(FindMaxPath(lines, GetNeighbors));
-    }
-
-    constexpr bool IsTerminus(const std::vector<std::string>& lines, RowCol pos) {
-        return pos.Row == 0 || pos.Row == lines.size() - 1;
-    }
+	constexpr bool IsPath(const std::vector<std::string>& lines, RowCol pos) {
+		return lines[pos.Row][pos.Col] != '#';
+	}
 
     constexpr bool IsNode(const std::vector<std::string>& lines, RowCol pos) {
-        auto IsPath = [&](RowCol rc) {
-            return lines[rc.Row][rc.Col] != '#';
-            };
-
-        if (!IsPath(pos)) return false;
-
-        const RowCol h = { 0, 1 };
-        const RowCol v = { 1, 0 };
-
-        size_t exits = 0;
-        exits += IsPath(pos - h);
-        exits += IsPath(pos + h);
-        exits += IsPath(pos - v);
-        exits += IsPath(pos + v);
-
-        return exits > 2;
+        if (lines[pos.Row][pos.Col] == '#') return false;
+		return 3 <= IsPath(lines, pos - horizontal) + IsPath(lines, pos + horizontal) + IsPath(lines, pos - vertical) + IsPath(lines, pos + vertical);
     }
 
-    constexpr std::vector<RowCol> FindNodes(const std::vector<std::string>& lines) {
-        std::vector<RowCol> result;
+	constexpr void Step(const std::vector<std::string>& map, RowCol& pos, RowCol& prev) {
+        auto dir = pos - prev;
+        auto next = pos + dir;
 
-        RowCol rc;
-        for (size_t row = 1; row < lines.size() - 1; row++) {
-            for (size_t col = 1; col < lines[0].size() - 1; col++) {
-                rc.Row = row;
-                rc.Col = col;
-                if(IsNode(lines, rc)) {
-                    result.push_back(rc);
-                }
-            }
+        if (!IsPath(map, next)) {
+            std::swap(dir.Row, dir.Col);
+            next = IsPath(map, pos + dir) ? pos + dir : pos - dir;
         }
-
-        return result;
+        prev = pos;
+        pos = next;
     }
 
-    std::pair<RowCol, size_t> TracePath(const std::vector<std::string>& lines, RowCol current, RowCol prev) {
-        size_t steps = 1;
-        RowCol next = current;
-        while (!IsTerminus(lines, current) && !IsNode(lines, current)) {
-            auto ns = GetNeighborsNoSlopes(current, lines);
-            next = ns[0] == prev ? ns[1] : ns[0];
-            prev = current;
-            current = next;
+    constexpr RowCol Downhill(char c, RowCol pos) {
+        switch(c) {
+		case '<': return pos - horizontal;
+		case '>': return pos + horizontal;
+		case 'v': return pos + vertical;
+		case '^': return pos - vertical;
+        }
+        throw "Wat?";
+    }
+
+    template<bool IsPart1>
+    constexpr void RecurseDistances(const std::vector<std::string>& map, u32 fromNode, RowCol pos, RowCol prev, std::vector<std::vector<u32>>& outDistances) {
+        u32 steps = 0;
+        while(map[pos.Row][pos.Col] >= '.') {
+            Step(map, pos, prev);
             steps++;
         }
+        auto toNode = map[pos.Row][pos.Col];
+		if (outDistances[fromNode][toNode] > 0) return;
 
-        return std::make_pair(current, steps);
+		outDistances[fromNode][toNode] = steps;
+        if constexpr(!IsPart1) {
+			outDistances[toNode][fromNode] = steps;
+        }
+		if (toNode == static_cast<char>(outDistances.size() - 1)) return; // found the end
+
+        auto dir = pos - prev;
+        auto next = pos + dir;
+		char c = map[next.Row][next.Col];
+        if(IsPath(map, next)) {
+            if(c == '.' || Downhill(c, next) != pos) {
+				RecurseDistances<IsPart1>(map, toNode, next, pos, outDistances);
+            }
+        }
+		std::swap(dir.Row, dir.Col);
+        next = pos + dir;
+		c = map[next.Row][next.Col];
+        if(IsPath(map, next)) {
+			if (c == '.' || Downhill(c, next) != pos) {
+                RecurseDistances<IsPart1>(map, toNode, next, pos, outDistances);
+            }
+        }
+		next = pos - dir;
+		c = map[next.Row][next.Col];
+		if (IsPath(map, next)) {
+			if (c == '.' || Downhill(c, next) != pos) {
+				RecurseDistances<IsPart1>(map, toNode, next, pos, outDistances);
+            }
+        }
     }
 
-    using DistMap = Constexpr::SmallMap<RowCol, Constexpr::SmallMap<RowCol, size_t>>;
-    constexpr DistMap BuildEdges(const std::vector<std::string>& lines, std::vector<RowCol>& nodes) {
-        DistMap map;
+	constexpr u32 RecursePaths(const std::vector<std::vector<u32>>& distances, const std::vector<RowCol>& nodes, size_t fromNode, u32 currentDistance, u64 path) {
+        u32 best = 0;
+        if (fromNode == nodes.size() - 1) return currentDistance;
+        const auto& neighbors = distances[fromNode];
+        Constexpr::SetBit(path, fromNode);
+        for(size_t n = 0; n < neighbors.size(); n++) {
+            if (neighbors[n] == 0 || Constexpr::IsBitSet(path, n)) continue;
+			auto distance = currentDistance + neighbors[n] + 1;
+			best = std::max(best, RecursePaths(distances, nodes, n, distance, path));
+        }
+        Constexpr::UnsetBit(path, fromNode);
+        return best;
+	}
 
-        for (auto node : nodes) {
-            auto ns = GetNeighborsNoSlopes(node, lines);
-            for (auto n : ns) {
-                auto [to, dist] = TracePath(lines, n, node);
-
-                if (dist > 0) {
-                    map[node][to] = dist;
-                    map[to][node] = dist;
+    constexpr std::vector<RowCol> GetNodes(std::vector<std::string>& map) {
+        RowCol end{ map.size() - 1, map[0].size() - 2 };
+        std::vector<RowCol> nodes{ start };
+        for (size_t row = 1; row < map.size() - 1; row++) {
+            for (size_t col = 1; col < map[0].size() - 1; col++) {
+                if (IsNode(map, { row, col })) {
+                    map[row][col] = static_cast<u8>(nodes.size());
+                    nodes.push_back({ col, row });
                 }
             }
         }
+        map[start.Row][start.Col] = static_cast<u8>(0);
+        map[end.Row][end.Col] = static_cast<u8>(nodes.size());
+        nodes.emplace_back(end);
 
-        return map;
+        return nodes;
     }
 
-    constexpr size_t GetPathLength(const std::vector<RowCol>& path, const DistMap& map) {
-        size_t result = 0;
-        for (size_t i = 1; i < path.size(); i++) {
-            result += map.at(path[i - 1]).at(path[i]);
-        }
+    template<bool IsPart1>
+	constexpr std::vector<std::vector<u32>> GetDistances(const std::vector<std::string>& map, const std::vector<RowCol>& nodes) {
+		std::vector<std::vector<u32>> distances(nodes.size(), std::vector<u32>(nodes.size(), 0));
+		RecurseDistances<IsPart1>(map, 0, start + vertical, start, distances);
+		return distances;
+	}
 
-        return result;
-    }
-
-    /*
-    PART(2) {
-        auto nodes = FindNodes(lines);
-        auto map = BuildEdges(lines, nodes);
-
-        struct State {
-            RowCol Pos;
-            std::vector<RowCol> Path;
-        };
-
-        RowCol start{ 0, 1 };
-        RowCol end{ lines.size() - 1, lines[0].size() - 2 };
-
-        std::vector<State> q{ {start, {start} } };
-        
-        size_t best = 0;
-
-        while (!q.empty()) {
-            auto current = q.back();
-            q.pop_back();
-
-            if (current.Pos == end) {
-                best = std::max(best, GetPathLength(current.Path, map));
-                continue;
-            }
-
-            auto ns = map.at(current.Pos).GetKeys();
-            for (auto n : ns) {
-                if (std::find(current.Path.begin(), current.Path.end(), n) != current.Path.end()) continue;
-                auto next = current;
-                next.Path.push_back(n);
-                next.Pos = n;
-                q.push_back(next);
-            }
-        }
-
-        return Constexpr::ToString(best);
-    }
-    */
-
-    constexpr size_t Part2B(const std::vector<std::string>& lines) {
-        Coord origin = { 0, 0 };
-        const s64 width = static_cast<s64>(lines[0].size());
-        auto limits = GetLimits<Coord>(lines);
-		Coord horizontal = { 1, 0 };
-		Coord vertical = { 0, 1 };
+    constexpr u32 SolvePart1(const std::vector<std::string>& lines) {
         auto map = lines;
-        for(auto& line : map) {
-			for (auto& c : line) {
-				if (c != '#') c = '.';
-			}
-        }
-        struct Node {
-            Coord Pos{0, 0};
-            bool IsInPath{ false };
-            std::vector<std::pair<Node*, s32>> Trips{};
-            s32 TripIndex{ -1 };
-            s32 TotalDistance{ 0 };
-        };
+		auto nodes = GetNodes(map);
+        auto distances = GetDistances<true>(map, nodes);
 
-        std::vector<Node> nodes;
-
-        auto createAndRegister = [&](Coord pos) {
-            nodes.emplace_back(pos);
-            map[pos.Y][pos.X] = '0' - static_cast<u8>(nodes.size() - 1);
-        };
-        auto countFree = [&](Coord pos) {
-            //if (!pos.Between(origin, limits)) return 0;
-            return map[pos.Y][pos.X] == '#' ? 0 : 1;
-        };
-        auto tryCreate = [&](Coord pos) {
-            if (map[pos.Y][pos.X] == '#') return;
-			auto freeCount = countFree(pos - horizontal) + countFree(pos + horizontal) + countFree(pos - vertical) + countFree(pos + vertical);
-            if (freeCount < 3) return;
-            createAndRegister(pos);
-        };
-
-        createAndRegister({ 1, 0 }); //home
-        Coord offset{ 1, 1 };
-        Constexpr::ForEach(origin + offset, limits - offset, tryCreate);
-        createAndRegister({ limits.X - 1, limits.Y }); //end
-
-        auto walk4 = [&](Coord pos, auto walked, auto& futurePoints) {
-			if (!pos.Between(origin, limits)) return;
-            auto index = pos.Y * width + pos.X;
-            if (walked[index] != 0) return;
-			if (map[pos.Y][pos.X] == '#') return;
-			walked[index] = 1;
-			futurePoints.push_back(pos);
-        };
-		auto walk3 = [&](const Node& node, Coord pos) {
-            auto walked = std::vector<u8>(lines.size() * lines[0].size());
-            auto index = node.Pos.Y * width + node.Pos.X;
-			walked[index] = 1;
-			auto index2 = pos.Y * width + pos.X;
-            walked[index2] = 1;
-
-            auto futurePoints = std::vector<Coord>{ pos };
-            s32 distance = 0;
-            while(true) {
-                if (futurePoints.empty()) throw "Wat?";
-                distance++;
-                std::rotate(futurePoints.begin(), futurePoints.begin() + 1, futurePoints.end());
-                auto current = futurePoints.back();
-				futurePoints.pop_back();
-
-                if(map[current.Y][current.X] != '.') {
-					auto indexOfEnd = map[current.Y][current.X] - '0';
-					auto endNode = &nodes[indexOfEnd];
-                    endNode->Trips.emplace_back(std::make_pair(endNode, distance));
-                    return;
-                }
-
-                walk4(current - horizontal, walked, futurePoints);
-				walk4(current + horizontal, walked, futurePoints);
-				walk4(current - vertical, walked, futurePoints);
-				walk4(current + vertical, walked, futurePoints);
-            }
-		};
-        auto walk2 = [&](const Node& node, Coord pos) {
-            if (!pos.Between(origin, limits)) return;
-			if (map[pos.Y][pos.X] == '#') return;
-            walk3(node, pos);
-        };
-        auto walk1 = [&](const Node& node) {
-            walk2(node, node.Pos - horizontal);
-			walk2(node, node.Pos + horizontal);
-			walk2(node, node.Pos - vertical);
-			walk2(node, node.Pos + vertical);
-        };
-
-        Node* guardian = nullptr;
-        std::vector<Node*> path{};
-
-        auto search = [&]() {
-            auto target = nodes.back();
-            s32 best = 0;
-            while(true) {
-                if (path.empty()) return best;
-                auto node = path.back();
-                if(node->Pos == target.Pos) {
-                    best = std::max(best, node->TotalDistance);
-                    auto* n1 = path.back();
-                    path.pop_back();
-					n1->IsInPath = false;
-
-                    auto* n2 = path.back();
-                    path.pop_back();
-                    n2->IsInPath = false;
-                    continue;
-                }
-                if(guardian ) {
-                    if(node != guardian && guardian->IsInPath) {
-                        path.pop_back();
-                        continue;
-                    }
-                }
-
-                node->TripIndex++;
-                if(node->TripIndex >= static_cast<s32>(node->Trips.size())) {
-                    auto* n = path.back();
-					n->IsInPath = false;
-					path.pop_back();
-                    continue;
-                }
-                auto trip = node->Trips[node->TripIndex];
-                auto next = trip.first;
-                if (next->IsInPath) continue;
-                next->TripIndex = -1;
-				next->IsInPath = true;
-                next->TotalDistance += trip.second;
-				path.push_back(next);
-            }
-        };
-
-        auto findLengthOfLongestTravel = [&]() {
-            auto targetNode = nodes.back();
-            if(targetNode.Trips.size() == 1) {
-                guardian = targetNode.Trips[0].first;
-            }
-            
-            path.emplace_back(&nodes[0]);
-            path[0]->IsInPath = true;
-            return search();
-        };
-
-        for(const auto& node : nodes) {
-			walk1(node);
-		}
-        return findLengthOfLongestTravel();
+        return RecursePaths(distances, nodes, 0, 0, 0);
     }
 
+    constexpr u32 SolvePart2(const std::vector<std::string>& lines) {
+        auto map = lines;
+        for (auto& line : map) {
+            for (auto& c : line) {
+                if (c != '#') c = '.';
+            }
+        }
+        auto nodes = GetNodes(map);
+        auto distances = GetDistances<false>(map, nodes);
+
+        return RecursePaths(distances, nodes, 0, 0, 0);
+    }
+
+    PART(1) {
+		return Constexpr::ToString(SolvePart1(lines));
+    }
     PART(2) {
-		return Constexpr::ToString(Part2B(lines));
+        return Constexpr::ToString(SolvePart2(lines));
     }
 
     TEST(1) {
@@ -379,8 +171,9 @@ SOLUTION(2023, 23) {
             "#####################.#"
         };
 
-        if (FindMaxPath(lines, GetNeighbors) != 94) return false;
-        if (Part2(lines) != "154") return false;
+        //if (FindMaxPath(lines, GetNeighbors) != 94) return false;
+		if (SolvePart1(lines) != 94) return false;
+        if (SolvePart2(lines) != 154) return false;
 
         return true;
     }
