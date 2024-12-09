@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>());
         } else {
             //return SolutionRunner(2024, std::make_unique<ExeInputReader>());
-            return SolutionRunner (2024, 8, std::make_unique<ExeInputReader>());
+            return SolutionRunner (2024, 9, std::make_unique<ExeInputReader>());
             //return SolutionRunner(std::make_unique<ExeInputReader>());
         }
     }();

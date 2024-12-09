@@ -223,8 +223,8 @@ SOLUTION(2023, 23) {
             map[pos.Y][pos.X] = '0' - static_cast<u8>(nodes.size() - 1);
         };
         auto countFree = [&](Coord pos) {
-            if (!pos.Between(origin, limits)) return 0;
-            return map[pos.Y][pos.X] == '#' ? 1 : 0;
+            //if (!pos.Between(origin, limits)) return 0;
+            return map[pos.Y][pos.X] == '#' ? 0 : 1;
         };
         auto tryCreate = [&](Coord pos) {
             if (map[pos.Y][pos.X] == '#') return;
@@ -234,7 +234,8 @@ SOLUTION(2023, 23) {
         };
 
         createAndRegister({ 1, 0 }); //home
-        Constexpr::ForEach(origin, limits, tryCreate);
+        Coord offset{ 1, 1 };
+        Constexpr::ForEach(origin + offset, limits - offset, tryCreate);
         createAndRegister({ limits.X - 1, limits.Y }); //end
 
         auto walk4 = [&](Coord pos, auto walked, auto& futurePoints) {
@@ -276,6 +277,7 @@ SOLUTION(2023, 23) {
 		};
         auto walk2 = [&](const Node& node, Coord pos) {
             if (!pos.Between(origin, limits)) return;
+			if (map[pos.Y][pos.X] == '#') return;
             walk3(node, pos);
         };
         auto walk1 = [&](const Node& node) {
