@@ -171,11 +171,9 @@ SOLUTION(2023, 23) {
             "#####################.#"
         };
 
-        //if (FindMaxPath(lines, GetNeighbors) != 94) return false;
 		if (SolvePart1(lines) != 94) return false;
         if (SolvePart2(lines) != 154) return false;
 
         return true;
     }
-    
 }

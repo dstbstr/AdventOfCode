@@ -4,21 +4,12 @@
 SOLUTION(2023, 16) {
 	constexpr Facing TurnIfNeeded(Facing dir, char c) {
 		if (c != '/' && c != '\\') return dir;
-
-		if (c == '/' && (dir == Right || dir == Left)) {
-			dir = TurnLeft(dir);
+		switch(dir) {
+			case Up: return c == '/' ? Right : Left;
+			case Down: return c == '/' ? Left : Right;
+			case Left: return c == '/' ? Down : Up;
+			case Right: return c == '/' ? Up : Down;
 		}
-		else if (c == '/') {
-			dir = TurnRight(dir);
-		}
-		else if (dir == Right || dir == Left) {
-			dir = TurnRight(dir);
-		}
-		else {
-			dir = TurnLeft(dir);
-		}
-
-		return dir;
 	}
 
 	constexpr size_t CountEnergy(const std::vector<std::string>& lines, RowCol startPos, Facing startDir) {
@@ -27,8 +18,8 @@ SOLUTION(2023, 16) {
 				return Constexpr::Hasher<RowCol>{}(p.first);
 			}
 		};
-		Constexpr::BigSet<std::pair<RowCol, Facing>, 1'000'000, KeyHash> seen;
-		Constexpr::BigSet<RowCol> energized;
+		Constexpr::BigSet<std::pair<RowCol, Facing>, 50'000, KeyHash> seen;
+		Constexpr::BigSet<RowCol, 50'000> energized;
 		energized.SetSentinel({ 9999, 9999 });
 
 		std::vector<std::pair<RowCol, Facing>> remaining;

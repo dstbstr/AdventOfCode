@@ -79,7 +79,7 @@ int main(int argc, char** argv) {
         .Sync = true,
 		.PrintTiming = true,
 		.PrintResults = true,
-		.TimingSort = SolutionRunner::SortBy::Problem
+		.TimingSort = SolutionRunner::SortBy::RunTime
     };
     auto runner = [&]{
         if (argc > 1) {
@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
         } else {
             //return SolutionRunner(2024, std::make_unique<ExeInputReader>());
             //return SolutionRunner (2024, 9, std::make_unique<ExeInputReader>());
-            return SolutionRunner (2023, 23, std::make_unique<ExeInputReader>());
+            return SolutionRunner (2023, 16, std::make_unique<ExeInputReader>());
             //return SolutionRunner(std::make_unique<ExeInputReader>());
         }
     }();
