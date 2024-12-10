@@ -140,10 +140,10 @@ SOLUTION(2019, 18) {
 
         constexpr size_t Solve() {
             Constexpr::PriorityQueue<Path> q;
-            Constexpr::BigSet<Path, 1'000'000, PathHash> seen;
-
+            Constexpr::BigSet<Path, 500'000, PathHash> seen;
             Path initial{ {}, NoKeys, 0 };
-            for (const auto& [node, pos] : mKeyNodes) {
+            //for (const auto& [node, pos] : mKeyNodes) {
+            for(const auto& [node, pos] : mKeyNodes.GetAllEntries()) {
                 if (!IsKey(node)) {
                     initial.Bots.push_back(pos);
                 }
@@ -170,9 +170,10 @@ SOLUTION(2019, 18) {
     private:
         std::vector<std::string> mGrid;
         RowCol mLimits{};
-        Constexpr::SmallSet<RowCol> mSeen{};
-        Constexpr::SmallMap<RowCol, std::vector<Path>> mEdgeCache{};
-        Constexpr::SmallMap<char, RowCol> mKeyNodes;
+
+        Constexpr::BigSet<RowCol, 5'000> mSeen{};
+        Constexpr::BigMap<RowCol, std::vector<Path>, 100> mEdgeCache{RowCol{9999,9999} };
+        Constexpr::BigMap<char, RowCol, 100> mKeyNodes{static_cast<char>(127)};
 
         KeyCollection AllKeys{};
         KeyCollection NoKeys{};
@@ -278,13 +279,11 @@ SOLUTION(2019, 18) {
 
 
     PART(1) {
-        //Map solution(CopyToVector(lines));
         Map solution(lines);
         return Constexpr::ToString(solution.Solve());
     }
 
     PART(2) {
-        //auto copy = CopyToVector(lines);
         auto copy = lines;
         SplitIntoRooms(copy);
 

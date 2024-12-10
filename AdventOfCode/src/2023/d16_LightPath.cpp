@@ -10,6 +10,7 @@ SOLUTION(2023, 16) {
 			case Left: return c == '/' ? Down : Up;
 			case Right: return c == '/' ? Up : Down;
 		}
+		throw "Wat?";
 	}
 
 	constexpr size_t CountEnergy(const std::vector<std::string>& lines, RowCol startPos, Facing startDir) {

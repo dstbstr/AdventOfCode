@@ -293,7 +293,7 @@ SOLUTION(2021, 23) {
     constexpr auto Solve(std::vector<Den> dens) {
         Hall hall{};
 
-        Constexpr::BigMap<std::string, size_t> seen;
+        Constexpr::BigMap<std::string, size_t, 1'000'000> seen;
         Constexpr::PriorityQueue<Entry> queue;
         auto initialState = ToCacheString(hall, dens);
 
