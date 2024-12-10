@@ -1,45 +1,44 @@
 #include "Common.h"
 
 SOLUTION(2024, 10) {
-	using ResultMap = Constexpr::BigSet<RowCol, 1'000>;
+	using ResultMap = Constexpr::BigMap<RowCol, Constexpr::SmallSet<RowCol>, 1000>;
+	using ResultMap2 = Constexpr::BigMap<RowCol, u32, 10'000>;
 
-	void Recurse(const std::vector<std::string>& map, RowCol limits, RowCol pos, ResultMap& outResult) {
+	constexpr void RecurseDownhill(const std::vector<std::string>& map, RowCol limits, RowCol startPos, RowCol pos, ResultMap& outResult) {
 		auto current = map[pos.Row][pos.Col];
-		if (current == '9') {
-			outResult.insert(pos);
+		if(current == '0') {
+			outResult[pos].insert(startPos);
 			return;
 		}
 		auto neighbors = GetDirectNeighbors(pos, limits);
-		for(auto n : neighbors) {
-			if(map[n.Row][n.Col] == current + 1) {
-				Recurse(map, limits, n, outResult);
+		for (auto n : neighbors) {
+			if (map[n.Row][n.Col] == current - 1) {
+				RecurseDownhill(map, limits, startPos, n, outResult);
 			}
 		}
 	}
 
 	constexpr u32 SolvePart1(const std::vector<std::string>& lines) {
 		auto limits = GetLimits<RowCol>(lines);
-		ResultMap result(RowCol{9999, 9999});
-		u32 count = 0;
-		Constexpr::ForEach(limits, [&](RowCol start) {
-			//I feel like there's a way to solve this without clearing the set every time
-			// Maybe starting with 9s and going down to 0s?
-			// Or maybe storing the number of 9s that can be reached by each point?
-			result.clear();
-			if (lines[start.Row][start.Col] == '0') {
-				Recurse(lines, limits, start, result);
-				count += static_cast<u32>(result.size());
+		ResultMap result(RowCol{ 9999,9999 });
+		std::vector<RowCol> starts;
+		Constexpr::ForEach(limits, [&](RowCol end) {
+			if(lines[end.Row][end.Col] == '9') {
+				RecurseDownhill(lines, limits, end, end, result);
+			} else if(lines[end.Row][end.Col] == '0') {
+				starts.emplace_back(end);
 			}
 		});
 
-		return count;
+		return std::accumulate(starts.begin(), starts.end(), 0u, [&](u32 count, const RowCol& pos) {
+			return count + static_cast<u32>(result[pos].size());
+		});
 	}
 
 	PART(1) {
 		return Constexpr::ToString(SolvePart1(lines));
 	}
 	
-	using ResultMap2 = Constexpr::BigMap<RowCol, u32, 10'000>;
 	u32 Recurse2(const std::vector<std::string>& map, RowCol limits, RowCol pos, ResultMap2& outResult) {
 		if (outResult.contains(pos)) return outResult[pos];
 		auto current = map[pos.Row][pos.Col];
