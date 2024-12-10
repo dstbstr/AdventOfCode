@@ -12,6 +12,7 @@ SOLUTION(2022, 16) {
     struct State {
         std::vector<Room> Rooms{};
         Constexpr::SmallMap<std::string, size_t> IndexMap{};
+        u64 AllRooms{0};
 
         std::array<std::array<TDistance, RoomCount>, RoomCount> DistanceMap{};
     };
@@ -81,6 +82,7 @@ SOLUTION(2022, 16) {
             if (state.Rooms[index].FlowRate > 0 || name == "AA") {
                 //state.IndexMap.insert({ name, index });
                 state.IndexMap[name] = index;
+                Constexpr::SetBit(state.AllRooms, index);
             }
         }
 
@@ -89,45 +91,21 @@ SOLUTION(2022, 16) {
 
     template<size_t RoomCount, typename TDistance>
     constexpr void RecursePermutations(const State<RoomCount, TDistance>&state, u64 seen, size_t roomIndex, s16 remainingTime, u32 totalSteam, Constexpr::SmallMap<u64, u32>&outMap) {
-        static const u64 done = [&state]() {
-            u64 result = 0;
-            for (const auto& [_, index] : state.IndexMap) {
-                result += u64(1) << index;
-            }
-
-            return result;
-        }();
-
         if (remainingTime <= 0) {
-            if (outMap.contains(seen)) {
-                if (outMap.at(seen) < totalSteam) {
-                    outMap.at(seen) = totalSteam;
-                }
-            }
-            else {
-                outMap[seen] = totalSteam;
-            }
-
+            outMap[seen] = std::max(outMap[seen], totalSteam);
             return;
         }
 
         totalSteam += static_cast<u32>(state.Rooms[roomIndex].FlowRate * remainingTime);
-        seen += (u64(1) << roomIndex);
+        Constexpr::SetBit(seen, roomIndex);
 
-        if (seen == done) {
-            if (outMap.contains(seen)) {
-                if (outMap.at(seen) < totalSteam) {
-                    outMap.at(seen) = totalSteam;
-                }
-            }
-            else {
-                outMap[seen] = totalSteam;
-            }
+        if (seen == state.AllRooms) {
+            outMap[seen] = std::max(outMap[seen], totalSteam);
             return;
         }
 
         for (const auto& [nextRoomName, nextIndex] : state.IndexMap) {
-            if (seen & (u64(1) << nextIndex)) continue;
+            if (Constexpr::IsBitSet(seen, nextIndex)) continue;
             auto distance = state.DistanceMap.at(roomIndex).at(nextIndex) + 1;
             auto nextTime = static_cast<s16>(remainingTime - distance);
 
@@ -184,6 +162,8 @@ SOLUTION(2022, 16) {
         return best;
     }
 
+    // consider finding the maximum flow rate
+    // and early-out if the remaining time at the max flow rate would be less than the best
     PART(1) {
         return Constexpr::ToString(FindBestSolo<51, u8>(lines));
     }
