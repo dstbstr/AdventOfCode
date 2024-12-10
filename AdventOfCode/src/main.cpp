@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
     //FileLogWriter fileLogWriter{};
     
     SolutionRunner::Settings runSettings{
-        .Sync = true,
+        .Sync = false,
 		.PrintTiming = true,
 		.PrintResults = true,
 		.TimingSort = SolutionRunner::SortBy::RunTime
@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
         } else {
             //return SolutionRunner(2024, std::make_unique<ExeInputReader>());
             //return SolutionRunner (2024, 9, std::make_unique<ExeInputReader>());
-            return SolutionRunner (2019, 18, std::make_unique<ExeInputReader>());
+            return SolutionRunner (2020, 15, std::make_unique<ExeInputReader>());
             //return SolutionRunner(std::make_unique<ExeInputReader>());
         }
     }();
