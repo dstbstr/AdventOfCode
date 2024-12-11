@@ -286,7 +286,7 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d8_ResonantCollinearity.cpp"
 	"src/2024/d9_DiskFragmenter.cpp" 
 	"src/2024/d10_HoofIt.cpp"
-	"src/2024/d11.cpp" 
+	"src/2024/d11_PlutonianPebbles.cpp" 
 	"src/2024/d12.cpp" 
 	"src/2024/d13.cpp" 
 	"src/2024/d14.cpp" 

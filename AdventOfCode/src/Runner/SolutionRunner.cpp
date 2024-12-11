@@ -60,6 +60,7 @@ namespace {
 		return lhsPart < rhsPart;
 	}
 
+	// TODO: Maybe add up all of the times, and compare to total runtime
 	void LogTimingData(std::map<std::string, std::chrono::microseconds> timingData, SolutionRunner::SortBy sortBy, std::optional<std::chrono::microseconds> minElapsed = std::nullopt) {
 		std::vector<std::pair<std::string, std::chrono::microseconds>> copy(timingData.begin(), timingData.end());
 		if (sortBy == SolutionRunner::SortBy::RunTime) {
