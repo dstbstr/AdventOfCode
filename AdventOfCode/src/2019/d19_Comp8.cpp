@@ -76,7 +76,7 @@ SOLUTION(2019, 19) {
             }
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     PART(2) {
@@ -88,7 +88,7 @@ SOLUTION(2019, 19) {
             return "Not Found";
         }
 
-        return Constexpr::ToString((finalPos.X * 10000) + finalPos.Y);
+        return (finalPos.X * 10000) + finalPos.Y;
     }
 
     TEST(1) {

@@ -88,13 +88,11 @@ SOLUTION(2023, 14) {
 
     PART(1) {
         auto map = lines;
-        RowCol max = { map.size() - 1, map[0].size() - 1 };
+        auto limits = GetLimits<RowCol>(map);
 
-        Tilt(Direction::North, map, max);
+        Tilt(Direction::North, map, limits);
 
-        size_t result = CalculateLoad(map);
-
-        return Constexpr::ToString(result);
+        return CalculateLoad(map);
     }
 
     constexpr std::vector<std::string> Cycle(const std::vector<std::string>& map, RowCol max) {
@@ -122,7 +120,7 @@ SOLUTION(2023, 14) {
             map = Cycle(map, max);
         }
 
-        return Constexpr::ToString(CalculateLoad(map));
+        return CalculateLoad(map);
     }
 
     TEST(1) {
@@ -139,6 +137,6 @@ SOLUTION(2023, 14) {
             "#OO..#...."
         };
 
-        return Part1(example) == "136";
+        return std::get<size_t>(Part1(example)) == 136;
     }
 }

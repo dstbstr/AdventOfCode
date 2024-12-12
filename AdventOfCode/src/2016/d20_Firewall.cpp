@@ -55,10 +55,10 @@ SOLUTION(2016, 20) {
     }
 
     PART(1) {
-        return Constexpr::ToString(FindLowest(lines));
+        return FindLowest(lines);
     }
     PART(2) {
-        return Constexpr::ToString(CountAvailable(lines));
+        return CountAvailable(lines);
     }
 
     TEST(1) {

@@ -121,9 +121,9 @@ SOLUTION(2020, 4) {
 
     PART(1) {
         auto groups = SplitInputIntoGroups(lines);
-        return Constexpr::ToString(std::count_if(groups.begin(), groups.end(), [](const auto& pLines) {
+        return std::count_if(groups.begin(), groups.end(), [](const auto& pLines) {
             return ValidatePassport(ParsePassport(pLines));
-            }));
+            });
     }
 
     constexpr size_t SolvePartTwo(const auto& lines) {
@@ -134,7 +134,7 @@ SOLUTION(2020, 4) {
             });
     }
     PART(2) {
-        return Constexpr::ToString(SolvePartTwo(lines));
+        return SolvePartTwo(lines);
     }
 
     constexpr bool TestParsePassport() {

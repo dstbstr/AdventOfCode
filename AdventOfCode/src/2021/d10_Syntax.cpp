@@ -63,9 +63,9 @@ SOLUTION(2021, 10) {
 
     PART(1) {
         auto scores = ParseLines(lines, GetScore);
-        return Constexpr::ToString(std::accumulate(scores.begin(), scores.end(), 0ull, [](size_t prev, const auto& pair) {
+        return std::accumulate(scores.begin(), scores.end(), 0ull, [](size_t prev, const auto& pair) {
             return prev + pair.first;
-            }));
+            });
     }
 
     constexpr size_t SolvePartTwo(const auto& lines) {
@@ -79,7 +79,7 @@ SOLUTION(2021, 10) {
         return toKeep[toKeep.size() / 2];
     }
     PART(2) {
-        return Constexpr::ToString(SolvePartTwo(lines));
+        return SolvePartTwo(lines);
     }
 
     static_assert(GetScore("{([(<{}[<>[]}>{[]{[(<()>").first == 1197);

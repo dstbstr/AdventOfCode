@@ -27,7 +27,7 @@ SOLUTION(2016, 3) {
 
             result += IsValid(a, b, c);
         }
-        return Constexpr::ToString(result);
+        return result;
     }
 
     PART(2) {
@@ -61,7 +61,7 @@ SOLUTION(2016, 3) {
             }
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     static_assert(IsValid(5, 10, 25) == false);

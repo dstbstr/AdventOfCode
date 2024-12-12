@@ -109,25 +109,9 @@ SOLUTION(2016, 23) {
     }
 
     PART(1) {
-        return Constexpr::ToString(CalculateConstant(lines) + Constexpr::Factorial(7));
+        return CalculateConstant(lines) + Constexpr::Factorial(7);
     }
     PART(2) {
-        return Constexpr::ToString(CalculateConstant(lines) + Constexpr::Factorial(12ull));
+        return CalculateConstant(lines) + Constexpr::Factorial(12ull);
     }
-
-    /*
-    TEST(1) {
-        std::vector<std::string> lines = {
-            "cpy 2 a",
-            "tgl a",
-            "tgl a",
-            "tgl a",
-            "cpy 1 a",
-            "dec a",
-            "dec a"
-        };
-
-        return Part1(lines) == "3";
-    }
-    */
 }

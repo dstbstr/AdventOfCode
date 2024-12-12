@@ -33,11 +33,11 @@ SOLUTION(2021, 5) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, true));
+        return Solve(lines, true);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, false));
+        return Solve(lines, false);
     }
 
     TEST(1) {

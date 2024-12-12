@@ -73,7 +73,7 @@ SOLUTION(2023, 2) {
         for (const auto& game : games) {
             result += (game.Id * game.CouldMatch(target));
         }
-        return Constexpr::ToString(result);
+        return result;
     }
  
     PART(2) {
@@ -82,6 +82,6 @@ SOLUTION(2023, 2) {
         auto result = std::accumulate(games.begin(), games.end(), 0u, [](u32 running, const Game& game) {
             return running + game.GetPower();
             });
-        return Constexpr::ToString(result);
+        return result;
     }
 }

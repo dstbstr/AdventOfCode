@@ -49,7 +49,7 @@ SOLUTION(2024, 2) {
 			auto vals = ParseLineAsNumbers<s32>(line, " ");
 			result += IsSafe(vals);
 		}
-		return Constexpr::ToString(result);
+		return result;
 	}
 
 	PART(2) {
@@ -58,7 +58,7 @@ SOLUTION(2024, 2) {
 			auto vals = ParseLineAsNumbers<s32>(line, " ");
 			result += IsSafeTolerance(vals);
 		}
-		return Constexpr::ToString(result);
+		return result;
 	}
 
 	static_assert(IsSafe({ 7, 6, 4, 2, 1 }));

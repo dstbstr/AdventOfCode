@@ -327,12 +327,12 @@ SOLUTION(2021, 23) {
 
     PART(1) {
         auto dens = GetInitialDens(lines, false);
-        return Constexpr::ToString(Solve(dens));
+        return Solve(dens);
     }
 
     PART(2) {
         auto dens = GetInitialDens(lines, true);
-        return Constexpr::ToString(Solve(dens));
+        return Solve(dens);
     }
 
     TEST(1) {

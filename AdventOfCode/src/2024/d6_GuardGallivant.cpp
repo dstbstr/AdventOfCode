@@ -158,8 +158,7 @@ SOLUTION(2024, 6) {
 	}
 
 	PART(1) {
-		auto map = FindGuardPath<130>(lines);
-		return Constexpr::ToString(map.size());
+		return FindGuardPath<130>(lines).size();
 	}
 
 	template<size_t N>
@@ -228,7 +227,7 @@ SOLUTION(2024, 6) {
 	// Maybe the path could be a position and direction, and we can check for 
 	// loops by turning early, and seeing if the pos/dir exists
 	PART(2) {
-		return Constexpr::ToString(BruteForce<130>(lines));
+		return BruteForce<130>(lines);
 	}
 
 	TEST(1) {

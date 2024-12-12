@@ -50,9 +50,9 @@ SOLUTION(2015, 23) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, 0));
+        return Solve(lines, 0);
     }
     PART(2) {
-        return Constexpr::ToString(Solve(lines, 1));
+        return Solve(lines, 1);
     }
 }

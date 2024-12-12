@@ -95,12 +95,12 @@ SOLUTION(2016, 13) {
     PART(1) {
         u32 key;
         Constexpr::ParseNumber(lines[0], key);
-        return Constexpr::ToString(Bfs(key, { 31, 39 }));
+        return Bfs(key, { 31, 39 });
     }
     PART(2) {
         u32 key;
         Constexpr::ParseNumber(lines[0], key);
-        return Constexpr::ToString(FindUniquePositions(key, 50));
+        return FindUniquePositions(key, 50);
     }
 
     static_assert(IsOpen({ 0, 0 }, 10));

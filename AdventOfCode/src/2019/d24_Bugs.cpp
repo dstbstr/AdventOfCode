@@ -171,7 +171,7 @@ SOLUTION(2019, 24) {
     }
 
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines));
+        return SolvePartOne(lines);
     }
 
     constexpr auto SolvePartTwo(const auto& lines, size_t minutes) {
@@ -190,7 +190,7 @@ SOLUTION(2019, 24) {
     }
 
     PART(2) {
-        return Constexpr::ToString(SolvePartTwo(lines, 200));
+        return SolvePartTwo(lines, 200);
     }
 
     static_assert(CalcDiversity(ParseGrid(std::array<std::string_view, 5>{

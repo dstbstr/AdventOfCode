@@ -54,13 +54,13 @@ SOLUTION(2016, 12) {
         std::vector<s32> registers{ 0, 0, 0, 0 };
         Execute(lines, registers);
 
-        return Constexpr::ToString(registers[0]);
+        return registers[0];
     }
     PART(2) {
         std::vector<s32> registers{ 0, 0, 1, 0 };
         Execute(lines, registers);
 
-        return Constexpr::ToString(registers[0]);
+        return registers[0];
     }
 
     static_assert(GetValue("a", { 12, 24 }) == 12);

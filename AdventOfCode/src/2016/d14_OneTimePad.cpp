@@ -99,7 +99,7 @@ SOLUTION(2016, 14) {
     };
 
     PART(1) {
-        return Constexpr::ToString(FindKey64(lines[0], false, PartOneHints));
+        return FindKey64(lines[0], false, PartOneHints);
     }
 
     static const std::vector<u32> PartTwoHints = {
@@ -109,14 +109,8 @@ SOLUTION(2016, 14) {
     };
 
     PART(2) {
-        return Constexpr::ToString(FindKey64(lines[0], true, PartTwoHints));
+        return FindKey64(lines[0], true, PartTwoHints);
     }
-
-    /*
-    TEST(1) {
-        return FindKey64("abc", true) == 22551;
-    }
-    */
 }
 
 

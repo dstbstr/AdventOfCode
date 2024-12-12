@@ -90,15 +90,13 @@ SOLUTION(2020, 12) {
     PART(1) {
         Coord wayPoint{ 1, 0 };
         Coord pos{ 0, 0 };
-        auto result = Solve(lines, wayPoint, pos, pos);
-        return Constexpr::ToString(result);
+        return Solve(lines, wayPoint, pos, pos);
     }
 
     PART(2) {
         Coord wayPoint{ 10, -1 };
         Coord pos{ 0, 0 };
-        auto result = Solve(lines, wayPoint, pos, wayPoint);
-        return Constexpr::ToString(result);
+        return Solve(lines, wayPoint, pos, wayPoint);
     }
 
     constexpr bool TestTurns() {

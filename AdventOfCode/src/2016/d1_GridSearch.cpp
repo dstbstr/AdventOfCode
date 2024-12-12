@@ -38,10 +38,10 @@ SOLUTION(2016, 1) {
     }
 
     PART(1) {
-        return Constexpr::ToString(FindTarget(lines[0]));
+        return FindTarget(lines[0]);
     }
     PART(2) {
-        return Constexpr::ToString(FindTarget2(lines[0]));
+        return FindTarget2(lines[0]);
     }
 
     static_assert(FindTarget("R2, L3") == 5);

@@ -53,7 +53,7 @@ SOLUTION(2022, 15) {
         return result;
     }
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines, 2'000'000));
+        return SolvePartOne(lines, 2'000'000);
     }
 
     constexpr Coord SolvePartTwo(const auto& lines, Coord min, Coord max) {
@@ -88,7 +88,7 @@ SOLUTION(2022, 15) {
     }
     PART(2) {
         auto missingPoint = SolvePartTwo(lines, { 0, 0 }, { 4'000'000, 4'000'000 });
-        return Constexpr::ToString(missingPoint.X * 4'000'000 + missingPoint.Y);
+        return missingPoint.X * 4'000'000 + missingPoint.Y;
     }
 
     TEST(1) {

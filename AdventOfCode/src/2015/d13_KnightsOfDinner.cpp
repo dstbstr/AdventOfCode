@@ -67,10 +67,10 @@ SOLUTION(2015, 13) {
     }
 
    PART(1) {
-        return Constexpr::ToString(FindBestSeating(lines, false));
+        return FindBestSeating(lines, false);
     }
     PART(2) {
-        return Constexpr::ToString(FindBestSeating(lines, true));
+        return FindBestSeating(lines, true);
     }
 
     TEST(1) {

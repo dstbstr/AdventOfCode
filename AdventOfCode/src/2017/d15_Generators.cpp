@@ -41,13 +41,13 @@ SOLUTION(2017, 15) {
     PART(1) {
         size_t a, b;
         ParseLines(lines, a, b);
-        return Constexpr::ToString(solve(a, 0, b, 0, 40'000'000ull));
+        return solve(a, 0, b, 0, 40'000'000ull);
     }
 
     PART(2) {
         size_t a, b;
         ParseLines(lines, a, b);
-        return Constexpr::ToString(solve(a, 3, b, 7, 5'000'000ull));
+        return solve(a, 3, b, 7, 5'000'000ull);
     }
     
     /*
@@ -61,7 +61,7 @@ SOLUTION(2017, 15) {
             b = GenB(b);
             if ((a & Mask) == (b & Mask)) count++;
         }
-        return Constexpr::ToString(count);
+        return count;
     }
 
     PART(2) {
@@ -83,7 +83,7 @@ SOLUTION(2017, 15) {
             comparisons++;
         }
 
-        return Constexpr::ToString(count);
+        return count;
     }
     */
 }

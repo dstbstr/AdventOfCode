@@ -78,7 +78,7 @@ SOLUTION(2019, 17) {
             }
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     PART(2) {
@@ -99,6 +99,6 @@ SOLUTION(2019, 17) {
             }
         }
 
-        return Constexpr::ToString(output);
+        return output;
     }
 }

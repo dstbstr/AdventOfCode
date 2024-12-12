@@ -123,11 +123,11 @@ SOLUTION(2020, 11) {
 
     }
     PART(1) {
-        return Constexpr::ToString(Solve(lines, Next));
+        return Solve(lines, Next);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, Next2));
+        return Solve(lines, Next2);
     }
 
     TEST(1) {

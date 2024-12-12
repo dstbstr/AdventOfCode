@@ -115,7 +115,7 @@ SOLUTION(2022, 12) {
     PART(1) {
         size_t startIndex, endIndex;
         auto map = BuildMap<41, 66>(lines, startIndex, endIndex);
-        return Constexpr::ToString(Bfs<41, 66>(map, startIndex, endIndex));
+        return Bfs<41, 66>(map, startIndex, endIndex);
     }
 
     PART(2) {
@@ -129,7 +129,7 @@ SOLUTION(2022, 12) {
             best = std::min(best, length);
         }
 
-        return Constexpr::ToString(best);
+        return best;
     }
 
     static_assert(FindNext<3, 3>(0).size() == 2);

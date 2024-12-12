@@ -25,11 +25,11 @@ SOLUTION(2022, 6) {
     }
 
     PART(1) {
-        return Constexpr::ToString(FindUnique(lines[0], MessageType::Signal));
+        return FindUnique(lines[0], MessageType::Signal);
     }
 
     PART(2) {
-        return Constexpr::ToString(FindUnique(lines[0], MessageType::Message));
+        return FindUnique(lines[0], MessageType::Message);
     }
 
     static_assert(FindUnique("bvwbjplbgvbhsrlpgdmjqwftvncz", MessageType::Signal) == 5);

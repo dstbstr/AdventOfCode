@@ -43,7 +43,7 @@ SOLUTION(2018, 14) {
             }
         } while (current.find(target, current.size() - 10000) == current.npos);
 
-        return Constexpr::ToString(current.find(target));
+        return current.find(target);
     }
 
     /*

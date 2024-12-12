@@ -75,12 +75,12 @@ SOLUTION(2015, 24) {
 
     PART(1) {
         auto weights = ParseLinesAsNumbers<u32>(lines);
-        return Constexpr::ToString(FindMinimalEntanglement(weights, 3));
+        return FindMinimalEntanglement(weights, 3);
     }
 
     PART(2) {
         auto weights = ParseLinesAsNumbers<u32>(lines);
-        return Constexpr::ToString(FindMinimalEntanglement(weights, 4));
+        return FindMinimalEntanglement(weights, 4);
     }
 
     static_assert(FindBalanceWeight({ 1, 2, 3, 4, 5, 7, 8, 9, 10, 11 }, 3) == 20);

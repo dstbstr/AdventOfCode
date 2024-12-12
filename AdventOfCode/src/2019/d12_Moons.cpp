@@ -86,7 +86,9 @@ SOLUTION(2019, 12) {
             Tick(moons);
         }
 
-        return Constexpr::ToString(std::accumulate(moons.begin(), moons.end(), 0, [](u32 previous, const auto& moon) { return previous + GetEnergy(moon); }));
+        return std::accumulate(moons.begin(), moons.end(), 0, [](u32 previous, const auto& moon) { 
+            return previous + GetEnergy(moon); 
+        });
     }
 
     PART(2) {
@@ -111,6 +113,6 @@ SOLUTION(2019, 12) {
         }
 
         auto lcm = Constexpr::FindLcm<u64>(pX, pY, pZ);
-        return Constexpr::ToString(lcm * 2);
+        return lcm * 2;
     }
 }

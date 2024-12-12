@@ -48,7 +48,7 @@ SOLUTION(2024, 5) {
 	}
 
 	PART(1) {
-		return Constexpr::ToString(SolvePart1(lines));
+		return SolvePart1(lines);
 	}
 
 	constexpr void Order(const Map & rules, std::vector<u32>&nums) {
@@ -85,7 +85,7 @@ SOLUTION(2024, 5) {
 	}
 
 	PART(2) {
-		return Constexpr::ToString(SolvePart2(lines));
+		return SolvePart2(lines);
 	}
 
 #if CLANG

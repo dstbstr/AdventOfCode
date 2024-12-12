@@ -70,7 +70,7 @@ SOLUTION(2018, 25) {
             toRemove.clear();
         }
 
-        return Constexpr::ToString(constellations.size());
+        return constellations.size();
     }
 
     /*

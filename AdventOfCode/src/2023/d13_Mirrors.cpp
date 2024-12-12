@@ -75,11 +75,11 @@ SOLUTION(2023, 13) {
         return (result.first * 100) + result.second;
     }
     PART(1) {
-        return Constexpr::ToString(Solve(lines, 0));
+        return Solve(lines, 0);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, 1));
+        return Solve(lines, 1);
     }
 
     TEST(1) {
@@ -101,6 +101,6 @@ SOLUTION(2023, 13) {
             "#....#..#"
         };
 
-        return Part1(lines) == "405";
+        return Solve(lines, 0) == 405;
     }
 }

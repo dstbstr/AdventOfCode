@@ -2,10 +2,10 @@
 
 SOLUTION(2024, 17) {
 	PART(1) {
-		return Constexpr::ToString(lines.size());
+		return lines.size();
 	}
 	PART(2) {
-		return Constexpr::ToString(lines.size());
+		return lines.size();
 	}
 	TEST(1) {
 		return true;

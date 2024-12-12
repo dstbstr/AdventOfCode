@@ -66,7 +66,7 @@ SOLUTION(2020, 9) {
 
     PART(1) {
         const auto nums = ParseLinesAsNumbers<size_t>(lines);
-        return Constexpr::ToString(FindKey(nums, 25));
+        return FindKey(nums, 25);
     }
 
     PART(2) {
@@ -75,7 +75,7 @@ SOLUTION(2020, 9) {
         size_t min, max;
         FindContiguousNums(nums, key, min, max);
 
-        return Constexpr::ToString(min + max);
+        return min + max;
     }
 
     TEST(1) {

@@ -12,7 +12,7 @@ SOLUTION(2017, 17) {
             pos++;
         }
         auto where = std::find(buffer.begin(), buffer.end(), 2017);
-        return Constexpr::ToString(*(where + 1));
+        return *(where + 1);
     }
 
     PART(2) {
@@ -26,6 +26,6 @@ SOLUTION(2017, 17) {
                 result = i;
             }
         }
-        return Constexpr::ToString(result);
+        return result;
     }
 }

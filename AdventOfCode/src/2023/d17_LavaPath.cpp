@@ -98,11 +98,11 @@ SOLUTION(2023, 17) {
 	}
 	
 	PART(1) {
-		return Constexpr::ToString(Solve(lines, 1, 3));
+		return Solve(lines, 1, 3);
 	}
 
 	PART(2) {
-		return Constexpr::ToString(Solve(lines, 4, 10) - 1); //why is this off by one?
+		return Solve(lines, 4, 10) - 1; //why is this off by one?
 	}
 
 	TEST(1) {

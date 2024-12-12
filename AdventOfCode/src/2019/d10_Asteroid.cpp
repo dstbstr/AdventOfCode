@@ -84,8 +84,7 @@ SOLUTION(2019, 10) {
 
     PART(1) {
         auto map = ParseMap(lines);
-        auto targets = FindMostTargets(map);
-        return Constexpr::ToString(targets.size());
+        return FindMostTargets(map).size();
     }
 
     PART(2) {
@@ -93,8 +92,7 @@ SOLUTION(2019, 10) {
         auto targets = FindMostTargets(map);
         std::sort(targets.begin(), targets.end());
 
-        auto result = (targets[199].Pos.X * 100) + targets[199].Pos.Y;
-        return Constexpr::ToString(result);
+        return (targets[199].Pos.X * 100) + targets[199].Pos.Y;
     }
 
     TEST(1) {

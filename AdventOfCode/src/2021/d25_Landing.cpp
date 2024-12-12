@@ -45,7 +45,7 @@ SOLUTION(2021, 25) {
             current = next;
         }
 
-        return Constexpr::ToString(steps);
+        return steps;
     }
     static_assert(Next({ "...>>>>>..." })[0] == "...>>>>.>..");
     static_assert(Next({ "...>>>>.>.." })[0] == "...>>>.>.>.");

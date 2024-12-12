@@ -121,7 +121,7 @@ SOLUTION(2018, 7) {
         }
 
         auto remaining = Constexpr::FindMax(inFlightWork);
-        return Constexpr::ToString(totalSeconds + remaining);
+        return totalSeconds + remaining;
     }
 
     /*

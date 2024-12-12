@@ -184,7 +184,7 @@ SOLUTION(2018, 15) {
         auto hpValues = hp.GetValues();
         auto remainingHp = std::accumulate(hpValues.begin(), hpValues.end(), 0);
 
-        return Constexpr::ToString(rounds * remainingHp);
+        return rounds * remainingHp;
     }
 
     PART(2) {
@@ -197,10 +197,10 @@ SOLUTION(2018, 15) {
             if (rounds > 0) {
                 auto hpValues = hp.GetValues();
                 auto remainingHp = std::accumulate(hpValues.begin(), hpValues.end(), 0);
-                return Constexpr::ToString(rounds * remainingHp);
+                return rounds * remainingHp;
             }
         }
-        return "Not Found";
+        throw "Not Found";
     }
 
     constexpr bool TestMove(const std::vector<std::string>& initial, const std::vector<std::string>& expected) {

@@ -529,7 +529,7 @@ SOLUTION(2022, 22) {
         return GetResult(currentPos, facing);
     }
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines));
+        return SolvePartOne(lines);
     }
 
     PART(2) {
@@ -558,7 +558,7 @@ SOLUTION(2022, 22) {
         auto finalFace = cube.Faces.at(currentFace);
         RowCol resultPos = { pos.Row + finalFace.Tl.Row, pos.Col + finalFace.Tl.Col };
 
-        return Constexpr::ToString(GetResult(resultPos, facing));
+        return GetResult(resultPos, facing);
     }
 
     static_assert(SplitPath("10R5L5R10L4R5L5") == std::vector<std::string>{"10", "R", "5", "L", "5", "R", "10", "L", "4", "R", "5", "L", "5"});

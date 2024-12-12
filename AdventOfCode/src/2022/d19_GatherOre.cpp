@@ -83,7 +83,7 @@ SOLUTION(2022, 19) {
         return result;
     }
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines));
+        return SolvePartOne(lines);
     }
 
     PART(2) {
@@ -93,7 +93,7 @@ SOLUTION(2022, 19) {
             result *= FindBfs(bps[i], 32);
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     TEST(1) {

@@ -19,7 +19,7 @@ SOLUTION(2020, 18) {
             value.Precedence = 1;
         }
 
-        return Constexpr::ToString(Solve(lines, operators));
+        return Solve(lines, operators).ToString();
     }
 
     PART(2) {
@@ -28,7 +28,7 @@ SOLUTION(2020, 18) {
             value.Precedence = 3 - value.Precedence;
         }
 
-        return Constexpr::ToString(Solve(lines, operators));
+        return Solve(lines, operators).ToString();
     }
 
     TEST(1) {

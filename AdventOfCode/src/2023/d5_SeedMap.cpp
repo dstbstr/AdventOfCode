@@ -119,11 +119,9 @@ SOLUTION(2023, 5) {
             }
             best = std::min(best, running);
         }
-        return Constexpr::ToString(best);
+        return best;
     }
 
-    //362940 too low
-    //10114991 too high
     PART(2) {
         auto groups = SplitInputIntoGroups(lines);
         auto seedRanges = ParseLineAsNumbers<s64>(groups[0][0].substr(7), " ");
@@ -145,7 +143,7 @@ SOLUTION(2023, 5) {
             }
             best = std::min(best, running.GetMin());
         }
-        return Constexpr::ToString(best);
+        return best;
     }
 
     TEST(1) {
@@ -185,8 +183,8 @@ SOLUTION(2023, 5) {
             "56 93 4"
         };
 
-        if (Part1(example) != "35") return false;
-        if (Part2(example) != "46") return false;
+        if (std::get<s64>(Part1(example)) != 35) return false;
+        if (std::get<s64>(Part2(example)) != 46) return false;
 
         return true;
     }

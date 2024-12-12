@@ -20,7 +20,7 @@ SOLUTION(2021, 7) {
     }
 
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines[0]));
+        return SolvePartOne(lines[0]);
     }
 
     constexpr size_t SolvePartTwo(std::string_view line) {
@@ -41,7 +41,7 @@ SOLUTION(2021, 7) {
         return std::min(result1, result2);
     }
     PART(2) {
-        return Constexpr::ToString(SolvePartTwo(lines[0]));
+        return SolvePartTwo(lines[0]);
     }
 
     TEST(1) {

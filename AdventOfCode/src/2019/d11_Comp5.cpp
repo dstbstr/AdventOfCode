@@ -42,9 +42,7 @@ SOLUTION(2019, 11) {
 
     PART(1) {
         auto instructions = ParseInstructions(lines[0]);
-        auto painted = GetPainting(instructions, true);
-
-        return Constexpr::ToString(painted.size());
+        return GetPainting(instructions, true).size();
     }
 
     PART(2) {

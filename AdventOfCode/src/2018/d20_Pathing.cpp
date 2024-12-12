@@ -51,17 +51,15 @@ SOLUTION(2018, 20) {
         return result;
     }
     PART(1) {
-        auto result = Solve(lines[0], [](size_t length, size_t& r) {
+        return Solve(lines[0], [](size_t length, size_t& r) {
             r = std::max(length, r);
-            });
-        return Constexpr::ToString(result);
+        });
     }
 
     PART(2) {
-        auto result = Solve(lines[0], [](size_t length, size_t& r) {
+        return Solve(lines[0], [](size_t length, size_t& r) {
             r += length >= 1000;
-            });
-        return Constexpr::ToString(result);
+        });
     }
 
     constexpr void TestKeepMax(size_t length, size_t& r) {

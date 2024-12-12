@@ -52,10 +52,10 @@ SOLUTION(2015, 21) {
         });
         for (const auto& build : builds) {
             if (CountRounds(build, boss) <= CountRounds(boss, build)) {
-                return Constexpr::ToString(build.TotalCost);
+                return build.TotalCost;
             }
         }
-        return "Not Found";
+        throw "Not Found";
     }
 
     PART(2) {
@@ -66,10 +66,10 @@ SOLUTION(2015, 21) {
             });
         for (const auto& build : builds) {
             if (CountRounds(boss, build) < CountRounds(build, boss)) {
-                return Constexpr::ToString(build.TotalCost);
+                return build.TotalCost;
             }
         }
-        return "Not Found";
+        throw "Not Found";
     }
 
     static_assert(CountRounds({ 8, 5, 5 }, { 12, 7, 2 }) == 4);

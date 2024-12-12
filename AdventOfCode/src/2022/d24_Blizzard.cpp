@@ -238,7 +238,7 @@ SOLUTION(2022, 24) {
         return Travel(blizzard, start, exit, limits, 0);
     }
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines));
+        return SolvePartOne(lines);
     }
 
     constexpr size_t SolvePartTwo(const auto& lines) {
@@ -253,7 +253,7 @@ SOLUTION(2022, 24) {
         return result;
     }
     PART(2) {
-        return Constexpr::ToString(SolvePartTwo(lines));
+        return SolvePartTwo(lines);
     }
     TEST(1) {
         std::vector<std::string> lines = {

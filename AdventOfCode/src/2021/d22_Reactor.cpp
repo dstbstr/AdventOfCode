@@ -98,11 +98,11 @@ SOLUTION(2021, 22) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, IsInRange));
+        return Solve(lines, IsInRange);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, AcceptAll));
+        return Solve(lines, AcceptAll);
     }
 
     constexpr bool TestCubeSubtract() {

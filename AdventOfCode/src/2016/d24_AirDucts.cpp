@@ -94,10 +94,10 @@ SOLUTION(2016, 24) {
 
     }
     PART(1) {
-        return Constexpr::ToString(Solve(lines, false));
+        return Solve(lines, false);
     }
     PART(2) {
-        return Constexpr::ToString(Solve(lines, true));
+        return Solve(lines, true);
     }
 
     TEST(1) {

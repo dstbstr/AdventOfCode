@@ -142,7 +142,7 @@ SOLUTION(2018, 22) {
         GetTargetAndDepth(lines, target, depth);
 
         auto map = BuildMap(target, target, depth);
-        return Constexpr::ToString(GetRisk(map));
+        return GetRisk(map);
     }
 
     PART(2) {
@@ -151,7 +151,7 @@ SOLUTION(2018, 22) {
         GetTargetAndDepth(lines, target, depth);
         RowCol buffer = { target.Row + 50, target.Col + 500 };
         auto map = BuildMap(target, buffer, depth);
-        return Constexpr::ToString(Bfs(map, target)); //< 1 s
+        return Bfs(map, target); //< 1 s
     }
 
     TEST(1) {

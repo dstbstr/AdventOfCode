@@ -53,7 +53,7 @@ SOLUTION(2017, 23) {
             cmds[ip](ip, regs, result);
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     PART(2) {
@@ -79,6 +79,6 @@ SOLUTION(2017, 23) {
             }
         }
 
-        return Constexpr::ToString(count);       
+        return count;
     }
 }

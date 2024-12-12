@@ -29,11 +29,11 @@ SOLUTION(2024, 7) {
 		return a * magnitude + b;
 	}
 	PART(1) {
-		return Constexpr::ToString(Solve(lines, plus, mul));
+		return Solve(lines, plus, mul);
 	}
 
 	PART(2) {
-		return Constexpr::ToString(Solve(lines, plus, mul, concat));
+		return Solve(lines, plus, mul, concat);
 	}
 
 	constexpr std::vector<std::string> GetTestInput() {

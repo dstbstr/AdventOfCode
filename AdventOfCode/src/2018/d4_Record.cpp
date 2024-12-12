@@ -110,7 +110,7 @@ SOLUTION(2018, 4) {
             }
         }
 
-        return Constexpr::ToString(resultMinute * sleepiestGuard);
+        return resultMinute * sleepiestGuard;
     }
 
     PART(2) {
@@ -134,7 +134,7 @@ SOLUTION(2018, 4) {
             }
         }
 
-        return Constexpr::ToString(resultMinute * resultGuardId);
+        return resultMinute * resultGuardId;
     }
 
     static_assert(ParseDateTime("1518-10-05 00:56").Month == 10);

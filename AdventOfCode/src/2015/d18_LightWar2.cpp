@@ -89,7 +89,7 @@ SOLUTION(2015, 18) {
             Next(lights);
         }
 
-        return Constexpr::ToString(CountLit(lights));
+        return CountLit(lights);
     }
     PART(2) {
         auto lights = BuildArray<100, 100>(Constexpr::JoinVec("", lines));
@@ -100,7 +100,7 @@ SOLUTION(2015, 18) {
             SetCorners(lights);
         }
 
-        return Constexpr::ToString(CountLit(lights));
+        return CountLit(lights);
     }
 
     static_assert(BuildArray<6, 6>(

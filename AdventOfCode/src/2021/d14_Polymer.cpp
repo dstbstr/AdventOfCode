@@ -78,11 +78,11 @@ SOLUTION(2021, 14) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, 10));
+        return Solve(lines, 10);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, 40));
+        return Solve(lines, 40);
     }
 
     constexpr bool TestSolve() {

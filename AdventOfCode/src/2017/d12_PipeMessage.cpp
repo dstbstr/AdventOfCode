@@ -9,7 +9,7 @@ SOLUTION(2017, 12) {
 
     PART(1) {
         auto connections = ParseLines(lines, ParseLine);
-        return Constexpr::ToString(FloodFill(0, [&connections](u32 pipe) { return connections[pipe]; }).size());
+        return FloodFill(0, [&connections](u32 pipe) { return connections[pipe]; }).size();
     }
 
     PART(2) {
@@ -28,7 +28,7 @@ SOLUTION(2017, 12) {
                 });
         }
 
-        return Constexpr::ToString(groupCount);
+        return groupCount;
     }
 
     static_assert(ParseLine("0 <-> 2").size() == 1);

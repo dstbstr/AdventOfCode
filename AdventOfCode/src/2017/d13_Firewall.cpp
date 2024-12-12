@@ -22,7 +22,7 @@ SOLUTION(2017, 13) {
         for (const auto& scanner : scanners) {
             if (Caught(scanner)) total += scanner.first * scanner.second;
         }
-        return Constexpr::ToString(total);
+        return total;
     }
 
     PART(2) {
@@ -34,6 +34,6 @@ SOLUTION(2017, 13) {
             ++delay;
         }
 
-        return Constexpr::ToString(delay);
+        return delay;
     }
 }

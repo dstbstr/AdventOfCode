@@ -51,7 +51,7 @@ SOLUTION(2018, 3) {
             return running + std::count_if(row.begin(), row.end(), [](u32 v) { return v > 1; }); 
         });
         delete fabric;
-        return Constexpr::ToString(count);
+        return count;
 
     }
 
@@ -68,10 +68,10 @@ SOLUTION(2018, 3) {
                 }
             }
             if (!found) {
-                return Constexpr::ToString(rects[i].Id);
+                return rects[i].Id;
             }
         }
-        return "Not Found";
+        throw "Not Found";
     }
 
     static_assert(Intersects(ParseRect("#1 @ 1,3: 4x4"), ParseRect("#2 @ 3,1: 4x4")));

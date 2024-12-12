@@ -51,13 +51,13 @@ SOLUTION(2015, 8) {
     PART(1) {
         std::vector<u32> deltas;
         std::transform(lines.cbegin(), lines.cend(), std::back_inserter(deltas), CalculateDelta);
-        return Constexpr::ToString(std::accumulate(deltas.cbegin(), deltas.cend(), 0 ));
+        return std::accumulate(deltas.cbegin(), deltas.cend(), 0 );
     }
 
     PART(2) {
         std::vector<u32> growths;
         std::transform(lines.cbegin(), lines.cend(), std::back_inserter(growths), CalculateGrowth);
-        return Constexpr::ToString(std::accumulate(growths.cbegin(), growths.cend(), 0));
+        return std::accumulate(growths.cbegin(), growths.cend(), 0);
     }
 
     static_assert(CountCodeCharacters(R"("")") == 2);

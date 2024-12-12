@@ -84,12 +84,12 @@ SOLUTION(2022, 7) {
 
     PART(1) {
         auto fs = Fs(lines);
-        return Constexpr::ToString(fs.SumDirectoriesLessThan(100'000));
+        return fs.SumDirectoriesLessThan(100'000);
     }
 
     PART(2) {
         auto fs = Fs(lines);
-        return Constexpr::ToString(fs.FindDirToDelete());
+        return fs.FindDirToDelete();
     }
 
     TEST(1) {

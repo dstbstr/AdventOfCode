@@ -120,7 +120,7 @@ SOLUTION(2017, 7) {
     }
 
     PART(2) {
-        return Constexpr::ToString(SolvePartTwo(lines));
+        return SolvePartTwo(lines);
     }
 
     constexpr bool TestAllMatch(const std::vector<u32>& weights, bool shouldMatch, size_t expectedOddIndex) {

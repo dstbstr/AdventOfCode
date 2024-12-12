@@ -48,12 +48,12 @@ SOLUTION(2015, 5) {
     }
 
     PART(1) {
-        return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsNice));
+        return std::count_if(lines.cbegin(), lines.cend(), IsNice);
     }
 
     PART(2) {
-        //return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsReallyNice));
-        return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsReallyNice) + 1); //why is this one wrong?
+        //return std::count_if(lines.cbegin(), lines.cend(), IsReallyNice);
+        return std::count_if(lines.cbegin(), lines.cend(), IsReallyNice) + 1; //why is this one wrong?
     }
 
     static_assert(IsNice("ugknbfddgicrmopn"));

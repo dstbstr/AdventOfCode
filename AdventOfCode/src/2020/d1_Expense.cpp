@@ -10,7 +10,7 @@ SOLUTION(2020, 1) {
             for (auto secondNum = firstNum + 1; secondNum < nums.size(); secondNum++) {
                 auto sum = nums[firstNum] + nums[secondNum];
                 if (sum == 2020) {
-                    return Constexpr::ToString(nums[firstNum] * nums[secondNum]);
+                    return nums[firstNum] * nums[secondNum];
                 }
                 else if (sum > 2020) {
                     tooBig = true;
@@ -20,7 +20,7 @@ SOLUTION(2020, 1) {
             if (tooBig) continue;
         }
 
-        return "Not Found";
+        throw "Not Found";
     }
 
     PART(2) {
@@ -32,7 +32,7 @@ SOLUTION(2020, 1) {
                 for (auto thirdNum = secondNum + 1; thirdNum < nums.size(); thirdNum++) {
                     auto sum = nums[firstNum] + nums[secondNum] + nums[thirdNum];
                     if (sum == 2020) {
-                        return Constexpr::ToString(nums[firstNum] * nums[secondNum] * nums[thirdNum]);
+                        return nums[firstNum] * nums[secondNum] * nums[thirdNum];
                     }
                     else if (sum > 2020) {
                         tooBig = true;
@@ -43,6 +43,6 @@ SOLUTION(2020, 1) {
             }
         }
 
-        return "Not Found";
+        throw "Not Found";
     }
 }

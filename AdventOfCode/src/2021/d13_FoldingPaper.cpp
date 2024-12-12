@@ -70,7 +70,7 @@ SOLUTION(2021, 13) {
         return paper.size();
     }
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines));
+        return SolvePartOne(lines);
     }
 
     PART(2) {

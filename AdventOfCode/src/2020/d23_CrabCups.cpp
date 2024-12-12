@@ -86,7 +86,7 @@ SOLUTION(2020, 23) {
     }
 
     PART(2) {
-        return Constexpr::ToString(SolvePartTwo(lines[0]));
+        return SolvePartTwo(lines[0]);
     }
 
 	//static_assert(SolvePartOne("389125467") == "67384529");

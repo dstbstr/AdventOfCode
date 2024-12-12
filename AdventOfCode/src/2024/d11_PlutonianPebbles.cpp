@@ -56,12 +56,12 @@ SOLUTION(2024, 11) {
 
 	PART(1) {
 		auto nums = ParseLineAsNumbers<u64>(lines[0], " ");
-		return Constexpr::ToString(Solve(nums, 25));
+		return Solve(nums, 25);
 	}
 
 	PART(2) {
 		auto nums = ParseLineAsNumbers<u64>(lines[0], " ");
-		return Constexpr::ToString(Solve(nums, 75));
+		return Solve(nums, 75);
 	}
 
 	static_assert(Next(0u) == std::make_pair(1u, std::nullopt));

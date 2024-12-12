@@ -94,7 +94,7 @@ SOLUTION(2021, 21) {
 
         Constexpr::ParseNumber(Constexpr::Split(lines[0], " ").back(), p1Pos);
         Constexpr::ParseNumber(Constexpr::Split(lines[1], " ").back(), p2Pos);
-        return Constexpr::ToString(SolveP1(p1Pos, p2Pos));
+        return SolveP1(p1Pos, p2Pos);
     }
 
     constexpr u64 SolveP2(size_t p1Pos, size_t p2Pos) {
@@ -115,7 +115,7 @@ SOLUTION(2021, 21) {
 
         Constexpr::ParseNumber(Constexpr::Split(lines[0], " ").back(), p1Pos);
         Constexpr::ParseNumber(Constexpr::Split(lines[1], " ").back(), p2Pos);
-        return Constexpr::ToString(SolveP2(p1Pos, p2Pos));
+        return SolveP2(p1Pos, p2Pos);
     }
 
     static_assert(SolveP1(4, 8) == 739785);

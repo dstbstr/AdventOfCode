@@ -42,11 +42,11 @@ SOLUTION(2021, 2) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, Coord{ 0, 0 }));
+        return Solve(lines, Coord{ 0, 0 });
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, Vec3<s64>{0, 0, 0}));
+        return Solve(lines, Vec3<s64>{0, 0, 0});
     }
 
     TEST(1) {

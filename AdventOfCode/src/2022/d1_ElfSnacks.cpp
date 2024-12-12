@@ -18,12 +18,12 @@ SOLUTION(2022, 1) {
 
     PART(1) {
         auto elves = GetElves(lines);
-        return Constexpr::ToString(elves.back());
+        return elves.back();
     }
 
     PART(2) {
         auto elves = GetElves(lines);
-        return Constexpr::ToString(elves.back() + elves[elves.size() - 2] + elves[elves.size() - 3]);
+        return elves.back() + elves[elves.size() - 2] + elves[elves.size() - 3];
     }
 
     constexpr bool TestGetElves() {

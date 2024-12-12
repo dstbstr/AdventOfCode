@@ -9,7 +9,7 @@ SOLUTION(2017, 11) {
             FlatHex::Move(pos, FlatHex::ParseDirection(sv));
         }
 
-        return Constexpr::ToString(FlatHex::MDistance(pos, { 0, 0, 0 }));
+        return FlatHex::MDistance(pos, { 0, 0, 0 });
     }
 
     PART(2) {
@@ -22,7 +22,7 @@ SOLUTION(2017, 11) {
             max = std::max(max, MDistance(pos, origin));
         }
 
-        return Constexpr::ToString(max);
+        return max;
     }
 
     //static_assert(PartOne({"ne,ne,ne"}) == "3");

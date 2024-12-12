@@ -66,11 +66,11 @@ SOLUTION(2021, 24) {
 
     PART(1) {
         (void)lines;
-        return Constexpr::ToString(Solve(true));
+        return Solve(true);
     }
 
     PART(2) {
         (void)lines;
-        return Constexpr::ToString(Solve(false));
+        return Solve(false);
     }
 }

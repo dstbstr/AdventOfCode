@@ -32,11 +32,11 @@ SOLUTION(2021, 6) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines[0], 80));
+        return Solve(lines[0], 80);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines[0], 256));
+        return Solve(lines[0], 256);
     }
 
     constexpr bool TestNextDay() {

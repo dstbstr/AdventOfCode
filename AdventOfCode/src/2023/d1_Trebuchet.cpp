@@ -21,7 +21,7 @@ SOLUTION(2023, 1) {
     }
 
     PART(1) {
-         return Constexpr::ToString(SumDigits(lines));
+         return SumDigits(lines);
     }
 
     constexpr std::vector<std::string> ReplaceWords(const auto & lines) {
@@ -63,7 +63,7 @@ SOLUTION(2023, 1) {
     }
     PART(2) {
         auto transformed = ReplaceWords(lines);
-        return Constexpr::ToString(SumDigits(transformed));
+        return SumDigits(transformed);
     }
 
     static_assert(FindFirstNumber("1abc2") == 1);

@@ -39,17 +39,15 @@ SOLUTION(2023, 6) {
 
     PART(1) {
         auto pairs = ParseInput(lines);
-        u64 result = 1;
-        for (auto [time, dist] : pairs) {
-            result *= CountWins(time, dist);
-        }
-        return Constexpr::ToString(result);
+		return std::accumulate(pairs.begin(), pairs.end(), 1ull, [](u64 running, const auto& p) {
+			return running * CountWins(p.first, p.second);
+		});
     }
 
     PART(2) {
         auto [time, dist] = ParseAsSingle(lines);
 
-        return Constexpr::ToString(CountWins(time, dist));
+        return CountWins(time, dist);
     }
 
     TEST(1) {
@@ -58,6 +56,6 @@ SOLUTION(2023, 6) {
             "Distance:  9  40  200"
         };
 
-        return Part1(lines) == "288";
+        return std::get<u64>(Part1(lines)) == 288;
     }
 }

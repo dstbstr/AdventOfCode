@@ -137,11 +137,11 @@ SOLUTION(2023, 7) {
 	}
 
 	PART(1) {
-		return Constexpr::ToString(Solve(lines, FindHand, NormalScore));
+		return Solve(lines, FindHand, NormalScore);
 	}
 
 	PART(2) {
-		return Constexpr::ToString(Solve(lines, FindHandJokers, JokerScore));
+		return Solve(lines, FindHandJokers, JokerScore);
 	}
 
 	TEST(1) {
@@ -153,8 +153,8 @@ SOLUTION(2023, 7) {
 			"QQQJA 483"
 		};
 
-		if (Part1(example) != "6440") return false;
-		if (Part2(example) != "5905") return false;
+		if (std::get<u32>(Part1(example)) != 6440) return false;
+		if (std::get<u32>(Part2(example)) != 5905) return false;
 
 		return true;
 	}

@@ -47,11 +47,9 @@ SOLUTION(2023, 4) {
     }
     PART(1) {
         auto cards = ParseLines(lines, ParseCard);
-        auto result = std::accumulate(cards.begin(), cards.end(), 0u, [](u32 running, const Card& card) {
+        return std::accumulate(cards.begin(), cards.end(), 0u, [](u32 running, const Card& card) {
             return running + card.Score();
             });
-
-        return Constexpr::ToString(result);
     }
 
     PART(2) {
@@ -64,10 +62,10 @@ SOLUTION(2023, 4) {
             }
         }
 
-        return Constexpr::ToString(std::accumulate(multipliers.begin(), multipliers.end(), -1));
+        return std::accumulate(multipliers.begin(), multipliers.end(), -1);
     }
 
-    TEST(1) {
+    constexpr bool TestParseCard() {
         auto card = ParseCard("Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 5");
         if (card.Id != 1) return false;
         if (card.Winners.size() != 5) return false;
@@ -77,7 +75,9 @@ SOLUTION(2023, 4) {
         return true;
     }
 
-    TEST(2) {
+	static_assert(TestParseCard());
+
+    TEST(1) {
         std::vector<std::string> example = {
             "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53",
             "Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19",
@@ -87,6 +87,6 @@ SOLUTION(2023, 4) {
             "Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"
         };
 
-        return Part2(example) == "30";
+        return std::get<s32>(Part2(example)) == 30;
     }
 }

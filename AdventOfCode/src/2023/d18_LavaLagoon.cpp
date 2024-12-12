@@ -56,11 +56,11 @@ SOLUTION(2023, 18) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, Dig));
+        return Solve(lines, Dig);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, Dig2));
+        return Solve(lines, Dig2);
     }
 
     TEST(1) {

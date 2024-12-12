@@ -38,7 +38,7 @@ SOLUTION(2015, 25) {
         Constexpr::ParseNumber(line.substr(firstDigitStart, firstDigitEnd - firstDigitStart), row);
         Constexpr::ParseNumber(line.substr(secondDigitStart, secondDigitEnd - secondDigitStart), col);
 
-        return Constexpr::ToString(CalculateCode(CalculateIndex(row, col)));
+        return CalculateCode(CalculateIndex(row, col));
     }
 
     static_assert(CalculateIndex(1, 1) == 1);

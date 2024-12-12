@@ -122,11 +122,11 @@ SOLUTION(2023, 22) {
         auto bricks = ParseLines(lines, ParseBrick);
         Compact(bricks);
 
-        size_t result = 0;
+        u32 result = 0;
         for (size_t i = 0u; i < bricks.size(); i++) {
             result += CanDestroy(bricks, i);
         }
-        return Constexpr::ToString(result);
+        return result;
     }
 
     PART(2) {
@@ -138,7 +138,7 @@ SOLUTION(2023, 22) {
             result += CountChainReaction(bricks, i);
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     TEST(1) {
@@ -152,6 +152,6 @@ SOLUTION(2023, 22) {
             "1,1,8~1,1,9"
         };
 
-        return Part1(lines) == "5";
+        return std::get<u32>(Part1(lines)) == 5;
     }
 }

@@ -54,11 +54,11 @@ SOLUTION(2024, 8) {
 	}
 
 	PART(1) {
-		return Constexpr::ToString(Solve<false>(lines));
+		return Solve<false>(lines);
 	}
 
 	PART(2) {
-		return Constexpr::ToString(Solve<true>(lines));
+		return Solve<true>(lines);
 	}
 
 	TEST(1) {

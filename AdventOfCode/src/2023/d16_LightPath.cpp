@@ -58,7 +58,7 @@ SOLUTION(2023, 16) {
 	}
 
 	PART(1) {
-		return Constexpr::ToString(CountEnergy(lines, { 0, 0 }, Right));
+		return CountEnergy(lines, { 0, 0 }, Right);
 	}
 
 	PART(2) {
@@ -72,7 +72,7 @@ SOLUTION(2023, 16) {
 			result = std::max(result, CountEnergy(lines, { lines.size() - 1, col }, Up));
 		}
 
-		return Constexpr::ToString(result);
+		return result;
 	}
 
 	TEST(1) {
@@ -89,6 +89,6 @@ SOLUTION(2023, 16) {
 			"..//.|...."
 		};
 
-		return Part1(lines) == "46";
+		return CountEnergy(lines, Origin<RowCol>, Facing::Right) == 46;
 	}
 }

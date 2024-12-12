@@ -1,7 +1,7 @@
 #include "Common.h"
 
 SOLUTION(2015, 2) {
-    constexpr size_t CalculateWrappingPaper(size_t length, size_t width, size_t height)
+    constexpr u64 CalculateWrappingPaper(u32 length, u32 width, u32 height)
     {
         auto d1 = height * width;
         auto d2 = height * length;
@@ -18,7 +18,7 @@ SOLUTION(2015, 2) {
         }
     }
 
-    constexpr size_t CalculateRibbon(size_t length, size_t width, size_t height)
+    constexpr u64 CalculateRibbon(u32 length, u32 width, u32 height)
     {
         u64 area = height * width * length;
         if (height >= width && height >= length) {
@@ -33,22 +33,22 @@ SOLUTION(2015, 2) {
         return 0;
     }
 
-    constexpr void ParseLine(std::string_view line, size_t& outLength, size_t& outWidth, size_t& outHeight) {
+    constexpr void ParseLine(std::string_view line, u32& outLength, u32& outWidth, u32& outHeight) {
         auto s = Constexpr::Split(line, "x");
         Constexpr::ParseNumber(s[0], outLength);
         Constexpr::ParseNumber(s[1], outWidth);
         Constexpr::ParseNumber(s[2], outHeight);
     }
 
-    constexpr std::string Solve(const auto& lines, auto func) {
-        size_t result = 0;
+    constexpr u64 Solve(const auto& lines, auto func) {
+        u64 result = 0;
         for (const auto& line : lines) {
-            size_t length, width, height;
+            u32 length, width, height;
             ParseLine(line, length, width, height);
             result += func(length, width, height);
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
     PART(1) {
         return Solve(lines, CalculateWrappingPaper);

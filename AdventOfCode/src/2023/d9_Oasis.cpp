@@ -49,11 +49,11 @@ SOLUTION(2023, 9) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, ExtractForward));
+        return Solve(lines, ExtractForward);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, ExtractBackward));
+        return Solve(lines, ExtractBackward);
     }
 
     TEST(1) {
@@ -63,8 +63,8 @@ SOLUTION(2023, 9) {
             "10 13 16 21 30 45"
         };
 
-        if (Part1(example) != "114") return false;
-        if (Part2(example) != "2") return false;
+        if (Solve(example, ExtractForward) != 114) return false;
+		if (Solve(example, ExtractBackward) != 2) return false;
         return true;
     }
 }

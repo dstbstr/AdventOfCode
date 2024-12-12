@@ -4,7 +4,7 @@ SOLUTION(2018, 1) {
 
     PART(1) {
         auto deltas = ParseLinesAsNumbers<s32>(lines);
-        return Constexpr::ToString(std::accumulate(deltas.begin(), deltas.end(), 0));
+        return std::accumulate(deltas.begin(), deltas.end(), 0);
     }
 
     PART(2) {
@@ -36,7 +36,7 @@ SOLUTION(2018, 1) {
             }
         }
 
-        return Constexpr::ToString(bestKey);
+        return bestKey;
     }
 
     //static_assert(PartTwo({ "+10000000", "-9999999" }) == "10000000");

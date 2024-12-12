@@ -74,9 +74,9 @@ SOLUTION(2015, 16) {
         return 0;
     }
     PART(1) {
-        return Constexpr::ToString(Solve(lines, IsExactMatch));
+        return Solve(lines, IsExactMatch);
     }
     PART(2) {
-        return Constexpr::ToString(Solve(lines, IsRangeMatch));
+        return Solve(lines, IsRangeMatch);
     }
 }

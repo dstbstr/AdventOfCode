@@ -55,7 +55,7 @@ SOLUTION(2017, 20) {
         std::sort(particles.begin(), particles.end(), [](const Particle& lhs, const Particle& rhs) {
             return MDistance(lhs.Accel) < MDistance(rhs.Accel);
             });
-        return Constexpr::ToString(particles[0].Index);
+        return particles[0].Index;
     }
 
     PART(2) {
@@ -68,7 +68,7 @@ SOLUTION(2017, 20) {
             RemoveCollisions(particles);
         }
 
-        return Constexpr::ToString(particles.size());
+        return particles.size();
     }
 
     static_assert(ParseParticle("p=<-317,1413,1507>, v=<19,-102,-108>, a=<1,-3,-3>", 1).Position == Vec3<s64>{-317, 1413, 1507});

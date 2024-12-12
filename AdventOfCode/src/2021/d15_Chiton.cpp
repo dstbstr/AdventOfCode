@@ -62,13 +62,13 @@ SOLUTION(2021, 15) {
 
     PART(1) {
         auto map = ParseInput(lines);
-        return Constexpr::ToString(Solve(map));
+        return Solve(map);
     }
 
     PART(2) {
         auto map = ParseInput(lines);
         auto bigMap = ExpandMap(map);
-        return Constexpr::ToString(Solve(bigMap));
+        return Solve(bigMap);
     }
 
     /*

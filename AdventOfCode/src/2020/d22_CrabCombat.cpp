@@ -98,11 +98,11 @@ SOLUTION(2020, 22) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, PlayRound));
+        return Solve(lines, PlayRound);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, PlaySubGame));
+        return Solve(lines, PlaySubGame);
     }
 
     static_assert(CalculateScore({ 3, 2, 10, 6, 8, 5, 9, 4, 7, 1 }) == 306);

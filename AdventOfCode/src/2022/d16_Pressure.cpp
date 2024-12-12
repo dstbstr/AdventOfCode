@@ -165,11 +165,11 @@ SOLUTION(2022, 16) {
     // consider finding the maximum flow rate
     // and early-out if the remaining time at the max flow rate would be less than the best
     PART(1) {
-        return Constexpr::ToString(FindBestSolo<51, u8>(lines));
+        return FindBestSolo<51, u8>(lines);
     }
 
     PART(2) {
-        return Constexpr::ToString(FindBestPair<51, u8>(lines));
+        return FindBestPair<51, u8>(lines);
     }
 
     TEST(1) {

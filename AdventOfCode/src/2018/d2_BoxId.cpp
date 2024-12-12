@@ -15,7 +15,7 @@ SOLUTION(2018, 2) {
                 threes += count == 3;
             }
         }
-        return Constexpr::ToString(twos * threes);
+        return twos * threes;
     }
 
     constexpr bool OffByOne(std::string_view lhs, std::string_view rhs) {       

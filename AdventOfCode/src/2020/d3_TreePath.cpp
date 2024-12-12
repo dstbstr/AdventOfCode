@@ -35,7 +35,7 @@ SOLUTION(2020, 3) {
     PART(1) {
         auto grid = ParseGrid(lines);
         RowCol slope = { 1, 3 };
-        return Constexpr::ToString(CountTreesOnPath(grid, slope));
+        return CountTreesOnPath(grid, slope);
     }
 
     PART(2) {
@@ -47,9 +47,9 @@ SOLUTION(2020, 3) {
             {1, 7},
             {2, 1}
         };
-        return Constexpr::ToString(std::accumulate(slopes.begin(), slopes.end(), 1ull, [&](size_t previous, const auto& slope) {
+        return std::accumulate(slopes.begin(), slopes.end(), 1ull, [&](size_t previous, const auto& slope) {
             return previous * CountTreesOnPath(grid, slope);
-            }));
+        });
     }
 
     TEST(1) {

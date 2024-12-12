@@ -46,9 +46,9 @@ SOLUTION(2022, 3) {
     }
 
     PART(1) {
-        return Constexpr::ToString(std::accumulate(lines.begin(), lines.end(), 0u, [](u32 prev, std::string_view line) {
+        return std::accumulate(lines.begin(), lines.end(), 0u, [](u32 prev, std::string_view line) {
             return prev + GetLetterValue(FindDuplicate(line));
-            }));
+        });
     }
 
     PART(2) {
@@ -57,7 +57,7 @@ SOLUTION(2022, 3) {
             result += GetLetterValue(FindBadge(lines[i], lines[i + 1], lines[i + 2]));
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     static_assert(GetLetterValue('a') == 1);

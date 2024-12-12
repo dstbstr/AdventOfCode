@@ -91,7 +91,7 @@ SOLUTION(2018, 18) {
             std::swap(src, dest);
         }
 
-        return Constexpr::ToString(GetScore(src));
+        return GetScore(src);
     }
 
     PART(2) {
@@ -120,7 +120,7 @@ SOLUTION(2018, 18) {
             std::swap(src, dest);
         }
 
-        return Constexpr::ToString(GetScore(src));
+        return GetScore(src);
     }
 
     TEST(1) {

@@ -69,7 +69,7 @@ SOLUTION(2017, 14) {
             }
         }
 
-        return Constexpr::ToString(used);
+        return used;
     }
 
     PART(2) {
@@ -86,7 +86,7 @@ SOLUTION(2017, 14) {
         }
 
         auto groups = GetAllFloodFillGroups<RowCol>(allPoints, [](const RowCol& rc) { return GetDirectNeighbors(rc, { 127, 127 }); });
-        return Constexpr::ToString(groups.size());
+        return groups.size();
         */
         ///this version is faster, but would prefer to not have 2 FloodFill methods floating around
         
@@ -96,7 +96,7 @@ SOLUTION(2017, 14) {
             FloodFill(grid, pos);
         }
 
-        return Constexpr::ToString(groups);
+        return groups;
     }
 
     /*

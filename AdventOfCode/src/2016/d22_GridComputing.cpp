@@ -44,7 +44,7 @@ SOLUTION(2016, 22) {
                 }
             }
         }
-        return Constexpr::ToString(fitCount);
+        return fitCount;
     }
 
     constexpr u32 SolvePartTwo(const auto& lines) {
@@ -93,7 +93,7 @@ SOLUTION(2016, 22) {
 
     }
     PART(2) {
-        return Constexpr::ToString(SolvePartTwo(lines));
+        return SolvePartTwo(lines);
     }
 
     static_assert(ParseLine("/dev/grid/node-x0-y0     93T   67T    26T   72%").Pos.X == 0);

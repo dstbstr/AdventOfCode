@@ -120,7 +120,7 @@ SOLUTION(2016, 8) {
         for (const auto& line : lines) {
             ParseLine<6, 50>(line)(bits);
         }
-        return Constexpr::ToString(CountLit(bits));
+        return CountLit(bits);
     }
     PART(2) {
         Bits<6, 50> bits{};

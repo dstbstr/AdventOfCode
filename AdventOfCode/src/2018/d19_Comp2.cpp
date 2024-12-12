@@ -78,7 +78,7 @@ SOLUTION(2018, 19) {
             ip++;
         }
         
-        return Constexpr::ToString(regs[0]);
+        return regs[0];
     }
 
     PART(2) {
@@ -95,7 +95,7 @@ SOLUTION(2018, 19) {
         }
         auto targetNumber = regs[4];
         auto divisors = Constexpr::GetDivisors(targetNumber);
-        return Constexpr::ToString(std::accumulate(divisors.begin(), divisors.end(), 0));
+        return std::accumulate(divisors.begin(), divisors.end(), 0);
     }
 
     /*

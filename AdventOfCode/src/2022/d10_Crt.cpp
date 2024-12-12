@@ -61,7 +61,7 @@ SOLUTION(2022, 10) {
     }
 
     PART(1) {
-        return Constexpr::ToString(SumSignalStrength(lines));
+        return SumSignalStrength(lines);
     }
 
     PART(2) {

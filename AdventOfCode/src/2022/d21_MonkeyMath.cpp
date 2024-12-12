@@ -87,7 +87,7 @@ SOLUTION(2022, 21) {
     }
 
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines));
+        return SolvePartOne(lines);
     }
 
     PART(2) {
@@ -175,7 +175,7 @@ SOLUTION(2022, 21) {
             currentMonkey = nextMonkey;
         }
 
-        return Constexpr::ToString(monkeys[humanIndex].Value);
+        return monkeys[humanIndex].Value;
     }
 
     static_assert(ParseLine("root: pppw + sjmn").Name == "root");

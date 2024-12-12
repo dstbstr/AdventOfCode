@@ -83,7 +83,7 @@ SOLUTION(2020, 21) {
         return result;
     }
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines));
+        return SolvePartOne(lines);
     }
 
     constexpr std::string SolvePartTwo(const auto& lines) {

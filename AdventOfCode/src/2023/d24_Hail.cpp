@@ -48,7 +48,7 @@ SOLUTION(2023, 24) {
     }
 
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines, { 200'000'000'000'000, 200'000'000'000'000 }, 200'000'000'000'000));
+        return SolvePartOne(lines, { 200'000'000'000'000, 200'000'000'000'000 }, 200'000'000'000'000);
     }
 
     struct CoordTimes {
@@ -129,7 +129,7 @@ SOLUTION(2023, 24) {
                         auto z3 = s2.Pos.Z + t3 * s2.Vel.Z;
                         auto sz3 = s.Pos.Z + t3 * s.Vel.Z;
                         if (Constexpr::AbsDistance(z3, sz3) < 0.001) {
-                            return Constexpr::ToString(static_cast<size_t>(px + py + pz));
+                            return static_cast<size_t>(px + py + pz);
                         }
                     }
                 }
@@ -161,7 +161,7 @@ SOLUTION(2023, 24) {
         auto inverseMatrix = Constexpr::InvertMatrix(matrix);
         auto result = Constexpr::MultiplyMatrix(inverseMatrix, vec);
         
-        return Constexpr::ToString(static_cast<size_t>(result[0][0] + result[1][0] + result[2][0]));
+        return static_cast<size_t>(result[0][0] + result[1][0] + result[2][0]);
         */
     }
 
@@ -176,7 +176,7 @@ SOLUTION(2023, 24) {
 
         if (SolvePartOne(example, { 7, 7 }, 20) != 2) return false;
 
-        if (Part2(example) != "47") return false;
+        if (std::get<size_t>(Part2(example)) != 47) return false;
 
         return true;
     }

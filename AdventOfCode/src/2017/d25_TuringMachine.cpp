@@ -77,7 +77,7 @@ In state A:
             rules[state](bits, pos, state);
         }
 
-        return Constexpr::ToString(std::count(bits.begin(), bits.end(), 1));
+        return std::count(bits.begin(), bits.end(), 1);
     }
 
     /*

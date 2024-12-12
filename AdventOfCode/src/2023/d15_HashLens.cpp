@@ -11,11 +11,9 @@ SOLUTION(2023, 15) {
 
     PART(1) {
         auto v = Constexpr::Split(lines[0], ",");
-        auto result = std::accumulate(v.begin(), v.end(), 0ull, [](size_t running, std::string_view sv) {
+        return std::accumulate(v.begin(), v.end(), 0ull, [](size_t running, std::string_view sv) {
             return running + Hash(sv);
             });
-
-        return Constexpr::ToString(result);
     }
 
     PART(2) {
@@ -68,13 +66,13 @@ SOLUTION(2023, 15) {
                 result += (box + 1) * (slot + 1) * focus;
             }
         }
-        return Constexpr::ToString(result);
+        return result;
     }
 
     static_assert(Hash("HASH") == 52);
 
     TEST(1) {
         std::vector<std::string> example = { "rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7" };
-        return Part2(example) == "145";
+        return std::get<size_t>(Part2(example)) == 145;
     }
 }

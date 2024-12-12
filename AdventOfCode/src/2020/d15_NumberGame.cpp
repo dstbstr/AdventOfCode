@@ -22,11 +22,11 @@ SOLUTION(2020, 15) {
     }
 
     PART(1) {
-		return Constexpr::ToString(Solve<2020>(lines[0]));
+		return Solve<2020>(lines[0]);
     }
 
     PART(2) {
-		return Constexpr::ToString(Solve<30'000'000>(lines[0]));
+		return Solve<30'000'000>(lines[0]);
     }
 
     static_assert(Solve<2020>("0,3,6") == 436);

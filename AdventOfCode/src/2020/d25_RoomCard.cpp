@@ -31,7 +31,7 @@ SOLUTION(2020, 25) {
 
     PART(1) {
         auto values = ParseLinesAsNumbers<size_t>(lines);
-        return Constexpr::ToString(Decrypt(values[0], values[1]));
+        return Decrypt(values[0], values[1]);
     }
 
     constexpr bool RunTest() {

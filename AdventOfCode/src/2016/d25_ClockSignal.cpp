@@ -80,9 +80,9 @@ SOLUTION(2016, 25) {
             }
 
             if (found) {
-                return Constexpr::ToString(a - 1);
+                return a - 1;
             }
         }
-        return "Not Found";
+        throw "Not Found";
     }
 }

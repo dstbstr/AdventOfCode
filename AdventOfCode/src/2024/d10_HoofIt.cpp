@@ -36,7 +36,7 @@ SOLUTION(2024, 10) {
 	}
 
 	PART(1) {
-		return Constexpr::ToString(SolvePart1(lines));
+		return SolvePart1(lines);
 	}
 	
 	u32 Recurse2(const std::vector<std::string>& map, RowCol limits, RowCol pos, ResultMap2& outResult) {
@@ -66,7 +66,7 @@ SOLUTION(2024, 10) {
 	}
 
 	PART(2) {
-		return Constexpr::ToString(SolvePart2(lines));
+		return SolvePart2(lines);
 	}
 
 	TEST(1) {

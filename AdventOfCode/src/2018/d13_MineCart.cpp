@@ -175,7 +175,7 @@ SOLUTION(2018, 13) {
             }
         }
 
-        return "Not Found";
+        throw "Not Found";
     }
 
     /*

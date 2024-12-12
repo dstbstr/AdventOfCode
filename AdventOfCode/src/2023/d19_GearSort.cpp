@@ -196,7 +196,7 @@ SOLUTION(2023, 19) {
             result += gear.Xmas[0] + gear.Xmas[1] + gear.Xmas[2] + gear.Xmas[3];
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     PART(2) {
@@ -230,7 +230,7 @@ SOLUTION(2023, 19) {
             }
         }
 
-        return Constexpr::ToString(accepted);
+        return accepted;
     }
 
     TEST(1) {
@@ -254,8 +254,8 @@ SOLUTION(2023, 19) {
         "{x=2127,m=1623,a=2188,s=1013}"
         };
 
-        if (Part1(lines) != "19114") return false;
-        if (Part2(lines) != "167409079868000") return false;
+        if (std::get<size_t>(Part1(lines)) != 19114) return false;
+        if (std::get<size_t>(Part2(lines)) != 167409079868000) return false;
 
         return true;
     }

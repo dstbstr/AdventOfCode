@@ -90,7 +90,7 @@ SOLUTION(2018, 21) {
         u64 previousMask, initialValue, multiplier;
         GatherValues(lines, previousMask, initialValue, multiplier);
 
-        return Constexpr::ToString(Step(0, previousMask, initialValue, multiplier));
+        return Step(0, previousMask, initialValue, multiplier);
     }
 
 
@@ -104,10 +104,10 @@ SOLUTION(2018, 21) {
         while (true) {
             n2 = Step(n, previousMask, initialValue, multiplier);
             if (!seen.insert(n2)) {
-                return Constexpr::ToString(n);
+                return n;
             }
             n = n2;
         }
-        return "Not Found";
+        throw "Not Found";
     }
 }

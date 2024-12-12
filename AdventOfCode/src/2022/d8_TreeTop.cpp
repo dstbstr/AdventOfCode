@@ -108,11 +108,11 @@ SOLUTION(2022, 8) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, VisibleInForest<99, 99>));
+        return Solve(lines, VisibleInForest<99, 99>);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, FindBestScenicScore<99, 99>));
+        return Solve(lines, FindBestScenicScore<99, 99>);
     }
 
     static_assert(VisibleInForest<5, 5>({ {

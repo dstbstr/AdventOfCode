@@ -65,12 +65,12 @@ SOLUTION(2021, 12) {
     
     PART(1) {
         auto n = Parse(lines);
-        return Constexpr::ToString(CountPaths<false>(n));
+        return CountPaths<false>(n);
     }
 
     PART(2) {
         auto n = Parse(lines);
-        return Constexpr::ToString(CountPaths<true>(n));
+        return CountPaths<true>(n);
     }
 
     TEST(1) {

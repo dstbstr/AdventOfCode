@@ -210,13 +210,13 @@ SOLUTION(2015, 22) {
         auto boss = ParseBoss(lines);
         Player player = { 50, 500, 0 };
         State initialState{ player, boss, {} };
-        return Constexpr::ToString(FindBestMana(initialState, false));
+        return FindBestMana(initialState, false);
     }
     PART(2) {
         auto boss = ParseBoss(lines);
         Player player = { 50, 500, 0 };
         State initialState{ player, boss, {} };
-        return Constexpr::ToString(FindBestMana(initialState, true));
+        return FindBestMana(initialState, true);
     }
 
     TEST(1) {

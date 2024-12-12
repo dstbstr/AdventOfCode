@@ -31,11 +31,11 @@ SOLUTION(2016, 9) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Decompress(lines[0], false));
+        return Decompress(lines[0], false);
     }
 
     PART(2) {
-        return Constexpr::ToString(Decompress(lines[0], true));
+        return Decompress(lines[0], true);
     }
 
     static_assert(Decompress("(3x3)XYZ", true) == 9);

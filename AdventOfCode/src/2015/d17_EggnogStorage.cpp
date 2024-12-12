@@ -81,11 +81,11 @@ SOLUTION(2015, 17) {
 
     PART(1) {
         auto containers = ParseLinesAsNumbers<u32>(lines);
-        return Constexpr::ToString(CountCombinations(containers, 150));
+        return CountCombinations(containers, 150);
     }
     PART(2) {
         auto containers = ParseLinesAsNumbers<u32>(lines);
-        return Constexpr::ToString(CountSmallContainers(containers, 150));
+        return CountSmallContainers(containers, 150);
     }
 
     TEST(1) {

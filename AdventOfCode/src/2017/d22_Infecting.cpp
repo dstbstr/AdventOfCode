@@ -44,7 +44,7 @@ SOLUTION(2017, 22) {
             return 0;
         });
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     PART(2) {
@@ -58,7 +58,7 @@ SOLUTION(2017, 22) {
             return 0;
         });
 
-        return Constexpr::ToString(result);
+        return result;
 
     }
 }

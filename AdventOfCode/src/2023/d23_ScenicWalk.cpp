@@ -138,10 +138,10 @@ SOLUTION(2023, 23) {
     }
 
     PART(1) {
-		return Constexpr::ToString(SolvePart1(lines));
+		return SolvePart1(lines);
     }
     PART(2) {
-        return Constexpr::ToString(SolvePart2(lines));
+        return SolvePart2(lines);
     }
 
     TEST(1) {

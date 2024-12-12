@@ -59,7 +59,7 @@ SOLUTION(2018, 6) {
             }
         }
 
-        return Constexpr::ToString(maxArea);
+        return maxArea;
     }
 
     PART(2) {
@@ -79,7 +79,7 @@ SOLUTION(2018, 6) {
             }
         }
 
-        return Constexpr::ToString(count);
+        return count;
     }
 
     /*

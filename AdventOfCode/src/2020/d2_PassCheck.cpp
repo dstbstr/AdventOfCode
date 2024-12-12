@@ -37,12 +37,12 @@ SOLUTION(2020, 2) {
 
     PART(1) {
         auto entries = ParseLines(lines, ParseEntry);
-        return Constexpr::ToString(std::count_if(entries.begin(), entries.end(), IsEntryValid));
+        return std::count_if(entries.begin(), entries.end(), IsEntryValid);
     }
 
     PART(2) {
         auto entries = ParseLines(lines, ParseEntry);
-        return Constexpr::ToString(std::count_if(entries.begin(), entries.end(), IsEntryValid2));
+        return std::count_if(entries.begin(), entries.end(), IsEntryValid2);
     }
 
     static_assert(ParseEntry("1-3 a: abcde").MinCount == 1);

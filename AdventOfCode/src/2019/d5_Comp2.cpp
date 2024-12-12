@@ -12,10 +12,10 @@ SOLUTION(2019, 5) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines[0], 1));
+        return Solve(lines[0], 1);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines[0], 5));
+        return Solve(lines[0], 5);
     }
 }

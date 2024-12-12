@@ -105,7 +105,7 @@ SOLUTION(2019, 23) {
                 else {
                     packet = ConsumeOutput(computer);
                     if (packet.Destination == 255) {
-                        return Constexpr::ToString(packet.Y);
+                        return packet.Y;
                     }
                     else {
                         SendPacket(computers, packet);
@@ -114,7 +114,7 @@ SOLUTION(2019, 23) {
             }
         }
 
-        return "Not Found";
+        throw "Not Found";
     }
 
     PART(2) {
@@ -148,7 +148,7 @@ SOLUTION(2019, 23) {
                 if (emptyFrames == 10) {
                     auto res = InvokeNat(computers, natPacket, previousY);
                     if (res > 0) {
-                        return Constexpr::ToString(res);
+                        return res;
                     }
 
                     emptyFrames = 0;
@@ -156,6 +156,6 @@ SOLUTION(2019, 23) {
             }
         }
 
-        return "Not Found";
+        throw "Not Found";
     }
 }

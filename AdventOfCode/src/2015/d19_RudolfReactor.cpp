@@ -52,7 +52,7 @@ SOLUTION(2015, 19) {
         ExtractMolecules(groups[1][0], 1, transforms, molecules);
         ExtractMolecules(groups[1][0], 2, transforms, molecules);
 
-        return Constexpr::ToString(molecules.size());
+        return molecules.size();
     }
     PART(2) {
         auto groups = SplitInputIntoGroups(lines);
@@ -68,7 +68,7 @@ SOLUTION(2015, 19) {
             if (!CollapseMolecule(running, reverseTransforms)) break;
             steps++;
         }
-        return Constexpr::ToString(steps);
+        return steps;
     }
 
     TEST(1) {
@@ -80,6 +80,6 @@ SOLUTION(2015, 19) {
             "HOH"
         };
 
-        return Part1(lines) == "4";
+        return std::get<size_t>(Part1(lines)) == 4;
     }
 }

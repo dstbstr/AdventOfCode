@@ -30,11 +30,11 @@ SOLUTION(2017, 5) {
     }
 
     PART(1) {
-        return Constexpr::ToString(StepsToExit(lines, Jump));
+        return StepsToExit(lines, Jump);
     }
 
     PART(2) {
-        return Constexpr::ToString(StepsToExit(lines, ShortJump));
+        return StepsToExit(lines, ShortJump);
     }
 
     static_assert(StepsToExit(std::vector<std::string>{ "0", "3", "0", "1", "-3" }, Jump) == 5);

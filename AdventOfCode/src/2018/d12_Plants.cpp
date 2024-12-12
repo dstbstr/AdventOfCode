@@ -50,7 +50,7 @@ SOLUTION(2018, 12) {
             pots = NextGeneration(pots, rules);
         }
 
-        return Constexpr::ToString(CountPots(pots));
+        return CountPots(pots);
     }
 
     PART(2) {
@@ -78,7 +78,7 @@ SOLUTION(2018, 12) {
         size_t result = 50'000'000'000 - (generation - 1);
         result *= 21;
         result += currentCount;
-        return Constexpr::ToString(result);
+        return result;
     }
 
     /*

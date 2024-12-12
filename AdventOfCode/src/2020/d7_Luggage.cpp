@@ -70,7 +70,7 @@ SOLUTION(2020, 7) {
     }
 
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines));
+        return SolvePartOne(lines);
     }
 
     constexpr size_t SolvePartTwo(const auto& lines) {
@@ -80,7 +80,7 @@ SOLUTION(2020, 7) {
     }
 
     PART(2) {
-        return Constexpr::ToString(SolvePartTwo(lines));
+        return SolvePartTwo(lines);
     }
 
     TEST(1) {

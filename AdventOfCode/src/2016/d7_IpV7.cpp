@@ -103,10 +103,10 @@ SOLUTION(2016, 7) {
     }
 
     PART(1) {
-        return Constexpr::ToString(std::count_if(lines.begin(), lines.end(), IsValid));
+        return std::count_if(lines.begin(), lines.end(), IsValid);
     }
     PART(2) {
-        return Constexpr::ToString(std::count_if(lines.begin(), lines.end(), SupportsSsl));
+        return std::count_if(lines.begin(), lines.end(), SupportsSsl);
     }
 
     static_assert(ContainsAbba("abba"));

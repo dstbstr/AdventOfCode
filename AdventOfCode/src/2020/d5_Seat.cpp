@@ -34,7 +34,7 @@ SOLUTION(2020, 5) {
     }
     PART(1) {
         auto seatIds = GetSeatIds(lines);
-        return Constexpr::ToString(*std::max_element(seatIds.begin(), seatIds.end()));
+        return *std::max_element(seatIds.begin(), seatIds.end());
     }
 
     PART(2) {
@@ -42,11 +42,11 @@ SOLUTION(2020, 5) {
         std::sort(seatIds.begin(), seatIds.end());
         for (size_t i = 0; i < seatIds.size() - 1; i++) {
             if (seatIds[i] + 1 != seatIds[i + 1]) {
-                return Constexpr::ToString(seatIds[i] + 1);
+                return seatIds[i] + 1;
             }
         }
 
-        return "Not Found";
+        throw "Not Found";
     }
 
     static_assert(FindSeat("FBFBBFFRLR") == RowCol{ 44, 5 });

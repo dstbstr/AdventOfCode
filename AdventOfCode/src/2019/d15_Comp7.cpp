@@ -121,7 +121,7 @@ SOLUTION(2019, 15) {
         auto map = Explore(instructions);
         auto target = GetTarget(map);
 
-        return Constexpr::ToString(GetShortestPath(map, target));
+        return GetShortestPath(map, target);
     }
 
     PART(2) {
@@ -129,6 +129,6 @@ SOLUTION(2019, 15) {
         auto map = Explore(instructions);
         auto target = GetTarget(map);
 
-        return Constexpr::ToString(FloodFill(map, target));
+        return FloodFill(map, target);
     }
 }

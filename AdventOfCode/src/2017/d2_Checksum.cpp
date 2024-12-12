@@ -26,11 +26,11 @@ SOLUTION(2017, 2) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Checksum(lines, FindDelta));
+        return Checksum(lines, FindDelta);
     }
 
     PART(2) {
-        return Constexpr::ToString(Checksum(lines, FindDivisors));
+        return Checksum(lines, FindDivisors);
     }
 
     static_assert(FindDelta("5\t1\t9\t5") == 8);

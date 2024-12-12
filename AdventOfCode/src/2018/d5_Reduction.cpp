@@ -21,7 +21,7 @@ SOLUTION(2018, 5) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Reduce(lines[0]).size());
+        return Reduce(lines[0]).size();
     }
 
     PART(2) {
@@ -32,7 +32,7 @@ SOLUTION(2018, 5) {
             best = std::min(best, Reduce(test).size());
         }
                 
-        return Constexpr::ToString(best);
+        return best;
     }
 
     static_assert(Reduce("aA") == "");

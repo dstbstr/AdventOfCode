@@ -69,11 +69,11 @@ SOLUTION(2015, 3) {
     }
 
     PART(1) {
-        return Constexpr::ToString(CountDeliveries(lines[0]));
+        return CountDeliveries(lines[0]);
     }
 
     PART(2) {
-        return Constexpr::ToString(CountDeliveriesWithRobot(lines[0]));
+        return CountDeliveriesWithRobot(lines[0]);
     }
 
     static_assert(CountDeliveries(">") == 2);

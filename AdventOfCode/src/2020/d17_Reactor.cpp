@@ -117,12 +117,12 @@ SOLUTION(2020, 17) {
 
     PART(1) {
         auto reactor = ParseReactor(lines);
-        return Constexpr::ToString(Solve(reactor));
+        return Solve(reactor);
     }
 
     PART(2) {
         auto reactor = ParseBigReactor(lines);
-        return Constexpr::ToString(Solve(reactor));
+        return Solve(reactor);
     }
 
     TEST(1) {

@@ -280,7 +280,7 @@ SOLUTION(2019, 18) {
 
     PART(1) {
         Map solution(lines);
-        return Constexpr::ToString(solution.Solve());
+        return solution.Solve();
     }
 
     PART(2) {
@@ -288,7 +288,7 @@ SOLUTION(2019, 18) {
         SplitIntoRooms(copy);
 
         Map solution(copy);
-        return Constexpr::ToString(solution.Solve());
+        return solution.Solve();
     }
 
     TEST(1) {

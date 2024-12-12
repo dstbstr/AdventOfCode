@@ -66,16 +66,16 @@ SOLUTION(2016, 4) {
 
     PART(1) {
         auto rooms = ParseLines(lines, ParseRoom);
-        return Constexpr::ToString(std::accumulate(rooms.begin(), rooms.end(), 0, [](u32 prev, const Room& room) {
+        return std::accumulate(rooms.begin(), rooms.end(), 0, [](u32 prev, const Room& room) {
             return prev + room.Id * IsReal(room);
-            }));
+            });
     }
     PART(2) {
         auto rooms = ParseLines(lines, ParseRoom);
         auto result = std::find_if(rooms.begin(), rooms.end(), [](const Room& room) {
             return IsReal(room) && DecryptRoom(room) == "northpole object storage";
             });
-        return Constexpr::ToString(result->Id);
+        return result->Id;
     }
 
     TEST(1) {

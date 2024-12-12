@@ -60,12 +60,12 @@ SOLUTION(2017, 8) {
 
     PART(1) {
         auto [last, max] = Solve(lines);
-        return Constexpr::ToString(last);
+        return last;
     }
 
     PART(2) {
         auto [last, max] = Solve(lines);
-        return Constexpr::ToString(max);
+        return max;
     }
     
 

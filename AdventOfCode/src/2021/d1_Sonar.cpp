@@ -22,11 +22,11 @@ SOLUTION(2021, 1) {
     }
 
     PART(1) {
-        return Constexpr::ToString(CountIncreasing(ParseLinesAsNumbers<u32>(lines)));
+        return CountIncreasing(ParseLinesAsNumbers<u32>(lines));
     }
 
     PART(2) {
-        return Constexpr::ToString(CountIncreasingWindow(ParseLinesAsNumbers<u32>(lines)));
+        return CountIncreasingWindow(ParseLinesAsNumbers<u32>(lines));
     }
 
     static_assert(CountIncreasing({ 199, 200, 208, 210, 200, 207, 240, 269, 260, 263 }) == 7);

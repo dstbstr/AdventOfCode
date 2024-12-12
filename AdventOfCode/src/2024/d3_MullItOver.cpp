@@ -16,7 +16,7 @@ SOLUTION(2024, 3) {
 
 	PART(1) {
 		auto line = Constexpr::JoinVec("", lines);
-		return Constexpr::ToString(SumOfMuls(line));
+		return SumOfMuls(line);
 	}
 	
 	constexpr s64 SolvePart2(const std::string& line) {
@@ -42,7 +42,7 @@ SOLUTION(2024, 3) {
 
 	PART(2) {
 		auto line = Constexpr::JoinVec("", lines);
-		return Constexpr::ToString(SolvePart2(line));
+		return SolvePart2(line);
 	}
 
 	static_assert(SumOfMuls("xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))") == 161);

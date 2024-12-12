@@ -247,7 +247,7 @@ SOLUTION(2018, 24) {
             ResolveRound(battle);
         }
 
-        return Constexpr::ToString(CountRemainingUnits(battle));
+        return CountRemainingUnits(battle);
     }
 
     PART(2) {
@@ -273,14 +273,15 @@ SOLUTION(2018, 24) {
             }
 
             if (!IsBattleRunning(battle) && FindWinner(battle) == Team::Immune) {
-                return Constexpr::ToString(CountRemainingUnits(battle));
+                return CountRemainingUnits(battle);
             }
         }
 
         return "No Solution Found";
     }
 
-    static const std::array TestLines = {
+    constexpr std::vector<std::string> GetTestLines() {
+        return {
             "Immune System:"s,
             "17 units each with 5390 hit points (weak to radiation, bludgeoning) with an attack that does 4507 fire damage at initiative 2"s,
             "989 units each with 1274 hit points (immune to fire; weak to bludgeoning, slashing) with an attack that does 25 slashing damage at initiative 3"s,
@@ -288,13 +289,14 @@ SOLUTION(2018, 24) {
             "Infection:"s,
             "801 units each with 4706 hit points (weak to radiation) with an attack that does 116 bludgeoning damage at initiative 1"s,
             "4485 units each with 2961 hit points (immune to radiation; weak to fire, cold) with an attack that does 12 slashing damage at initiative 4"s
-    };
+        };
+    }
 
     TEST(1) {
-        return Part1(std::vector<std::string>(TestLines.begin(), TestLines.end())) == "5216";
+        return std::get<u32>(Part1(GetTestLines())) == 5216;
     }
 
     TEST(2) {
-        return Part2(std::vector<std::string>(TestLines.begin(), TestLines.end())) == "51";
+        return std::get<u32>(Part2(GetTestLines())) == 51;
     }
 }

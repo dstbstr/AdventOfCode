@@ -126,6 +126,6 @@ SOLUTION(2023, 25) {
     }
     
     PART(1) {
-        return Constexpr::ToString(Solve(lines));
+        return Solve(lines);
     }
 }

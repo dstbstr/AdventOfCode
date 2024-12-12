@@ -163,12 +163,12 @@ SOLUTION(2021, 16) {
     }
 
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines[0]));
+        return SolvePartOne(lines[0]);
     }
 
     PART(2) {
         auto packet = GetPacket(lines[0]);
-        return Constexpr::ToString(packet.Evaluate());
+        return packet.Evaluate();
     }
 
     constexpr bool TestParseValue() {

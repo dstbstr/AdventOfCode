@@ -72,11 +72,11 @@ SOLUTION(2015, 15) {
 
     PART(1) {
         auto ings = ParseLines(lines, ParseIng);
-        return Constexpr::ToString(Recurse(ings, {}, 0, false));
+        return Recurse(ings, {}, 0, false);
     }
     PART(2) {
         auto ings = ParseLines(lines, ParseIng);
-        return Constexpr::ToString(Recurse(ings, {}, 0, true));
+        return Recurse(ings, {}, 0, true);
     }
     TEST(1) {
         auto ing = ParseIng("Sugar: capacity 3, durability 0, flavor 0, texture -3, calories 2");

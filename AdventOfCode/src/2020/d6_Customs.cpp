@@ -32,11 +32,11 @@ SOLUTION(2020, 6) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Run(lines, CountAnyInGroup));
+        return Run(lines, CountAnyInGroup);
     }
 
     PART(2) {
-        return Constexpr::ToString(Run(lines, CountAllInGroup));
+        return Run(lines, CountAllInGroup);
     }
 
     static_assert(CountAnyInGroup(std::vector<std::string>{ "a" }) == 1);

@@ -50,11 +50,11 @@ SOLUTION(2022, 4) {
     }
 
     PART(1) {
-        return Constexpr::ToString(RunImpl(lines, FullyContains));
+        return RunImpl(lines, FullyContains);
     }
 
     PART(2) {
-        return Constexpr::ToString(RunImpl(lines, Overlap));
+        return RunImpl(lines, Overlap);
     }
 
     static_assert(FullyContains({ 6, 6 }, { 4, 6 }));

@@ -73,7 +73,7 @@ SOLUTION(2019, 3) {
             if (dist > 0) best = std::min(best, dist);
             });
 
-        return Constexpr::ToString(best);
+        return best;
     }
 
 
@@ -85,6 +85,6 @@ SOLUTION(2019, 3) {
                 best = std::min(best, intersection.Z);
             }
             });
-        return Constexpr::ToString(best);
+        return best;
     }
 }

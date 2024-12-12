@@ -11,7 +11,7 @@ SOLUTION(2019, 2) {
         Args args;
         while (Apply(instructions, args));
 
-        return Constexpr::ToString(instructions[0]);
+        return instructions[0];
     }
 
     PART(2) {
@@ -26,12 +26,12 @@ SOLUTION(2019, 2) {
                 while (Apply(instructions, args));
 
                 if (instructions[0] == 19690720) {
-                    return Constexpr::ToString((noun * 100) + verb);
+                    return (noun * 100) + verb;
                 }
             }
         }
 
-        return "No Solution Found";
+        throw "No Solution Found";
     }
 
     TEST(1) {

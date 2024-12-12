@@ -110,7 +110,7 @@ SOLUTION(2019, 22) {
             result++;
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     PART(2) {

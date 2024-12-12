@@ -42,7 +42,7 @@ SOLUTION(2019, 8) {
             }
         }
 
-        return Constexpr::ToString(result);
+        return result;
     }
 
     PART(2) {

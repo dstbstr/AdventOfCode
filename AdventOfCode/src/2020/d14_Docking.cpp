@@ -78,11 +78,11 @@ SOLUTION(2020, 14) {
 
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, Write));
+        return Solve(lines, Write);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, Write2));
+        return Solve(lines, Write2);
     }
 
     /*

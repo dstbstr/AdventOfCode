@@ -73,11 +73,11 @@ SOLUTION(2023, 11) {
         return result;
     }
     PART(1) {
-        return Constexpr::ToString(Solve(lines, 2));
+        return Solve(lines, 2);
     }
     
     PART(2) {
-        return Constexpr::ToString(Solve(lines, 1'000'000));
+        return Solve(lines, 1'000'000);
     }
 
     TEST(1) {
@@ -94,6 +94,6 @@ SOLUTION(2023, 11) {
             "#...#....."
         };
         
-        return Part1(lines) == "374";
+        return Solve(lines, 2) == 374;
     }
 }

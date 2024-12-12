@@ -128,7 +128,7 @@ SOLUTION(2016, 17) {
         return FindShortestPath(lines[0]);
     }
     PART(2) {
-        return Constexpr::ToString(FindLongestPath(lines[0]));
+        return FindLongestPath(lines[0]);
     }
 
     static_assert(IsOpen('b'));

@@ -44,13 +44,13 @@ SOLUTION(2017, 9) {
         auto running = std::string(lines[0]);
         RemoveExtraNots(running);
         RemoveGarbage(running);
-        return Constexpr::ToString(CalculateScore(running));
+        return CalculateScore(running);
     }
 
     PART(2) {
         auto running = std::string(lines[0]);
         RemoveExtraNots(running);
-        return Constexpr::ToString(RemoveGarbage(running));
+        return RemoveGarbage(running);
     }
 
     constexpr bool TestRemoveNots(const std::string& input, const std::string& expected) {

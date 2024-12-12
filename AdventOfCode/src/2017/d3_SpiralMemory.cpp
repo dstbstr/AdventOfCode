@@ -82,7 +82,7 @@ SOLUTION(2017, 3) {
     PART(1) {
         u32 target;
         Constexpr::ParseNumber(lines[0], target);
-        return Constexpr::ToString(FindTarget(target));
+        return FindTarget(target);
     }
 
     PART(2) {
@@ -95,11 +95,11 @@ SOLUTION(2017, 3) {
         for (auto key = 1; key < 1000; key++) {
             auto coord = spiral[key];
             if (sumSpiral[coord] > target) {
-                return Constexpr::ToString(sumSpiral[coord]);
+                return sumSpiral[coord];
             }
         }
 
-        return "Not Found";
+        throw "Not Found";
     }
 
     static_assert(FindTarget(12) == 3);

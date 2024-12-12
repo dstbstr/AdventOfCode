@@ -40,7 +40,7 @@ SOLUTION(2024, 4) {
 	}
 
 	PART(1) {
-		return Constexpr::ToString(SolvePart1(lines));
+		return SolvePart1(lines);
 	}
 
 	constexpr size_t SolvePart2(const std::vector<std::string>& lines) {
@@ -67,7 +67,7 @@ SOLUTION(2024, 4) {
 	}
 
 	PART(2) {
-		return Constexpr::ToString(SolvePart2(lines));
+		return SolvePart2(lines);
 	}
 
 	constexpr std::vector<std::string> GetSimpleInput() {

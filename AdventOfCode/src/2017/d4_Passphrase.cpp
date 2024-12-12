@@ -30,11 +30,11 @@ SOLUTION(2017, 4) {
     }
 
     PART(1) {
-        return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsValid));
+        return std::count_if(lines.cbegin(), lines.cend(), IsValid);
     }
 
     PART(2) {
-        return Constexpr::ToString(std::count_if(lines.cbegin(), lines.cend(), IsSecure));
+        return std::count_if(lines.cbegin(), lines.cend(), IsSecure);
     }
 
     static_assert(IsValid("aa bb cc"));

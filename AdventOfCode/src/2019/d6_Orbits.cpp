@@ -63,7 +63,7 @@ SOLUTION(2019, 6) {
         BuildData(lines, map, cache);
 
         auto vals = cache.GetValues();
-        return Constexpr::ToString(std::accumulate(vals.begin(), vals.end(), 0));
+        return std::accumulate(vals.begin(), vals.end(), 0);
     }
 
     PART(2) {
@@ -72,7 +72,7 @@ SOLUTION(2019, 6) {
         BuildData(lines, map, cache);
         auto shared = FindCommonAncestor(map, cache, "YOU", "SAN");
 
-        return Constexpr::ToString(cache.at("YOU") + cache.at("SAN") - (cache.at(shared) * 2) - 2);
+        return cache.at("YOU") + cache.at("SAN") - (cache.at(shared) * 2) - 2;
     }
 
     TEST(1) {

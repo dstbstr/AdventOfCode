@@ -57,11 +57,11 @@ SOLUTION(2017, 18) {
         while (ip < maxIp) {
             auto recovered = cmds[ip](ip, registers, lastPlayed);
             if (recovered > 0) {
-                return Constexpr::ToString(recovered);
+                return recovered;
             }
         }
 
-        return "Not Found";
+        throw "Not Found";
     }
 
     constexpr auto GenCommand2(std::string_view line) {
@@ -146,6 +146,6 @@ SOLUTION(2017, 18) {
             }
         }
 
-        return Constexpr::ToString(p1SendCount);
+        return p1SendCount;
     }
 }

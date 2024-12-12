@@ -55,11 +55,11 @@ SOLUTION(2015, 9) {
         return best;
     }
     PART(1) {
-        return Constexpr::ToString(Solve(lines, true));
+        return Solve(lines, true);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, false));
+        return Solve(lines, false);
     }
 
     TEST(1) {

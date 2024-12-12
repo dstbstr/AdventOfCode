@@ -81,11 +81,9 @@ SOLUTION(2019, 13) {
         UpdateGame(game, instructions, args);
 
         
-        auto blackTiles = std::count_if(game.Board.begin(), game.Board.end(), [](const auto& kvp) {
+        return std::count_if(game.Board.begin(), game.Board.end(), [](const auto& kvp) {
             return kvp.second == TileType::Block;
             });
-
-        return Constexpr::ToString(blackTiles);
     }
 
     PART(2) {
@@ -101,6 +99,6 @@ SOLUTION(2019, 13) {
             MovePaddle(game, instructions, args);
         }
 
-        return Constexpr::ToString(game.Score);
+        return game.Score;
     }
 }

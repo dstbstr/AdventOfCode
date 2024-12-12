@@ -84,7 +84,7 @@ SOLUTION(2023, 10) {
 
         auto map = CreateMap(lines, startPos);
         auto path = GetPath(map, startPos);
-        return Constexpr::ToString((path.size() / 2));
+        return (path.size() / 2);
     }
 
     constexpr Constexpr::BigSet<RowCol> GetLoop(const std::vector<RowCol>&path) {
@@ -201,11 +201,9 @@ SOLUTION(2023, 10) {
     PART(2) {
 		RowCol startPos = { 0, 0 };
         auto transformed = Transform(lines, startPos);
-        auto result = std::accumulate(transformed.begin(), transformed.end(), 0ull, [](size_t running, const std::string& line) {
+        return std::accumulate(transformed.begin(), transformed.end(), 0ull, [](size_t running, const std::string& line) {
             return running + std::count(line.begin(), line.end(), 'I');
             });
-
-        return Constexpr::ToString(result);
     }
 
     TEST(1) {
@@ -217,8 +215,8 @@ SOLUTION(2023, 10) {
             "....."
         };
 
-        if (Part1(lines) != "4") return false;
-        if (Part2(lines) != "1") return false;
+        if (std::get<size_t>(Part1(lines)) != 4) return false;
+        if (std::get<size_t>(Part2(lines)) != 1) return false;
         return true;
     }
 
@@ -235,7 +233,7 @@ SOLUTION(2023, 10) {
             ".........."
         };
 
-        return Part2(lines) == "4";
+        return std::get<size_t>(Part2(lines)) == 4;
     }
 
     TEST(3) {
@@ -252,6 +250,6 @@ SOLUTION(2023, 10) {
             "L7JLJL-JLJLJL--JLJ.L"
         };
 
-        return Part2(lines) == "10";
+        return std::get<size_t>(Part2(lines)) == 10;
     }
 }

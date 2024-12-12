@@ -116,7 +116,7 @@ SOLUTION(2017, 19) {
             steps++;
         }
 
-        return Constexpr::ToString(steps);
+        return steps;
     }
 
     /*

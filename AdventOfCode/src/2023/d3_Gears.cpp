@@ -62,7 +62,7 @@ SOLUTION(2023, 3) {
 			}
 		}
 		
-		return Constexpr::ToString(result);
+		return result;
 	}
 
 	PART(2) {
@@ -90,7 +90,7 @@ SOLUTION(2023, 3) {
 				result += lhs * rhs;
 			}
 		}
-		return Constexpr::ToString(result);
+		return result;
 	}
 
 	TEST(1) {
@@ -118,7 +118,7 @@ SOLUTION(2023, 3) {
 
 		if (symbols.size() != 6) return false;
 
-		if (Part1(input) != "4361") return false;
+		if (std::get<u32>(Part1(input)) != 4361) return false;
 
 		return true;
 	}

@@ -73,11 +73,11 @@ SOLUTION(2020, 24) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Run(lines, 0));
+        return Run(lines, 0);
     }
 
     PART(2) {
-        return Constexpr::ToString(Run(lines, 100));
+        return Run(lines, 100);
     }
 
     TEST(1) {

@@ -20,10 +20,10 @@ SOLUTION(2016, 18) {
     }
 
     PART(1) {
-        return Constexpr::ToString(CountSafeTiles(lines[0], 40));
+        return CountSafeTiles(lines[0], 40);
     }
     PART(2) {
-        return Constexpr::ToString(CountSafeTiles(lines[0], 400'000));
+        return CountSafeTiles(lines[0], 400'000);
     }
 
     static_assert(CountSafeTiles(".^^.^.^^^^", 10) == 38);

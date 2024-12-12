@@ -34,7 +34,7 @@ SOLUTION(2023, 8) {
             else current = map[current].second;
         }
 
-        return Constexpr::ToString(step);
+        return step;
     }
 
     constexpr std::pair<std::string, size_t> Next2(std::pair<std::string, size_t> current, const std::string& dirs, const Map& map) {
@@ -112,7 +112,7 @@ SOLUTION(2023, 8) {
             cycleLengths.push_back(cycleLength);
         }
 
-        return Constexpr::ToString(Constexpr::FindLcm(cycleLengths));
+        return Constexpr::FindLcm(cycleLengths);
     }
 
     TEST(1) {
@@ -128,7 +128,7 @@ SOLUTION(2023, 8) {
             "ZZZ = (ZZZ, ZZZ)"
         };
 
-        return Part1(lines) == "2";
+        return std::get<u64>(Part1(lines)) == 2;
     }
 
     TEST(2) {
@@ -145,6 +145,6 @@ SOLUTION(2023, 8) {
             "XXX = (XXX, XXX)"
         };
 
-        return Part2(lines) == "6";
+        return std::get<size_t>(Part2(lines)) == 6;
     }
 }

@@ -101,6 +101,6 @@ SOLUTION(2018, 10) {
 
     PART(2) {
         std::string ignored;
-        return Constexpr::ToString(Solve(lines, ignored));
+        return Solve(lines, ignored);
     }
 }

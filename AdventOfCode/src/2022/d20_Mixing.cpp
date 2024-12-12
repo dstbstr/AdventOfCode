@@ -64,11 +64,11 @@ SOLUTION(2022, 20) {
     }
 
     PART(1) {
-        return Constexpr::ToString(Solve(lines, 1, 1));
+        return Solve(lines, 1, 1);
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, 811589153, 10));
+        return Solve(lines, 811589153, 10);
     }
 
     constexpr bool TestShift(size_t index, std::vector<s64> start, std::vector<s64> end) {

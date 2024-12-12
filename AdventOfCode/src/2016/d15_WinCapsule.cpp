@@ -38,7 +38,7 @@ SOLUTION(2016, 15) {
     PART(1) {
         auto discs = ParseLines(lines, ParseDisc);
 
-        return Constexpr::ToString(BestSpin(discs));
+        return BestSpin(discs);
         
     }
     PART(2) {
@@ -47,7 +47,7 @@ SOLUTION(2016, 15) {
 
         auto discs = ParseLines(copy, ParseDisc);
 
-        return Constexpr::ToString(BestSpin(discs));
+        return BestSpin(discs);
     }
 
     static_assert(Win({ {5, 4}, {2, 1} }, 0) == false);

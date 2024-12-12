@@ -44,7 +44,7 @@ SOLUTION(2022, 13) {
     }
 
     PART(1) {
-        return Constexpr::ToString(SolvePartOne(lines));
+        return SolvePartOne(lines);
     }
 
     constexpr size_t SolvePartTwo(const auto& lines) {
@@ -72,7 +72,7 @@ SOLUTION(2022, 13) {
         return result;
     }
     PART(2) {
-        return Constexpr::ToString(SolvePartTwo(lines));
+        return SolvePartTwo(lines);
     }
 
     static_assert(Compare("[1,1,3,1,1]", "[1,1,5,1,1]"));

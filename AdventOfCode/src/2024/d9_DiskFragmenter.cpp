@@ -64,7 +64,7 @@ SOLUTION(2024, 9) {
 	}
 	
 	PART(1) {
-		return Constexpr::ToString(SolvePart1(lines[0]));
+		return SolvePart1(lines[0]);
 	}
 
 	constexpr void Compact2(std::vector<u32>& input) {
@@ -134,7 +134,7 @@ SOLUTION(2024, 9) {
 	}
 
 	PART(2) {
-		return Constexpr::ToString(SolvePart2(lines[0]));
+		return SolvePart2(lines[0]);
 	}
 
 	static_assert(SolvePart1("2333133121414131402") == 1928);

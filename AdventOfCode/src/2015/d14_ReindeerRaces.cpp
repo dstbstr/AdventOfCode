@@ -56,7 +56,7 @@ SOLUTION(2015, 14) {
 
     PART(1) {
         //One liner, just for fun. :)
-        return Constexpr::ToString(RunAllReturnMax(ParseLines(lines, ParseRacer), FindDistance, 2503));
+        return RunAllReturnMax(ParseLines(lines, ParseRacer), FindDistance, 2503);
         /*
         auto racers = ParseLines<Reindeer>(lines, ParseRacer);
         u32 best = 0;
@@ -64,14 +64,14 @@ SOLUTION(2015, 14) {
             best = std::max(best, FindDistance(racer, 2503));
         }
 
-        return Constexpr::ToString(best);
+        return best;
         */
     }
     PART(2) {
         auto racers = ParseLines(lines, ParseRacer);
         auto points = GetPoints(racers, 2503);
         
-        return Constexpr::ToString(*std::max_element(points.cbegin(), points.cend()));
+        return *std::max_element(points.cbegin(), points.cend());
     }
 
     static_assert(FindDistance({ 14,10,127 }, 10) == 140);

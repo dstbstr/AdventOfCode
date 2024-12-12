@@ -78,13 +78,12 @@ SOLUTION(2023, 21) {
 
     PART(1) {
         auto distances = GetDistances(lines);
-        auto result = std::count_if(distances.begin(), distances.end(), [](size_t d) {
+        return std::count_if(distances.begin(), distances.end(), [](size_t d) {
             return d < 65 && d % 2 == 0;
-            });
-        return Constexpr::ToString(result);
+        });
     }
 
     PART(2) {
-        return Constexpr::ToString(Solve(lines, 26501365));
+        return Solve(lines, 26501365);
     }
 }

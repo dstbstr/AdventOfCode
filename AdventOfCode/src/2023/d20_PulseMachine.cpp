@@ -178,7 +178,7 @@ SOLUTION(2023, 20) {
             highs += high;
         }
 
-        return Constexpr::ToString(lows * highs);
+        return lows * highs;
     }
 
     PART(2) {
@@ -206,9 +206,9 @@ SOLUTION(2023, 20) {
             press++;
         }
 
-        return Constexpr::ToString(std::accumulate(factors.begin(), factors.end(), 1ull, [](size_t running, size_t factor) {
+        return std::accumulate(factors.begin(), factors.end(), 1ull, [](size_t running, size_t factor) {
             return running * factor;
-            }));
+            });
     }
 
     TEST(1) {
@@ -220,7 +220,7 @@ SOLUTION(2023, 20) {
             "&inv -> a"
         };
 
-        return Part1(lines) == "32000000";
+        return std::get<size_t>(Part1(lines)) == 32000000;
     }
 
     TEST(2) {
@@ -232,7 +232,6 @@ SOLUTION(2023, 20) {
             "&con -> output",
         };
 
-        return Part1(lines) == "11687500";
+        return std::get<size_t>(Part1(lines)) == 11687500;
     }
-
 }

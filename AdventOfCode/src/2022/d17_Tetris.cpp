@@ -213,11 +213,11 @@ SOLUTION(2022, 17) {
     }
 
     PART(1) {
-        return Constexpr::ToString(FindTowerHeight(lines[0], 2022));
+        return FindTowerHeight(lines[0], 2022);
     }
 
     PART(2) {
-        return Constexpr::ToString(FindTowerHeight(lines[0], 1'000'000'000'000));
+        return FindTowerHeight(lines[0], 1'000'000'000'000);
     }
 
     TEST(1) {

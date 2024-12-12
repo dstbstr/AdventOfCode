@@ -14,7 +14,7 @@ SOLUTION(2017, 10) {
         }
 
         std::rotate(numbers.rbegin(), numbers.rbegin() + currentPos, numbers.rend());
-        return Constexpr::ToString(numbers[0] * numbers[1]);
+        return numbers[0] * numbers[1];
     }
 
     PART(2) {

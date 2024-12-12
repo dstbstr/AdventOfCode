@@ -161,8 +161,7 @@ SOLUTION(2018, 16) {
         auto groups = SplitInputIntoGroups(lines);
         auto triplets = GetAllTriplets(groups);
 
-        auto res = std::count_if(triplets.begin(), triplets.end(), [](const Triplet& t) { return GetMatchingCodes(t).size() > 2; });
-        return Constexpr::ToString(res);
+        return std::count_if(triplets.begin(), triplets.end(), [](const Triplet& t) { return GetMatchingCodes(t).size() > 2; });
     }
 
     PART(2) {
@@ -170,7 +169,7 @@ SOLUTION(2018, 16) {
         auto triplets = GetAllTriplets(groups);
         auto ops = FindOps(triplets);
 
-        return Constexpr::ToString(RunProgram(groups.back(), ops));
+        return RunProgram(groups.back(), ops);
     }
 
     TEST(1) {

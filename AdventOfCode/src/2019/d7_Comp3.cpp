@@ -39,7 +39,7 @@ SOLUTION(2019, 7) {
             best = std::max(best, previous);
         } while (std::next_permutation(phases.begin(), phases.end()));
 
-        return Constexpr::ToString(best);
+        return best;
     }
 
     PART(2) {
@@ -61,6 +61,6 @@ SOLUTION(2019, 7) {
             best = std::max(best, previous);
         } while (std::next_permutation(phases.begin(), phases.end()));
 
-        return Constexpr::ToString(best);
+        return best;
     }
 }
