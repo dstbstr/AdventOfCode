@@ -1,16 +1,14 @@
 #include "Common.h"
 
 SOLUTION(2024, 12) {
-	struct Region {
-		char Id;
-		std::vector<RowCol> Cells;
-	};
+	using Region = std::vector<RowCol>;
 
-	constexpr bool RegionsTouch(const Region& lhs, const Region& rhs) {
-		for (auto& lhsCell : lhs.Cells) {
-			if(std::any_of(rhs.Cells.begin(), rhs.Cells.end(), [&](auto& cell) {
+	constexpr bool RegionsTouch(const Region & lhs, const Region & rhs) {
+		
+		for (auto& lhsCell : lhs) {
+			if (std::any_of(rhs.begin(), rhs.end(), [&](auto& cell) {
 				return MDistance(lhsCell, cell) == 1;
-			})) {
+				})) {
 				return true;
 			}
 		}
@@ -26,69 +24,55 @@ SOLUTION(2024, 12) {
 				for (size_t j = i + 1; j < regions.size(); j++) {
 					auto& rhsRegion = regions[j];
 					if (RegionsTouch(lhsRegion, rhsRegion)) {
-						lhsRegion.Cells.insert(lhsRegion.Cells.end(), rhsRegion.Cells.begin(), rhsRegion.Cells.end());
-						rhsRegion.Cells.clear();
+						lhsRegion.insert(lhsRegion.end(), rhsRegion.begin(), rhsRegion.end());
+						rhsRegion.clear();
 						progress = true;
 					}
 				}
 			}
 			//erase any empty regions
 			regions.erase(std::remove_if(regions.begin(), regions.end(), [](auto& region) {
-				return region.Cells.empty();
+				return region.empty();
 				}), regions.end());
 		}
-
 	}
 
-	using Map = std::array<std::pair<char, std::vector<Region>>, 26>;
-	constexpr Map ParseMap(const std::vector<std::string>& lines) {
-		Map result{};
+	constexpr std::vector<Region> ParseMap(const std::vector<std::string>& lines) {
+		std::array<std::vector<Region>, 26> regionsById;
 		auto limits = GetLimits<RowCol>(lines);
 		Constexpr::ForEach(limits, [&](RowCol pos) {
 			auto id = lines[pos.Row][pos.Col];
 			if (id == '.') return;
-			result[id - 'A'].second.emplace_back(Region{id, {pos}});
+			regionsById[id - 'A'].emplace_back(Region{ pos });
 		});
 
-		// combine regions with the same Id and at least 1 adjacent cell
-		for(auto& [id, regions] : result) {
+		for(auto& regions : regionsById) {
 			Condense(regions);
+		}
+		std::vector<Region> result;
+		for (auto& regions : regionsById) {
+			result.insert(result.end(), regions.begin(), regions.end());
 		}
 
 		return result;
 	}
 
 	constexpr u32 GetArea(const Region& region) {
-		return static_cast<u32>(region.Cells.size());
+		return static_cast<u32>(region.size());
 	}
 
-	constexpr std::tuple<
-		std::vector<RowCol>, 
-		std::vector<RowCol>, 
-		std::vector<RowCol>,
-		std::vector<RowCol>>
-		GetPerimeterCells(const Region& region, const std::vector<std::string>& lines) {
-		std::vector<RowCol> up, left, down, right;
+	constexpr std::tuple<Region, Region, Region,Region> GetPerimeterCells(const Region& region, const std::vector<std::string>& lines) {
+		Region up, left, down, right;
 		auto h = RowCol{ 1, 0 };
 		auto v = RowCol{ 0, 1 };
-		for(const auto& cell : region.Cells) {
-			auto leftCell = cell - h;
-			auto rightCell = cell + h;
-			auto upCell = cell - v;
-			auto downCell = cell + v;
+		auto getId = [&](const RowCol& pos) {return lines[pos.Row][pos.Col];};
+		for(const auto& cell : region) {
+			auto id = getId(cell);
 
-			if (lines[leftCell.Row][leftCell.Col] != region.Id) {
-				left.push_back(cell);
-			}
-			if (lines[rightCell.Row][rightCell.Col] != region.Id) {
-				right.push_back(cell);
-			}
-			if (lines[upCell.Row][upCell.Col] != region.Id) {
-				up.push_back(cell);
-			}
-			if (lines[downCell.Row][downCell.Col] != region.Id) {
-				down.push_back(cell);
-			}
+			if (getId(cell - v) != id) up.push_back(cell);
+			if (getId(cell - h) != id) left.push_back(cell);
+			if (getId(cell + h) != id) right.push_back(cell);
+			if (getId(cell + v) != id) down.push_back(cell);
 		}
 
 		return { up, left, down, right };
@@ -100,15 +84,13 @@ SOLUTION(2024, 12) {
 	}
 
 	constexpr u32 GetSides(const Region& region, std::vector<std::string>& lines) {
-		// find all left, right, top, bottom sides
-		// the left sides are the cells which have no left neighbor
 		auto [up, left, down, right] = GetPerimeterCells(region, lines);
 
 		//split up, left, down, right into subregions
 		std::vector<Region> upRegions, leftRegions, downRegions, rightRegions;
-		auto splitIntoRegions = [](const std::vector<RowCol>& side, std::vector<Region>& outRegions) {
+		auto splitIntoRegions = [](const Region& side, std::vector<Region>& outRegions) {
 			std::transform(side.begin(), side.end(), std::back_inserter(outRegions), [](const RowCol& pos) {
-				return Region{ 'U', {pos} };
+				return Region{ {pos} };
 				});
 			};
 
@@ -126,28 +108,25 @@ SOLUTION(2024, 12) {
 	}
 
 	constexpr std::vector<std::string> SurroundMap(const std::vector<std::string>& lines) {
-		auto copy = lines;
-		copy.insert(copy.begin(), std::string(copy[0].size(), '.'));
-		copy.push_back(std::string(copy[0].size(), '.'));
-		for (auto& line : copy) {
-			line.insert(line.begin(), '.');
-			line.push_back('.');
+		std::vector<std::string> result;
+		result.reserve(lines.size() + 2);
+		result.emplace_back(lines[0].size() + 2, '.');
+		for (const auto& line : lines) {
+			result.emplace_back('.' + line + '.');
 		}
-		return copy;
+		result.emplace_back(lines[0].size() + 2, '.');
+		return result;
 	}
 
 	constexpr u32 Solve(const std::vector<std::string>& lines, auto func) {
-		auto copy = SurroundMap(lines);
-		auto map = ParseMap(copy);
+		auto map = SurroundMap(lines);
+		auto regions = ParseMap(map);
 		u32 result = 0;
-		for (const auto& [id, regions] : map) {
-			for (const auto& region : regions) {
-				result += GetArea(region) * func(region, copy);
-			}
+		for (const auto& region : regions) {
+			result += GetArea(region) * func(region, map);
 		}
 
 		return result;
-
 	}
 
 	PART(1) {
