@@ -288,7 +288,7 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d10_HoofIt.cpp"
 	"src/2024/d11_PlutonianPebbles.cpp" 
 	"src/2024/d12_GardenGroups.cpp" 
-	"src/2024/d13.cpp" 
+	"src/2024/d13_ClawContraption.cpp" 
 	"src/2024/d14.cpp" 
 	"src/2024/d15.cpp" 
 	"src/2024/d16.cpp" 

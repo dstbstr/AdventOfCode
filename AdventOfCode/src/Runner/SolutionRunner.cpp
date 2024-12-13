@@ -153,7 +153,7 @@ SolutionRunner::SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputRe
 void SolutionRunner::Run(const SolutionRunner::Settings& settings) {
 	{
 		ScopedTimer timer("Total Runtime", [](std::string_view label, std::chrono::microseconds elapsed) {
-			Log::Info(std::format("{}: {}", label, TimeUtils::DurationToString(elapsed)));
+			Log::Info(std::format("\r{}: {}", label, TimeUtils::DurationToString(elapsed)));
 			});
 
 		if(settings.Sync) {
