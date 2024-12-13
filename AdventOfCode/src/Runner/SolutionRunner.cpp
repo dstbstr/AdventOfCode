@@ -70,10 +70,11 @@ namespace {
 			std::sort(copy.begin(), copy.end(), SortByProblem);
 		}
 
+		if(timingFilter.has_value()) {
+			copy.erase(std::remove_if(copy.begin(), copy.end(), [filter = timingFilter.value()](const auto& pair) { return !filter(pair.first, pair.second); }), copy.end());
+		}
 		for (const auto& [key, elapsed] : copy) {
-			if (!timingFilter.has_value() || timingFilter.value()(key, elapsed)) {
-				Log::Info(std::format("{}: {}", key, TimeUtils::DurationToString(elapsed)));
-			}
+			Log::Info(std::format("{}: {}", key, TimeUtils::DurationToString(elapsed)));
 		}
 
 		std::chrono::microseconds totalElapsed = std::accumulate(copy.begin(), copy.end(), std::chrono::microseconds(0), [](auto acc, auto pair) { return acc + pair.second; });

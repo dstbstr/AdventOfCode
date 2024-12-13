@@ -88,10 +88,10 @@ int main(int argc, char** argv) {
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>());
         } else {
-            //return SolutionRunner(2024, std::make_unique<ExeInputReader>());
+            return SolutionRunner(2024, std::make_unique<ExeInputReader>());
             //return SolutionRunner (2024, 13, std::make_unique<ExeInputReader>());
             //return SolutionRunner (2021, 23, std::make_unique<ExeInputReader>());
-            return SolutionRunner(std::make_unique<ExeInputReader>(), SolutionRunner::Tests::Include);
+            //return SolutionRunner(std::make_unique<ExeInputReader>(), SolutionRunner::Tests::Include);
         }
     }();
         
