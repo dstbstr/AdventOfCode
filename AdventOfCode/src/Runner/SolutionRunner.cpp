@@ -61,7 +61,7 @@ namespace {
 	}
 
 	// TODO: Maybe add up all of the times, and compare to total runtime
-	void LogTimingData(std::map<std::string, std::chrono::microseconds> timingData, SolutionRunner::SortBy sortBy, std::optional<std::chrono::microseconds> minElapsed = std::nullopt) {
+	void LogTimingData(std::map<std::string, std::chrono::microseconds> timingData, SolutionRunner::SortBy sortBy, std::optional<std::function<bool(std::string_view, std::chrono::microseconds)>> timingFilter) {
 		std::vector<std::pair<std::string, std::chrono::microseconds>> copy(timingData.begin(), timingData.end());
 		if (sortBy == SolutionRunner::SortBy::RunTime) {
 			std::sort(copy.begin(), copy.end(), [](auto lhs, auto rhs) { return rhs.second < lhs.second; });
@@ -70,10 +70,10 @@ namespace {
 			std::sort(copy.begin(), copy.end(), SortByProblem);
 		}
 
-		for (auto [key, elapsed] : copy) {
-			if (minElapsed.has_value() && elapsed < minElapsed) break;
-
-			Log::Info(std::format("{}: {}", key, TimeUtils::DurationToString(elapsed)));
+		for (const auto& [key, elapsed] : copy) {
+			if (timingFilter.has_value() && timingFilter.value()(key, elapsed)) {
+				Log::Info(std::format("{}: {}", key, TimeUtils::DurationToString(elapsed)));
+			}
 		}
 
 		std::chrono::microseconds totalElapsed = std::accumulate(copy.begin(), copy.end(), std::chrono::microseconds(0), [](auto acc, auto pair) { return acc + pair.second; });
@@ -179,6 +179,6 @@ void SolutionRunner::Run(const SolutionRunner::Settings& settings) {
 		Log::Info("");
 	}
 	if (settings.PrintTiming) {
-		LogTimingData(m_TimingData, settings.TimingSort, settings.MinElapsed);
+		LogTimingData(m_TimingData, settings.TimingSort, settings.TimingFilter);
 	}
 }

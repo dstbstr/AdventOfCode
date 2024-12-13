@@ -24,7 +24,7 @@ public:
 		bool PrintTiming{ false };
 		bool PrintResults{ false };
 		SortBy TimingSort{ SortBy::RunTime };
-		std::optional<std::chrono::microseconds> MinElapsed{ std::nullopt };
+		std::optional<std::function<bool(std::string_view, std::chrono::microseconds)>> TimingFilter{std::nullopt};
 	};
 
 	SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, Tests tests = Tests::Include);

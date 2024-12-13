@@ -80,7 +80,9 @@ int main(int argc, char** argv) {
         .PrintTiming = true,
         .PrintResults = false,
         .TimingSort = SolutionRunner::SortBy::RunTime,
-        .MinElapsed = std::chrono::milliseconds(500)
+		.TimingFilter = [](std::string_view, std::chrono::microseconds elapsed) {
+			return elapsed > std::chrono::milliseconds(500);
+		}
     };
     auto runner = [&]{
         if (argc > 1) {
