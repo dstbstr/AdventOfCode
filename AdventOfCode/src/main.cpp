@@ -75,14 +75,14 @@ int main(int argc, char** argv) {
     StdLogWriter stdLogWriter{};
     //FileLogWriter fileLogWriter{};
     
+	//auto slowProblems = [](std::string_view, std::chrono::microseconds elapsed) { return elapsed > std::chrono::milliseconds(500); };
+    //auto testsOnly = [](std::string_view label, std::chrono::microseconds) { return label.starts_with("Test_"); };
     SolutionRunner::Settings runSettings{
         .Sync = false,
         .PrintTiming = true,
         .PrintResults = false,
         .TimingSort = SolutionRunner::SortBy::RunTime,
-		.TimingFilter = [](std::string_view, std::chrono::microseconds elapsed) {
-			return elapsed > std::chrono::milliseconds(500);
-		}
+		//.TimingFilter = testsOnly
     };
     auto runner = [&]{
         if (argc > 1) {
@@ -90,8 +90,8 @@ int main(int argc, char** argv) {
         } else {
             //return SolutionRunner(2024, std::make_unique<ExeInputReader>());
             //return SolutionRunner (2024, 13, std::make_unique<ExeInputReader>());
-            //return SolutionRunner (2022, 16, std::make_unique<ExeInputReader>());
-            return SolutionRunner(std::make_unique<ExeInputReader>(), SolutionRunner::Tests::Exclude);
+            //return SolutionRunner (2021, 23, std::make_unique<ExeInputReader>());
+            return SolutionRunner(std::make_unique<ExeInputReader>(), SolutionRunner::Tests::Include);
         }
     }();
         

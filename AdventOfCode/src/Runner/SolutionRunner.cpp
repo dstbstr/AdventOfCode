@@ -71,7 +71,7 @@ namespace {
 		}
 
 		for (const auto& [key, elapsed] : copy) {
-			if (timingFilter.has_value() && timingFilter.value()(key, elapsed)) {
+			if (!timingFilter.has_value() || timingFilter.value()(key, elapsed)) {
 				Log::Info(std::format("{}: {}", key, TimeUtils::DurationToString(elapsed)));
 			}
 		}

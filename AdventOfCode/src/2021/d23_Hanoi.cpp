@@ -111,11 +111,12 @@ SOLUTION(2021, 23) {
 
         constexpr std::vector<RowCol> GetAvailablePositions() const {
             std::vector<RowCol> result;
-            if (Occupants[0] == '.') result.push_back({ 1, 1 });
-            if (Occupants.back() == '.') result.push_back({ 1, 11 });
+            result.reserve(12);
+            if (Occupants[0] == '.') result.emplace_back(RowCol{ 1, 1 });
+            if (Occupants.back() == '.') result.emplace_back(RowCol{ 1, 11 });
             for (size_t i = 1; i < 10; i += 2) {
                 if (Occupants[i] == '.') {
-                    result.push_back({ 1, i + 1 });
+                    result.emplace_back(RowCol{ 1, i + 1 });
                 }
             }
 
@@ -123,11 +124,12 @@ SOLUTION(2021, 23) {
         }
         constexpr std::vector<Bot> GetOccupants() const {
             std::vector<Bot> result;
-            if (Occupants[0] != '.') result.push_back({ {1, 1}, Occupants[0] });
-            if (Occupants.back() != '.') result.push_back({ {1, 11}, Occupants.back() });
+            result.reserve(12);
+            if (Occupants[0] != '.') result.emplace_back(RowCol{1, 1}, Occupants[0]);
+            if (Occupants.back() != '.') result.emplace_back(RowCol{1, 11}, Occupants.back());
             for (size_t i = 1; i < 10; i += 2) {
                 if (Occupants[i] != '.') {
-                    result.push_back({ {1, i + 1}, Occupants[i] });
+                    result.emplace_back(RowCol{1, i + 1}, Occupants[i]);
                 }
             }
 
@@ -164,10 +166,13 @@ SOLUTION(2021, 23) {
         dens.clear();
         auto denSize = (cache.size() - 11) / 4;
         for (size_t idx = 11, col = 3; idx < cache.size(); idx += denSize, col += 2) {
+            dens.emplace_back(col, cache.substr(idx, denSize));
+            /*
             Den den;
             den.Col = col;
             den.Occupants = cache.substr(idx, denSize);
             dens.push_back(den);
+            */
         }
     }
 
@@ -177,7 +182,7 @@ SOLUTION(2021, 23) {
             for (size_t col = 0; col < lines[row].size(); col++) {
                 auto current = lines[row][col];
                 if (current >= 'A' && current <= 'Z') {
-                    result.push_back({ {row, col}, current });
+                    result.emplace_back(RowCol{row, col}, current);
                 }
             }
         }
@@ -255,7 +260,7 @@ SOLUTION(2021, 23) {
                         nextHall.Remove(bot);
                         den.Push(bot);
 
-                        result.push_back({ cost, ToCacheString(nextHall, nextDens) });
+                        result.emplace_back(cost, ToCacheString(nextHall, nextDens));
                     }
                     break;
                 }
@@ -281,7 +286,7 @@ SOLUTION(2021, 23) {
                     nextDens[denIndex].Pop();
                     nextHall.Occupy(nextBot);
 
-                    result.push_back({ cost, ToCacheString(nextHall, nextDens) });
+                    result.emplace_back(cost, ToCacheString(nextHall, nextDens));
                 }
             }
         }
