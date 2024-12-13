@@ -75,6 +75,9 @@ namespace {
 
 			Log::Info(std::format("{}: {}", key, TimeUtils::DurationToString(elapsed)));
 		}
+
+		std::chrono::microseconds totalElapsed = std::accumulate(copy.begin(), copy.end(), std::chrono::microseconds(0), [](auto acc, auto pair) { return acc + pair.second; });
+		Log::Info(std::format("\nTotal Compute Time: {}", TimeUtils::DurationToString(totalElapsed)));
 	}
 
 	void LogResults() {
@@ -106,11 +109,11 @@ bool SolutionRunner::CheckTestsPass(size_t year, size_t day) {
     return true;
 }
 
-void SolutionRunner::AddSolution(size_t year, size_t day) {
+void SolutionRunner::AddSolution(size_t year, size_t day, Tests tests) {
     Results[year][day][1] = "";
 	Results[year][day][2] = "";
-    auto func = [this, year, day]() {
-		if (!CheckTestsPass(year, day)) [[unlikely]] return;
+    auto func = [this, year, day, tests]() {
+		if (tests == Tests::Include && !CheckTestsPass(year, day)) [[unlikely]] return;
 
         for (const auto& [part, func] : GetSolutions()[year][day]) {
             auto input = m_InputReader->ReadInput(year, day);
@@ -126,12 +129,12 @@ void SolutionRunner::AddSolution(size_t year, size_t day) {
 	m_ToRun.emplace_back(func);
 }
 
-SolutionRunner::SolutionRunner(std::unique_ptr<IInputReader>&& inputReader) 
+SolutionRunner::SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, Tests tests) 
     : m_InputReader(std::move(inputReader))
 {
 	for (const auto& [year, days] : GetSolutions()) {
 		for (const auto& [day, parts] : days) {
-            AddSolution(year, day);
+            AddSolution(year, day, tests);
 		}
 	}
 }
@@ -140,19 +143,19 @@ SolutionRunner::SolutionRunner(size_t year, std::unique_ptr<IInputReader>&& inpu
     : m_InputReader(std::move(inputReader))
 {
 	for (const auto& [day, parts] : GetSolutions()[year]) {
-		AddSolution(year, day);
+		AddSolution(year, day, Tests::Include);
 	}
 }
 
 SolutionRunner::SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputReader>&& inputReader) 
     : m_InputReader(std::move(inputReader))
 {
-    AddSolution(year, day);
+    AddSolution(year, day, Tests::Include);
 }
 
 void SolutionRunner::Run(const SolutionRunner::Settings& settings) {
 	{
-		ScopedTimer timer("Total Runtime", [](std::string_view label, std::chrono::microseconds elapsed) {
+		ScopedTimer timer("Wall Clock Time", [](std::string_view label, std::chrono::microseconds elapsed) {
 			Log::Info(std::format("\r{}: {}", label, TimeUtils::DurationToString(elapsed)));
 			});
 
@@ -176,6 +179,6 @@ void SolutionRunner::Run(const SolutionRunner::Settings& settings) {
 		Log::Info("");
 	}
 	if (settings.PrintTiming) {
-		LogTimingData(m_TimingData, settings.TimingSort);
+		LogTimingData(m_TimingData, settings.TimingSort, settings.MinElapsed);
 	}
 }

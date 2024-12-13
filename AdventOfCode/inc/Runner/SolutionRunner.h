@@ -5,6 +5,7 @@
 #include <map>
 #include <chrono>
 #include <functional>
+#include <optional>
 
 class SolutionRunner {
 public:
@@ -13,14 +14,20 @@ public:
 		Problem
 	};
 
+	enum struct Tests {
+		Include,
+		Exclude
+	};
+
 	struct Settings {
 		bool Sync{ false };
 		bool PrintTiming{ false };
 		bool PrintResults{ false };
 		SortBy TimingSort{ SortBy::RunTime };
+		std::optional<std::chrono::microseconds> MinElapsed{ std::nullopt };
 	};
 
-	SolutionRunner(std::unique_ptr<IInputReader>&& inputReader);
+	SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, Tests tests = Tests::Include);
 	SolutionRunner(size_t year, std::unique_ptr<IInputReader>&& inputReader);
 	SolutionRunner(size_t year, size_t day, std::unique_ptr<IInputReader>&& inputReader);
 
@@ -32,5 +39,5 @@ private:
 	std::vector<std::function<void()>> m_ToRun;
 
 	bool CheckTestsPass(size_t year, size_t day);
-	void AddSolution(size_t year, size_t day);
+	void AddSolution(size_t year, size_t day, Tests tests = Tests::Include);
 };
