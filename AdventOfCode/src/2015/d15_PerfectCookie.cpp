@@ -50,7 +50,7 @@ SOLUTION(2015, 15) {
 
     constexpr u32 Recurse(const std::vector<Ing>& ings, std::vector<u32> amounts, u32 totalSoFar, bool limitCalories) {
         if (amounts.size() == ings.size() - 1) {
-            amounts.push_back(100 - totalSoFar);
+            amounts.emplace_back(100 - totalSoFar);
             if (limitCalories) {
                 auto calories = CalculateCalories(ings, amounts);
                 if (calories != 500) {
@@ -60,7 +60,7 @@ SOLUTION(2015, 15) {
             return CalculateScore(ings, amounts);
         }
 
-        amounts.push_back(1);
+        amounts.emplace_back(1);
         u32 best = 0;
         for (u32 amount = 1; amount + totalSoFar < 100; amount++) {
             amounts.back() = amount;
@@ -91,8 +91,8 @@ SOLUTION(2015, 15) {
 
     TEST(2) {
         std::vector<Ing> ings;
-        ings.push_back(ParseIng("Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8"));
-        ings.push_back(ParseIng("Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3"));
+        ings.emplace_back(ParseIng("Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8"));
+        ings.emplace_back(ParseIng("Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3"));
 
         std::vector<u32> amounts = { 44, 56 };
         return CalculateScore(ings, amounts) == 62842880;

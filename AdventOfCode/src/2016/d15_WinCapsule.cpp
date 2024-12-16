@@ -43,7 +43,7 @@ SOLUTION(2016, 15) {
     }
     PART(2) {
         auto copy = lines;
-        copy.push_back("Disc #7 has 11 positions; at time=0, it is at position 0.");
+        copy.emplace_back("Disc #7 has 11 positions; at time=0, it is at position 0.");
 
         auto discs = ParseLines(copy, ParseDisc);
 

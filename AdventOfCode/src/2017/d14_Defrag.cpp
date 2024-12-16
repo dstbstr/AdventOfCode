@@ -9,21 +9,23 @@ SOLUTION(2017, 14) {
 
     constexpr Grid CreateGrid(std::string_view key) {
         Grid result;
+        result.reserve(128);
         std::string prefix = std::string(key);
         for (auto i = 0; i < 128; i++) {
             std::string toHash = prefix + "-" + Constexpr::ToString(i);
             auto hash = KnotHash::Hash(toHash);
             std::vector<bool> line;
+            line.reserve(hash.size());
 
             for (auto value : hash) {
                 for (size_t bit = 7; bit > 0; bit--) {
                     auto mask = 1u << bit;
-                    line.push_back((value & mask) == mask);
+                    line.emplace_back((value & mask) == mask);
                 }
-                line.push_back((value & 1) == 1);
+                line.emplace_back((value & 1) == 1);
             }
 
-            result.push_back(line);
+            result.emplace_back(line);
         }
 
         return result;
@@ -45,7 +47,7 @@ SOLUTION(2017, 14) {
     constexpr void FloodFill(Grid & grid, const RowCol & start) {
         auto limits = RowCol{ 127, 127 };
         std::vector<RowCol> current;
-        current.push_back(start);
+        current.emplace_back(start);
 
         while (!current.empty()) {
             auto pos = current.back();
@@ -80,7 +82,7 @@ SOLUTION(2017, 14) {
         for (size_t row = 0; row < grid.size(); row++) {
             for (size_t col = 0; col < grid.at(row).size(); col++) {
                 if (grid[row][col]) {
-                    allPoints.push_back({ row, col });
+                    allPoints.emplace_back(row, col);
                 }
             }
         }

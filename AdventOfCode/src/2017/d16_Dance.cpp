@@ -69,13 +69,11 @@ SOLUTION(2017, 16) {
     }
 
     constexpr auto GetMoves(std::string_view line) {
-        using Move = decltype(GenMove(""));
-        std::vector<Move> moves;
-        auto s = Constexpr::Split(line, ",");
-        for (auto m : s) {
-            moves.push_back(GenMove(m));
-        }
-        return moves;
+        return line 
+            | std::views::split(',')
+			| std::views::transform([](auto s) { return std::string_view(s.begin(), s.end()); })
+			| std::views::transform(GenMove)
+			| std::ranges::to<std::vector>();
     }
 
     constexpr std::string Dance(std::string dancers, const auto& moves) {

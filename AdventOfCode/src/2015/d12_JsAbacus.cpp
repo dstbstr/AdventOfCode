@@ -20,7 +20,7 @@ SOLUTION(2015, 12) {
             index++; //Consume open bracket
             Json result;
             while (json[index] != ']') {
-                result.Elements.push_back(ParseJson(json, index));
+                result.Elements.emplace_back(ParseJson(json, index));
             }
 
             index++; //Consume close bracket

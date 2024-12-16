@@ -6,12 +6,14 @@ SOLUTION(2016, 24) {
 
     constexpr Walls FindWalls(const auto& lines) {
         Walls result;
+		result.reserve(lines.size());
+
         for (auto row = 0ull; row < lines.size(); row++) {
             std::vector<bool> line;
             for (auto col = 0ull; col < lines[row].size(); col++) {
-                line.push_back(lines[row][col] == '#');
+                line.emplace_back(lines[row][col] == '#');
             }
-            result.push_back(line);
+            result.emplace_back(line);
         }
 
         return result;
@@ -19,10 +21,11 @@ SOLUTION(2016, 24) {
 
     constexpr std::vector<RowCol> FindTargets(const auto& lines) {
         std::vector<RowCol> result;
+        result.reserve(lines.size());
         for (size_t row = 0; row < lines.size(); row++) {
             for (size_t col = 0; col < lines[row].size(); col++) {
                 if (lines[row][col] > '0') {
-                    result.push_back({ row, col });
+                    result.emplace_back(row, col);
                 }
             }
         }
@@ -82,7 +85,7 @@ SOLUTION(2016, 24) {
         while (std::next_permutation(targets.begin(), targets.end())) {
             if (extendTargets) {
                 auto extendedTargets = targets;
-                extendedTargets.push_back(start);
+                extendedTargets.emplace_back(start);
                 result = std::min(result, FindPathLength(extendedTargets, walls, start, cache));
             }
             else {
@@ -91,8 +94,8 @@ SOLUTION(2016, 24) {
         }
 
         return result;
-
     }
+
     PART(1) {
         return Solve(lines, false);
     }

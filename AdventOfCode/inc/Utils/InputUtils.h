@@ -12,15 +12,15 @@ constexpr std::vector<std::vector<std::string>> SplitInputIntoGroups(const auto&
 		}
 		else {
 			if constexpr (std::is_same_v<decltype(line), const std::string&>) {
-				group.push_back(line);
+				group.emplace_back(line);
 			}
 			else {
-				group.push_back(Constexpr::ToString(line));
+				group.emplace_back(Constexpr::ToString(line));
 			}
 		}
 	}
 
-	result.push_back(group);
+	result.emplace_back(group);
 	return result;
 }
 
@@ -34,17 +34,6 @@ constexpr std::array<std::string_view, LineCount> SplitInputIntoLines(const std:
 	return result;
 }
 
-template<typename T>
-constexpr std::vector<T> ParseLineAsNumbers(const std::string& line, std::string delimiter = ",") {
-	std::vector<T> result;
-	auto split = Constexpr::Split(line, delimiter);
-	for (const auto& s : split) {
-		T num;
-		Constexpr::ParseNumber(s, num);
-		result.push_back(num);
-	}
-	return result;
-}
 template<typename T>
 constexpr std::vector<T> ParseLineAsNumbers(std::string_view line, std::string_view delimiter = ",") {
 	std::vector<T> result;
@@ -63,7 +52,7 @@ constexpr std::vector<T> ParseLinesAsNumbers(const auto& lines) {
 	for (const auto& s : lines) {
 		T num;
 		Constexpr::ParseNumber(s, num);
-		result.push_back(num);
+		result.emplace_back(num);
 	}
 	return result;
 }
@@ -73,7 +62,7 @@ constexpr auto ParseLines(const auto& lines, auto parseFunc, auto&... args) {
 	using T = decltype(parseFunc("", args...));
 	std::vector<T> result;
 	for (const auto& line : lines) {
-		result.push_back(parseFunc(line, args...));
+		result.emplace_back(parseFunc(line, args...));
 	}
 	return result;
 }
@@ -82,7 +71,7 @@ constexpr auto ParseLinesWithIndex(const auto& lines, auto parseFunc) {
 	using T = decltype(parseFunc("", 0));
 	std::vector<T> result;
 	for (size_t i = 0; i < lines.size(); i++) {
-		result.push_back(parseFunc(lines[i], i));
+		result.emplace_back(parseFunc(lines[i], i));
 	}
 	return result;
 }

@@ -24,9 +24,10 @@ SOLUTION(2016, 8) {
         //(size + col - amount) % size
 
         std::vector<bool> temp;
+		temp.reserve(bits[row].size());
         for (size_t col = 0; col < bits[row].size(); col++) {
             size_t target = (bits[row].size() + col - amount) % bits[row].size();
-            temp.push_back(bits[row][target]);
+            temp.emplace_back(bits[row][target]);
         }
 
         for (size_t col = 0; col < bits[row].size(); col++) {
@@ -37,9 +38,10 @@ SOLUTION(2016, 8) {
     template<size_t Rows, size_t Cols>
     constexpr void RotCol(Bits<Rows, Cols>&bits, u32 col, u32 amount) {
         std::vector<bool> temp;
+		temp.reserve(bits.size());
         for (auto row = 0ull; row < bits.size(); row++) {
             size_t target = (bits.size() + row - amount) % bits.size();
-            temp.push_back(bits[target][col]);
+            temp.emplace_back(bits[target][col]);
         }
 
         for (size_t row = 0ull; row < bits.size(); row++) {

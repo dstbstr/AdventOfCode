@@ -13,21 +13,24 @@ SOLUTION(2016, 4) {
         Room result;
         Constexpr::ParseNumber(s2.back(), result.Id);
         result.Checksum = s1[1].substr(0, s1[1].size() - 1);
-        for (size_t i = 0u; i < s2.size() - 1; i++) {
-            result.Parts.push_back(std::string(s2[i]));
-        }
+		result.Parts = s2 
+			| std::views::take(s2.size() - 1)
+            | std::views::transform([](auto s) { return std::string(s); }) 
+            | std::ranges::to<std::vector<std::string>>();
         return result;
     }
 
     constexpr std::string DecryptRoom(const Room& room) {
         auto rot = room.Id % 26;
         std::vector<std::string> decrypted;
+		decrypted.reserve(room.Parts.size());
         for (const auto& part : room.Parts) {
             std::string s;
+			s.reserve(part.size());
             for (auto c : part) {
                 s.push_back(static_cast<char>(((c - 'a' + rot) % 26) + 'a'));
             }
-            decrypted.push_back(s);
+            decrypted.emplace_back(s);
         }
 
         return Constexpr::JoinVec(' ', decrypted);
@@ -43,11 +46,7 @@ SOLUTION(2016, 4) {
             }
         }
 
-        std::vector<s32> sortedCounts;
-        for (auto count : counts) {
-            sortedCounts.push_back(count);
-        }
-
+        std::vector<s32> sortedCounts{ counts.begin(), counts.end() };
         std::sort(sortedCounts.begin(), sortedCounts.end(), [](s32 lhs, s32 rhs) {return lhs > rhs; });
 
         for (auto i = 0; i < 5; i++) {

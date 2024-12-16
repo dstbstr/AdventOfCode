@@ -32,10 +32,10 @@ SOLUTION(2017, 20) {
         std::vector<Vec3<s64>> toRemove;
         for (const auto& particle : particles) {
             if (std::find(seen.cbegin(), seen.cend(), particle.Position) == seen.cend()) {
-                seen.push_back(particle.Position);
+                seen.emplace_back(particle.Position);
             }
             else {
-                toRemove.push_back(particle.Position);
+                toRemove.emplace_back(particle.Position);
             }
         }
 

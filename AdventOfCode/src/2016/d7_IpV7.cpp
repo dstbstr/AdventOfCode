@@ -16,7 +16,7 @@ SOLUTION(2016, 7) {
 
         for (size_t i = 0u; i < str.size() - 2; i++) {
             if (str[i] == str[i + 2] && str[i + 1] != str[i]) {
-                result.push_back(str.substr(i, 3));
+                result.emplace_back(str.substr(i, 3));
             }
         }
 
@@ -31,7 +31,7 @@ SOLUTION(2016, 7) {
         while (index < line.size()) {
             if (outsideBrackets) {
                 str = line.substr(index, line.find('[', index) - index);
-                outOfBrackets.push_back(str);
+                outOfBrackets.emplace_back(str);
                 if (line.find('[', index) == line.npos) {
                     break;
                 }
@@ -40,7 +40,7 @@ SOLUTION(2016, 7) {
             }
             else {
                 str = line.substr(index, line.find(']', index) - index);
-                inBrackets.push_back(str);
+                inBrackets.emplace_back(str);
                 if (line.find(']', index) == line.npos) {
                     break;
                 }
@@ -71,12 +71,7 @@ SOLUTION(2016, 7) {
     }
 
     constexpr std::string InvertThreeLetters(const std::string & code) {
-        std::string result = "";
-        result += code[1];
-        result += code[0];
-        result += code[1];
-
-        return result;
+		return { code[1], code[0], code[1] };
     }
 
     constexpr bool SupportsSsl(std::string_view line) {
@@ -85,6 +80,8 @@ SOLUTION(2016, 7) {
         ParseLine(line, outOfBrackets, inBrackets);
 
         std::vector<std::string> toFind;
+        toFind.reserve(inBrackets.size());
+
         for (const auto& str : inBrackets) {
             for (const auto& bab : GetThreeLetterSequences(str)) {
                 toFind.push_back(InvertThreeLetters(bab));

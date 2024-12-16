@@ -27,9 +27,10 @@ SOLUTION(2015, 6) {
 
     constexpr std::vector<size_t> GetLightIndexes(const Command& command, size_t gridSize) {
         std::vector<size_t> result;
+		result.reserve((command.TopRight.X - command.BottomLeft.X + 1) * (command.TopRight.Y - command.BottomLeft.Y + 1));
         for (auto x = command.BottomLeft.X; x <= command.TopRight.X; x++) {
             for (auto y = command.BottomLeft.Y; y <= command.TopRight.Y; y++) {
-                result.push_back(x * gridSize + y);
+                result.emplace_back(x * gridSize + y);
             }
         }
         return result;

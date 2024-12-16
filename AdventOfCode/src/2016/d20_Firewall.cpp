@@ -5,8 +5,9 @@ SOLUTION(2016, 20) {
 
     constexpr std::vector<UCoord> GetRanges(const auto& lines) {
         std::vector<UCoord> ranges;
+        ranges.reserve(lines.size());
         for (const auto& line : lines) {
-            ranges.push_back(UCoord(line, "-"));
+            ranges.emplace_back(UCoord(line, "-"));
         }
 
         return ranges;

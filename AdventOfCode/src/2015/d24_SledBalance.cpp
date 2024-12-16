@@ -41,7 +41,7 @@ SOLUTION(2015, 24) {
             if (weight > remainingWeight) {
                 continue;
             }
-            temp.push_back(weight);
+            temp.emplace_back(weight);
             if (Recurse(weights, i + 1, remainingWeight - weight, temp, initialWeight)) {
                 found = true;
                 auto entanglement = FindEntanglement(temp);

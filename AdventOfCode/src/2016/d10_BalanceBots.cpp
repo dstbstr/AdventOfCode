@@ -78,13 +78,14 @@ SOLUTION(2016, 10) {
         outBots.resize(lines.size());
         outBins.resize(lines.size());
         std::vector<size_t> finishedIndexes;
+		finishedIndexes.reserve(lines.size());
         size_t prev = 0;
 
         while (true) {
             for (size_t i = 0; i < instructions.size(); i++) {
                 if (std::find(finishedIndexes.begin(), finishedIndexes.end(), i) != finishedIndexes.end()) continue;
                 if (instructions[i](outBots, outBins)) {
-                    finishedIndexes.push_back(i);
+                    finishedIndexes.emplace_back(i);
                 }
             }
             if (finishedIndexes.size() == instructions.size()) break;

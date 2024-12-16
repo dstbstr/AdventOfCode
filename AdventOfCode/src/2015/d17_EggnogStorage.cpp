@@ -22,7 +22,7 @@ SOLUTION(2015, 17) {
     }
 
     constexpr u32 CountCombinations(std::vector<u32>&containerSizes, u32 initial) {
-        containerSizes.push_back(0); // :(
+        containerSizes.emplace_back(0); // :(
         std::sort(containerSizes.begin(), containerSizes.end());
         return CountCombinations(containerSizes, 0, initial);
     }
@@ -71,7 +71,7 @@ SOLUTION(2015, 17) {
     }
 
     constexpr u32 CountSmallContainers(std::vector<u32>&containers, u32 initial) {
-        containers.push_back(0); // :(
+        containers.emplace_back(0); // :(
         std::sort(containers.begin(), containers.end());
 
         u32 size = GetMinSize(containers, 0, initial, 0);

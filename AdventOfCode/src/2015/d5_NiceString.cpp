@@ -22,10 +22,7 @@ SOLUTION(2015, 5) {
     }
 
     constexpr std::string ExtractPair(std::string_view str, size_t firstChar) {
-        std::string pair;
-        pair.push_back(str[firstChar]);
-        pair.push_back(str[firstChar + 1]);
-        return pair;
+        return { str[firstChar], str[firstChar + 1] };
     }
     constexpr bool IsReallyNice(std::string_view input) {
         bool hasSplit = false;

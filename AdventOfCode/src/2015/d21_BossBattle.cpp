@@ -28,7 +28,7 @@ SOLUTION(2015, 21) {
             for (const auto& armor : Armors) {
                 for (auto r1 = 0ull; r1 < Rings.size(); r1++) {
                     for (auto r2 = r1 + 1; r2 < Rings.size(); r2++) {
-                        result.push_back(Player{ weapon, armor, Rings[r1], Rings[r2] });
+                        result.emplace_back(Player{ weapon, armor, Rings[r1], Rings[r2] });
                     }
                 }
             }

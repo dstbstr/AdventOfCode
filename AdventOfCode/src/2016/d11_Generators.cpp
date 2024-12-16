@@ -57,6 +57,7 @@ SOLUTION(2016, 11) {
 
     constexpr State ParseInput(const auto& lines) {
         State result;
+		result.Floors.reserve(lines.size());
         for (const auto& line : lines) {
             Floor floor;
             auto s = Constexpr::Split(line, " ");
@@ -68,7 +69,7 @@ SOLUTION(2016, 11) {
                     floor.Chips.push_back(s[i - 1][0]);
                 }
             }
-            result.Floors.push_back(floor);
+            result.Floors.emplace_back(floor);
         }
         return result;
     }
@@ -112,17 +113,18 @@ SOLUTION(2016, 11) {
     constexpr std::vector<State> GetSingles(const State& current, size_t from, size_t to) {
         const auto& here = current.Floors[from];
         std::vector<State> result;
+		result.reserve(here.Chips.size() + here.Generators.size());
 
         for (auto c : here.Chips) {
             auto next = MakeNext(current, from, to, { c }, {});
             if (next.IsStable()) {
-                result.push_back(next);
+                result.emplace_back(next);
             }
         }
         for (auto g : here.Generators) {
             auto next = MakeNext(current, from, to, {}, { g });
             if (next.IsStable()) {
-                result.push_back(next);
+                result.emplace_back(next);
             }
         }
 
@@ -132,18 +134,19 @@ SOLUTION(2016, 11) {
     constexpr std::vector<State> GetPairs(const State& current, size_t from, size_t to) {
         const auto& here = current.Floors[from];
         std::vector<State> result;
+        result.reserve((here.Chips.size() * here.Chips.size()) + (here.Generators.size() * here.Generators.size()));
 
         for (size_t c1 = 0; c1 < here.Chips.size(); c1++) {
             for (size_t c2 = c1 + 1; c2 < here.Chips.size(); c2++) {
                 auto next = MakeNext(current, from, to, { here.Chips[c1], here.Chips[c2] }, {});
                 if (next.IsStable()) {
-                    result.push_back(next);
+                    result.emplace_back(next);
                 }
             }
             for (size_t g1 = 0; g1 < here.Generators.size(); g1++) {
                 auto next = MakeNext(current, from, to, { here.Chips[c1] }, { here.Generators[g1] });
                 if (next.IsStable()) {
-                    result.push_back(next);
+                    result.emplace_back(next);
                 }
             }
         }
@@ -151,7 +154,7 @@ SOLUTION(2016, 11) {
             for (size_t g2 = g1 + 1; g2 < here.Generators.size(); g2++) {
                 auto next = MakeNext(current, from, to, {}, { here.Generators[g1], here.Generators[g2] });
                 if (next.IsStable()) {
-                    result.push_back(next);
+                    result.emplace_back(next);
                 }
             }
         }
@@ -243,7 +246,7 @@ SOLUTION(2016, 11) {
                     auto hash = Hash(move);
                     if (!seen.contains(hash)) {
                         seen.insert(hash);
-                        next.push_back(move);
+                        next.emplace_back(move);
                     }
                 }
             }
@@ -269,13 +272,13 @@ SOLUTION(2016, 11) {
         lhs.Elevator = 0;
         rhs.Elevator = 0;
 
-        lhs.Floors.push_back({ { "ab" }, {} });
-        lhs.Floors.push_back({ { "c"}, {"a"} });
-        lhs.Floors.push_back({ {}, {"bc"} });
+        lhs.Floors.emplace_back(Floor{{ "ab" }, {}});
+        lhs.Floors.emplace_back(Floor{{ "c"}, {"a"}});
+        lhs.Floors.emplace_back(Floor{{}, {"bc"}});
 
-        rhs.Floors.push_back({ {"bc"}, {} });
-        rhs.Floors.push_back({ {"a"},{"b"} });
-        rhs.Floors.push_back({ {}, {"ca"} });
+        rhs.Floors.emplace_back(Floor{{"bc"}, {}});
+        rhs.Floors.emplace_back(Floor{{"a"},{"b"}});
+        rhs.Floors.emplace_back(Floor{{}, {"ca"}});
 
         if (Hash(lhs) != Hash(rhs)) return false;
         if (Hash(lhs) != Hash(lhs)) return false;
@@ -287,13 +290,13 @@ SOLUTION(2016, 11) {
         lhs.Floors.clear();
         rhs.Floors.clear();
 
-        lhs.Floors.push_back({ {}, {} });
-        lhs.Floors.push_back({ {"ab"},{} });
-        lhs.Floors.push_back({ {},{"ab"} });
+        lhs.Floors.emplace_back(Floor{ {}, {} });
+        lhs.Floors.emplace_back(Floor{ {"ab"},{} });
+        lhs.Floors.emplace_back(Floor{ {},{"ab"} });
 
-        rhs.Floors.push_back({ {"ab"},{} });
-        rhs.Floors.push_back({ {},{"ab"} });
-        rhs.Floors.push_back({ {},{} });
+        rhs.Floors.emplace_back(Floor{ {"ab"},{} });
+        rhs.Floors.emplace_back(Floor{ {},{"ab"} });
+        rhs.Floors.emplace_back(Floor{ {},{} });
 
         if (Hash(lhs) == Hash(rhs)) return false;
 

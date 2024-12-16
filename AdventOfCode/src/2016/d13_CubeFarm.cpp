@@ -27,20 +27,21 @@ SOLUTION(2016, 13) {
 
     constexpr void AddNextMoves(UCoord location, std::vector<UCoord>& next) {
         if (location.X > 0) {
-            next.push_back({ location.X - 1, location.Y });
+            next.emplace_back(location.X - 1, location.Y);
         }
         if (location.Y > 0) {
-            next.push_back({ location.X, location.Y - 1 });
+            next.emplace_back(location.X, location.Y - 1);
         }
-        next.push_back({ location.X + 1, location.Y });
-        next.push_back({ location.X, location.Y + 1 });
+        next.emplace_back(location.X + 1, location.Y);
+        next.emplace_back(location.X, location.Y + 1);
     }
 
     constexpr u32 Bfs(u32 key, UCoord target) {
         Constexpr::SmallSet<UCoord> seen;
         u32 depth = 0;
         std::vector<UCoord> moves;
-        moves.push_back({ 1, 1 });
+        moves.reserve(100); // just a guess, could be tuned by running and seeing the max size
+        moves.emplace_back(1, 1);
 
         while (true) {
             if (std::find(moves.cbegin(), moves.cend(), target) != moves.cend()) {
@@ -69,6 +70,7 @@ SOLUTION(2016, 13) {
         Constexpr::SmallSet<UCoord> seen;
         u32 depth = 0;
         std::vector<UCoord> moves;
+        moves.reserve(100); // just a guess
         moves.push_back({ 1, 1 });
         seen.insert({ 1, 1 });
         while (depth < maxSteps) {
@@ -88,8 +90,8 @@ SOLUTION(2016, 13) {
                 return 0; //error case, out of moves
             }
         }
-        return static_cast<u32>(seen.size());
 
+        return static_cast<u32>(seen.size());
     }
 
     PART(1) {

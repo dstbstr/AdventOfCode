@@ -14,10 +14,14 @@ SOLUTION(2017, 12) {
 
     PART(2) {
         auto connections = ParseLines(lines, ParseLine);
+        auto remainingGroups = std::views::iota(0u, static_cast<u32>(connections.size()))
+            | std::ranges::to<std::vector<u32>>();
+        /*
         std::vector<u32> remainingGroups;
         for (size_t i = 0u; i < connections.size(); i++) {
             remainingGroups.push_back(static_cast<u32>(i));
         }
+        */
 
         u32 groupCount = 0;
         while (!remainingGroups.empty()) {

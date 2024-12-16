@@ -71,29 +71,47 @@ struct StdLogWriter : public Log::ISink {
     }
 };
 
+bool SlowProblems(std::string_view, std::chrono::microseconds elapsed) {
+	return elapsed > std::chrono::milliseconds(500);
+}
+bool TestsOnly(std::string_view label, std::chrono::microseconds) {
+	return label.starts_with("Test_");
+}
+bool All(std::string_view, std::chrono::microseconds) {
+	return true;
+}
+
+SolutionRunner::Settings runAllSettings {
+	.Sync = false,
+	.PrintTiming = true,
+	.PrintResults = false,
+	.TimingSort = SolutionRunner::SortBy::RunTime,
+	.TimingFilter = SlowProblems
+};
+
+SolutionRunner::Settings runOneSettings {
+    .Sync = true,
+    .PrintTiming = true,
+    .PrintResults = true,
+    .TimingSort = SolutionRunner::SortBy::Problem,
+    .TimingFilter = All
+};
+
 int main(int argc, char** argv) {
     StdLogWriter stdLogWriter{};
     //FileLogWriter fileLogWriter{};
     
-	//auto slowProblems = [](std::string_view, std::chrono::microseconds elapsed) { return elapsed > std::chrono::milliseconds(500); };
-    //auto testsOnly = [](std::string_view label, std::chrono::microseconds) { return label.starts_with("Test_"); };
-    SolutionRunner::Settings runSettings{
-        .Sync = false,
-        .PrintTiming = true,
-        .PrintResults = false,
-        .TimingSort = SolutionRunner::SortBy::RunTime,
-		//.TimingFilter = testsOnly
-    };
     auto runner = [&]{
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>());
         } else {
-            return SolutionRunner(2024, std::make_unique<ExeInputReader>());
-            //return SolutionRunner (2024, 13, std::make_unique<ExeInputReader>());
-            //return SolutionRunner (2021, 23, std::make_unique<ExeInputReader>());
+            //return SolutionRunner(2024, std::make_unique<ExeInputReader>());
+            return SolutionRunner (2024, 15, std::make_unique<ExeInputReader>());
+            //return SolutionRunner (2016, 4, std::make_unique<ExeInputReader>());
             //return SolutionRunner(std::make_unique<ExeInputReader>(), SolutionRunner::Tests::Include);
         }
     }();
         
-    runner.Run(runSettings);
+	runner.Run(runOneSettings);
+    //runner.Run(runAllSettings);
 }

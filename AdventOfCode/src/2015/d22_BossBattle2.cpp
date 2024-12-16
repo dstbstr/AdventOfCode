@@ -57,19 +57,19 @@ SOLUTION(2015, 22) {
     constexpr bool TestCanCast() {
         State state{ {10, 1000, 0}, {14, 8}, {} };
         if (!CanCast(state, Spell::Shield)) return false;
-        state.CastSpells.push_back(Spell::BossTurn);
-        state.CastSpells.push_back(Spell::Shield); //5
+        state.CastSpells.emplace_back(Spell::BossTurn);
+        state.CastSpells.emplace_back(Spell::Shield); //5
 
         if (CanCast(state, Spell::Shield)) return false;
-        state.CastSpells.push_back(Spell::BossTurn); //4
-        state.CastSpells.push_back(Spell::MagicMissle); //3
+        state.CastSpells.emplace_back(Spell::BossTurn); //4
+        state.CastSpells.emplace_back(Spell::MagicMissle); //3
 
         if (CanCast(state, Spell::Shield)) return false;
-        state.CastSpells.push_back(Spell::BossTurn); //2
-        state.CastSpells.push_back(Spell::MagicMissle); //1
+        state.CastSpells.emplace_back(Spell::BossTurn); //2
+        state.CastSpells.emplace_back(Spell::MagicMissle); //1
 
         if (CanCast(state, Spell::Shield)) return false;
-        state.CastSpells.push_back(Spell::BossTurn); //0
+        state.CastSpells.emplace_back(Spell::BossTurn); //0
 
         if (!CanCast(state, Spell::Shield)) return false;
 
@@ -109,49 +109,49 @@ SOLUTION(2015, 22) {
         State state{ {10, 0, 0}, {14, 8}, {} };
         
         // Turn 1
-        state.CastSpells.push_back(Spell::Recharge);
+        state.CastSpells.emplace_back(Spell::Recharge);
         TickSpells(state);
         if (state.Player.Mana != 101) return false;
         
-        state.CastSpells.push_back(Spell::BossTurn);
+        state.CastSpells.emplace_back(Spell::BossTurn);
         TickSpells(state);
         if (state.Player.Mana != 202) return false;
 
         // Turn 2
-        state.CastSpells.push_back(Spell::Shield);
+        state.CastSpells.emplace_back(Spell::Shield);
         TickSpells(state);
         if (state.Player.Mana != 303) return false;
         if (state.Player.Armor != 7) return false;
 
-        state.CastSpells.push_back(Spell::BossTurn);
+        state.CastSpells.emplace_back(Spell::BossTurn);
         TickSpells(state);
         if (state.Player.Mana != 404) return false;
         if (state.Player.Armor != 7) return false;
 
         // Turn 3
-        state.CastSpells.push_back(Spell::Drain);
+        state.CastSpells.emplace_back(Spell::Drain);
         TickSpells(state);
         if (state.Player.Mana != 505) return false;
         if (state.Player.Armor != 7) return false;
         if (state.Player.Hp != 12) return false;
 
-        state.CastSpells.push_back(Spell::BossTurn);
+        state.CastSpells.emplace_back(Spell::BossTurn);
         TickSpells(state);
         if (state.Player.Mana != 505) return false;
         if (state.Player.Armor != 7) return false;
         if (state.Player.Hp != 12) return false; //don't invoke drain twice
 
         // Turn 4
-        state.CastSpells.push_back(Spell::Poison);
+        state.CastSpells.emplace_back(Spell::Poison);
         TickSpells(state);
         if (state.Player.Armor != 7) return false;
         
-        state.CastSpells.push_back(Spell::BossTurn);
+        state.CastSpells.emplace_back(Spell::BossTurn);
         TickSpells(state);
         if (state.Player.Armor != 7) return false;
 
         // Turn 5
-        state.CastSpells.push_back(Spell::MagicMissle);
+        state.CastSpells.emplace_back(Spell::MagicMissle);
         TickSpells(state);
         if (state.Player.Armor != 0) return false;
         return true;
@@ -174,7 +174,7 @@ SOLUTION(2015, 22) {
                     if (current.Player.Hp == 0) continue;
                 }
                 
-                current.CastSpells.push_back(Spell::BossTurn);
+                current.CastSpells.emplace_back(Spell::BossTurn);
                 TickSpells(current);
                 if (current.Boss.Hp <= 0) {
                     bestMana = std::min(bestMana, currentManaCost);
@@ -184,7 +184,7 @@ SOLUTION(2015, 22) {
                 for (auto spell : allSpells) {
                     if (!CanCast(current, spell)) continue;
                     State next = current;
-                    next.CastSpells.push_back(spell);
+                    next.CastSpells.emplace_back(spell);
                     next.Player.Mana -= GetManaCost(spell);
 
                     //Boss Turn
@@ -196,7 +196,7 @@ SOLUTION(2015, 22) {
                     next.Player.Hp -= std::max(1, next.Boss.Atk - next.Player.Armor);
                     if (next.Player.Hp <= 0) continue;
 
-                    nextQ.push_back(next);
+                    nextQ.emplace_back(next);
                 }
             }
             q.clear();

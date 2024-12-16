@@ -9,10 +9,11 @@ SOLUTION(2016, 17) {
 
     constexpr std::vector<char> GetOpenDoors(std::string_view hash) {
         std::vector<char> result;
-        if (IsOpen(hash[0])) result.push_back('U');
-        if (IsOpen(hash[1])) result.push_back('D');
-        if (IsOpen(hash[2])) result.push_back('L');
-        if (IsOpen(hash[3])) result.push_back('R');
+        result.reserve(4);
+        if (IsOpen(hash[0])) result.emplace_back('U');
+        if (IsOpen(hash[1])) result.emplace_back('D');
+        if (IsOpen(hash[2])) result.emplace_back('L');
+        if (IsOpen(hash[3])) result.emplace_back('R');
 
         return result;
     }
@@ -22,18 +23,11 @@ SOLUTION(2016, 17) {
         Constexpr::GetRowCol<4, 4>(pos, row, col);
 
         std::vector<char> result;
-        if (row > 0) {
-            result.push_back('U');
-        }
-        if (row < 3) {
-            result.push_back('D');
-        }
-        if (col > 0) {
-            result.push_back('L');
-        }
-        if (col < 3) {
-            result.push_back('R');
-        }
+        result.reserve(4);
+        if (row > 0) result.push_back('U');
+        if (row < 3) result.push_back('D');
+        if (col > 0) result.push_back('L');
+        if (col < 3) result.push_back('R');
 
         return result;
     }
@@ -77,7 +71,7 @@ SOLUTION(2016, 17) {
                 auto hash = ToHexLower(md5::compute(path.c_str()));
                 auto validNextMoves = GetNextDirections(pos, hash);
                 for (auto move : validNextMoves) {
-                    next.push_back(std::make_pair(GetNewPos(pos, move), path + move));
+                    next.emplace_back(std::make_pair(GetNewPos(pos, move), path + move));
                 }
             }
 
@@ -109,7 +103,7 @@ SOLUTION(2016, 17) {
                 auto hash = ToHexLower(md5::compute(path.c_str()));
                 auto validNextMoves = GetNextDirections(pos, hash);
                 for (auto move : validNextMoves) {
-                    next.push_back(std::make_pair(GetNewPos(pos, move), path + move));
+                    next.emplace_back(std::make_pair(GetNewPos(pos, move), path + move));
                 }
             }
 

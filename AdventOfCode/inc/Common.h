@@ -24,7 +24,7 @@ constexpr void PrintMap(const Constexpr::BigMap<Key, Value, Capacity, Hash>& map
 				currentLine.push_back('O');
 			}
 		}
-		GET_LOGS().push_back(currentLine);
+		GET_LOGS().emplace_back(currentLine);
 	}
 }
 

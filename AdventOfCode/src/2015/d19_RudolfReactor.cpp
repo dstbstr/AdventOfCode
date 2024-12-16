@@ -9,7 +9,7 @@ SOLUTION(2015, 19) {
         auto from = std::string(s[0]);
         auto to = std::string(s[1]);
         
-        transforms[from].push_back(to);
+        transforms[from].emplace_back(to);
         reverseTransforms[to] = from;
     }
 

@@ -37,7 +37,7 @@ SOLUTION(2016, 14) {
             }
             if (lowestIndex != hash.npos) {
                 targetString = std::string(5, hash[lowestIndex]);
-                threes.push_back(std::make_pair(i, targetString));
+                threes.emplace_back(std::make_pair(i, targetString));
             }
             else {
                 continue; //if we don't have a 3, it can't have a 5
@@ -48,7 +48,7 @@ SOLUTION(2016, 14) {
                 lowestIndex = std::min(lowestIndex, hash.find(five));
             }
             if (lowestIndex != hash.npos) {
-                fives.push_back(std::make_pair(i, hash));
+                fives.emplace_back(std::make_pair(i, hash));
             }
         }
     }
@@ -80,7 +80,7 @@ SOLUTION(2016, 14) {
         u32 foundKeys = 0;
         for (auto [id, target] : threes) {
             if (IsKey(id, target, fives)) {
-                GET_LOGS().push_back(Constexpr::ToString(id));
+                GET_LOGS().emplace_back(Constexpr::ToString(id));
                 foundKeys++;
                 if (foundKeys == 64) {
                     return id;

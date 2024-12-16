@@ -62,12 +62,13 @@ SOLUTION(2016, 2) {
     constexpr std::vector<std::string> GetCode(const auto& lines, const LookupType& lookup) {
         std::string key = "5";
         std::vector<std::string> result;
+        result.reserve(lines.size());
 
         for (const auto& line : lines) {
             for (auto c : line) {
                 key = lookup.at(key).at(ParseDirection(c));
             }
-            result.push_back(key);
+            result.emplace_back(key);
         }
 
         return result;
