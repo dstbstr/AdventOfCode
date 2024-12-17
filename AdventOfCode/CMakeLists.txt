@@ -292,7 +292,7 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d14_RestroomRedoubt.cpp"
 	"src/2024/d15_WarehouseWoes.cpp"
 	"src/2024/d16_ReindeerMaze.cpp"
-	"src/2024/d17.cpp"
+	"src/2024/d17_ChronospatialComputer.cpp"
 	"src/2024/d18.cpp"
 	"src/2024/d19.cpp"
 	"src/2024/d20.cpp"
