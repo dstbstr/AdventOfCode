@@ -60,7 +60,6 @@ namespace {
 		return lhsPart < rhsPart;
 	}
 
-	// TODO: Maybe add up all of the times, and compare to total runtime
 	void LogTimingData(std::map<std::string, std::chrono::microseconds> timingData, SolutionRunner::SortBy sortBy, std::optional<std::function<bool(std::string_view, std::chrono::microseconds)>> timingFilter) {
 		std::vector<std::pair<std::string, std::chrono::microseconds>> copy(timingData.begin(), timingData.end());
 		if (sortBy == SolutionRunner::SortBy::RunTime) {
@@ -133,6 +132,7 @@ void SolutionRunner::AddSolution(size_t year, size_t day, Tests tests) {
 SolutionRunner::SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, Tests tests) 
     : m_InputReader(std::move(inputReader))
 {
+	m_ToRun.reserve(GetSolutions().size() * 50); // number of years * number of days * number of parts
 	for (const auto& [year, days] : GetSolutions()) {
 		for (const auto& [day, parts] : days) {
             AddSolution(year, day, tests);
@@ -143,6 +143,7 @@ SolutionRunner::SolutionRunner(std::unique_ptr<IInputReader>&& inputReader, Test
 SolutionRunner::SolutionRunner(size_t year, std::unique_ptr<IInputReader>&& inputReader) 
     : m_InputReader(std::move(inputReader))
 {
+	m_ToRun.reserve(50);
 	for (const auto& [day, parts] : GetSolutions()[year]) {
 		AddSolution(year, day, Tests::Include);
 	}

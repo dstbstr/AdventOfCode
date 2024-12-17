@@ -1,5 +1,4 @@
 #include "Common.h"
-#include "Core/Algorithms/AStar.h"
 
 SOLUTION(2023, 21) {
 

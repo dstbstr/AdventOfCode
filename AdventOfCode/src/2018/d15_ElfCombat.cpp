@@ -40,13 +40,22 @@ SOLUTION(2018, 15) {
         for (const auto& start : startingPoints) {
             for (const auto& space : openSpaces) {
                 if (MDistance(start, space) > shortestPath) break;
-                auto path = AStarMin<RowCol>(start, space, [&](const RowCol& pos) {
-                    return Constexpr::Where(GetDirectNeighbors(pos, limits), [&](const RowCol& rc) { return grid[rc.Row][rc.Col] == '.'; });
-                    });
-                if (path.size() > 0) {
-                    paths.push_back(path);
-                    shortestPath = std::min(shortestPath, path.size());
-                }
+                auto nFunc = [](const Grid& grid, const RowCol& pos) {
+                    return GetDirectNeighbors(pos, GetLimits<RowCol>(grid))
+                        | std::views::filter([&](const RowCol& rc) { return grid[rc.Row][rc.Col] == '.'; })
+                        | std::ranges::to<std::vector>();
+                    };
+                AStarParameters<RowCol, Grid> params{
+                    .map = grid,
+                    .start = start,
+                    .end = space,
+                    .nFunc = nFunc
+                };
+				auto path = AStarMin<500>(params);
+				if (path.has_value()) {
+					paths.emplace_back(path.value());
+					shortestPath = std::min(shortestPath, path.value().size());
+				}
             }
         }
 

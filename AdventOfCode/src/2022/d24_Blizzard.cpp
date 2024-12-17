@@ -1,5 +1,4 @@
 #include "Common.h"
-#include "Core/Algorithms/AStar.h"
 
 SOLUTION(2022, 24) {
     enum struct Direction { Up, Down, Left, Right };

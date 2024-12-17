@@ -1,6 +1,5 @@
 #include "Common.h"
 #include "Facing.h"
-#include "Core/Algorithms/AStar.h"
 
 SOLUTION(2023, 17) {
 	constexpr size_t Invalid = 99999;
