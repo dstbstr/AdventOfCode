@@ -293,11 +293,12 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d15_WarehouseWoes.cpp"
 	"src/2024/d16_ReindeerMaze.cpp"
 	"src/2024/d17_ChronospatialComputer.cpp"
-	"src/2024/d18.cpp"
+	"src/2024/d18_RamRun.cpp"
 	"src/2024/d19.cpp"
 	"src/2024/d20.cpp"
 	"src/2024/d21.cpp"
 	"src/2024/d23.cpp"
 	"src/2024/d22.cpp"
 	"src/2024/d24.cpp"
-	"src/2024/d25.cpp")
+	"src/2024/d25.cpp"
+)
