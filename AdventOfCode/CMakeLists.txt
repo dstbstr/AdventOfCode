@@ -294,7 +294,7 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d16_ReindeerMaze.cpp"
 	"src/2024/d17_ChronospatialComputer.cpp"
 	"src/2024/d18_RamRun.cpp"
-	"src/2024/d19.cpp"
+	"src/2024/d19_LinenLayout.cpp"
 	"src/2024/d20.cpp"
 	"src/2024/d21.cpp"
 	"src/2024/d23.cpp"
