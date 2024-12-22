@@ -5,6 +5,8 @@ SOLUTION(2024, 25) {
 		return lines.size();
 	}
 	TEST(1) {
-		return true;
+		std::vector<std::string> lines = {
+		};
+		return lines.empty();
 	}
 }

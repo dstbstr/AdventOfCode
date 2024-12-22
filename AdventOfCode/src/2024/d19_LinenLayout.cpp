@@ -22,7 +22,7 @@ SOLUTION(2024, 19) {
 		return static_cast<size_t>(possible);
 	}
 
-	using Cache = Constexpr::BigMap<std::string_view, u64, 100'000>;
+	using Cache = Constexpr::BigMap<std::string_view, u64, 20'000>;
 	constexpr u64 CountPossible(std::string_view target, const std::vector<std::string_view>& available, Cache& cache) {
 		if (cache.contains(target)) return cache.at(target);
 		if (target.empty()) return 1;
@@ -59,6 +59,7 @@ SOLUTION(2024, 19) {
 			"bbrgwb",
 		};
 
-		return std::get<size_t>(Part1(lines)) == 6 && std::get<size_t>(Part2(lines)) == 16;
+		return std::get<size_t>(Part1(lines)) == 6 
+			&& std::get<size_t>(Part2(lines)) == 16;
 	}
 }
