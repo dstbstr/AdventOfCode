@@ -299,6 +299,6 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d21_KeypadConundrum.cpp"
 	"src/2024/d22_MonkeyMarket.cpp"
 	"src/2024/d23_LanParty.cpp"
-	"src/2024/d24.cpp"
-	"src/2024/d25.cpp"
+	"src/2024/d24_CrossedWires.cpp"
+	"src/2024/d25_CodeChronicle.cpp"
 )
