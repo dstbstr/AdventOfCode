@@ -90,10 +90,10 @@ SolutionRunner::Settings runAllSettings {
 	.Sync = false,
 	.PrintTiming = true,
 	.PrintResults = false,
-	.TimingSort = SolutionRunner::SortBy::Problem,
-    .TimingFilter = NoTests
-	//.TimingSort = SolutionRunner::SortBy::RunTime,
-	//.TimingFilter = SlowProblems
+	//.TimingSort = SolutionRunner::SortBy::Problem,
+    //.TimingFilter = NoTests
+	.TimingSort = SolutionRunner::SortBy::RunTime,
+	.TimingFilter = SlowProblems
 };
 
 SolutionRunner::Settings runOneSettings {
@@ -112,10 +112,10 @@ int main(int argc, char** argv) {
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>());
         } else {
-            return SolutionRunner(2024, std::make_unique<ExeInputReader>());
+            //return SolutionRunner(2024, std::make_unique<ExeInputReader>());
             //return SolutionRunner (2024, 25, std::make_unique<ExeInputReader>());
             //return SolutionRunner (2018, 15, std::make_unique<ExeInputReader>());
-            //return SolutionRunner(std::make_unique<ExeInputReader>(), SolutionRunner::Tests::Include);
+            return SolutionRunner(std::make_unique<ExeInputReader>(), SolutionRunner::Tests::Include);
         }
     }();
         
