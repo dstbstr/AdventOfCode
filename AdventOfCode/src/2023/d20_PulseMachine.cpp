@@ -1,4 +1,5 @@
 #include "Common.h"
+#include "Core/Constexpr/ConstexprBits.h"
 
 SOLUTION(2023, 20) {
     //% = Flip-Flop => High ignored, Low On = !On, Send On(High or Low)

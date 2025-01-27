@@ -1,4 +1,5 @@
 #include "Common.h"
+#include "Core/Constexpr/ConstexprBits.h"
 
 SOLUTION(2021, 12) {
     //rooms are unique by first letter

@@ -1,4 +1,5 @@
 #include "Common.h"
+#include "Core/Constexpr/ConstexprBits.h"
 #include <bit>
 
 SOLUTION(2019, 18) {

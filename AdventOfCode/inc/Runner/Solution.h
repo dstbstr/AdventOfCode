@@ -9,6 +9,7 @@
 #include "Core/Platform/Types.h"
 #include "Core/Constexpr/ConstexprStrUtils.h"
 
+
 using ResultType = std::variant<std::string, u32, u64, s32, s64>;
 using SolutionFunc = std::function<std::string(const std::vector<std::string>&)>;
 using TestFunc = std::function<bool()>;

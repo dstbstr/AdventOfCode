@@ -1,5 +1,6 @@
 #include "Common.h"
 #include "Facing.h"
+#include "Core/Constexpr/ConstexprMatrix.h"
 
 SOLUTION(2020, 20) {
     using PixelGrid = std::vector<std::vector<bool>>;

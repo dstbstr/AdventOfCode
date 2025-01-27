@@ -83,7 +83,7 @@ SOLUTION(2017, 7) {
             }
         }
 
-        throw std::logic_error("Not found");
+        throw "Not found";
     }
 
     PART(1) {
@@ -116,7 +116,7 @@ SOLUTION(2017, 7) {
             }
         }
 
-        throw std::logic_error("Not Found");
+        throw "Not Found";
     }
 
     PART(2) {

@@ -9,7 +9,7 @@ SOLUTION(2015, 18) {
     constexpr std::array<std::array<bool, N>, M> BuildArray(std::string_view input) {
         auto result = std::array<std::array<bool, N>, M>{};
         if (input.size() != N * M) {
-            throw std::logic_error("Bad input");
+            throw "Bad input";
         }
 
         for (size_t i = 0u; i < N; i++) {

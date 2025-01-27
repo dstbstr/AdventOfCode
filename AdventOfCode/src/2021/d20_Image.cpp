@@ -1,4 +1,5 @@
 #include "Common.h"
+#include "Core/Constexpr/ConstexprBits.h"
 
 SOLUTION(2021, 20) {
     using Image = std::vector<std::vector<bool>>;

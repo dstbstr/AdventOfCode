@@ -1,5 +1,6 @@
 #include "Common.h"
 #include "Core/Algorithms/FloydWarshall.h"
+#include "Core/Constexpr/ConstexprBits.h"
 
 SOLUTION(2022, 16) {
     struct Room {

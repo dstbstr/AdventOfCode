@@ -1,10 +1,9 @@
-﻿project(AdventOfCode)
+﻿project(AdventOfCode LANGUAGES CXX)
 
 add_executable (${PROJECT_NAME})
 
 target_link_libraries(${PROJECT_NAME} Core)
 target_link_libraries(${PROJECT_NAME} ctre)
-
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/PROFILE")
 target_include_directories(${PROJECT_NAME} PUBLIC inc)
@@ -12,6 +11,8 @@ target_precompile_headers(${PROJECT_NAME}
 PRIVATE
 	inc/pch.h
 )
+
+
 #target_compile_options(${PROJECT_NAME} PRIVATE "/constexpr:steps10000000")
 
 ## Making it so you can #include a raw string
@@ -36,7 +37,7 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 target_sources(${PROJECT_NAME} 
 	PRIVATE 
 	"src/main.cpp" 
-	
+
 	"src/Runner/SolutionRunner.cpp"
 	"src/Runner/ExeInputReader.cpp"
 	"src/Runner/Solution.cpp"
@@ -301,4 +302,4 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d23_LanParty.cpp"
 	"src/2024/d24_CrossedWires.cpp"
 	"src/2024/d25_CodeChronicle.cpp"
-)
+ )

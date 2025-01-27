@@ -1,4 +1,5 @@
 #include "Common.h"
+#include "Core/Constexpr/ConstexprBits.h"
 
 SOLUTION(2023, 23) {
     constexpr RowCol horizontal{ 0, 1 };
