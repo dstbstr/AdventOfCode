@@ -2,6 +2,7 @@
 #include "Runner/SolutionRunner.h"
 
 #include "Core/Constexpr/ConstexprStrUtils.h"
+#include "Core/Instrumentation/Benchmark/Benchmark.h"
 #include "Core/Instrumentation/Logging.h"
 #include "Core/Instrumentation/ScopedTimer.h"
 #include "Core/Instrumentation/ISink.h"
@@ -104,10 +105,25 @@ SolutionRunner::Settings runOneSettings {
     .TimingFilter = All
 };
 
-int main(int argc, char** argv) {
+//int main(int argc, char** argv) {
+int main(int, char**) {
     StdLogWriter stdLogWriter{};
     //FileLogWriter fileLogWriter{};
     
+    
+	Benchmark::Benchmark bench = Benchmark::Benchmark::OverSeconds(5);
+    Constexpr::Hasher<std::string> hasher{};
+    auto result = bench.Run([hasher](const std::string& val) {
+        return hasher(val);
+        }, "This is a much larger string, hopefully bypassing small string optimization");
+	Log::Info(std::format("Hash: \n{}", result.ReturnValue));
+    Log::Info("");
+    Log::Info(std::format("Runtime: \n{}", result.RuntimeStats));
+    Log::Info("");
+	Log::Info(std::format("Cpu: \n{}", result.CpuStats));
+    Log::Info("");
+	Log::Info(std::format("Memory: \n{}", result.MemoryStats));
+    /*
     auto runner = [&]{
         if (argc > 1) {
             return RunFromCommandLine(argc, argv, std::make_unique<ExeInputReader>());
@@ -121,4 +137,5 @@ int main(int argc, char** argv) {
         
 	//runner.Run(runOneSettings);
     runner.Run(runAllSettings);
+    */
 }

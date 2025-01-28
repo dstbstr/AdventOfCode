@@ -25,6 +25,12 @@ if (NOT CONFIGURED_ONCE)
         CACHE STRING "Flags used by the compiler during all build types." FORCE)
 endif()
 
+if (${CMAKE_HOST_WIN32})
+    add_definitions(-DWIN32)
+elseif(${CMAKE_HOST_LINUX})
+    add_definitions(-D__linux__)
+endif()
+
 if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
     add_definitions(-DDEBUG)
 else()
