@@ -53,6 +53,12 @@ else()
     FetchContent_Declare(CppCore GIT_REPOSITORY https://github.com/dstbstr/CppCore GIT_TAG origin/main)
     FetchContent_MakeAvailable(CppCore)
 endif()
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/CliParser)
+    add_subdirectory("CliParser")
+else()
+    FetchContent_Declare(CliParser GIT_REPOSITORY https://github.com/dstbstr/CliParser GIT_TAG origin/main)
+    FetchContent_MakeAvailable(CliParser)
+endif()
 
 # Compile Time Regular Expressions
 FetchContent_Declare(ctre GIT_REPOSITORY https://github.com/hanickadot/compile-time-regular-expressions GIT_TAG origin/main)

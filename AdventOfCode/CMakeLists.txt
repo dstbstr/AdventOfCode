@@ -4,6 +4,7 @@ add_executable (${PROJECT_NAME})
 
 target_link_libraries(${PROJECT_NAME} Core)
 target_link_libraries(${PROJECT_NAME} ctre)
+target_link_libraries(${PROJECT_NAME} CliParser)
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/PROFILE")
 target_include_directories(${PROJECT_NAME} PUBLIC inc)
@@ -36,11 +37,15 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 
 target_sources(${PROJECT_NAME} 
 	PRIVATE 
-	"src/main.cpp" 
+	src/main.cpp
 
-	"src/Runner/SolutionRunner.cpp"
-	"src/Runner/ExeInputReader.cpp"
-	"src/Runner/Solution.cpp"
+	src/Commands/RunProblemCommand.cpp
+	src/Commands/BenchmarkCommand.cpp
+	src/Logging/LogStream.cpp
+	src/Runner/BenchmarkRunner.cpp
+	src/Runner/SolutionRunner.cpp
+	src/Runner/ExeInputReader.cpp
+	src/Runner/Solution.cpp
 	
 	"src/2015/d1_SantaElevator.cpp"
 	"src/2015/d2_ElfWrappingPaper.cpp"
@@ -302,4 +307,4 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d23_LanParty.cpp"
 	"src/2024/d24_CrossedWires.cpp"
 	"src/2024/d25_CodeChronicle.cpp"
- )
+)

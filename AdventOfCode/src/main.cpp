@@ -1,128 +1,53 @@
 #include "Runner/ExeInputReader.h"
 #include "Runner/SolutionRunner.h"
+#include "Runner/BenchmarkRunner.h"
+#include "Logging/AocLogs.h"
+#include "Logging/LogStream.h"
 
-#include "Core/Constexpr/ConstexprStrUtils.h"
-#include "Core/Instrumentation/Benchmark/Benchmark.h"
-#include "Core/Instrumentation/Logging.h"
-#include "Core/Instrumentation/ScopedTimer.h"
-#include "Core/Instrumentation/ISink.h"
-#include "Core/Utilities/TimeUtils.h"
+#include <CliParser/CliParser.h>
 
-#include <chrono>
-#include <filesystem>
-#include <format>
-#include <fstream>
-#include <iostream>
-#include <map>
-#include <string>
-#include <string_view>
+StdLogWriter stdLogWriter{};
+//FileLogWriter fileLogWriter{};
 
-SolutionRunner RunFromCommandLine(int argc, char** argv, std::unique_ptr<IInputReader>&& inputReader) {
-    if(argv[1][0] == '*') {
-        return SolutionRunner(std::move(inputReader));
-	}
-	else {
-		size_t year;
-		Constexpr::ParseNumber(argv[1], year);
-		if (argc > 2) {
-			if (argv[2][0] == '*') {
-				return SolutionRunner(year, std::move(inputReader));
-			}
-			else {
-				size_t day;
-				Constexpr::ParseNumber(argv[2], day);
-				return SolutionRunner(year, day, std::move(inputReader));
-			}
-		}
-		else {
-			return SolutionRunner(year, std::move(inputReader));
-		}
-    }
-}
+void FindBestTimes(size_t year) {
+    using namespace std::chrono_literals;
 
-struct FileLogWriter : public Log::ISink {
-    std::ofstream m_File{};
-
-    FileLogWriter(Log::Filter filter = {}) : ISink(filter) {
-        auto fileName = TimeUtils::TodayNowLocalToString("%Y-%m-%d_%H-%M-%S");
-        fileName += ".log";
-        m_File.open(fileName);
-        if (!m_File.is_open()) {
-            std::cerr << "Failed to open log file" << fileName << "\n";
-            std::abort();
+    std::chrono::microseconds totalTime{};
+    for (size_t day = 1; day <= 25; day++) {
+        BenchmarkRunner runner{ std::make_unique<ExeInputReader>(), year, day, 5s };
+        auto bestTime = runner.FindBest(1);
+        totalTime += bestTime;
+        Log::Info(std::format("{}-{}-1: {}", year, day, bestTime));
+        if (day < 25) {
+            bestTime = runner.FindBest(2);
+            totalTime += bestTime;
+            Log::Info(std::format("{}-{}-2: {}", year, day, bestTime));
         }
     }
-    void Write(const Log::Entry& entry) override {
-        m_File << entry.Message << '\n';
-    }
-};
 
-struct StdLogWriter : public Log::ISink {
-    StdLogWriter(Log::Filter filter = {}) : ISink(filter) {
-		// Disable synchronization with C stdio
-        // No interop with C
-		std::ios_base::sync_with_stdio(false);
-		
-        // Untie stdio streams from C++ streams
-        // Not using cin, so no need to synchronize with cout
-        std::cin.tie(nullptr);
-    }
-    void Write(const Log::Entry& entry) override {
-        std::cout << entry.Message << '\n';
-    }
-};
-
-bool SlowProblems(std::string_view, std::chrono::microseconds elapsed) {
-	return elapsed > std::chrono::milliseconds(500);
+    Log::Info(std::format("Best possible time: {}ms", std::chrono::duration_cast<std::chrono::milliseconds>(totalTime).count()));
 }
 
-bool NoTests(std::string_view label, std::chrono::microseconds) {
-    return !label.starts_with("Test_");
-}
-bool TestsOnly(std::string_view label, std::chrono::microseconds) {
-	return label.starts_with("Test_");
-}
-
-bool All(std::string_view, std::chrono::microseconds) {
-	return true;
-}
-
-SolutionRunner::Settings runAllSettings {
-	.Sync = false,
-	.PrintTiming = true,
-	.PrintResults = false,
-	//.TimingSort = SolutionRunner::SortBy::Problem,
-    //.TimingFilter = NoTests
-	.TimingSort = SolutionRunner::SortBy::RunTime,
-	.TimingFilter = SlowProblems
-};
-
-SolutionRunner::Settings runOneSettings {
-    .Sync = true,
-    .PrintTiming = true,
-    .PrintResults = true,
-    .TimingSort = SolutionRunner::SortBy::Problem,
-    .TimingFilter = All
-};
-
-//int main(int argc, char** argv) {
-int main(int, char**) {
-    StdLogWriter stdLogWriter{};
-    //FileLogWriter fileLogWriter{};
+int main(int argc, char** argv) {
+//int main(int, char**) {
+    using namespace std::chrono_literals;
     
-    
-	Benchmark::Benchmark bench = Benchmark::Benchmark::OverSeconds(5);
-    Constexpr::Hasher<std::string> hasher{};
-    auto result = bench.Run([hasher](const std::string& val) {
-        return hasher(val);
-        }, "This is a much larger string, hopefully bypassing small string optimization");
-	Log::Info(std::format("Hash: \n{}", result.ReturnValue));
-    Log::Info("");
-    Log::Info(std::format("Runtime: \n{}", result.RuntimeStats));
-    Log::Info("");
-	Log::Info(std::format("Cpu: \n{}", result.CpuStats));
-    Log::Info("");
-	Log::Info(std::format("Memory: \n{}", result.MemoryStats));
+    if(argc > 1) {
+        auto outErrors = LogStream(Log::Error);
+		return CliParser::Run(argc, argv, outErrors);
+    } else {
+        //auto runner = SolutionRunner(2024, std::make_unique<ExeInputReader>());
+        //runner.Run(RunSettings::RunAll);
+        BenchmarkRunner runner{ std::make_unique<ExeInputReader>(), 2024, 16, 30s };
+        runner.RunSingle(2);
+    }
+    //runner.Compare(1, 2);
+
+    // auto r2 = SolutionRunner(2024, 1, std::make_unique<ExeInputReader>());
+    // r2.Run(RunSettings::RunOne);
+    //RunBenchmark(2024, 1, 2);
+	//auto runner = SolutionRunner(2024, 1, std::make_unique<ExeInputReader>());
+    //runner.Run(runOneSettings);
     /*
     auto runner = [&]{
         if (argc > 1) {

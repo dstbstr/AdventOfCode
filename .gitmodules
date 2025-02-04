@@ -1,3 +1,6 @@
 [submodule "CppCore"]
 	path = CppCore
 	url = https://github.com/dstbstr/CppCore
+[submodule "CliParser"]
+	path = CliParser
+	url = https://github.com/dstbstr/CliParser.git

@@ -41,3 +41,16 @@ private:
 	bool CheckTestsPass(size_t year, size_t day);
 	void AddSolution(size_t year, size_t day, Tests tests = Tests::Include);
 };
+
+namespace TimingFilters {
+	bool SlowProblems(std::string_view, std::chrono::microseconds elapsed);
+	bool NoTests(std::string_view label, std::chrono::microseconds);
+	bool TestsOnly(std::string_view label, std::chrono::microseconds);
+	bool All(std::string_view, std::chrono::microseconds);
+}
+
+namespace RunSettings {
+	extern SolutionRunner::Settings FindSlow;
+	extern SolutionRunner::Settings RunAll;
+	extern SolutionRunner::Settings RunOne;
+}

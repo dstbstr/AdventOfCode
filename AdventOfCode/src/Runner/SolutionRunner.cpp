@@ -184,3 +184,46 @@ void SolutionRunner::Run(const SolutionRunner::Settings& settings) {
 		LogTimingData(m_TimingData, settings.TimingSort, settings.TimingFilter);
 	}
 }
+
+namespace TimingFilters {
+	bool SlowProblems(std::string_view, std::chrono::microseconds elapsed) {
+		return elapsed > std::chrono::milliseconds(500);
+	}
+
+	bool NoTests(std::string_view label, std::chrono::microseconds) {
+		return !label.starts_with("Test_");
+	}
+	bool TestsOnly(std::string_view label, std::chrono::microseconds) {
+		return label.starts_with("Test_");
+	}
+
+	bool All(std::string_view, std::chrono::microseconds) {
+		return true;
+	}
+}
+
+namespace RunSettings {
+	SolutionRunner::Settings FindSlow{
+		.Sync = false,
+		.PrintTiming = true,
+		.PrintResults = false,
+		.TimingSort = SolutionRunner::SortBy::RunTime,
+		.TimingFilter = TimingFilters::SlowProblems
+	};
+
+	SolutionRunner::Settings RunAll{
+		.Sync = false,
+		.PrintTiming = true,
+		.PrintResults = false,
+		.TimingSort = SolutionRunner::SortBy::Problem,
+		.TimingFilter = TimingFilters::NoTests
+	};
+
+	SolutionRunner::Settings RunOne{
+		.Sync = true,
+		.PrintTiming = true,
+		.PrintResults = true,
+		.TimingSort = SolutionRunner::SortBy::Problem,
+		.TimingFilter = TimingFilters::All
+	};
+}
