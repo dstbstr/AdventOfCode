@@ -110,6 +110,25 @@ SOLUTION(2024, 16) {
 		return SolvePart2(lines);
 	}
 
+	/*
+	constexpr size_t SolvePart3(const std::vector<std::string>& lines) {
+		auto [start, end] = FindStartEnd(lines);
+		auto bestPath = FindShortestPath(lines, State{ start, Facing::Right, 0 }, end);
+
+		// for each position, keep the min cost to get to the end
+		size_t posCount = lines.size() * lines[0].size();
+		std::vector<u64> costs(posCount, std::numeric_limits<u64>::max());
+
+		// maybe have 2 queues, one from the start, one from the end
+		// adding their values together is the total cost
+		std::vector<State> startQ;
+		std::vector<State> endQ;
+		startQ.push_back({ start, Facing::Right, 0 });
+		endQ.push_back({ end, Facing::Right, 0 });
+		endQ.push_back({ end, Facing::Up, 0 });
+	}
+	*/
+
 	TEST(1) {
 		std::vector<std::string> lines = {
 			"###############",
