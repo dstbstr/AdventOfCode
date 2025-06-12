@@ -9,6 +9,10 @@ SOLUTION(2015, 6) {
         CommandType CommandType{};
     };
 
+    /*
+    * turn on 0,0 through 999,999
+    * toggle 0,0 through 999,0
+    */
     constexpr Command ParseCommand(std::string_view line) {
         auto s1 = Constexpr::Split(line, " through ");
         auto s2 = Constexpr::Split(s1[0], " ");
@@ -39,7 +43,7 @@ SOLUTION(2015, 6) {
     constexpr size_t SolvePartOne(auto& lines) {
         constexpr size_t gridSize = 1000;
         auto gridPtr = new std::array<bool, gridSize* gridSize>();
-        auto grid = *gridPtr;
+        auto& grid = *gridPtr;
 
         for (const auto& line : lines) {
             auto command = ParseCommand(line);

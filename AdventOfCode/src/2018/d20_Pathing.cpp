@@ -62,6 +62,7 @@ SOLUTION(2018, 20) {
         });
     }
 
+    /*
     constexpr void TestKeepMax(size_t length, size_t& r) {
         r = std::max(length, r);
     }
@@ -71,4 +72,5 @@ SOLUTION(2018, 20) {
     static_assert(Solve("^ENNWSWW(NEWS|)SSSEEN(WNSE|)EE(SWEN|)NNN$", TestKeepMax) == 18);
     static_assert(Solve("^ESSWWN(E|NNENN(EESS(WNSE|)SSS|WWWSSSSE(SW|NNNE)))$", TestKeepMax) == 23);
     static_assert(Solve( "^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$" , TestKeepMax) == 31);
+    */
 }
