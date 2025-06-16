@@ -28,10 +28,11 @@ void FindBestTimes(size_t year) {
     Log::Info(std::format("Best possible time: {}ms", std::chrono::duration_cast<std::chrono::milliseconds>(totalTime).count()));
 }
 
-
+void Run4Thought();
 //int main(int argc, char** argv) {
 int main(int, char**) {
     using namespace std::chrono_literals;
+    Run4Thought();
     /*
     if(argc > 1) {
         auto outErrors = LogStream(Log::Error);
