@@ -38,7 +38,7 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 target_sources(${PROJECT_NAME} 
 	PRIVATE 
 	src/main.cpp
-
+	
 	src/Commands/RunProblemCommand.cpp
 	src/Commands/BenchmarkCommand.cpp
 	src/Logging/LogStream.cpp
@@ -307,4 +307,21 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d23_LanParty.cpp"
 	"src/2024/d24_CrossedWires.cpp"
 	"src/2024/d25_CodeChronicle.cpp"
- "src/Kattis/Matryoshka.cpp" "src/Kattis/2048.cpp" "src/Kattis/4Thought.cpp")
+
+	"src/2025/d1_SecretEntrance.cpp"
+	"src/2025/d2_.cpp"
+	"src/2025/d3_.cpp"
+	"src/2025/d4_.cpp"
+	"src/2025/d5_.cpp"
+	"src/2025/d6_.cpp"
+	"src/2025/d7_.cpp"
+	"src/2025/d8_.cpp"
+	"src/2025/d9_.cpp"
+	"src/2025/d10_.cpp"
+	"src/2025/d11_.cpp"
+	"src/2025/d12_.cpp"
+
+	"src/Kattis/Matryoshka.cpp" 
+	"src/Kattis/2048.cpp" 
+	"src/Kattis/4Thought.cpp" 
+)
