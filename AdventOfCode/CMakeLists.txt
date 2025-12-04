@@ -309,8 +309,8 @@ target_sources(${PROJECT_NAME}
 	"src/2024/d25_CodeChronicle.cpp"
 
 	"src/2025/d1_SecretEntrance.cpp"
-	"src/2025/d2_.cpp"
-	"src/2025/d3_.cpp"
+	"src/2025/d2_GiftShop.cpp"
+	"src/2025/d3_Lobby.cpp"
 	"src/2025/d4_.cpp"
 	"src/2025/d5_.cpp"
 	"src/2025/d6_.cpp"
