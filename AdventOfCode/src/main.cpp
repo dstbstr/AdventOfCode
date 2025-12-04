@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
         auto outErrors = LogStream(Log::Error);
 		return CliParser::Run(argc, argv, outErrors);
     } else {
-        auto runner = SolutionRunner(2025, 3, std::make_unique<ExeInputReader>());
+        auto runner = SolutionRunner(2025, 4, std::make_unique<ExeInputReader>());
         runner.Run(RunSettings::RunOne);
 		//auto runner = BenchmarkRunner(std::make_unique<ExeInputReader>(), 2015, 6, 3s);
         //runner.Compare(1, 3);
