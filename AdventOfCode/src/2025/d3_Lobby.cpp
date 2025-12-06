@@ -17,29 +17,6 @@ SOLUTION(2025, 3) {
 		result = (best - '0') * Constexpr::Pow(10ull, digitsLeft - 1);
 		return result + FindLargest(str.substr(bestIndex + 1), digitsLeft - 1);
 	}
-	/*
-	constexpr size_t FindLargest(const std::string& str) {
-		size_t result = 0;
-		char best = '0';
-		size_t bestIndex = 0;
-		for(size_t i = 0; i < str.size() - 1; i++) {
-			auto current = str[i];
-			if(current > best) {
-				best = current;
-				bestIndex = i;
-				if (best == '9') break;
-			}
-		}
-		result = (best - '0') * 10;
-		best = '0';
-		for (size_t i = bestIndex + 1; i < str.size(); i++) {
-			auto current = str[i];
-			best = std::max(best, current);
-		}
-		result += (best - '0');
-		return result;
-	}
-	*/
 
 	static_assert(FindLargest("987654321111111", 2) == 98);
 	static_assert(FindLargest("811111111111119", 2) == 89);
