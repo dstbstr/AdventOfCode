@@ -314,7 +314,7 @@ target_sources(${PROJECT_NAME}
 	"src/2025/d4_PrintingDept.cpp"
 	"src/2025/d5_Cafeteria.cpp"
 	"src/2025/d6_TrashCompactor.cpp"
-	"src/2025/d7_.cpp"
+	"src/2025/d7_Laboratories.cpp"
 	"src/2025/d8_.cpp"
 	"src/2025/d9_.cpp"
 	"src/2025/d10_.cpp"
