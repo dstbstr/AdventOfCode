@@ -28,16 +28,16 @@ void FindBestTimes(size_t year) {
     Log::Info(std::format("Best possible time: {}ms", std::chrono::duration_cast<std::chrono::milliseconds>(totalTime).count()));
 }
 
-
 int main(int argc, char** argv) {
     if(argc > 1) {
         auto outErrors = LogStream(Log::Error);
 		return CliParser::Run(argc, argv, outErrors);
     } else {
+        //Ilp::TestIlp();
         // auto runner = SolutionRunner(2025, std::make_unique<ExeInputReader>());
         // runner.Run(RunSettings::RunAll);
 
-        auto runner = SolutionRunner(2025, 9, std::make_unique<ExeInputReader>());
+        auto runner = SolutionRunner(2025, 11, std::make_unique<ExeInputReader>());
         runner.Run(RunSettings::RunOne);
         
 		//auto runner = BenchmarkRunner(std::make_unique<ExeInputReader>(), 2015, 6, 3s);

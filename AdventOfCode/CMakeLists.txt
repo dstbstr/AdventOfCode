@@ -317,8 +317,8 @@ target_sources(${PROJECT_NAME}
 	"src/2025/d7_Laboratories.cpp"
 	"src/2025/d8_Playground.cpp"
 	"src/2025/d9_MovieTheater.cpp"
-	"src/2025/d10_.cpp"
-	"src/2025/d11_.cpp"
+	"src/2025/d10_Factory.cpp"
+	"src/2025/d11_Reactor.cpp"
 	"src/2025/d12_.cpp"
 
 	"src/Kattis/Matryoshka.cpp" 
