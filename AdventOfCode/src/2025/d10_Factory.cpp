@@ -2,39 +2,35 @@
 #include <Core/Constexpr/ConstexprBits.h>
 
 SOLUTION(2025, 10) {
-	//struct Machine {
-	//	u32 Desired;
-	//	std::vector<u32> Buttons;
-	//	std::vector<u32> Jolts;
-	//};
-
-	static constexpr size_t MAX_BUTTONS = 16;
-	static constexpr size_t MAX_JOLTS = 11;
-	using Buttons = std::array<u32, MAX_BUTTONS>;
-	using Jolts = std::array<u32, MAX_JOLTS>;
+	using Cache = Constexpr::BigMap<std::vector<u32>, u32, 5'000>;
+	using Patterns = Constexpr::BigMap<u32, std::vector<std::pair<std::vector<u32>, u32>>, 5'000>;
 
 	struct Machine {
 		u32 Desired;
-		Buttons Buttons;
-		size_t ButtonCount = 0;
-		Jolts Jolts;
-		size_t JoltCount = 0;
+		std::vector<u32> Buttons;
+		std::vector<u32> Jolts;
 	};
 
 	constexpr u32 ParseDesired(std::string_view str) {
 		u32 result = 0;
-		u32 factor = 1;
-		for(auto it = str.begin() + 1; it != str.end() - 1; ++it) {
-			result += (*it == '#') * factor;
-			factor *= 2;
+		for(size_t i = 1; i < str.size() - 1; i++) {
+			result |= ((str[i] == '#') << (i - 1));
 		}
 		return result;
 	}
-
 	static_assert(ParseDesired("[.##.]") == 6);
 	static_assert(ParseDesired("[...#.]") == 8);
 	static_assert(ParseDesired("[.###.#]") == 46);
 
+	constexpr u32 ToPairity(const std::vector<u32>& jolts) {
+		u32 result = 0;
+		for (size_t i = 0; i < jolts.size(); i++) {
+			result |= ((jolts[i] & 1) << i);
+		}
+		return result;
+	}
+
+	static_assert(ToPairity({ 3,5,4,7 }) == 11);
 
 	constexpr u32 ParseButton(std::string_view str) {
 		u32 button = 0;
@@ -51,207 +47,110 @@ SOLUTION(2025, 10) {
 	constexpr std::vector<u32> ParseJolts(std::string_view str) {
 		return ParseLineAsNumbers<u32>(str.substr(1, str.size() - 2));
 	}
-
-	/*
+	
 	constexpr Machine ParseMachine(const std::string& line) {
 		auto parts = Constexpr::Split(line, " ");
 		Machine machine;
 		machine.Desired = ParseDesired(parts[0]);
-		// Fill Buttons
+
 		for (size_t i = 1; i < parts.size() - 1; i++) {
 			machine.Buttons.emplace_back(ParseButton(parts[i]));
 		}
 
 		machine.Jolts = ParseJolts(parts.back());
 
-		// Available buttons is always last jolt
-		machine.Jolts.push_back((1 << machine.Buttons.size()) - 1);
 		return machine;
 	}
-	*/
-	
-	constexpr Machine ParseMachine(const std::string& line) {
-		auto parts = Constexpr::Split(line, " ");
-		Machine machine;
-		machine.Desired = ParseDesired(parts[0]);
-		// Fill Buttons
-		machine.ButtonCount = 0;
-		for(size_t i = 1; i < parts.size() - 1; i++) {
-			machine.Buttons[machine.ButtonCount++] = ParseButton(parts[i]);
-		}
-		// Fill Jolts
-		auto joltsVec = ParseJolts(parts.back());
-		machine.JoltCount = joltsVec.size();
-		for(size_t i = 0; i < joltsVec.size(); ++i) {
-			machine.Jolts[i] = joltsVec[i];
-		}
-		// Available buttons is always last jolt
-		machine.Jolts.back() = (1 << machine.ButtonCount) - 1;
-		return machine;
-	}
-	
 
-	constexpr size_t CountIndicators(const Machine& machine) {
-		Constexpr::SmallSet<u32> q{0};
-		size_t steps = 0;
-		while(true) {
-			Constexpr::SmallSet<u32> next;
-			for(auto current : q) {
-				if(current == machine.Desired) return steps;
+	constexpr Patterns GetPatterns(const std::vector<u32>& buttons, size_t numVariables) {
+		Patterns result;
+		const size_t numButtons = buttons.size();
+		u32 max = 1u << numButtons;
+		for (u32 mask = 0; mask < max; mask++) {
+			u32 buttonsPressed = std::popcount(mask);
+			std::vector<u32> pattern(numVariables, 0);
 
-				for(size_t i = 0; i < machine.ButtonCount; i++) {
-					next.insert(current ^ (machine.Buttons[i]));
-				}
-			}
-			steps++;
-			q = next;
-		}
-		return 0;
-	}
-
-	constexpr size_t Solve(const std::vector<std::string>& lines, auto fn) {
-		auto machines = ParseLines(lines, ParseMachine);
-		size_t totalSteps = 0;
-		for (const auto& machine : machines) {
-			totalSteps += fn(machine);
-		}
-		return totalSteps;
-	}
-	PART(1) {
-		return Solve(lines, CountIndicators);
-	}
-
-    constexpr bool NextCombination(std::vector<u32>& current) {
-        for(size_t i = current.size() - 1; i > 0; i--) {
-            if(current[i] > 0) {
-				auto v = current[i];
-                current[i - 1] += 1;
-                current[i] = 0;
-                current.back() = v - 1;
-                return true;
-            }
-		}
-        return false;
-    }
-	constexpr bool NextCombination(std::array<u32, 16>& current, size_t end) {
-		for (size_t i = end - 1; i > 0; i--) {
-			if (current[i] > 0) {
-				auto v = current[i];
-				current[i - 1] += 1;
-				current[i] = 0;
-				current[end - 1] = v - 1;
-				return true;
-			}
-		}
-		return false;
-	}
-
-	// {presses, buttonIndecies, indexCount}
-	constexpr std::tuple<u32, std::array<size_t, MAX_BUTTONS>, size_t> GetNextButtons(const Jolts& jolts, size_t joltCount, const Buttons& buttons, size_t buttonCount) {
-		size_t minIndex = 0;
-		size_t minCount = std::numeric_limits<size_t>::max();
-		auto availBits = jolts.back();
-		for (size_t joltIndex = 0; joltIndex < joltCount; joltIndex++) {
-			if (jolts[joltIndex] == 0) continue;
-			size_t btnCount = 0;
-			for (size_t btnIdx = 0; btnIdx < buttonCount; btnIdx++) {
-				btnCount += Constexpr::IsBitSet(buttons[btnIdx], joltIndex) && Constexpr::IsBitSet(availBits, btnIdx);
-			}
-			if (minCount == btnCount && jolts[joltIndex] < jolts[minIndex]) minIndex = joltIndex;
-			else if (btnCount < minCount) {
-				minCount = btnCount;
-				minIndex = joltIndex;
-			}
-		}
-
-		std::array<size_t, MAX_BUTTONS> result{};
-		size_t index = 0;
-		for(size_t i = 0; i < buttonCount; i++) {
-			if(Constexpr::IsBitSet(availBits, i) && Constexpr::IsBitSet(buttons[i], minIndex)) {
-				result[index++] = i;
-			}
-		}
-		return { jolts[minIndex], result, index };
-	}
-	constexpr size_t Part2Recurse(const Jolts& jolts, size_t joltCount, const Buttons& buttons, size_t buttonCount) {
-		if (std::all_of(jolts.begin(), jolts.begin() + joltCount, [](u32 j) { return j == 0; })) {
-			return 0;
-		}
-
-		auto [presses, nextButtonIndecies, indexCount] = GetNextButtons(jolts, joltCount, buttons, buttonCount);
-		size_t result = std::numeric_limits<size_t>::max();
-		if (indexCount == 0) return result;
-
-		auto nextBits = jolts.back();
-		for(size_t i = 0; i < indexCount; i++) {
-			nextBits &= ~(1 << nextButtonIndecies[i]);
-		}
-
-		std::array<u32, MAX_BUTTONS> counts{};
-		counts[indexCount - 1] = presses;
-		size_t r;
-		while (true) {
-			auto nextJolts = jolts;
-			nextJolts.back() = nextBits;
-			for (size_t i = 0; i < indexCount; i++) {
-				if (counts[i] == 0) continue;
-				auto count = counts[i];
-				auto btn = buttons[nextButtonIndecies[i]];
-				for (size_t j = 0; j < joltCount; j++) {
-					if(Constexpr::IsBitSet(btn, j)) {
-						if(nextJolts[j] < count) {
-							goto skipRecurse;
-						}
-						nextJolts[j] -= count;
+			for (size_t i = 0; i < numButtons; i++) {
+				if (Constexpr::IsBitSet(mask, i)) {
+					auto btn = buttons[i];
+					for (size_t j = 0; j < numVariables; j++) {
+						pattern[j] += (btn >> j) & 1;
 					}
 				}
 			}
-			r = Part2Recurse(nextJolts, joltCount, buttons, buttonCount);
-			if (r != std::numeric_limits<size_t>::max()) {
-				result = std::min(result, r + presses);
-			}
-
-			skipRecurse:
-			if (!NextCombination(counts, indexCount)) {
-				break;
-			}
+			auto pairityPattern = ToPairity(pattern);
+			result[pairityPattern].emplace_back(pattern, buttonsPressed);
 		}
-
 		return result;
 	}
 
-    constexpr bool TestNextCombination() {
-		std::vector<u32> comb = { 0, 0, 4 };
-        Constexpr::SmallSet<std::vector<u32>> seen{};
-        seen.insert(comb);
-        while(NextCombination(comb)) {
-            seen.insert(comb);
+	constexpr u32 Recurse(const std::vector<u32>& goal, Cache& memo, const Patterns& patterns) {
+		if (memo.contains(goal)) return memo.at(goal);
+		if (std::all_of(goal.begin(), goal.end(), [](u32 g) { return g == 0; })) {
+			memo[goal] = 0;
+			return 0;
 		}
-		return seen.size() == 15;
-    }
-    static_assert(TestNextCombination());
+		u32 answer = 1'000'000;
+		auto pattern = ToPairity(goal);
+		if (!patterns.contains(pattern)) {
+			memo[goal] = answer;
+			return answer;
+		}
+		for (const auto& [buttons, cost] : patterns.at(pattern)) {
+			auto newGoal = goal;
+			bool valid = true;
 
-	constexpr size_t SolvePart2(const std::vector<std::string>& lines) {
-		auto machines = ParseLines(lines, ParseMachine);
-		size_t total = 0;
-		for (const auto& machine : machines) {
-			total += Part2Recurse(machine.Jolts, machine.JoltCount, machine.Buttons, machine.ButtonCount);
+			for (size_t i = 0; i < goal.size(); i++) {
+				if (buttons[i] > goal[i]) {
+					valid = false;
+					break;
+				}
+				newGoal[i] = (goal[i] - buttons[i]) / 2;
+			}
+			if (valid) {
+				answer = std::min(answer, cost + 2 * Recurse(newGoal, memo, patterns));
+			}
 		}
-		return total;
+		memo[goal] = answer;
+		return answer;
+
+	}
+
+	constexpr size_t Solve(const std::vector<std::string>& lines, auto fn) {
+		size_t score = 0;
+		for (const auto& line : lines) {
+			auto machine = ParseMachine(line);
+			auto patterns = GetPatterns(machine.Buttons, machine.Jolts.size());
+			Cache memo;
+			score += fn(machine, memo, patterns);
+		}
+		return score;
+	}
+
+	constexpr size_t MinMatch(const Machine& machine, Cache& cache, const Patterns& patterns) {
+		(void)cache;
+		auto matches = patterns.at(machine.Desired);
+		size_t best = std::numeric_limits<size_t>::max();
+		for (const auto& [_, presses] : matches) {
+			if (presses < best) {
+				best = presses;
+			}
+		}
+		return best;
+	}
+
+	constexpr size_t MinPresses(const Machine& machine, Cache& cache, const Patterns& patterns) {
+		return Recurse(machine.Jolts, cache, patterns);
+	}
+
+	PART(1) {
+		return Solve(lines, MinMatch);
 	}
 
 	PART(2) {
-		return SolvePart2(lines);
+		return Solve(lines, MinPresses);
 	}
-	
-	/*
-	3,5,4,7
-	(3)
-	(1,3)x3
-	(2,3)x3
-	(0,2)
-	(0,1)x2
-	*/
+
 	TEST(1) {
 		std::vector<std::string> input = {
 			"[.##.] (3) (1,3) (2) (2,3) (0,2) (0,1) {3,5,4,7}",
@@ -259,6 +158,7 @@ SOLUTION(2025, 10) {
 			"[.###.#] (0,1,2,3,4) (0,3,4) (0,1,2,4,5) (1,2) {10,11,11,5,10,5}"
 		};
 
-		return SolvePart2(input) == 33;
+		return Solve(input, MinPresses) == 33;
 	}
+	
 }
