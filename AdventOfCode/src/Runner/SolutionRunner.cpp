@@ -109,6 +109,9 @@ bool SolutionRunner::CheckTestsPass(size_t year, size_t day) {
     return true;
 }
 
+// TODO: Consider splitting each part into it's own task
+// Also consider allowing a solution to split part 2 into multiple tasks
+// running them in parallel, and summing them together
 void SolutionRunner::AddSolution(size_t year, size_t day, Tests tests) {
     Results[year][day][1] = "";
 	Results[year][day][2] = "";

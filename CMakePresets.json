@@ -57,6 +57,18 @@
       }
     },
     {
+      "name": "msvc-profile",
+      "displayName": "Msvc Profile",
+      "inherits": "msvc-x64",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      },
+      "environment": {
+        "PRESET_COMPILER_FLAGS": "/Zi",
+        "PRESET_LINK_FLAGS": "/DEBUG /PROFILE"
+      }
+    },
+    {
       "name": "msvc-release",
       "displayName": "Msvc Release",
       "inherits": "msvc-x64",
@@ -90,6 +102,14 @@
       },
       "environment": {
         "PRESET_LINK_FLAGS": "-v"
+      }
+    },
+    {
+      "name": "clang-profile",
+      "displayName": "clang Profile",
+      "inherits": "clang-x64",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
       }
     },
     {

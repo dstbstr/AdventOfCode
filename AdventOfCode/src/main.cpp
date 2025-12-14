@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
         // auto runner = SolutionRunner(2025, std::make_unique<ExeInputReader>());
         // runner.Run(RunSettings::RunAll);
 
-        auto runner = SolutionRunner(2025, 11, std::make_unique<ExeInputReader>());
+        auto runner = SolutionRunner(2025, 10, std::make_unique<ExeInputReader>());
         runner.Run(RunSettings::RunOne);
         
 		//auto runner = BenchmarkRunner(std::make_unique<ExeInputReader>(), 2015, 6, 3s);
