@@ -97,7 +97,7 @@ SOLUTION(2019, 25) {
         constexpr void PrintOutput() {
             auto output = ReadOutput();
             for (const auto& line : output) {
-                GET_LOGS().push_back(line);
+                LOG_VAL(line);
             }
         }
 

@@ -2,7 +2,7 @@
 
 project(AdventOfCodeParent LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
@@ -17,6 +17,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" OR
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     set(warnings "/W4 /WX /EHsc")
     add_definitions(-DMSVC)
+    set(CMAKE_CXX_STANDARD 23)
+    add_compile_options($<$<CXX_COMPILER_ID:MSVC>:/std:c++latest>)
 endif()
 if (NOT CONFIGURED_ONCE)
     set(CMAKE_CXX_FLAGS "${warnings}"

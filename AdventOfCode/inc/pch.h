@@ -9,6 +9,7 @@
 #include <string_view>
 #include <utility>
 #include <vector>
+#include <print>
 
 #include "Runner/Solution.h"
 #include "Utils/InputUtils.h"

@@ -80,7 +80,7 @@ SOLUTION(2016, 14) {
         u32 foundKeys = 0;
         for (auto [id, target] : threes) {
             if (IsKey(id, target, fives)) {
-                GET_LOGS().emplace_back(Constexpr::ToString(id));
+                LOG("{}", id);
                 foundKeys++;
                 if (foundKeys == 64) {
                     return id;

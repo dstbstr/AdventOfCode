@@ -26,7 +26,7 @@ SOLUTION(2024, 14) {
 			}
 			log += '\n';
 		}
-		GET_LOGS().emplace_back(log);
+		LOG_VAL(log);
 	}
 
 	template<s64 Rows, s64 Cols>
@@ -105,7 +105,7 @@ SOLUTION(2024, 14) {
 				}
 				log += '\n';
 			}
-			GET_LOGS().emplace_back(log);
+			LOG_VAL(log);
 			};
 		(void)PrintMap;
 

@@ -1,4 +1,5 @@
 #include "Common.h"
+#include <print>
 
 SOLUTION(2025, 1) {
 	constexpr int Turn(int dial, int amount) {

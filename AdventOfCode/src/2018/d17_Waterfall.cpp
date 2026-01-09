@@ -80,7 +80,7 @@ SOLUTION(2018, 17) {
 
         auto lines = Constexpr::JoinVec("\n", logLines);
         PreviousLogLine = lines;
-        GET_LOGS().push_back(lines);
+        LOG_VAL(lines);
     }
 
     constexpr auto Solve(const auto& lines) {

@@ -129,9 +129,9 @@ SOLUTION(2020, 20) {
             for (const auto& col : row) {
 				rowStr += (col ? '#' : '.');
             }
-            GET_LOGS().emplace_back(rowStr);
+            LOG_VAL(rowStr);
         }
-        GET_LOGS().emplace_back("");
+        LOG_VAL("");
     }
 
     void PrintTileGrid(const TileGrid & tileGrid) {
@@ -147,9 +147,9 @@ SOLUTION(2020, 20) {
                     }
                     row += " ";
                 }
-				GET_LOGS().emplace_back(row);
+				LOG_VAL(row);
             }
-            GET_LOGS().emplace_back("");
+            LOG_VAL("");
         }
     }
 

@@ -175,7 +175,7 @@ inline bool ApplyDebug(std::vector<s64>& instructions, Args& args) {
     {
     case Halt: {
         logMessage += "Halt";
-        GET_LOGS().emplace_back(logMessage);
+        LOG_VAL(logMessage);
         return false;
     }
     case Add: {
@@ -212,7 +212,7 @@ inline bool ApplyDebug(std::vector<s64>& instructions, Args& args) {
         if (a != 0) {
             args.Ip = detail::Read(instructions, parameters[1], args.Base);
 			logMessage += " Ip = " + std::to_string(args.Ip);
-			GET_LOGS().emplace_back(logMessage);
+			LOG_VAL(logMessage);
             return true;
         }
 		logMessage += " Did not jump";
@@ -224,7 +224,7 @@ inline bool ApplyDebug(std::vector<s64>& instructions, Args& args) {
         if (a == 0) {
             args.Ip = detail::Read(instructions, parameters[1], args.Base);
 			logMessage += " Ip = " + std::to_string(args.Ip);
-			GET_LOGS().emplace_back(logMessage);
+			LOG_VAL(logMessage);
             return true;
         }
 		logMessage += " Did not jump";
@@ -255,7 +255,7 @@ inline bool ApplyDebug(std::vector<s64>& instructions, Args& args) {
     }
     }
 
-	GET_LOGS().emplace_back(logMessage);
+	LOG_VAL(logMessage);
     args.Ip += parameters.size() + 1;
     return true;
 }

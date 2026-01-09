@@ -20,14 +20,6 @@ namespace {
 
     std::map<size_t, std::map<size_t, std::map<size_t, std::string>>> Results{};
 
-    void WriteLogs() {
-        if (!GET_LOGS().empty()) Log::Info("## Logs ##");
-        for (const auto& log : GET_LOGS()) {
-            Log::Info(log);
-        }
-        GET_LOGS().clear();
-    }
-
     auto GatherTiming(std::map<std::string, std::chrono::microseconds>& timingData) {
         return [&](std::string_view key, std::chrono::microseconds elapsed) {
             timingData[std::string(key)] = elapsed;
@@ -102,7 +94,6 @@ bool SolutionRunner::CheckTestsPass(size_t year, size_t day) {
 		auto testTime = ScopedTimer(MakeKey(year, day, testNum, true), GatherTiming(m_TimingData));
 		if (!testFunc()) [[unlikely]] {
 			Log::Info(std::format("{}_{} Test {} Fail", year, day, testNum));
-			WriteLogs();
 			return false;
 		}
 	}
@@ -125,7 +116,6 @@ void SolutionRunner::AddSolution(size_t year, size_t day, Tests tests) {
                 auto result = func(input);
                 Results.at(year).at(day).at(part) = result;
             }
-            WriteLogs();
         }
     };
 

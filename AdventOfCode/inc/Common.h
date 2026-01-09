@@ -4,10 +4,19 @@
 using namespace std::string_view_literals;
 using namespace std::string_literals;
 
-static inline std::vector<std::string> _logs;
-constexpr std::vector<std::string>& GET_LOGS() {
-	return _logs;
-}
+#define LOG(...) \
+	do { \
+		if(!std::is_constant_evaluated()) { \
+			std::println(__VA_ARGS__); \
+		} \
+	} while(0)
+
+#define LOG_VAL(val) \
+	do { \
+		if(!std::is_constant_evaluated()) { \
+			std::println("{}", val); \
+		} \
+	} while(0)
 
 template<typename Key, typename Value, size_t Capacity, typename Hash = Constexpr::Hasher<Key>>
 constexpr void PrintMap(const Constexpr::BigMap<Key, Value, Capacity, Hash>& map, char exists, char missing) {
@@ -24,7 +33,7 @@ constexpr void PrintMap(const Constexpr::BigMap<Key, Value, Capacity, Hash>& map
 				currentLine.push_back('O');
 			}
 		}
-		GET_LOGS().emplace_back(currentLine);
+		LOG(currentLine);
 	}
 }
 
