@@ -33,11 +33,11 @@ int main(int argc, char** argv) {
         auto outErrors = LogStream(Log::Error);
 		return CliParser::Run(argc, argv, outErrors);
     } else {
-         auto runner = SolutionRunner(2025, std::make_unique<ExeInputReader>());
-         runner.Run(RunSettings::RunAll);
+         //auto runner = SolutionRunner(2025, std::make_unique<ExeInputReader>());
+         //runner.Run(RunSettings::RunAll);
 
-        //auto runner = SolutionRunner(2025, 10, std::make_unique<ExeInputReader>());
-        //runner.Run(RunSettings::RunOne);
+        auto runner = SolutionRunner(2016, 13, std::make_unique<ExeInputReader>());
+        runner.Run(RunSettings::RunOne);
         
 		//auto runner = BenchmarkRunner(std::make_unique<ExeInputReader>(), 2015, 6, 3s);
         //runner.Compare(1, 3);

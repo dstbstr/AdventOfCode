@@ -7,91 +7,52 @@ SOLUTION(2016, 13) {
         return std::popcount(val) % 2 == 0;
     }
 
-    constexpr u64 GetDistance(UCoord location, UCoord target) {
-        size_t x = 0;
-        size_t y = 0;
-        if (location.X > target.X) {
-            x = location.X - target.X;
-        }
-        else {
-            x = target.X - location.X;
-        }
-        if (location.Y > target.Y) {
-            y = location.Y - target.Y;
-        }
-        else {
-            y = target.Y - location.Y;
-        }
-        return x + y;
-    }
-
-    constexpr void AddNextMoves(UCoord location, std::vector<UCoord>& next) {
-        if (location.X > 0) {
-            next.emplace_back(location.X - 1, location.Y);
-        }
-        if (location.Y > 0) {
-            next.emplace_back(location.X, location.Y - 1);
-        }
-        next.emplace_back(location.X + 1, location.Y);
-        next.emplace_back(location.X, location.Y + 1);
+    constexpr std::vector<UCoord> GetNeighbors(UCoord pos) {
+        std::vector<UCoord> result{ {pos.X + 1, pos.Y}, {pos.X, pos.Y + 1} };
+        if(pos.X > 0) result.emplace_back(pos.X - 1, pos.Y);
+		if (pos.Y > 0) result.emplace_back(pos.X, pos.Y - 1);
+		return result;
     }
 
     constexpr u32 Bfs(u32 key, UCoord target) {
-        Constexpr::SmallSet<UCoord> seen;
-        u32 depth = 0;
-        std::vector<UCoord> moves;
-        moves.reserve(100); // just a guess, could be tuned by running and seeing the max size
-        moves.emplace_back(1, 1);
+        Constexpr::BigSet<UCoord, 1000> seen;
+        struct State { UCoord Pos; u32 depth; };
+        Constexpr::Queue<State> moves;
+        moves.push({ {1, 1}, 0 });
+        while (!moves.is_empty()) {
+            auto [pos, depth] = moves.front(); moves.pop();
+            if (pos == target) return depth;
 
-        while (true) {
-            if (std::find(moves.cbegin(), moves.cend(), target) != moves.cend()) {
-                return depth;
-            }
-            depth++;
-            std::vector<UCoord> next;
-            for (auto move : moves) {
-                AddNextMoves(move, next);
-            }
-            moves.clear();
-            std::copy_if(next.begin(), next.end(), std::back_inserter(moves), [&](UCoord move) {
-                return !seen.contains(move) && IsOpen(move, key);
-                });
-
-            seen.insert(moves.begin(), moves.end());
-
-            if (moves.size() == 0) {
-                return 0; //error case, out of moves
+            for (auto move : GetNeighbors(pos)) {
+                if (!seen.contains(move) && IsOpen(move, key)) {
+                    seen.insert(move);
+                    moves.push({ move, depth + 1 });
+                }
             }
         }
-        return 0;
+		return 0; //error case, out of moves
     }
 
-    constexpr u32 FindUniquePositions(u32 key, u32 maxSteps) {
-        Constexpr::SmallSet<UCoord> seen;
-        u32 depth = 0;
-        std::vector<UCoord> moves;
-        moves.reserve(100); // just a guess
-        moves.push_back({ 1, 1 });
+    constexpr u32 CountUniquePositions(u32 key, u32 maxSteps) {
+        Constexpr::BigSet<UCoord, 1000> seen;
+		struct State { UCoord Pos; u32 depth; };
+        Constexpr::Queue<State> moves;
+        moves.push({ {1, 1}, 0 });
         seen.insert({ 1, 1 });
-        while (depth < maxSteps) {
-            depth++;
-            std::vector<UCoord> next;
-            for (auto move : moves) {
-                AddNextMoves(move, next);
+        while (!moves.is_empty()) {
+            auto [pos, depth] = moves.front();
+            moves.pop();
+            if (depth >= maxSteps) {
+                continue;
             }
-            moves.clear();
-            std::copy_if(next.begin(), next.end(), std::back_inserter(moves), [&](UCoord move) {
-                return !seen.contains(move) && IsOpen(move, key);
-                });
-
-            seen.insert(moves.begin(), moves.end());
-
-            if (moves.size() == 0) {
-                return 0; //error case, out of moves
+            for (auto& move : GetNeighbors(pos)) {
+                if (!seen.contains(move) && IsOpen(move, key)) {
+                    seen.insert(move);
+                    moves.push({ move, depth + 1 });
+                }
             }
-        }
-
-        return static_cast<u32>(seen.size());
+		}
+		return static_cast<u32>(seen.size());
     }
 
     PART(1) {
@@ -102,7 +63,7 @@ SOLUTION(2016, 13) {
     PART(2) {
         u32 key;
         Constexpr::ParseNumber(lines[0], key);
-        return FindUniquePositions(key, 50);
+		return CountUniquePositions(key, 50);
     }
 
     static_assert(IsOpen({ 0, 0 }, 10));
